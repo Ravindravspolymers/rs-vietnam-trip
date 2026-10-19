@@ -61,15 +61,15 @@ async function shrinkImage(file) {
 async function addFiles(files, cat) {
   let n = 0;
   for (const f of files) {
-    if (!/^image\/|application\/pdf/.test(f.type)) { toast('Only photos and PDF files.'); continue; }
+    if (!/^image\/|application\/pdf/.test(f.type)) { toast('Only photos and PDF files. / ಫೋಟೋ ಮತ್ತು PDF ಮಾತ್ರ.'); continue; }
     const blob = await shrinkImage(f);
     const name = f.name && !/^image\.\w+$/.test(f.name) ? f.name : `${docCat(cat)[2]} photo ${new Date().toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}`;
     try {
       await DocDB.put({ id: newId(), cat, name, type: blob.type || f.type, size: blob.size, blob, added: Date.now(), deleted: null });
       n++;
-    } catch (e) { toast('Could not save. Phone storage may be full.', 4000); break; }
+    } catch (e) { toast('Could not save. Phone storage may be full. / ಉಳಿಸಲಾಗಲಿಲ್ಲ — ಫೋನ್ ತುಂಬಿರಬಹುದು.', 4000); break; }
   }
-  if (n) toast(`Saved ${n} ✓`);
+  if (n) { markDocsChanged(); toast(`Saved ${n} ✓ / ಉಳಿಸಲಾಗಿದೆ`); }
 }
 
 async function shareOrDownload(blob, filename) {
@@ -82,12 +82,14 @@ async function shareOrDownload(blob, filename) {
   a.href = URL.createObjectURL(blob); a.download = filename;
   document.body.appendChild(a); a.click(); a.remove();
   setTimeout(() => URL.revokeObjectURL(a.href), 5000);
-  toast('Saved to Downloads ✓');
+  toast('Saved to Downloads ✓ / ಡೌನ್‌ಲೋಡ್‌ನಲ್ಲಿ ಉಳಿಸಲಾಗಿದೆ');
 }
 const docFileName = d => {
   const ext = d.type === 'application/pdf' ? '.pdf' : d.type === 'image/png' ? '.png' : '.jpg';
   return /\.\w{2,4}$/.test(d.name) ? d.name : d.name.replace(/[^\w\- ]+/g, '') + ext;
 };
+
+const markDocsChanged = () => Store.set('docsChangedAt', Date.now());   // F23
 
 /* ---------- Docs screen ---------- */
 let docsAddCat = '';
@@ -100,7 +102,7 @@ async function fillDocs() {
   let docs = [];
   try { docs = await DocDB.all(); }
   catch (e) { root.innerHTML = `<div class="card warn"><p>Storage not available in this browser.</p></div>`; return; }
-  const live = docs.filter(d => !d.deleted).sort((a, b) => b.added - a.added);
+  const live = docs.filter(d => !d.deleted).sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0) || b.added - a.added);
   const binCount = docs.length - live.length;
   const used = live.reduce((s, d) => s + d.size, 0);
   let est = '';
@@ -115,18 +117,27 @@ async function fillDocs() {
           <input type="file" accept="image/*,application/pdf" multiple data-add hidden></label>
         <button type="button" class="btn secondary" data-addcat="">Cancel</button>
       </section>`
-    : `<section class="card">
-        <h3>➕ Add a document <span class="kn muted">ದಾಖಲೆ ಸೇರಿಸಿ</span></h3>
+    : `<details class="card fold"${live.length ? '' : ' open'}>
+        <summary>➕ Add a document</summary>
         <div class="grid">${DOC_CATS.map(([id, ic, l]) =>
           `<button type="button" class="tile area" data-addcat="${id}"><span>${ic}</span><span>${l}</span></button>`).join('')}</div>
-      </section>`;
+      </details>`;
 
-  const groups = DOC_CATS.map(([id, ic, l]) => [ic + ' ' + l, live.filter(d => d.cat === id)]).filter(([, l]) => l.length);
-  const list = groups.length
-    ? groups.map(([title, l]) => `<h3 class="sect">${title}</h3>${l.map(docCard).join('')}`).join('')
+  const pinned = live.filter(d => d.pinned);
+  const groups = DOC_CATS.map(([id, ic, l]) => [ic + ' ' + l, live.filter(d => d.cat === id && !d.pinned)]).filter(([, l]) => l.length);
+  const list = live.length
+    ? (pinned.length ? `<h3 class="sect">⭐ Pinned</h3>${pinned.map(docCard).join('')}` : '')
+      + groups.map(([title, l]) => `<h3 class="sect">${title}</h3>${l.map(docCard).join('')}`).join('')
     : `<div class="card center"><p>No documents yet.</p><p class="kn">ಇನ್ನೂ ಯಾವುದೇ ದಾಖಲೆ ಇಲ್ಲ. ಪಾಸ್‌ಪೋರ್ಟ್, ವೀಸಾ, ಟಿಕೆಟ್ ಫೋಟೋ ಸೇರಿಸಿ.</p></div>`;
 
-  root.innerHTML = `${add}${list}
+  const persisted = Store.get('persisted', false);
+  const docsAt = Store.get('docsChangedAt', 0), bk = Store.get('lastBackup', 0);
+  const warn = (!persisted && live.length ? `<section class="card warn"><p><strong>Storage not protected — back up now.</strong></p>
+      <p class="kn">ಸಂಗ್ರಹಣೆ ಸುರಕ್ಷಿತವಿಲ್ಲ — ಈಗಲೇ ಬ್ಯಾಕಪ್ ಮಾಡಿ.</p></section>` : '')
+    + (docsAt && bk < docsAt ? `<section class="card warn"><p><strong>Documents changed since your last backup.</strong></p>
+      <p class="kn">ಕೊನೆಯ ಬ್ಯಾಕಪ್ ನಂತರ ದಾಖಲೆಗಳು ಬದಲಾಗಿವೆ.</p>
+      <button type="button" class="btn green" data-backup>💾 Backup now</button></section>` : '');
+  root.innerHTML = `${warn}${docsAddCat ? add : ''}${list}${docsAddCat ? '' : add}
     <p class="muted small center">${live.length} documents · ${fmtSize(used)} used${est}</p>
     <a class="btn secondary" href="#bin">🗑 Bin (${binCount})</a>
     <section class="card">
@@ -139,15 +150,17 @@ async function fillDocs() {
 }
 
 function docCard(d) {
+  const id = esc(d.id);
   const isImg = d.type.startsWith('image/');
   const thumb = isImg ? `<img class="doc-thumb" src="${blobUrl(d.blob)}" alt="" loading="lazy">` : `<span class="doc-thumb pdf">PDF</span>`;
   return `<article class="card doc">
-    <a class="doc-row" href="#doc:${d.id}">${thumb}
+    <a class="doc-row" href="#doc:${id}">${thumb}
       <span><strong>${esc(d.name)}</strong><br><span class="muted small">${fmtDay(d.added)} · ${fmtSize(d.size)}</span></span></a>
     <div class="actions three">
-      <a class="btn secondary" href="#doc:${d.id}">👁 View</a>
-      <button type="button" class="btn secondary" data-share="${d.id}">📤 Share</button>
-      <button type="button" class="btn secondary" data-del="${d.id}">🗑 Bin</button>
+      <a class="btn secondary" href="#doc:${id}">👁 View</a>
+      <button type="button" class="btn secondary" data-share="${id}">📤 Share</button>
+      <button type="button" class="btn secondary" data-pin="${id}" aria-pressed="${!!d.pinned}">${d.pinned ? '⭐ Pinned' : '☆ Pin'}</button>
+      <button type="button" class="btn secondary" data-del="${id}">🗑 Bin</button>
     </div>
   </article>`;
 }
@@ -163,11 +176,13 @@ async function fillDoc() {
   const url = blobUrl(d.blob);
   const body = d.type.startsWith('image/')
     ? `<img class="doc-full" src="${url}" alt="${esc(d.name)}"><p class="muted small center">Pinch with two fingers to zoom. <span class="kn">ಎರಡು ಬೆರಳಿನಿಂದ ದೊಡ್ಡದು ಮಾಡಿ.</span></p>`
-    : `<div class="card center"><p class="doc-thumb pdf big">PDF</p><a class="btn green" href="${url}" target="_blank" rel="noopener">📖 Open PDF</a></div>`;
+    : `<div class="card center"><p class="doc-thumb pdf big">PDF</p>
+        <button type="button" class="btn green" data-share="${esc(d.id)}">📤 Open with… (Share)</button>
+        <a class="btn secondary" href="${url}" target="_blank" rel="noopener">📖 Open PDF</a></div>`;
   root.innerHTML = `<h2>${esc(d.name)}</h2>${body}
     <div class="actions">
-      <button type="button" class="btn secondary" data-share="${d.id}">📤 Share</button>
-      <button type="button" class="btn secondary" data-rename="${d.id}">✏️ Rename</button>
+      <button type="button" class="btn secondary" data-share="${esc(d.id)}">📤 Share</button>
+      <button type="button" class="btn secondary" data-rename="${esc(d.id)}">✏️ Rename</button>
     </div>`;
 }
 
@@ -182,7 +197,7 @@ async function fillBin() {
     ${docs.length ? docs.map(d => `<article class="card doc">
         <div class="doc-row">${d.type.startsWith('image/') ? `<img class="doc-thumb" src="${blobUrl(d.blob)}" alt="">` : '<span class="doc-thumb pdf">PDF</span>'}
           <span><strong>${esc(d.name)}</strong><br><span class="muted small">${docCat(d.cat)[2]} · moved ${fmtDay(d.deleted)}</span></span></div>
-        <button type="button" class="btn green" data-undel="${d.id}">↩️ Restore</button></article>`).join('')
+        <button type="button" class="btn green" data-undel="${esc(d.id)}">↩️ Restore</button></article>`).join('')
       : '<div class="card center"><p>Bin is empty.</p><p class="kn">ಬಿನ್ ಖಾಲಿ ಇದೆ.</p></div>'}`;
 }
 
@@ -190,23 +205,29 @@ async function fillBin() {
 const blobToDataURL = b => new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = rej; r.readAsDataURL(b); });
 
 async function doBackup() {
-  toast('Preparing backup…', 3000);
+  toast('Preparing backup… / ಬ್ಯಾಕಪ್ ತಯಾರಾಗುತ್ತಿದೆ…', 3000);
   try {
     const docs = await DocDB.all();
     const local = {};
     for (let i = 0; i < localStorage.length; i++) {
       const k = localStorage.key(i);
-      if (k.startsWith('rs.')) local[k] = localStorage.getItem(k);
+      if (!k.startsWith('rs.') || k === 'rs.askCache') continue;
+      let v = localStorage.getItem(k);
+      if (k === 'rs.settings') { try { const o = JSON.parse(v); delete o.deepseekKey; v = JSON.stringify(o); } catch (e) {} }  // F06
+      local[k] = v;
     }
-    const out = { app: 'rs-vietnam-trip', version: APP_VERSION, created: new Date().toISOString(), local, docs: [] };
-    for (const d of docs) {
-      const { blob, ...meta } = d;
-      out.docs.push({ ...meta, data: await blobToDataURL(blob) });
+    // F23: build the file in parts (one document at a time) instead of one giant string
+    const parts = [`{"app":"rs-vietnam-trip","version":${JSON.stringify(APP_VERSION)},"created":${JSON.stringify(new Date().toISOString())},"local":${JSON.stringify(local)},"docs":[`];
+    for (let i = 0; i < docs.length; i++) {
+      const { blob, ...meta } = docs[i];
+      parts.push((i ? ',' : '') + JSON.stringify({ ...meta, data: await blobToDataURL(blob) }));
     }
+    parts.push(']}');
     const name = `rs-vietnam-backup-${new Date().toISOString().slice(0, 10)}.json`;
-    await shareOrDownload(new Blob([JSON.stringify(out)], { type: 'application/json' }), name);
+    await shareOrDownload(new Blob(parts, { type: 'application/json' }), name);
     Store.set('lastBackup', Date.now());
-  } catch (e) { toast('Backup failed. Try again.', 4000); }
+    toast('Backup saved (DeepSeek key not included) / ಬ್ಯಾಕಪ್ ಉಳಿಸಲಾಗಿದೆ', 4000);
+  } catch (e) { toast('Backup failed. Try again. / ಬ್ಯಾಕಪ್ ಆಗಲಿಲ್ಲ, ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.', 4000); }
 }
 
 function doRestore() {
@@ -215,7 +236,7 @@ function doRestore() {
   inp.onchange = async () => {
     const f = inp.files[0]; if (!f) return;
     let data;
-    try { data = JSON.parse(await f.text()); } catch (e) { return toast('This is not a backup file.', 4000); }
+    try { data = JSON.parse(await f.text()); } catch (e) { return toast('This is not a backup file. / ಇದು ಬ್ಯಾಕಪ್ ಫೈಲ್ ಅಲ್ಲ.', 4000); }
     if (data.app !== 'rs-vietnam-trip') return toast('This is not an RS Vietnam Trip backup.', 4000);
     const existing = new Set((await DocDB.all()).map(d => d.id));
     const toAdd = (data.docs || []).filter(d => !existing.has(d.id));
@@ -227,9 +248,11 @@ function doRestore() {
         const { data: _, ...meta } = d;
         await DocDB.put({ ...meta, blob });
       }
+      const keepKey = getSettings().deepseekKey;
       Object.entries(data.local || {}).forEach(([k, v]) => { if (k.startsWith('rs.')) localStorage.setItem(k, v); });
+      if (keepKey) { const st = getSettings(); st.deepseekKey = keepKey; saveSettings(st); }
       applyTextSize(getSettings().textSize);
-      toast(`Restored ✓ (${toAdd.length} documents)`, 4000);
+      toast(`Restored ✓ (${toAdd.length} documents) / ಮರುಸ್ಥಾಪಿಸಲಾಗಿದೆ`, 4000);
       render();
     } catch (e) { toast('Restore stopped. Phone storage may be full.', 5000); }
   };
@@ -242,29 +265,33 @@ function startDocsScreen(fill) {
     const main = document.getElementById('screen');
     fill();
     const onClick = async e => {
-      const b = e.target.closest('[data-addcat],[data-share],[data-del],[data-undel],[data-rename],[data-backup],[data-restore]');
+      const b = e.target.closest('[data-addcat],[data-share],[data-del],[data-undel],[data-rename],[data-pin],[data-backup],[data-restore]');
       if (!b) return;
       if (b.dataset.addcat !== undefined) { docsAddCat = b.dataset.addcat; freeUrls(); return fill(); }
-      if (b.dataset.backup !== undefined) return doBackup();
+      if (b.dataset.backup !== undefined) { await doBackup(); freeUrls(); return fill(); }
       if (b.dataset.restore !== undefined) return doRestore();
-      const id = b.dataset.share || b.dataset.del || b.dataset.undel || b.dataset.rename;
+      const id = b.dataset.share || b.dataset.del || b.dataset.undel || b.dataset.rename || b.dataset.pin;
       const d = await DocDB.get(id);
       if (!d) return;
       if (b.dataset.share) return shareOrDownload(d.blob, docFileName(d));
       if (b.dataset.rename) {
         const n = prompt('New name:', d.name);
-        if (n && n.trim()) { d.name = n.trim(); await DocDB.put(d); freeUrls(); fill(); }
+        if (n && n.trim()) { d.name = n.trim(); await DocDB.put(d); markDocsChanged(); freeUrls(); fill(); }
         return;
       }
+      if (b.dataset.pin) {
+        d.pinned = !d.pinned; await DocDB.put(d); markDocsChanged();
+        toast(d.pinned ? 'Pinned ⭐ / ಮೇಲೆ ಇರಿಸಲಾಗಿದೆ' : 'Unpinned / ತೆಗೆಯಲಾಗಿದೆ'); freeUrls(); return fill();
+      }
       d.deleted = b.dataset.del ? Date.now() : null;
-      await DocDB.put(d);
-      toast(b.dataset.del ? 'Moved to Bin. You can restore it anytime.' : 'Restored ✓', 3000);
+      await DocDB.put(d); markDocsChanged();
+      toast(b.dataset.del ? 'Moved to Bin. You can restore it anytime. / ಬಿನ್‌ಗೆ ಹಾಕಲಾಗಿದೆ, ಯಾವಾಗ ಬೇಕಾದರೂ ವಾಪಸ್ ತರಬಹುದು.' : 'Restored ✓ / ವಾಪಸ್ ತರಲಾಗಿದೆ', 3000);
       freeUrls(); fill();
     };
     const onChange = async e => {
       if (!e.target.matches('[data-add]') || !e.target.files.length) return;
       const cat = docsAddCat; docsAddCat = '';
-      toast('Saving…', 2000);
+      toast('Saving… / ಉಳಿಸಲಾಗುತ್ತಿದೆ…', 2000);
       await addFiles([...e.target.files], cat);
       freeUrls(); fill();
     };
@@ -278,3 +305,12 @@ ROUTES.docs.render = renderDocs;
 ROUTES.docs.after = startDocsScreen(fillDocs);
 ROUTES.doc = { title: 'Document', tab: 'more', back: 'docs', render: renderDoc, after: startDocsScreen(fillDoc) };
 ROUTES.bin = { title: 'Bin', tab: 'more', back: 'docs', render: renderBin, after: startDocsScreen(fillBin) };
+
+/* U5: "Passport" tile in More opens the first pinned document */
+async function openPinned() {
+  const docs = (await DocDB.all().catch(() => [])).filter(d => d.pinned && !d.deleted).sort((a, b) => b.added - a.added);
+  if (docs.length) location.hash = '#doc:' + docs[0].id;
+  else { toast('Pin a document with ☆ Pin first. / ಮೊದಲು ☆ Pin ಒತ್ತಿ.', 3500); location.hash = '#docs'; }
+}
+ROUTES.pinned = { title: 'Passport', tab: 'more', back: 'more', render: () => '<p class="muted center">Opening…</p>',
+  after: () => { openPinned(); } };

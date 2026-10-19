@@ -416,3 +416,95 @@ body.fullscreen { padding-bottom: 24px; }
 .ask-qline { font-weight: 700; margin-bottom: 6px; }
 .ask-a p { margin: 0 0 6px; }
 .ask-err { color: var(--red); font-weight: 700; margin: 0; }
+
+/* ======================================================================
+   v1.1 ACCESSIBILITY LAYER (QA fixes F08 F09 F10 F18 F31)
+   Contrast (WCAG): white on --btn-red 6.54 · white on --btn-green 7.52 ·
+   dark text #F5EDE2 on #1A1512 15.6 · dark red text #FF8A80 on card 7.05 ·
+   dark active tab #FFB4A8 on #3A3020 7.6 · light active tab 5.32 ·
+   notes (white on 70%-darkened colour) 6.0–8.5 · secondary border #9A7414 4.3 (UI ≥3)
+   ====================================================================== */
+:root { --btn-red: #B3261E; --btn-green: #1F5F4A; --tab-active: #B3261E; }
+@media (prefers-color-scheme: dark) {
+  :root { --red: #FF8A80; --btn-red: #B3261E; --btn-green: #1F5F4A; --tab-active: #FFB4A8; }
+}
+
+/* F08: filled buttons/chips always use the dark tokens (white text passes AA in both themes) */
+.topbar, .btn, .stoprow .tag, .daychip[aria-current="true"], .fchip[aria-pressed="true"],
+.seg button[aria-pressed="true"], .vtag.dist, .doc-thumb.pdf, .stepno { background: var(--btn-red); }
+.daychip[aria-current="true"], .fchip[aria-pressed="true"], .seg button[aria-pressed="true"] { border-color: var(--btn-red); color: #fff; }
+.btn.green, .update-banner, .banner.green, .tick[aria-pressed="true"], .checkrow[aria-pressed="true"] .box { background: var(--btn-green); }
+.tick[aria-pressed="true"], .checkrow[aria-pressed="true"] .box { border-color: var(--btn-green); }
+.btn.secondary { background: var(--gold-soft); color: var(--text); border: 2px solid #9A7414; }
+.btn.sos-big { background: #D32F2F; }
+.story-btn { background: var(--gold); color: #2A1F1A; }
+.tabbar a.active { color: var(--tab-active); }
+.stime, .note-inr, .tile .count, .stype { color: var(--green); }
+
+/* F31: solid darkened note colours, no light gradient behind white text */
+.note { background: color-mix(in srgb, var(--nc) 70%, #000); }
+
+/* F09: nothing below 18px (tab labels 15px allowed); headings ≥ 24px */
+.small { font-size: 1em; }
+h2 { font-size: max(24px, 1.4em); }
+h3 { font-size: max(24px, 1.35em); }
+.stoprow .tag, .stype, .vtag, .note-unit, .daychip, .fchip, .tile .count, .tts-now,
+.help-num span, .actions.three .btn, .facts span, .cdate, .alike, .nofish, .muted.small { font-size: max(18px, 1em); }
+.stoprow .tag, .stype { letter-spacing: .02em; }
+.daychip { min-width: 84px; }
+.actions.three { grid-template-columns: 1fr; }          /* 3 buttons stack: fits 360px at A++ */
+.note-val { font-size: max(22px, 1.2em); }
+
+/* F10: tap targets ≥ 56px */
+.back-btn, .fchip, .tts-btns .btn, .daychip { min-height: 56px; }
+
+/* F18: nothing hidden under the floating SOS; SOS in top bar on full-screen pages */
+main { padding-bottom: 104px; }
+.sos-top { display: none; }
+body.fullscreen .sos-top {
+  display: flex; align-items: center; justify-content: center; margin-left: auto;
+  min-width: 72px; min-height: 56px; border-radius: 14px; background: #D32F2F; color: #fff;
+  font-weight: 800; text-decoration: none; border: 2px solid #fff;
+}
+/* v1.1: Settings folds + SOS contact blocks */
+details.fold > summary {
+  list-style: none; cursor: pointer; min-height: 56px; display: flex; align-items: center;
+  font-size: max(24px, 1.35em); font-weight: 700;
+}
+details.fold > summary::-webkit-details-marker { display: none; }
+details.fold > summary::after { content: '▾'; margin-left: auto; color: var(--muted); }
+details.fold[open] > summary::after { content: '▴'; }
+.sos-contact { padding: 8px 0 12px; border-bottom: 1px solid var(--line); }
+.sos-contact:last-child { border-bottom: 0; }
+.sos-name { font-weight: 800; font-size: 1.15em; margin: 6px 0 0; }
+/* v1.1 Today */
+.hello1 { font-size: 1.15em; margin: 0 0 12px; }
+.hello1 .dayline { font-size: 1em; }
+.inflight { font-size: 1.3em; font-weight: 800; color: var(--green); margin: 8px 12px; }
+.hotelcard .vi { font-size: 1.1em; }
+.readyrow { display: flex; gap: 12px; align-items: center; min-height: 56px; padding: 8px 4px; color: var(--text); text-decoration: none; border-top: 1px solid var(--line); }
+.readyrow .mark { flex: 0 0 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #fff; }
+.readyrow.ok .mark { background: var(--btn-green); }
+.readyrow.no .mark { background: var(--btn-red); }
+.banner.nudge { text-decoration: none; color: var(--text); }
+/* v1.1 story sentence highlight + voice steps */
+.story-text p.speaking { background: none; box-shadow: none; }
+.story-text span.speaking { background: var(--gold-soft); box-shadow: 0 0 0 3px var(--gold-soft); border-radius: 6px; }
+.vsteps { padding-left: 1.3em; } .vsteps li { margin-bottom: 10px; }
+.pending { font-weight: 700; padding: 10px 12px; border-radius: 12px; background: var(--gold-soft); color: var(--text); }
+/* v1.1 Emergency + print sheet (U4) */
+.hosp { border-top: 1px solid var(--line); padding-top: 10px; margin-top: 10px; }
+.printsheet { background: #fff; color: #111; border-radius: var(--radius); padding: 20px; }
+.ps-vi { font-size: 1.3em; font-weight: 800; color: #B3261E; }
+.ps-table { width: 100%; border-collapse: collapse; }
+.ps-table td { border-bottom: 1px solid #ccc; padding: 8px 4px; font-size: 1.05em; }
+@media print {
+  .topbar, .tabbar, .sos-btn, .no-print, .update-banner, .toast { display: none !important; }
+  body { background: #fff; padding: 0; }
+  main { padding: 0 !important; max-width: none; }
+  .printsheet { padding: 0; }
+  @page { size: A4; margin: 14mm; }
+}
+/* v1.1 Docs pin */
+[data-pin][aria-pressed="true"] { border-color: var(--gold); background: var(--gold-soft); }
+.actions.three { grid-template-columns: 1fr 1fr; }

@@ -64,7 +64,7 @@ function renderMoney() {
     <section class="card warn">
       <h3>⚠️ Count the zeros!</h3>
       <p>Notes look alike. 20k and 500k are both blue. 10k and 100k differ by one zero.</p>
-      <p class="kn">⚠️ ಸೊನ್ನೆಗಳನ್ನು ಎಣಿಸಿ! 20k ಮತ್ತು 500k ಎರಡೂ ನೀಲಿ ಬಣ್ಣ. 10k ಮತ್ತು 100k ನಲ್ಲಿ ಒಂದೇ ಸೊನ್ನೆ ವ್ಯತ್ಯಾಸ.</p>
+      <p class="kn">⚠️ ಸೊನ್ನೆಗಳನ್ನು ಎಣಿಸಿ! 20k ಮತ್ತು 500k ಎರಡೂ ನೀಲಿ ಬಣ್ಣ. 10k ಮತ್ತು 100k ನಲ್ಲಿ ಒಂದು ಸೊನ್ನೆ ಮಾತ್ರ ವ್ಯತ್ಯಾಸ.</p>
     </section>
 
     <h3 class="sect">Vietnam notes <span class="kn muted">ವಿಯೆಟ್ನಾಂ ನೋಟುಗಳು</span></h3>

@@ -16,7 +16,8 @@ function renderPrep() {
         <span>${l.icon}</span><span>${esc(l.en)}</span><span class="kn small">${esc(l.kn)}</span>
         <span class="count">${n}/${l.items.length}${n === l.items.length ? ' ✓' : ''}</span></a>`;
     }).join('')}</div>
-    <a class="btn" href="#airport" style="margin-top:18px">✈️ Airport guide — step by step <span class="kn">ವಿಮಾನ ನಿಲ್ದಾಣ ಮಾರ್ಗದರ್ಶಿ</span></a>`;
+    <a class="btn" href="#airport" style="margin-top:18px">✈️ Airport guide — step by step</a>
+    <a class="btn secondary" href="#print">🖨 Printable help sheet</a>`;
 }
 
 function renderCheck() {
@@ -55,7 +56,7 @@ function renderAirport() {
   const next = legs[i + 1];
   return `<nav class="daybar" aria-label="Airports">${chips}</nav>
     <section class="card accent"><h2>${esc(leg.en)}</h2><p class="kn">${esc(leg.kn)}</p>
-      <p class="stime">${esc(leg.when)}</p></section>
+      <p class="stime">${esc(leg.when)}</p>${leg.when_kn ? `<p class="kn">${esc(leg.when_kn)}</p>` : ''}</section>
     ${leg.steps.map((s, n) => `<div class="card step"><span class="stepno">${n + 1}</span>
       <p><strong>${esc(s.en)}</strong><br><span class="kn">${esc(s.kn)}</span></p></div>`).join('')}
     ${next ? `<a class="btn" href="#airport:${next.id}">Next: ${esc(next.en)} ›</a>` : ''}`;

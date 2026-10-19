@@ -2,7 +2,7 @@
    Router, tab bar, More grid, SOS, Settings, update banner, storage helpers. */
 'use strict';
 
-const APP_VERSION = '1.0.0'; // keep in sync with CACHE_VERSION in service-worker.js
+const APP_VERSION = '1.1.0'; // keep in sync with CACHE_VERSION in service-worker.js
 
 /* ---------- Storage helpers (localStorage, never crash) ---------- */
 const Store = {
@@ -20,6 +20,22 @@ const Store = {
 const $ = (sel, root = document) => root.querySelector(sel);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
 const digits = s => String(s || '').replace(/\D/g, '');
+
+/* F03: phone normaliser. Returns { ok, pretty } — pretty is '+91 98450 12345' style, '' if empty. */
+const PHONE_FIELDS = ['c1Phone', 'c2Phone', 'hotelPhone', 'cruisePhone', 'driverPhone', 'insurancePhone'];
+function normPhone(raw) {
+  const t = String(raw || '').trim();
+  if (!t) return { ok: true, pretty: '' };
+  let d = digits(t);
+  if (!t.startsWith('+')) {
+    d = d.replace(/^0+/, '');
+    if (/^[6-9]\d{9}$/.test(d)) d = '91' + d;          // Indian mobile without country code
+  }
+  if (d.length < 11 || d.length > 15) return { ok: false, pretty: t };
+  const pretty = d.startsWith('91') && d.length === 12 ? `+91 ${d.slice(2, 7)} ${d.slice(7)}`
+    : d.startsWith('84') ? `+84 ${d.slice(2).replace(/(\d{2,3})(?=(\d{3})+$)/g, '$1 ')}` : '+' + d;
+  return { ok: true, pretty };
+}
 
 /* ---------- Bundled data (loaded once at start; served offline by the service worker) ---------- */
 const DATA = {};
@@ -41,7 +57,7 @@ const DEFAULT_SETTINGS = {
   c1Name: '', c1Phone: '',
   c2Name: '', c2Phone: '',
   hotelPhone: '+84 97 413 51 07',   // Hanoi Chic Boutique Hotel (business number)
-  cruisePhone: '', insurancePhone: '', medical: '',
+  cruisePhone: '', driverPhone: '', insurancePhone: '', medical: '',
   textSize: 'normal',
   deepseekKey: ''
 };
@@ -82,7 +98,8 @@ function renderMore() {
   const tiles = [
     ['phrases', '💬', 'Phrases'], ['shopping', '🛍', 'Shopping'],
     ['docs', '📄', 'Docs'],       ['prep', '✅', 'Prep'],
-    ['emergency', '🚨', 'Emergency'], ['settings', '⚙', 'Settings']
+    ['emergency', '🚨', 'Emergency'], ['settings', '⚙', 'Settings'],
+    ['pinned', '🛂', 'Passport']
   ];
   return `<div class="grid">${tiles.map(([id, ic, label]) =>
     `<a class="tile${id === 'emergency' ? ' danger' : ''}" href="#${id}">
@@ -112,41 +129,70 @@ function renderAbout() {
       <p>Kannada text should be checked by a native speaker. Vietnamese pronunciation guides are simplified.</p></section>`;
 }
 
-/* ---------- SOS (basic, working now; full Emergency screen in Phase 8) ---------- */
+/* ---------- SOS: WhatsApp / Call / SMS per contact (F04, F24) ---------- */
 function renderSOS() {
   const s = getSettings();
-  const contacts = [[s.c1Name || 'Contact 1', s.c1Phone], [s.c2Name || 'Contact 2', s.c2Phone]];
-  const waBtns = contacts.map(([name, phone], i) => digits(phone)
-    ? `<button class="btn" data-sos="${i}">📍 Send my location to ${esc(name)}</button>`
+  const contacts = [[s.c1Name || 'Family 1', s.c1Phone], [s.c2Name || 'Family 2', s.c2Phone]];
+  const blocks = contacts.map(([name, phone], i) => digits(phone)
+    ? `<div class="sos-contact"><p class="sos-name">${esc(name)}</p>
+        <button class="btn" data-sos="${i}" data-via="wa">📍 WhatsApp my location</button>
+        <a class="btn green" href="tel:+${digits(phone)}">📞 Call ${esc(name)}</a>
+        <button class="btn secondary" data-sos="${i}" data-via="sms">✉️ SMS my location</button></div>`
     : `<a class="btn secondary" href="#settings">Add ${esc(name)} in Settings</a>`).join('');
-
-  return `<div class="card accent">
-      <h2>Send location on WhatsApp</h2>
-      <p class="kn">ನಿಮ್ಮ ಸ್ಥಳವನ್ನು WhatsApp ಮೂಲಕ ಕಳುಹಿಸಿ</p>
-      ${waBtns}
-    </div>
+  return renderFamilySOS(blocks) + `
     <div class="card">
       <h2>Call for help (Vietnam)</h2>
       <a class="btn" href="tel:113">🚓 Police — 113</a>
       <a class="btn" href="tel:115">🚑 Ambulance — 115</a>
       <a class="btn" href="tel:114">🚒 Fire — 114</a>
-      ${digits(s.hotelPhone) ? `<a class="btn green" href="tel:+${digits(s.hotelPhone)}">🏨 Call hotel</a>` : ''}
     </div>`;
 }
 
-function sendLocation(index) {
+function renderFamilySOS(blocks) {
+  if (blocks === undefined) {          // called on its own (Emergency screen)
+    const tmp = document.createElement('div'); tmp.innerHTML = renderSOS();
+    return tmp.querySelector('.card.accent').outerHTML;
+  }
+  return `<div class="card accent">
+      <h2>Tell family where you are</h2>
+      <p class="kn">ನೀವು ಎಲ್ಲಿದ್ದೀರಿ ಎಂದು ಮನೆಯವರಿಗೆ ತಿಳಿಸಿ</p>
+      <div id="sos-status" aria-live="polite"></div>
+      ${blocks}
+    </div>`;
+}
+
+let sosPending = null;
+function sendLocation(index, via) {
   const s = getSettings();
   const phone = digits(index === 0 ? s.c1Phone : s.c2Phone);
-  const open = text => { location.href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`; };
-  if (!('geolocation' in navigator)) { open('I need help. Please call me.'); return; }
-  toast('Finding your location…', 6000);
+  const status = document.getElementById('sos-status');
+  const urlFor = text => via === 'sms'
+    ? `sms:+${phone}?body=${encodeURIComponent(text)}`
+    : `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+  const open = text => {
+    sosPending = null;
+    if (status) status.innerHTML = '';
+    const url = urlFor(text);
+    if (via === 'sms') { location.href = url; return; }
+    const w = window.open(url, '_blank');
+    if (!w) location.href = url;
+  };
+  const noLoc = 'I need help. Please call me. (Location not available)';
+  if (!('geolocation' in navigator)) return open(noLoc);
+  const token = sosPending = {};
+  if (status) status.innerHTML = `<p class="muted">Finding your location… <span class="kn">ನಿಮ್ಮ ಸ್ಥಳ ಹುಡುಕುತ್ತಿದೆ…</span></p>`;
+  setTimeout(() => {
+    if (sosPending !== token || !status) return;
+    status.innerHTML += `<button type="button" class="btn" data-sendnow="${index}" data-via="${via}">${via === 'sms' ? 'Send SMS now' : 'Open WhatsApp now'} (without location)</button>`;
+  }, 3000);
   navigator.geolocation.getCurrentPosition(
     pos => {
+      if (sosPending !== token) return;
       const { latitude: lat, longitude: lng } = pos.coords;
       open(`I need help. My location: https://maps.google.com/?q=${lat.toFixed(6)},${lng.toFixed(6)}`);
     },
-    () => open('I need help. Please call me. (Location not available)'),
-    { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
+    () => { if (sosPending === token) open(noLoc); },
+    { enableHighAccuracy: true, timeout: 15000, maximumAge: 60000 }
   );
 }
 
@@ -157,51 +203,55 @@ function renderSettings() {
     `<label for="${id}">${label}</label>
      <input id="${id}" type="${type}" value="${esc(s[id])}" placeholder="${esc(ph)}" autocomplete="off">`;
   const sizeBtn = (v, l) => `<button type="button" data-size="${v}" aria-pressed="${s.textSize === v}">${l}</button>`;
+  const last = Store.get('lastBackup', 0);
 
-  return `<div class="card">
-      <h2>Text size</h2>
+  return `<details class="card fold" open>
+      <summary>📞 Contacts and health notes</summary>
+      <form id="contacts-form">
+        <p class="muted small">Indian mobiles: 10 digits is fine (+91 is added). Others: with country code.</p>
+        ${field('c1Name', 'Family 1 — name', 'text', 'e.g. Son')}
+        ${field('c1Phone', 'Family 1 — phone', 'tel', '+91 9XXXX XXXXX')}
+        ${field('c2Name', 'Family 2 — name', 'text', 'e.g. Daughter')}
+        ${field('c2Phone', 'Family 2 — phone', 'tel', '+91 9XXXX XXXXX')}
+        ${field('hotelPhone', 'Hotel phone')}
+        ${field('cruisePhone', 'Cruise phone', 'tel', 'Not set')}
+        ${field('driverPhone', 'Ninh Binh car driver phone', 'tel', 'Ask the hotel')}
+        ${field('insurancePhone', 'Insurance helpline', 'tel', 'Not set')}
+        ${field('medical', 'Medicines / health notes (shown on help card)', 'text', 'e.g. BP tablets daily')}
+        <button class="btn" type="submit">Save contacts</button>
+      </form>
+    </details>
+
+    <details class="card fold">
+      <summary>🔠 Text size</summary>
       <div class="seg">${sizeBtn('normal', 'A')}${sizeBtn('large', 'A+')}${sizeBtn('xlarge', 'A++')}</div>
-    </div>
+    </details>
 
-    <form class="card" id="contacts-form">
-      <h2>Contacts</h2>
-      <p class="muted small">Type numbers with country code. Example: +91 98450 12345</p>
-      ${field('c1Name', 'Contact 1 — name', 'text', 'e.g. Abhi')}
-      ${field('c1Phone', 'Contact 1 — phone', 'tel', '+91 …')}
-      ${field('c2Name', 'Contact 2 — name', 'text', 'e.g. Sanjana')}
-      ${field('c2Phone', 'Contact 2 — phone', 'tel', '+91 …')}
-      ${field('hotelPhone', 'Hotel phone')}
-      ${field('cruisePhone', 'Cruise phone', 'tel', 'Not set')}
-      ${field('insurancePhone', 'Insurance helpline', 'tel', 'Not set')}
-      ${field('medical', 'Medicines / health notes (shown on help card)', 'text', 'e.g. BP tablets, diabetic')}
-      <button class="btn" type="submit">Save contacts</button>
-    </form>
+    <details class="card fold">
+      <summary>💾 Backup</summary>
+      <p>Save documents, ticks and contacts in one file.</p>
+      <p class="muted small">Last backup: ${last ? new Date(last).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : 'never'}</p>
+      <button type="button" class="btn green" data-backup>💾 Backup now</button>
+      <button type="button" class="btn secondary" data-restore>♻️ Restore from backup</button>
+    </details>
 
-    <div class="card">
-      <h2>DeepSeek helper</h2>
-      <p class="muted small">Optional. Key stays on this phone only.</p>
+    <details class="card fold">
+      <summary>🤖 DeepSeek helper</summary>
+      <p class="muted small">Optional. Key stays on this phone only and is never put in backups.</p>
       <p>Status: <strong id="ds-status">${s.deepseekKey ? 'Saved ✓' : 'Not set'}</strong></p>
       <label for="ds-key">API key</label>
       <input id="ds-key" type="password" placeholder="Paste key here" autocomplete="off">
       <button class="btn" id="ds-save" type="button">Save key</button>
       <button class="btn secondary" id="ds-test" type="button" ${s.deepseekKey ? '' : 'disabled'}>Test key</button>
       ${s.deepseekKey ? '<button class="btn secondary" id="ds-clear" type="button">Remove key</button>' : ''}
-    </div>
+    </details>
 
-    <div class="card">
-      <h2>Backup</h2>
-      <p>Save documents, ticks and contacts in one file.</p>
-      <p class="muted small">Last backup: ${Store.get('lastBackup', 0) ? new Date(Store.get('lastBackup', 0)).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : 'never'}</p>
-      <button type="button" class="btn green" data-backup>💾 Backup now</button>
-      <button type="button" class="btn secondary" data-restore>♻️ Restore from backup</button>
-    </div>
-
-    <div class="card">
-      <h2>App</h2>
+    <details class="card fold">
+      <summary>ℹ️ App</summary>
       <p>Version <strong>${APP_VERSION}</strong></p>
       <button class="btn secondary" id="check-update" type="button">Check for update</button>
       <a class="btn secondary" href="#about">ℹ️ About & credits</a>
-    </div>`;
+    </details>`;
 }
 
 async function testDeepSeek(key) {
@@ -229,7 +279,16 @@ document.addEventListener('click', async e => {
   const t = e.target.closest('button');
   if (!t) return;
 
-  if (t.dataset.sos) return sendLocation(Number(t.dataset.sos));
+  if (t.dataset.sos) return sendLocation(Number(t.dataset.sos), t.dataset.via || 'wa');
+  if (t.dataset.sendnow) {
+    sosPending = null;
+    const s = getSettings(), phone = digits(t.dataset.sendnow === '0' ? s.c1Phone : s.c2Phone);
+    const text = encodeURIComponent('I need help. Please call me.');
+    if (t.dataset.via === 'sms') { location.href = `sms:+${phone}?body=${text}`; return; }
+    const url = `https://wa.me/${phone}?text=${text}`;
+    if (!window.open(url, '_blank')) location.href = url;
+    return;
+  }
   // Backup/Restore buttons on Settings (the Docs screen handles its own)
   if (currentRoute() === 'settings' && t.dataset.backup !== undefined) return doBackup();
   if (currentRoute() === 'settings' && t.dataset.restore !== undefined) return doRestore();
@@ -243,8 +302,11 @@ document.addEventListener('click', async e => {
 
   switch (t.id) {
     case 'back-btn': {
+      // F16: go back in history only if the previous screen IS the parent; otherwise replace (never loops)
       const b = ROUTES[currentRoute()]?.back;
-      location.hash = '#' + ((typeof b === 'function' ? b() : b) || 'today'); break;
+      const target = '#' + ((typeof b === 'function' ? b() : b) || 'today');
+      if (prevHash === target) history.back(); else location.replace(target);
+      break;
     }
     case 'ds-save': {
       const key = $('#ds-key').value.trim();
@@ -270,10 +332,19 @@ document.addEventListener('submit', e => {
   if (e.target.id !== 'contacts-form') return;
   e.preventDefault();
   const s = getSettings();
-  ['c1Name','c1Phone','c2Name','c2Phone','hotelPhone','cruisePhone','insurancePhone','medical']
-    .forEach(id => { s[id] = $('#' + id).value.trim(); });
+  const LABEL = { c1Phone: 'Family 1', c2Phone: 'Family 2', hotelPhone: 'Hotel', cruisePhone: 'Cruise', driverPhone: 'Driver', insurancePhone: 'Insurance' };
+  for (const id of PHONE_FIELDS) {
+    const r = normPhone($('#' + id).value);
+    if (!r.ok) {
+      $('#' + id).focus();
+      return toast(`${LABEL[id]} number looks wrong. Check it. / ${LABEL[id]} ನಂಬರ್ ತಪ್ಪಾಗಿದೆ, ಪರಿಶೀಲಿಸಿ.`, 5000);
+    }
+    s[id] = r.pretty;
+  }
+  ['c1Name', 'c2Name', 'medical'].forEach(id => { s[id] = $('#' + id).value.trim(); });
   saveSettings(s);
-  toast('Saved ✓');
+  PHONE_FIELDS.forEach(id => { $('#' + id).value = s[id]; });       // show the formatted numbers back
+  toast(`✓ Saved${s.c1Phone ? ': ' + s.c1Phone : ''} / ಉಳಿಸಲಾಗಿದೆ`, 3500);
 });
 
 /* ---------- Router ---------- */
@@ -285,9 +356,11 @@ const currentRoute = () => {
 const routeParam = () => location.hash.slice(1).split(':')[1] || '';
 
 let leaveScreen = null; // cleanup for the current screen (e.g. stop clock timer)
+let prevHash = '', curHash = location.hash || '#today';
 
 function render() {
   if (leaveScreen) { leaveScreen(); leaveScreen = null; }
+  if ((location.hash || '#today') !== curHash) { prevHash = curHash; curHash = location.hash || '#today'; }
   const name = currentRoute();
   const route = ROUTES[name];
   $('#screen-title').textContent = route.title;
@@ -309,7 +382,9 @@ function showUpdateBanner(worker) {
   waitingWorker = worker;
   $('#update-banner').hidden = false;
 }
+let updateRequested = false;
 function applyUpdate() {
+  updateRequested = true;
   if (waitingWorker) waitingWorker.postMessage('skipWaiting');
 }
 async function checkForUpdate(manual) {
@@ -336,7 +411,8 @@ if ('serviceWorker' in navigator) {
   });
   let reloading = false;
   navigator.serviceWorker.addEventListener('controllerchange', () => {
-    if (reloading) return; reloading = true; location.reload();
+    if (reloading || !updateRequested) return;   // F28: no reload on first install
+    reloading = true; location.reload();
   });
 }
 
@@ -346,8 +422,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   applyTextSize(getSettings().textSize);
   await Promise.all(['trip', 'places', 'restaurants', 'dishes', 'phrases', 'shopping', 'prep', 'emergency'].map(loadJSON));
   render();
-  if (!Store.get('persistAsked', false) && navigator.storage?.persist) {
-    try { await navigator.storage.persist(); } catch (e) {}
-    Store.set('persistAsked', true);
+  // F23: ask for protected storage; remember the answer and retry on later opens until granted
+  if (navigator.storage?.persist && !Store.get('persisted', false)) {
+    try {
+      const already = navigator.storage.persisted ? await navigator.storage.persisted() : false;
+      Store.set('persisted', already || await navigator.storage.persist());
+    } catch (e) { Store.set('persisted', false); }
   }
 });

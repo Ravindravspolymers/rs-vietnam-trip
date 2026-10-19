@@ -8,27 +8,21 @@ async function speakVi(text) {
   speechSynthesis.cancel();
   const voices = await getVoicesAsync();               // from story.js
   const voice = pickVoice(voices, 'vi-VN');
-  if (!voice) showViHelp(false);
+  if (!voice) showViHelp();
   const u = new SpeechSynthesisUtterance(text);
   u.lang = 'vi-VN'; if (voice) u.voice = voice; u.rate = 0.8;
-  u.onerror = e => { if (e.error !== 'interrupted' && e.error !== 'canceled') showViHelp(true); };
+  u.onerror = e => { if (e.error !== 'interrupted' && e.error !== 'canceled') showViHelp(); };
   speechSynthesis.speak(u);
 }
 
-function showViHelp(force) {
-  if (!force && Store.get('viHelpSeen', false)) return;
-  Store.set('viHelpSeen', true);
+function showViHelp() {   // F19: every time the voice is missing
   if (document.getElementById('vi-help')) return;
   const d = document.createElement('div');
   d.id = 'vi-help'; d.className = 'overlay';
   d.innerHTML = `<div class="card kn-help" role="dialog" aria-label="Vietnamese voice">
     <h3>Vietnamese voice not found</h3>
     <p class="kn">ವಿಯೆಟ್ನಾಮೀಸ್ ಧ್ವನಿ ಇಲ್ಲ. ಹೀಗೆ ಸೇರಿಸಿ:</p>
-    <ol>
-      <li>Phone <strong>Settings</strong> → search <strong>Text-to-speech</strong></li>
-      <li>Tap ⚙ next to <strong>Speech Services by Google</strong></li>
-      <li><strong>Install voice data</strong> → <strong>Vietnamese</strong> → download ⬇</li>
-    </ol>
+    ${voiceSteps('Vietnamese', 'ವಿಯೆಟ್ನಾಮೀಸ್')}
     <p class="muted small">Meanwhile, just show the big Vietnamese text.<br><span class="kn">ಅಲ್ಲಿಯವರೆಗೆ ದೊಡ್ಡ ಅಕ್ಷರವನ್ನು ತೋರಿಸಿ.</span></p>
     <button type="button" class="btn secondary" id="vi-help-ok">OK</button></div>`;
   document.body.appendChild(d);

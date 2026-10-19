@@ -39,7 +39,7 @@ async function ttsPlay(lang) {
   showStoryLang(lang);
   const voices = await getVoicesAsync();
   const voice = pickVoice(voices, TTS_LANG[lang]);
-  if (lang === 'kn' && !voice) showKnHelp(false);   // one-time help; still try to speak
+  if (lang === 'kn' && !voice) showKnHelp();   // F19: show help every time the voice is missing; still try to speak
   Object.assign(tts, { chunks: toChunks(place['story_' + lang]), idx: 0, lang, voice, state: 'playing' });
   speakNext();
 }
@@ -56,11 +56,11 @@ function speakNext() {
   u.onend = () => { if (my !== tts.token) return; tts.idx++; speakNext(); };
   u.onerror = e => {
     if (my !== tts.token || e.error === 'interrupted' || e.error === 'canceled') return;
-    if (tts.lang === 'kn') showKnHelp(true);
+    if (tts.lang === 'kn') showKnHelp();
     else toast('Could not play voice.');
     ttsStop();
   };
-  highlight(c.p);
+  highlight(tts.idx);
   speechSynthesis.speak(u);
   updateControls();
 }
@@ -84,10 +84,10 @@ function ttsStop() {
 }
 
 /* ----- UI helpers ----- */
-function highlight(p) {
-  document.querySelectorAll('.story-text p.speaking').forEach(el => el.classList.remove('speaking'));
-  if (p < 0) return;
-  const el = document.querySelector(`.story-text[data-lang="${tts.lang}"] p[data-p="${p}"]`);
+function highlight(ci) {
+  document.querySelectorAll('.story-text .speaking').forEach(el => el.classList.remove('speaking'));
+  if (ci < 0) return;
+  const el = document.querySelector(`.story-text[data-lang="${tts.lang}"] span[data-c="${ci}"]`);
   if (el) { el.classList.add('speaking'); el.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
 }
 
@@ -106,11 +106,9 @@ function showStoryLang(lang) {
   document.querySelectorAll('[data-show]').forEach(b => b.setAttribute('aria-pressed', b.dataset.show === lang));
 }
 
-function showKnHelp(force) {
-  if (!force && Store.get('knHelpSeen', false)) return;
+function showKnHelp() {
   const box = document.getElementById('kn-help');
   if (box) { box.hidden = false; box.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
-  Store.set('knHelpSeen', true);
 }
 
 /* ----- Screen ----- */
@@ -127,11 +125,16 @@ const storyPlace = () => { const s = storyStop(); return s && DATA.places ? DATA
 function renderStory() {
   const place = storyPlace();
   if (!place) return `<div class="card"><h2>Story not found</h2></div>`;
-  const paras = (list, lang) => list.map((t, i) =>
-    `<p data-p="${i}"${lang === 'kn' ? ' class="kn"' : ''}>${esc(t)}</p>`).join('');
+  // Each sentence is a span (same split as the speaker uses) so the current sentence can be highlighted
+  const paras = (list, lang) => {
+    const chunks = toChunks(list);
+    return list.map((t, i) => `<p data-p="${i}"${lang === 'kn' ? ' class="kn"' : ''}>${chunks.map((c, ci) => c.p === i
+      ? `<span data-c="${ci}">${esc(c.t)}</span> ` : '').join('')}</p>`).join('');
+  };
 
   return `<section class="card story-head">
       <h2>${esc(place.en)}</h2>
+      ${place.vi ? `<p class="vi">${esc(place.vi)}</p>` : ''}
       <p class="kn muted">${esc(place.kn)}</p>
       <button type="button" class="btn" data-listen="kn">▶ Listen in Kannada</button>
       <button type="button" class="btn green" data-listen="en">▶ Listen in English</button>
@@ -142,13 +145,7 @@ function renderStory() {
     <section class="card kn-help" id="kn-help" hidden>
       <h3>Kannada voice not found</h3>
       <p class="kn">ಈ ಫೋನ್‌ನಲ್ಲಿ ಕನ್ನಡ ಧ್ವನಿ ಇಲ್ಲ. ಹೀಗೆ ಸೇರಿಸಿ:</p>
-      <ol>
-        <li>Open phone <strong>Settings</strong> <span class="kn">(ಸೆಟ್ಟಿಂಗ್ಸ್ ತೆರೆಯಿರಿ)</span></li>
-        <li>Search <strong>Text-to-speech</strong> <span class="kn">(ಹುಡುಕಿ)</span></li>
-        <li>Tap ⚙ next to <strong>Speech Services by Google</strong></li>
-        <li><strong>Install voice data</strong> → <strong>Kannada (India)</strong> → download ⬇</li>
-        <li>Come back and tap Listen again <span class="kn">(ಮತ್ತೆ ಕೇಳಿ ಒತ್ತಿ)</span></li>
-      </ol>
+      ${voiceSteps('Kannada (India)', 'ಕನ್ನಡ')}
       <button type="button" class="btn secondary" data-close-help>OK</button>
     </section>
 
@@ -183,6 +180,43 @@ function startStory() {
   main.addEventListener('click', onClick);
   return () => { main.removeEventListener('click', onClick); ttsStop(); };
 }
+
+/* F19: shared, bilingual voice-install steps (step 0 covers Samsung phones) */
+function voiceSteps(lang, langKn) {
+  return `<ol class="vsteps">
+    <li>Phone <strong>Settings</strong> → search <strong>Text-to-speech</strong> → <strong>Preferred engine</strong> → choose <strong>Speech Services by Google</strong>
+      <br><span class="kn">ಫೋನ್ ಸೆಟ್ಟಿಂಗ್ಸ್ → 'Text-to-speech' ಹುಡುಕಿ → 'Preferred engine' → 'Speech Services by Google' ಆರಿಸಿ (ಸ್ಯಾಮ್‌ಸಂಗ್ ಫೋನ್‌ಗಳಲ್ಲಿ ಮುಖ್ಯ)</span></li>
+    <li>Tap ⚙ next to <strong>Speech Services by Google</strong><br><span class="kn">ಅದರ ಪಕ್ಕದ ⚙ ಒತ್ತಿ</span></li>
+    <li><strong>Install voice data</strong> → <strong>${lang}</strong> → download ⬇<br><span class="kn">'Install voice data' → ${langKn} → ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ</span></li>
+    <li>Come back and try again<br><span class="kn">ವಾಪಸ್ ಬಂದು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ</span></li>
+  </ol>`;
+}
+
+function renderVoiceHelp() {
+  return `<section class="card"><h2>Kannada voice <span class="kn muted">ಕನ್ನಡ ಧ್ವನಿ</span></h2>
+      ${voiceSteps('Kannada (India)', 'ಕನ್ನಡ')}
+      <button type="button" class="btn" data-vtest="kn-IN|ನಮಸ್ಕಾರ, ಶುಭ ಪ್ರಯಾಣ">▶ Test Kannada voice</button></section>
+    <section class="card"><h2>Vietnamese voice <span class="kn muted">ವಿಯೆಟ್ನಾಮೀಸ್ ಧ್ವನಿ</span></h2>
+      ${voiceSteps('Vietnamese', 'ವಿಯೆಟ್ನಾಮೀಸ್')}
+      <button type="button" class="btn" data-vtest="vi-VN|Xin chào. Cảm ơn.">▶ Test Vietnamese voice</button></section>
+    <p id="vtest-out" class="center" aria-live="polite"></p>`;
+}
+function startVoiceHelp() {
+  const main = document.getElementById('screen');
+  const onClick = async e => {
+    const b = e.target.closest('[data-vtest]'); if (!b) return;
+    const [code, text] = b.dataset.vtest.split('|');
+    const out = document.getElementById('vtest-out');
+    if (!('speechSynthesis' in window)) { out.textContent = 'Voice not supported on this phone.'; return; }
+    const v = pickVoice(await getVoicesAsync(), code);
+    out.innerHTML = v ? '✓ Voice found / ಧ್ವನಿ ಇದೆ' : '✗ Voice not found — follow the steps / ಧ್ವನಿ ಇಲ್ಲ — ಮೇಲಿನ ಹಂತಗಳನ್ನು ಅನುಸರಿಸಿ';
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text); u.lang = code; if (v) u.voice = v; speechSynthesis.speak(u);
+  };
+  main.addEventListener('click', onClick);
+  return () => main.removeEventListener('click', onClick);
+}
+ROUTES.voicehelp = { title: 'Voice setup', tab: 'more', back: 'today', render: renderVoiceHelp, after: startVoiceHelp };
 
 ROUTES.story = { title: 'Guide story', tab: 'plan', back: () => 'plan:' + routeParam(),
                  render: renderStory, after: startStory };

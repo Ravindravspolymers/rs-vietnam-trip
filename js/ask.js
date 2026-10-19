@@ -96,23 +96,22 @@ document.addEventListener('click', e => {
   if (b) return runAsk(b, b.dataset.ask);
   const pf = e.target.closest('[data-ask-price]');
   if (pf) {
-    const item = document.getElementById('ask-item')?.value.trim();
+    const item = pf.dataset.askPrice;
     const vnd = parseFloat((document.getElementById('fx-VND')?.value || '').replace(/\D/g, '')) || 0;
-    if (!item || !vnd) return toast('Type the item, and the price in the ₫ box above.', 3500);
+    if (!vnd) return toast('First type the price in the ₫ box. / ಮೊದಲು ₫ ಬೆಲೆ ಟೈಪ್ ಮಾಡಿ.', 3500);
     const fx = getFx();
     runAsk(pf, `Is ${vnd.toLocaleString('en-US')} đồng (about ₹${Math.round(vnd / fx.VND * fx.INR)}) a fair price for ${item} in Hanoi?`);
   }
 });
 
-/* Money screen: price-check form (uses the ₫ box of the converter) */
+/* Money screen: price check with preset items (F36). Uses the ₫ box of the converter. */
+const PRICE_ITEMS = ['Silk scarf', 'Coffee 500 g', 'Lacquer box', 'Conical hat', 'Silk lantern', 'T-shirt'];
 function renderAskPrice() {
   if (!getSettings().deepseekKey) return '';
   return `<section class="card ask" data-ctx="Shopping in Hanoi Old Quarter markets">
     <h3>🤖 Is this price fair? <span class="kn muted">ಬೆಲೆ ಸರಿಯೇ?</span></h3>
-    <p class="muted small">Type the price in the ₫ box above, then the item here.</p>
-    <label for="ask-item">Item</label>
-    <input id="ask-item" type="text" placeholder="e.g. silk scarf" autocomplete="off">
-    <button type="button" class="btn" data-ask-price>Ask</button>
+    <p class="muted small">1. Type the price in the ₫ box above. 2. Tap the item.</p>
+    <div class="fchips">${PRICE_ITEMS.map(i => `<button type="button" class="fchip" data-ask-price="${esc(i)}">${esc(i)}</button>`).join('')}</div>
     <div class="ask-out" aria-live="polite" hidden></div>
     <p class="muted small">AI answers can be wrong. Use as a guide for bargaining.</p>
   </section>`;

@@ -7,7 +7,8 @@
    "kn": "ಹೋಟೆಲ್ (ಹಳೆಯ ಪೇಟೆ)",
    "lat": 21.0352,
    "lng": 105.8476,
-   "radius": 2.5
+   "radius": 2.5,
+   "vi": "Khách sạn (Phố cổ)"
   },
   {
    "id": "lake",
@@ -15,7 +16,8 @@
    "kn": "ಹೊವಾನ್ ಕಿಯೆಮ್ ಸರೋವರ",
    "lat": 21.0287,
    "lng": 105.8522,
-   "radius": 2.5
+   "radius": 2.5,
+   "vi": "Hồ Hoàn Kiếm"
   },
   {
    "id": "vanmieu",
@@ -23,7 +25,8 @@
    "kn": "ಸಾಹಿತ್ಯ ದೇವಾಲಯ",
    "lat": 21.0294,
    "lng": 105.8355,
-   "radius": 2.5
+   "radius": 2.5,
+   "vi": "Văn Miếu"
   },
   {
    "id": "ninhbinh",
@@ -33,7 +36,8 @@
    "lng": 105.9283,
    "radius": 20,
    "note_en": "Few veg places here. Best option: Tam Coc road, near Mua Cave. Carry snacks.",
-   "note_kn": "ಇಲ್ಲಿ ಸಸ್ಯಾಹಾರಿ ಹೋಟೆಲ್ ಕಡಿಮೆ. ಹ್ಯಾಂಗ್ ಮುವಾ ಹತ್ತಿರದ ತಾಮ್ ಕೋಕ್ ರಸ್ತೆ ಉತ್ತಮ. ತಿಂಡಿ ಜೊತೆಗಿರಲಿ."
+   "note_kn": "ಇಲ್ಲಿ ಸಸ್ಯಾಹಾರಿ ಹೋಟೆಲ್ ಕಡಿಮೆ. ಹ್ಯಾಂಗ್ ಮುವಾ ಹತ್ತಿರದ ತಾಮ್ ಕೋಕ್ ರಸ್ತೆ ಉತ್ತಮ. ತಿಂಡಿ ಜೊತೆಗಿರಲಿ.",
+   "vi": "Ninh Bình"
   },
   {
    "id": "cruise",
@@ -42,8 +46,9 @@
    "lat": 20.954,
    "lng": 107.045,
    "radius": 3,
-   "note_en": "All meals are on the ship. Tell the crew on day 1: 'pure vegetarian, no fish sauce'. Show the waiter card.",
-   "note_kn": "ಎಲ್ಲಾ ಊಟ ಹಡಗಿನಲ್ಲೇ. ಮೊದಲ ದಿನವೇ ಸಿಬ್ಬಂದಿಗೆ ಹೇಳಿ: 'ಶುದ್ಧ ಸಸ್ಯಾಹಾರ, ಮೀನಿನ ಸಾಸ್ ಬೇಡ'. ವೇಟರ್ ಕಾರ್ಡ್ ತೋರಿಸಿ."
+   "note_en": "All meals are on the ship. Pure vegetarian Indian food is booked (no meat, no fish, no fish sauce; eggs OK).",
+   "note_kn": "ಎಲ್ಲಾ ಊಟ ಹಡಗಿನಲ್ಲೇ. ಶುದ್ಧ ಸಸ್ಯಾಹಾರಿ ಭಾರತೀಯ ಊಟ ಬುಕ್ ಆಗಿದೆ (ಮಾಂಸ, ಮೀನು, ಮೀನಿನ ಸಾಸ್ ಇಲ್ಲ; ಮೊಟ್ಟೆ ಪರವಾಗಿಲ್ಲ).",
+   "vi": "Hạ Long / Du thuyền"
   },
   {
    "id": "airport",
@@ -52,8 +57,9 @@
    "lat": 21.2187,
    "lng": 105.8042,
    "radius": 3,
-   "note_en": "Cafés and snack shops are after security, but veg choices are few. Carry snacks. Your flight meals are veg (pre-booked).",
-   "note_kn": "ಸೆಕ್ಯೂರಿಟಿ ನಂತರ ಕೆಫೆ, ತಿಂಡಿ ಅಂಗಡಿಗಳಿವೆ, ಆದರೆ ಸಸ್ಯಾಹಾರ ಕಡಿಮೆ. ತಿಂಡಿ ಜೊತೆಗಿರಲಿ. ವಿಮಾನದ ಊಟ ಸಸ್ಯಾಹಾರ (ಬುಕ್ ಮಾಡಲಾಗಿದೆ)."
+   "note_en": "If you pre-booked meals, they are veg. Otherwise carry snacks — veg choices at the airport are few.",
+   "note_kn": "ಮುಂಚೆ ಊಟ ಬುಕ್ ಮಾಡಿದ್ದರೆ ಅದು ಸಸ್ಯಾಹಾರ. ಇಲ್ಲದಿದ್ದರೆ ತಿಂಡಿ ಜೊತೆಗಿರಲಿ — ಏರ್‌ಪೋರ್ಟ್‌ನಲ್ಲಿ ಸಸ್ಯಾಹಾರ ಕಡಿಮೆ.",
+   "vi": "Sân bay Nội Bài"
   }
  ],
  "restaurants": [
@@ -66,7 +72,7 @@
    "veg": "pure",
    "cuisine": "Indian",
    "hours": "8:00 am – 1:30 am",
-   "price": "₹350–700",
+   "price": "~95k–190k ₫ (₹350–700)",
    "note_en": "Pure veg. Jain food available.",
    "note_kn": "ಶುದ್ಧ ಸಸ್ಯಾಹಾರ. ಜೈನ ಊಟ ಸಿಗುತ್ತದೆ."
   },
@@ -79,7 +85,7 @@
    "veg": "pure",
    "cuisine": "Indian",
    "hours": "10:30 am – 3 pm, 6 – 10 pm",
-   "price": "₹350–700",
+   "price": "~95k–190k ₫ (₹350–700)",
    "note_en": "Pure veg South Indian: idli, dosa. Jain on request.",
    "note_kn": "ಶುದ್ಧ ಸಸ್ಯಾಹಾರ ದಕ್ಷಿಣ ಭಾರತೀಯ: ಇಡ್ಲಿ, ದೋಸೆ."
   },
@@ -92,7 +98,7 @@
    "veg": "pure",
    "cuisine": "Indian",
    "hours": "11:00 am – 11:00 pm",
-   "price": "₹350–1,500",
+   "price": "~95k–410k ₫ (₹350–1,500)",
    "note_en": "Pure veg. North Indian and Gujarati.",
    "note_kn": "ಶುದ್ಧ ಸಸ್ಯಾಹಾರ. ಉತ್ತರ ಭಾರತೀಯ, ಗುಜರಾತಿ ಊಟ."
   },
@@ -105,7 +111,7 @@
    "veg": "pure",
    "cuisine": "Indian",
    "hours": "10:30 am – 10:30 pm",
-   "price": "₹350–1,000",
+   "price": "~95k–270k ₫ (₹350–1,000)",
    "note_en": "Pure veg. Jain food — call a few hours ahead.",
    "note_kn": "ಶುದ್ಧ ಸಸ್ಯಾಹಾರ. ಜೈನ ಊಟಕ್ಕೆ ಮುಂಚೆ ಫೋನ್ ಮಾಡಿ."
   },
@@ -118,7 +124,7 @@
    "veg": "friendly",
    "cuisine": "Indian",
    "hours": "approx. 11:30 am – 10:30 pm",
-   "price": "₹350–700",
+   "price": "~95k–190k ₫ (₹350–700)",
    "note_en": "Many veg dishes. Ask for the veg menu.",
    "note_kn": "ಸಾಕಷ್ಟು ಸಸ್ಯಾಹಾರಿ ಖಾದ್ಯಗಳಿವೆ. ವೆಜ್ ಮೆನು ಕೇಳಿ."
   },
@@ -131,7 +137,7 @@
    "veg": "friendly",
    "cuisine": "Indian",
    "hours": "11:30 am – 11:30 pm",
-   "price": "₹700–1,100",
+   "price": "~190k–300k ₫ (₹700–1,100)",
    "note_en": "Veg and Jain options. Also serves non-veg.",
    "note_kn": "ಸಸ್ಯಾಹಾರ ಮತ್ತು ಜೈನ ಆಯ್ಕೆಗಳಿವೆ. ಮಾಂಸಾಹಾರವೂ ಇದೆ."
   },
@@ -144,7 +150,7 @@
    "veg": "pure",
    "cuisine": "Vietnamese",
    "hours": "10:00 am – 10:00 pm",
-   "price": "~150k–250k ₫",
+   "price": "~150k–250k ₫ (₹550–920)",
    "note_en": "Vegetarian Vietnamese. Try local food safely here.",
    "note_kn": "ಸಸ್ಯಾಹಾರಿ ವಿಯೆಟ್ನಾಮೀಸ್ ಊಟ. ಸ್ಥಳೀಯ ರುಚಿ ಸುರಕ್ಷಿತವಾಗಿ."
   },
@@ -157,7 +163,7 @@
    "veg": "pure",
    "cuisine": "Vietnamese",
    "hours": "7:30 am – 10:30 pm",
-   "price": "150k–200k ₫",
+   "price": "~150k–200k ₫ (₹550–740)",
    "note_en": "Vegetarian. Opens early — good for breakfast.",
    "note_kn": "ಸಸ್ಯಾಹಾರ. ಬೆಳಿಗ್ಗೆ ಬೇಗ ತೆರೆಯುತ್ತದೆ — ತಿಂಡಿಗೆ ಒಳ್ಳೆಯದು."
   },
@@ -170,7 +176,7 @@
    "veg": "pure",
    "cuisine": "Vietnamese",
    "hours": "10:00 am – 10:00 pm",
-   "price": "~200k–400k ₫",
+   "price": "~200k–400k ₫ (₹740–1,470)",
    "note_en": "Beautiful vegetarian restaurant. A bit costly.",
    "note_kn": "ಸುಂದರ ಸಸ್ಯಾಹಾರಿ ಹೋಟೆಲ್. ಸ್ವಲ್ಪ ದುಬಾರಿ."
   },
@@ -183,7 +189,7 @@
    "veg": "pure",
    "cuisine": "Vietnamese",
    "hours": "10:30 am – 2 pm, 5:30 – 9 pm",
-   "price": "~100k–200k ₫",
+   "price": "~100k–200k ₫ (₹370–740)",
    "note_en": "Simple vegetarian Vietnamese.",
    "note_kn": "ಸರಳ ಸಸ್ಯಾಹಾರಿ ವಿಯೆಟ್ನಾಮೀಸ್ ಊಟ."
   },
@@ -196,7 +202,7 @@
    "veg": "pure",
    "cuisine": "Vietnamese",
    "hours": "10:30 am – 10:00 pm",
-   "price": "250k–300k ₫",
+   "price": "~250k–300k ₫ (₹920–1,100)",
    "note_en": "Vegetarian buffet — point and choose.",
    "note_kn": "ಸಸ್ಯಾಹಾರಿ ಬಫೆ — ನೋಡಿ ಆರಿಸಿಕೊಳ್ಳಿ."
   },
@@ -209,7 +215,7 @@
    "veg": "pure",
    "cuisine": "Vietnamese",
    "hours": "9:00 am – 9:00 pm",
-   "price": "200k–300k ₫",
+   "price": "~200k–300k ₫ (₹740–1,100)",
    "note_en": "Vegetarian, quiet. Right beside the Temple of Literature.",
    "note_kn": "ಸಸ್ಯಾಹಾರ, ಶಾಂತ ಜಾಗ. ಸಾಹಿತ್ಯ ದೇವಾಲಯದ ಪಕ್ಕದಲ್ಲೇ."
   },
@@ -222,7 +228,7 @@
    "veg": "friendly",
    "cuisine": "Indian",
    "hours": "11 am – 2:15 pm, 6 – 10:15 pm",
-   "price": "₹600–1,300",
+   "price": "~165k–355k ₫ (₹600–1,300)",
    "note_en": "Indian. Veg dishes; Jain on request. Also non-veg.",
    "note_kn": "ಭಾರತೀಯ. ಸಸ್ಯಾಹಾರ ಇದೆ; ಜೈನ ಕೇಳಿದರೆ ಮಾಡುತ್ತಾರೆ."
   },
@@ -248,7 +254,7 @@
    "veg": "friendly",
    "cuisine": "Indian",
    "hours": "10:00 am – 10:00 pm",
-   "price": "100k–200k ₫",
+   "price": "~100k–200k ₫ (₹370–740)",
    "note_en": "Indian with veg dishes like palak paneer.",
    "note_kn": "ಭಾರತೀಯ, ಪಾಲಕ್ ಪನೀರ್‌ನಂತಹ ಸಸ್ಯಾಹಾರ ಇದೆ."
   },

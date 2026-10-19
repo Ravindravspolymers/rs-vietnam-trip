@@ -10,19 +10,19 @@ function renderToday() {
   const day = cur.day;
 
   let banner = '';
-  if (cur.before) banner = `<div class="banner gold">
-      <strong>Trip starts in ${cur.daysLeft} day${cur.daysLeft > 1 ? 's' : ''}</strong>
-      <span class="kn">ಪ್ರಯಾಣಕ್ಕೆ ಇನ್ನು ${cur.daysLeft} ದಿನ</span></div>`;
-  if (cur.after) banner = `<div class="banner green">
-      <strong>Welcome home! 🙏</strong><span class="kn">ಮನೆಗೆ ಸ್ವಾಗತ!</span></div>`;
+  if (cur.before) banner = cur.daysLeft === 1
+    ? `<div class="banner gold"><strong>Trip starts tomorrow!</strong><span class="kn">ನಾಳೆ ಪ್ರಯಾಣ!</span></div>`
+    : `<div class="banner gold"><strong>Trip starts in ${cur.daysLeft} days</strong><span class="kn">ಪ್ರಯಾಣಕ್ಕೆ ಇನ್ನು ${cur.daysLeft} ದಿನ</span></div>`;
+  if (cur.after) banner = `<div class="banner green"><strong>Welcome home! 🙏</strong><span class="kn">ಮನೆಗೆ ಸ್ವಾಗತ!</span></div>`;
 
+  // F17 order: banner → greeting (one line) → Now/Next → hotel → ready/backup → clocks → rings
   return `${banner}
-    <section class="card hello">
-      <h2>Namaskara 🙏 <span class="kn">ನಮಸ್ಕಾರ</span></h2>
-      <p class="dayline">${esc(dayLabel(day))}</p>
-      <p>${esc(day.title_en)}<br><span class="kn muted">${esc(day.title_kn)}</span></p>
-    </section>
-
+    <p class="hello1"><strong>Namaskara 🙏</strong> <span class="kn">ನಮಸ್ಕಾರ</span>${cur.after ? '' :
+      ` · <span class="dayline">${esc(dayLabel(day))}</span>`}</p>
+    <div id="nownext">${renderNowNext(cur)}</div>
+    ${renderHotelCard(cur)}
+    ${renderReadyCard()}
+    ${renderBackupNudge()}
     <section class="clocks" aria-label="Clocks">
       <div class="clock"><div class="clabel">🇮🇳 India</div>
         <div class="ctime" id="clock-in">--:--</div><div class="cdate" id="date-in"></div></div>
@@ -31,11 +31,14 @@ function renderToday() {
     </section>
     <p class="muted small center">Vietnam is 1½ hours ahead of India.<br>
       <span class="kn">ವಿಯೆಟ್ನಾಂ ಸಮಯ ಭಾರತಕ್ಕಿಂತ 1½ ಗಂಟೆ ಮುಂದೆ.</span></p>
-
-    <div id="nownext">${renderNowNext(cur)}</div>
     ${renderProgress(day)}
     ${renderAsk(['What should we do if we finish early?', 'We are tired. What is an easy plan for the rest of today?'],
       `Today is ${dayLabel(day)}: ${day.title_en}. Plan: ${day.stops.map(s => s.time + ' ' + s.en).join('; ')}. Hotel in Hanoi Old Quarter (Bat Su street).`)}`;
+}
+
+// F02: a pending stop never shows a raw TODO — it shows a bilingual "to be confirmed" line
+function pendingLine(s) {
+  return `⏳ ${esc(s.pending_en || 'Time to be confirmed — ask hotel')} <span class="kn">${esc(s.pending_kn || 'ಸಮಯ ಖಚಿತವಾಗಬೇಕು — ಹೋಟೆಲ್‌ನಲ್ಲಿ ಕೇಳಿ')}</span>`;
 }
 
 function stopRow(day, s, label) {
@@ -45,7 +48,7 @@ function stopRow(day, s, label) {
     <span class="sbody">
       <strong>${esc(s.en)}</strong>
       <span class="kn muted">${esc(s.kn)}</span>
-      <span class="stime">${esc(stopTimeLabel(day, s))}</span>
+      <span class="stime">${s.pending ? pendingLine(s) : esc(stopTimeLabel(day, s))}</span>
     </span>
     <span class="chev" aria-hidden="true">›</span>
   </a>`;
@@ -53,24 +56,72 @@ function stopRow(day, s, label) {
 
 function renderNowNext(cur) {
   if (cur.after) return '';
-  const day = cur.day;
   const now = new Date();
-  let { nowStop, nextStop } = nowNext(day, now);
-  if (cur.before) nowStop = null;
-
-  // Day finished → point to the first stop of tomorrow
-  let nextDay = day;
-  if (!nextStop) {
-    const days = DATA.trip.days;
-    const nd = days[days.indexOf(day) + 1];
-    if (nd) { nextDay = nd; nextStop = nd.stops[0]; }
-  }
-
+  const r = tripNowNext(now);
   let html = '<section class="card nn">';
-  if (nowStop) html += stopRow(day, nowStop, 'NOW');
+  if (r.inFlight) html += `<p class="inflight">✈️ In flight <span class="kn">ವಿಮಾನದಲ್ಲಿ</span></p>`;
+  else if (r.now && !cur.before) html += stopRow(r.now.day, r.now.s, 'NOW');
   else if (!cur.before) html += `<p class="muted">Nothing planned right now.<br><span class="kn">ಈಗ ಯಾವುದೇ ಯೋಜನೆ ಇಲ್ಲ.</span></p>`;
-  if (nextStop) html += stopRow(nextDay, nextStop, nextDay === day ? 'NEXT' : 'TOMORROW');
+  if (r.next) {
+    const soon = r.next.day === cur.day || r.next.start - now < 6 * 3600000;
+    html += stopRow(r.next.day, r.next.s, cur.before ? 'FIRST' : soon ? 'NEXT' : 'TOMORROW');
+  }
   return html + '</section>';
+}
+
+/* U1: compact hotel card on trip days (Days 1–6) */
+function renderHotelCard(cur) {
+  if (cur.before || cur.after || cur.day.day < 1) return '';
+  const h = DATA.trip.hotel, tel = digits(getSettings().hotelPhone);
+  return `<section class="card hotelcard">
+    <p><strong>🏨 ${esc(h.en)}</strong></p>
+    <p class="vi">${esc(h.address_vi)}</p>
+    <a class="btn" href="#driver:hotel-${cur.day.day}">🚕 Take me to hotel</a>
+    <div class="actions">
+      ${tel ? `<a class="btn secondary" href="tel:+${tel}">📞 Call hotel</a>` : ''}
+      <a class="btn secondary" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(h.en + ', ' + h.address_en)}&travelmode=walking" target="_blank" rel="noopener">▶ Go</a>
+    </div>
+  </section>`;
+}
+
+/* U3: "Ready?" card before departure (until 23 Nov 6:30 pm IST). Voice rows fill in after render. */
+const READY_UNTIL = new Date('2026-11-23T18:30:00+05:30');
+function readyChecks() {
+  const s = getSettings();
+  const docsAt = Store.get('docsChangedAt', 0), bk = Store.get('lastBackup', 0);
+  return [
+    ['Family phone numbers saved', 'ಮನೆಯವರ ಫೋನ್ ನಂಬರ್ ಉಳಿಸಲಾಗಿದೆ', !!s.c1Phone && normPhone(s.c1Phone).ok, '#settings'],
+    ['Cruise phone saved', 'ಹಡಗಿನ ಫೋನ್ ನಂಬರ್ ಉಳಿಸಲಾಗಿದೆ', !!digits(s.cruisePhone), '#settings'],
+    ['Insurance helpline saved', 'ವಿಮೆ ಸಹಾಯವಾಣಿ ಉಳಿಸಲಾಗಿದೆ', !!digits(s.insurancePhone), '#settings'],
+    ['Storage protected', 'ಸಂಗ್ರಹಣೆ ಸುರಕ್ಷಿತ', !!Store.get('persisted', false), '#docs'],
+    ['Backup done after last document change', 'ಕೊನೆಯ ಬದಲಾವಣೆಯ ನಂತರ ಬ್ಯಾಕಪ್ ಆಗಿದೆ', !!bk && bk >= docsAt, '#docs']
+  ];
+}
+function renderReadyCard() {
+  if (Date.now() >= READY_UNTIL) return '';
+  const row = ([en, kn, ok, href], id = '') => `<a class="readyrow ${ok ? 'ok' : 'no'}" href="${href}"${id ? ` id="${id}"` : ''}>
+      <span class="mark">${ok ? '✓' : '✗'}</span><span><strong>${en}</strong><br><span class="kn">${kn}</span></span></a>`;
+  return `<section class="card ready"><h3>Ready for the trip? <span class="kn muted">ಪ್ರಯಾಣಕ್ಕೆ ತಯಾರಾ?</span></h3>
+    ${readyChecks().map(c => row(c)).join('')}
+    ${row(['Kannada voice installed', 'ಕನ್ನಡ ಧ್ವನಿ ಇದೆ', false, '#voicehelp'], 'rv-kn')}
+    ${row(['Vietnamese voice installed', 'ವಿಯೆಟ್ನಾಮೀಸ್ ಧ್ವನಿ ಇದೆ', false, '#voicehelp'], 'rv-vi')}
+  </section>`;
+}
+async function fillVoiceChecks() {
+  if (!document.getElementById('rv-kn') || typeof getVoicesAsync !== 'function') return;
+  const v = await getVoicesAsync();
+  [['rv-kn', 'kn-IN'], ['rv-vi', 'vi-VN']].forEach(([id, code]) => {
+    const el = document.getElementById(id); if (!el) return;
+    const ok = !!pickVoice(v, code);
+    el.className = 'readyrow ' + (ok ? 'ok' : 'no'); el.querySelector('.mark').textContent = ok ? '✓' : '✗';
+  });
+}
+
+/* F23: nudge when documents changed since the last backup */
+function renderBackupNudge() {
+  const docsAt = Store.get('docsChangedAt', 0), bk = Store.get('lastBackup', 0);
+  if (!docsAt || bk >= docsAt) return '';
+  return `<a class="banner gold nudge" href="#docs"><strong>💾 Back up your documents</strong><span class="kn">ನಿಮ್ಮ ದಾಖಲೆಗಳ ಬ್ಯಾಕಪ್ ಮಾಡಿ</span></a>`;
 }
 
 function ring(done, total, label, labelKn) {
@@ -121,4 +172,4 @@ function startTodayClocks() {
 }
 
 ROUTES.today.render = renderToday;
-ROUTES.today.after = startTodayClocks;
+ROUTES.today.after = () => { fillVoiceChecks(); return startTodayClocks(); };

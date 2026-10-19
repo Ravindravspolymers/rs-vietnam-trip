@@ -1,9 +1,9 @@
 {
  "_note": "Pronunciation is a simple guide, northern (Hanoi) accent.",
  "waiter": {
-  "vi": "Chúng tôi ăn chay. Xin đừng cho thịt, cá, tôm, nước mắm, dầu hào hoặc nước dùng thịt vào món ăn. Trứng thì được. Cảm ơn nhiều!",
-  "en": "We are vegetarian. Please do not put meat, fish, shrimp, fish sauce, oyster sauce or meat stock in our food. Eggs are OK. Thank you very much!",
-  "kn": "ನಾವು ಸಸ್ಯಾಹಾರಿಗಳು. ದಯವಿಟ್ಟು ಮಾಂಸ, ಮೀನು, ಸೀಗಡಿ, ಮೀನಿನ ಸಾಸ್, ಆಯ್ಸ್ಟರ್ ಸಾಸ್, ಮಾಂಸದ ಸಾರು ಹಾಕಬೇಡಿ. ಮೊಟ್ಟೆ ಪರವಾಗಿಲ್ಲ. ಧನ್ಯವಾದ!"
+  "vi": "Chúng tôi ăn chay. Xin đừng cho thịt, cá, tôm, mỡ lợn, nước mắm, mắm tôm, dầu hào hoặc nước dùng thịt vào món ăn. Trứng thì được. Cảm ơn nhiều!",
+  "en": "We are vegetarian. Please do not put meat, fish, shrimp, lard, fish sauce, shrimp paste, oyster sauce or meat stock in our food. Eggs are OK. Thank you very much!",
+  "kn": "ನಾವು ಸಸ್ಯಾಹಾರಿಗಳು. ದಯವಿಟ್ಟು ಮಾಂಸ, ಮೀನು, ಸೀಗಡಿ, ಹಂದಿ ಕೊಬ್ಬು, ಮೀನಿನ ಸಾಸ್, ಸೀಗಡಿ ಪೇಸ್ಟ್, ಆಯ್ಸ್ಟರ್ ಸಾಸ್, ಮಾಂಸದ ಸಾರು ಹಾಕಬೇಡಿ. ಮೊಟ್ಟೆ ಪರವಾಗಿಲ್ಲ. ಧನ್ಯವಾದ!"
  },
  "groups": [
   {
@@ -49,7 +49,7 @@
      "vi": "Tạm biệt",
      "say": "tahm byet",
      "en": "Goodbye",
-     "kn": "ಹೋಗಿ ಬರುತ್ತೇವೆ"
+     "kn": "ಹೋಗಿ ಬರುತ್ತೇವೆ (ವಿದಾಯ)"
     },
     {
      "vi": "Chúng tôi đến từ Ấn Độ",
@@ -61,7 +61,7 @@
      "vi": "Tôi không hiểu",
      "say": "toy khohm hyew",
      "en": "I don't understand",
-     "kn": "ನನಗೆ ಅರ್ಥ ಆಗಲಿಲ್ಲ"
+     "kn": "ನನಗೆ ಅರ್ಥವಾಗಲಿಲ್ಲ"
     }
    ]
   },
@@ -167,13 +167,13 @@
      "vi": "Giảm giá được không?",
      "say": "zahm zah duh-uhk khohm",
      "en": "Can you reduce the price?",
-     "kn": "ಬೆಲೆ ಕಡಿಮೆ ಮಾಡ್ತೀರಾ?"
+     "kn": "ಬೆಲೆ ಕಡಿಮೆ ಮಾಡುತ್ತೀರಾ?"
     },
     {
      "vi": "Tôi chỉ xem thôi",
      "say": "toy chee sem toy",
      "en": "Just looking",
-     "kn": "ಸುಮ್ಮನೆ ನೋಡ್ತಾ ಇದ್ದೀನಿ"
+     "kn": "ಸುಮ್ಮನೆ ನೋಡುತ್ತಿದ್ದೇನೆ"
     },
     {
      "vi": "Tôi lấy cái này",
@@ -332,7 +332,7 @@
      "vi": "Tôi bị ốm",
      "say": "toy bee ohm",
      "en": "I am sick",
-     "kn": "ನನಗೆ ಹುಷಾರಿಲ್ಲ"
+     "kn": "ನನಗೆ ಆರೋಗ್ಯ ಸರಿಯಿಲ್ಲ"
     },
     {
      "vi": "Công an",

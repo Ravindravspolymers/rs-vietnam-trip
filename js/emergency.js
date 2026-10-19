@@ -4,21 +4,33 @@
 const telHref = n => 'tel:+' + digits(n);
 const mapHref = q => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
 
+const hotelDay = () => { const d = currentTripDay().day.day; return d >= 1 ? d : 1; };
+
+/* F21: one primary area — help card, hotel, family. Everything else under "More help". */
 function renderEmergency() {
   const E = DATA.emergency;
   const s = getSettings();
   if (!E) return renderSOS();
-  const mine = [['🏨 Hotel', s.hotelPhone], ['🚢 Cruise', s.cruisePhone], ['🛡 Insurance helpline', s.insurancePhone]]
+  const tel = digits(s.hotelPhone);
+  const mine = [['🏨 Hotel', s.hotelPhone], ['🚢 Cruise', s.cruisePhone], ['🚗 Ninh Binh driver', s.driverPhone], ['🛡 Insurance helpline', s.insurancePhone]]
     .filter(([, n]) => digits(n));
   const em = E.embassy;
 
-  return `<a class="btn sos-big" href="#helpcard">🆘 Show help card to anyone <span class="kn">ಯಾರಿಗಾದರೂ ಈ ಕಾರ್ಡ್ ತೋರಿಸಿ</span></a>
-    ${renderSOS()}
+  return `<a class="btn sos-big" href="#helpcard">🆘 Show help card to anyone</a>
+    <a class="btn" href="#driver:hotel-${hotelDay()}">🏨 Take me to hotel</a>
+    ${tel ? `<a class="btn green" href="tel:+${tel}">📞 Call hotel</a>` : ''}
+    ${renderFamilySOS()}
 
-    <section class="card">
-      <h2>🇮🇳 ${esc(em.en)}</h2>
+    <details class="card fold">
+      <summary>More help ›</summary>
+      <h3>Call for help (Vietnam)</h3>
+      <a class="btn" href="tel:113">🚓 Police — 113</a>
+      <a class="btn" href="tel:115">🚑 Ambulance — 115</a>
+      <a class="btn" href="tel:114">🚒 Fire — 114</a>
+
+      <h3>🇮🇳 ${esc(em.en)}</h3>
       <p class="vi">${esc(em.vi)}</p>
-      <p>${esc(em.addr_en)}<br><span class="muted small">${esc(em.hours)}</span></p>
+      <p>${esc(em.addr_en)}<br><span class="muted small">${esc(em.hours)}</span><br><span class="kn">${esc(em.hours_kn || '')}</span></p>
       <a class="btn" href="${telHref(em.emergency)}">📞 Emergency: ${esc(em.emergency)}</a>
       <a class="btn secondary" href="${telHref(em.phone)}">📞 Office: ${esc(em.phone)}</a>
       <div class="actions">
@@ -26,36 +38,37 @@ function renderEmergency() {
         <a class="btn secondary" href="#driver:embassy">🚕 Show driver</a>
       </div>
       <p class="muted small">Lost passport? Go here. <span class="kn">ಪಾಸ್‌ಪೋರ್ಟ್ ಕಳೆದುಹೋದರೆ ಇಲ್ಲಿಗೆ ಹೋಗಿ.</span></p>
-    </section>
 
-    <h3 class="sect">🏥 Hospitals (English-speaking) <span class="kn muted">ಆಸ್ಪತ್ರೆಗಳು</span></h3>
-    ${E.hospitals.map(h => `<section class="card">
-      <h3>${esc(h.en)}</h3><p class="vi">${esc(h.vi)}</p>
-      <p>${esc(h.addr_en)}<br><strong>${esc(h.note_en)}</strong><br><span class="kn">${esc(h.note_kn)}</span></p>
-      <a class="btn" href="${telHref(h.phone)}">📞 ${esc(h.phone)}</a>
-      <div class="actions">
-        <a class="btn secondary" href="${mapHref(h.q)}" target="_blank" rel="noopener">📍 Map</a>
-        <a class="btn secondary" href="#driver:${h.id}">🚕 Show driver</a>
-      </div></section>`).join('')}
+      <h3>🏥 Hospitals (English-speaking)</h3>
+      ${E.hospitals.map(h => `<div class="hosp">
+        <p><strong>${esc(h.en)}</strong><br><span class="vi">${esc(h.vi)}</span><br>${esc(h.addr_en)}<br>${esc(h.note_en)}<br><span class="kn">${esc(h.note_kn)}</span></p>
+        <a class="btn" href="${telHref(h.phone)}">📞 ${esc(h.phone)}</a>
+        <div class="actions">
+          <a class="btn secondary" href="${mapHref(h.q)}" target="_blank" rel="noopener">📍 Map</a>
+          <a class="btn secondary" href="#driver:${h.id}">🚕 Show driver</a>
+        </div></div>`).join('')}
 
-    <section class="card">
-      <h3>📒 My numbers <span class="kn muted">ನನ್ನ ನಂಬರ್‌ಗಳು</span></h3>
+      <h3>📒 My numbers</h3>
       ${mine.length ? mine.map(([l, n]) => `<a class="btn secondary" href="${telHref(n)}">${l}: ${esc(n)}</a>`).join('')
         : '<p class="muted">Add numbers in Settings.</p>'}
       <a class="btn secondary" href="#settings">⚙ Edit in Settings</a>
-    </section>
+      <a class="btn secondary" href="#print">🖨 Printable help sheet</a>
+    </details>
     <p class="muted small center">Details checked Oct 2026. <span class="kn">ಅಕ್ಟೋಬರ್ 2026ರಲ್ಲಿ ಪರಿಶೀಲಿಸಲಾಗಿದೆ.</span></p>`;
 }
 
-/* ----- Help card: full screen, big Vietnamese ----- */
+/* ----- Help card: full screen, big Vietnamese (F05: hotel first) ----- */
 function renderHelpCard() {
-  const E = DATA.emergency, s = getSettings();
-  const nums = [[s.c1Name || 'Family', s.c1Phone], [s.c2Name || 'Family', s.c2Phone], ['Hotel', s.hotelPhone]]
+  const E = DATA.emergency, s = getSettings(), h = DATA.trip.hotel;
+  const nums = [['Hotel', s.hotelPhone], [s.c1Name || 'Family', s.c1Phone], [s.c2Name || 'Family', s.c2Phone]]
     .filter(([, n]) => digits(n));
   return `<section class="driver">
     <p class="dr-name" style="font-size:clamp(24px,7vw,34px)">${esc(E.help_vi)}</p>
     ${nums.map(([l, n]) => `<a class="help-num" href="${telHref(n)}">${esc(n)}<span>${esc(l)}</span></a>`).join('')
       || '<p class="todo">Add phone numbers in Settings.</p>'}
+    <p class="dr-ask">Khách sạn của chúng tôi / Our hotel:</p>
+    <p class="dr-addr">${esc(h.driver_vi)}</p>
+    <a class="btn" href="#driver:hotel-${hotelDay()}">🚕 Take me to hotel</a>
     ${s.medical ? `<p class="help-med"><strong>Y tế / Medical:</strong> ${esc(s.medical)}</p>` : ''}
     <hr>
     <p class="dr-en">${esc(E.help_en)}</p>
@@ -63,12 +76,36 @@ function renderHelpCard() {
   </section>`;
 }
 
+/* ----- U4: printable one-page help sheet ----- */
+function renderPrint() {
+  const E = DATA.emergency, s = getSettings(), h = DATA.trip.hotel;
+  const rows = [
+    ['Hotel / Khách sạn', s.hotelPhone], [s.c1Name || 'Family 1', s.c1Phone], [s.c2Name || 'Family 2', s.c2Phone],
+    ['Indian Embassy emergency', E.embassy.emergency], ['Police / Công an', '113'], ['Ambulance / Cấp cứu', '115'], ['Fire / Cứu hỏa', '114'],
+    ['Insurance helpline', s.insurancePhone], ['Cruise', s.cruisePhone], ['Ninh Binh driver', s.driverPhone]
+  ].filter(([, n]) => n);
+  return `<button type="button" class="btn no-print" onclick="window.print()">🖨 Print / Save as PDF</button>
+    <section class="printsheet">
+      <h2>RS Vietnam Trip — Help sheet</h2>
+      <p class="ps-vi">${esc(E.help_vi)}</p>
+      <p>${esc(E.help_en)}</p>
+      <h3>Hotel / Khách sạn</h3>
+      <p class="ps-vi">${esc(h.driver_vi)}</p><p>${esc(h.en)}, ${esc(h.address_en)}</p>
+      <h3>Phone numbers</h3>
+      <table class="ps-table">${rows.map(([l, n]) => `<tr><td>${esc(l)}</td><td><strong>${esc(n)}</strong></td></tr>`).join('')}</table>
+      ${s.medical ? `<h3>Medical / Y tế</h3><p>${esc(s.medical)}</p>` : ''}
+      <p class="ps-kn kn">${esc(E.help_kn)}</p>
+    </section>`;
+}
+
 ROUTES.emergency.render = renderEmergency;
 ROUTES.helpcard = { title: 'Help card', tab: '', back: 'emergency', render: renderHelpCard,
   after: () => { document.body.classList.add('fullscreen'); return () => document.body.classList.remove('fullscreen'); } };
+ROUTES.print = { title: 'Help sheet', tab: 'more', back: 'emergency', render: renderPrint };
 
-// Quick SOS screen (red button): help card first, then WhatsApp location + calls, then embassy
-ROUTES.sos.render = () => `<a class="btn sos-big" href="#helpcard">🆘 Show help card <span class="kn">ಸಹಾಯ ಕಾರ್ಡ್ ತೋರಿಸಿ</span></a>
+// U1: SOS screen — Take me to hotel first, then help card, family, emergency numbers, embassy
+ROUTES.sos.render = () => `<a class="btn" href="#driver:hotel-${hotelDay()}">🏨 Take me to hotel</a>
+  <a class="btn sos-big" href="#helpcard">🆘 Show help card</a>
   ${renderSOS()}
   ${DATA.emergency ? `<a class="btn secondary" href="${telHref(DATA.emergency.embassy.emergency)}">🇮🇳 Indian Embassy emergency</a>
   <a class="btn secondary" href="#emergency">More: hospitals, embassy ›</a>` : ''}`;

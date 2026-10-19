@@ -3,7 +3,8 @@
    All data offline (data/restaurants.json, data/dishes.json, data/phrases.json → waiter). */
 'use strict';
 
-let foodGps = null; // { lat, lng } from "Use my location"
+// F15: GPS position kept for this session so #food:gps survives a reload
+let foodGps = (() => { try { return JSON.parse(sessionStorage.getItem('rs.foodGps')); } catch (e) { return null; } })();
 
 function renderFood() {
   const p = routeParam();
@@ -11,17 +12,22 @@ function renderFood() {
   const R = DATA.restaurants;
   if (!R) return `<div class="card"><p>Food data not loaded. Close and reopen the app.</p></div>`;
   const tiles = R.areas.map(a => `<a class="tile area" href="#food:${a.id}">
-      <span>${esc(a.en)}</span><span class="kn small">${esc(a.kn)}</span></a>`).join('');
-  return `<a class="btn" href="#waiter">🙋 Show waiter card <span class="kn">ವೇಟರ್‌ಗೆ ತೋರಿಸಿ</span></a>
-    <h2 class="sect">Where are you now? <span class="kn muted">ನೀವು ಈಗ ಎಲ್ಲಿದ್ದೀರಿ?</span></h2>
+      <span>${esc(a.en)}</span>${a.vi ? `<span class="vi small">${esc(a.vi)}</span>` : ''}<span class="kn small">${esc(a.kn)}</span></a>`).join('');
+  // F21: one primary action (location), then two helpers, then the area tiles
+  return `<h2 class="sect">Find veg food near you <span class="kn muted">ಹತ್ತಿರದ ಸಸ್ಯಾಹಾರಿ ಊಟ</span></h2>
     <button type="button" class="btn green" id="food-gps">📍 Use my location</button>
-    <div class="grid">${tiles}</div>
-    <a class="btn secondary" href="#dishes" style="margin-top:18px">🥢 Safe veg dishes to order</a>`;
+    <div class="actions">
+      <a class="btn secondary" href="#waiter">🙋 Waiter card</a>
+      <a class="btn secondary" href="#dishes">🥢 Safe dishes</a>
+    </div>
+    <h3 class="sect">Or choose a place <span class="kn muted">ಅಥವಾ ಜಾಗ ಆರಿಸಿ</span></h3>
+    <div class="grid">${tiles}</div>`;
 }
 
 function renderFoodList(p) {
   const R = DATA.restaurants;
   let center, title, area = null;
+  if (p === 'gps' && !foodGps) { location.replace('#food'); return ''; }
   if (p === 'gps' && foodGps) {
     center = foodGps; title = 'Near you';
     // Use the nearest area's notes and search radius
@@ -72,7 +78,11 @@ function startFood() {
     if (!('geolocation' in navigator)) return toast('Location not available.');
     btn.disabled = true; btn.textContent = 'Finding you…';
     navigator.geolocation.getCurrentPosition(
-      pos => { foodGps = { lat: pos.coords.latitude, lng: pos.coords.longitude }; location.hash = '#food:gps'; },
+      pos => {
+        foodGps = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        try { sessionStorage.setItem('rs.foodGps', JSON.stringify(foodGps)); } catch (e) {}
+        location.hash = '#food:gps';
+      },
       () => { btn.disabled = false; btn.textContent = '📍 Use my location';
               toast('Location off. Please pick a place below. / ಕೆಳಗೆ ಜಾಗ ಆರಿಸಿ.', 4000); },
       { enableHighAccuracy: true, timeout: 12000, maximumAge: 120000 });

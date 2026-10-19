@@ -6,11 +6,11 @@ const TZ_NAME   = { IST: 'Asia/Kolkata', ICT: 'Asia/Ho_Chi_Minh' };
 
 const STOP_ICON = {
   home: '🏠', airport: '✈️', hotel: '🏨', lake: '🌊', cruise: '🚢', boat: '⛵',
-  temple: '🛕', market: '🛍', theatre: '🎭', viewpoint: '⛰'
+  temple: '🛕', market: '🛍', theatre: '🎭', viewpoint: '⛰', meal: '🍽'
 };
 
-// Transit stops (home, airport, hotel) don't count as "places visited"
-const isPlace = s => !['home', 'airport', 'hotel'].includes(s.type);
+// Transit stops (home, airport, hotel) and meals don't count as "places visited"
+const isPlace = s => !['home', 'airport', 'hotel', 'meal'].includes(s.type);
 
 const stopTz    = (day, s) => s.tz || day.tz;
 const stopStart = (day, s) => new Date(`${s.date || day.date}T${s.time}:00${TZ_OFFSET[stopTz(day, s)]}`);
@@ -33,36 +33,47 @@ function dayLabel(day) {
   return `Day ${day.day} · ${txt.replace(',', '')}`;
 }
 
-// Today's date in Vietnam, "YYYY-MM-DD"
-const vnDate = (now = new Date()) =>
-  new Intl.DateTimeFormat('en-CA', { timeZone: TZ_NAME.ICT }).format(now);
+// A date "YYYY-MM-DD" in a given zone (IST / ICT)
+const dateIn = (tz, now = new Date()) => new Intl.DateTimeFormat('en-CA', { timeZone: TZ_NAME[tz] }).format(now);
+const vnDate = (now = new Date()) => dateIn('ICT', now);
 
-/* Which day to show.
-   Returns { day, before, after, daysLeft } — before the trip shows Day 0 with a countdown. */
+/* F14: which day to show. A day matches when today's date IN THAT DAY'S OWN ZONE equals its date
+   (Day 0 uses India time). Returns { day, before, after, daysLeft }. */
 function currentTripDay(now = new Date()) {
   const days = DATA.trip.days;
   const first = days[0], last = days[days.length - 1];
-  const today = vnDate(now);
-  const found = days.find(d => d.date === today);
+  const found = days.find(d => dateIn(d.tz, now) === d.date);
   if (found) return { day: found };
-  if (today < first.date) {
-    const start = stopStart(first, first.stops[0]);
-    return { day: first, before: true, daysLeft: Math.max(1, Math.ceil((start - now) / 86400000)) };
+  const istToday = dateIn('IST', now);
+  if (istToday < first.date) {
+    const daysLeft = Math.round((Date.parse(first.date) - Date.parse(istToday)) / 86400000);  // calendar days, IST
+    return { day: first, before: true, daysLeft };
   }
-  // After the last day: still show Day 6 until they land in Bengaluru, then "welcome home"
+  // After the last day: Day 6 until they land in Bengaluru, then "welcome home"
   const lastStop = last.stops[last.stops.length - 1];
   return { day: last, after: now >= stopStart(last, lastStop) };
 }
 
-/* Now / Next for a day. now = stop in progress (or last started), next = first not started. */
+/* F13: Now / Next across the whole trip timeline.
+   NOW only while now < end + 30 min. Between two airport stops = in flight. */
+function tripTimeline() {
+  return DATA.trip.days.flatMap(day => day.stops.map(s => ({ day, s, start: stopStart(day, s), end: stopEnd(day, s) })))
+    .sort((a, b) => a.start - b.start);
+}
+function tripNowNext(now = new Date()) {
+  const tl = tripTimeline();
+  let prev = null, next = null;
+  for (const x of tl) { if (x.start <= now) prev = x; else { next = x; break; } }
+  const grace = 30 * 60000;
+  const nowItem = prev && now < new Date(prev.end.getTime() + grace) ? prev : null;
+  const inFlight = !!(prev && next && prev.s.type === 'airport' && next.s.type === 'airport' && now >= prev.end);
+  return { now: inFlight ? null : nowItem, next, inFlight };
+}
+
+// Kept for compatibility (Plan uses day-level logic)
 function nowNext(day, now = new Date()) {
-  const stops = day.stops;
-  let nowStop = null, nextStop = null;
-  for (const s of stops) {
-    if (stopStart(day, s) <= now) nowStop = s;
-    else { nextStop = s; break; }
-  }
-  return { nowStop, nextStop };
+  const r = tripNowNext(now);
+  return { nowStop: r.now && r.now.day === day ? r.now.s : null, nextStop: r.next && r.next.day === day ? r.next.s : null };
 }
 
 // Visited ticks (shared with Plan)

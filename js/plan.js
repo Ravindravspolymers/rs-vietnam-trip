@@ -7,7 +7,7 @@ const TYPE_LABEL = {
   home: 'Home', airport: 'Airport', hotel: 'Hotel', lake: 'Lake', cruise: 'Cruise',
   boat: 'Boat', temple: 'Temple', market: 'Market', theatre: 'Show', viewpoint: 'Viewpoint'
 };
-const LONG_DRIVE_MINS = 180;
+const LONG_DRIVE_MINS = 150;   // F35: also flagged per day in trip.json (longDrive)
 
 /* ----- Travel estimates (no internet needed) ----- */
 function haversineKm(a, b) {
@@ -73,7 +73,7 @@ function renderPlan() {
 
   const last = day.stops[day.stops.length - 1];
   const finish = stopEnd(day, last);
-  const longDrive = roadTotal > LONG_DRIVE_MINS;
+  const longDrive = day.longDrive || roadTotal > LONG_DRIVE_MINS;
 
   const head = `<section class="card dayhead">
       <p class="dayline">${esc(dayLabel(day))}</p>
@@ -118,18 +118,21 @@ function stopCard(day, s, done) {
       </div>
     </div>
     <div class="facts">
-      <div><span>Arrive</span><strong>${esc(stopTimeLabel(day, s))}</strong></div>
+      <div><span>${['home', 'hotel'].includes(s.type) && s.mins === 0 ? 'Leave' : isPlace(s) || s.type === 'meal' ? 'Arrive' : 'At'}</span>
+        <strong>${s.pending ? '⏳ To be confirmed' : esc(stopTimeLabel(day, s))}</strong></div>
       ${s.mins ? `<div><span>Spend</span><strong>${fmtDur(s.mins)}</strong></div>` : ''}
     </div>
     ${s.note_en ? `<div class="tip"><strong>💡 Good to know</strong><p>${esc(s.note_en)}</p><p class="kn">${esc(s.note_kn || '')}</p></div>` : ''}
-    ${s.todo ? `<p class="todo">${esc(s.todo)}</p>` : ''}
-    ${s.place && DATA.places?.[s.place] ? `<a class="btn story-btn" href="#story:${esc(s.id)}">🎧 Guide story <span class="kn">ಕಥೆ ಕೇಳಿ</span></a>` : ''}
+    ${s.pending ? `<p class="pending">${pendingLine(s)}</p>` : ''}
+    ${s.place && DATA.places?.[s.place] ? `<a class="btn story-btn" href="#story:${esc(s.id)}">🎧 Guide story</a>` : ''}
+    ${s.airport ? `<a class="btn secondary" href="#airport:${esc(s.airport)}">✈️ Airport steps</a>` : ''}
+    ${s.food ? `<a class="btn secondary" href="#food:${esc(s.food)}">🍽 Veg restaurants nearby</a>` : ''}
     <div class="actions">
       ${hasMap ? `<a class="btn green" href="${goUrl}" target="_blank" rel="noopener">▶ Go</a>` : ''}
       ${s.addr_vi ? `<a class="btn secondary" href="#driver:${esc(s.id)}">🚕 Show driver</a>` : ''}
     </div>
-    <button type="button" class="tick" data-tick="${esc(s.id)}" aria-pressed="${done}">
-      ${done ? '✓ Visited' : '○ Mark as visited'}</button>
+    ${isPlace(s) ? `<button type="button" class="tick" data-tick="${esc(s.id)}" aria-pressed="${done}">
+      ${done ? '✓ Visited' : '○ Mark as visited'}</button>` : ''}
   </article>`;
 }
 

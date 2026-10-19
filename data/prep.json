@@ -1,5 +1,5 @@
 {
- "_note": "Approx., as of Oct 2026. ⚠️ Confirm Mumbai terminals and through-checked bags with IndiGo.",
+ "_note": "Approx., as of Oct 2026. Mumbai T1 closed from 25 Oct 2026 — terminals per boarding pass.",
  "lists": [
   {
    "id": "docs",
@@ -46,6 +46,11 @@
      "id": "docs7",
      "en": "Photos of all documents added in Docs",
      "kn": "ಎಲ್ಲಾ ದಾಖಲೆಗಳ ಫೋಟೋ 'Docs' ನಲ್ಲಿ ಸೇರಿಸಿ"
+    },
+    {
+     "id": "docs8",
+     "en": "Also save the e-visa as a photo in Docs",
+     "kn": "ಇ-ವೀಸಾವನ್ನು ಫೋಟೋ ಆಗಿಯೂ 'Docs' ನಲ್ಲಿ ಉಳಿಸಿ"
     }
    ]
   },
@@ -74,6 +79,11 @@
      "id": "money3",
      "en": "Keep money in two different places",
      "kn": "ಹಣವನ್ನು ಎರಡು ಬೇರೆ ಜಾಗದಲ್ಲಿ ಇಡಿ"
+    },
+    {
+     "id": "money4",
+     "en": "A credit card with free airport lounge access for two (Mumbai night)",
+     "kn": "ಇಬ್ಬರಿಗೆ ಉಚಿತ ಏರ್‌ಪೋರ್ಟ್ ಲೌಂಜ್ ಪ್ರವೇಶ ಇರುವ ಕ್ರೆಡಿಟ್ ಕಾರ್ಡ್ (ಮುಂಬೈ ರಾತ್ರಿ)"
     }
    ]
   },
@@ -212,7 +222,7 @@
     {
      "id": "personal3",
      "en": "Toiletries (liquids under 100 ml in cabin bag)",
-     "kn": "ಶೌಚ ಸಾಮಗ್ರಿ (ಕೈ ಬ್ಯಾಗ್‌ನಲ್ಲಿ 100 ml ಒಳಗೆ)"
+     "kn": "ಸ್ನಾನದ ಸಾಮಾನು (ಕೈ ಬ್ಯಾಗ್‌ನಲ್ಲಿ 100 ml ಒಳಗೆ)"
     },
     {
      "id": "personal4",
@@ -221,8 +231,8 @@
     },
     {
      "id": "personal5",
-     "en": "Snacks: thepla, khakhra, dry fruits (sealed)",
-     "kn": "ತಿಂಡಿ: ಥೇಪ್ಲಾ, ಖಾಕ್ರಾ, ಒಣಹಣ್ಣು (ಸೀಲ್ ಮಾಡಿ)"
+     "en": "Snacks: chakli, kodubale, dry fruits (sealed)",
+     "kn": "ತಿಂಡಿ: ಚಕ್ಕುಲಿ, ಕೋಡುಬಳೆ, ಒಣಹಣ್ಣು (ಸೀಲ್ ಮಾಡಿ)"
     },
     {
      "id": "personal6",
@@ -301,6 +311,10 @@
      "kn": "ಕೇಳಿ: 'ಬ್ಯಾಗ್ ನೇರ ಹನೋಯ್‌ಗೆ ಹೋಗುತ್ತದೆಯೇ? ಎರಡೂ ಬೋರ್ಡಿಂಗ್ ಪಾಸ್ ಕೊಡುತ್ತೀರಾ?'"
     },
     {
+     "en": "Check-in closes about 1 hour before departure.",
+     "kn": "ಚೆಕ್-ಇನ್ ಹೊರಡುವ ಸುಮಾರು 1 ಗಂಟೆ ಮುಂಚೆ ಮುಚ್ಚುತ್ತದೆ."
+    },
+    {
      "en": "Security check → go to the gate.",
      "kn": "ಸೆಕ್ಯೂರಿಟಿ ಚೆಕ್ → ಗೇಟ್‌ಗೆ ಹೋಗಿ."
     },
@@ -308,30 +322,27 @@
      "en": "No immigration in Bengaluru. That happens in Mumbai.",
      "kn": "ಬೆಂಗಳೂರಿನಲ್ಲಿ ಇಮಿಗ್ರೇಶನ್ ಇಲ್ಲ. ಅದು ಮುಂಬೈನಲ್ಲಿ."
     }
-   ]
+   ],
+   "when_kn": "ಸೋಮ 23 ನವೆಂಬರ್ · ರಾತ್ರಿ 10ಕ್ಕೆ ವಿಮಾನ 6E-5094 (ದೇಶೀಯ)"
   },
   {
    "id": "bom1",
    "icon": "🔄",
    "en": "Mumbai — change to international",
    "kn": "ಮುಂಬೈ — ಅಂತಾರಾಷ್ಟ್ರೀಯ ವಿಮಾನಕ್ಕೆ ಬದಲಾವಣೆ",
-   "when": "Tue 24 Nov · land ~12:10 am · Flight 6E-1637 at 4:10 am from T2",
+   "when": "Tue 24 Nov · land ~12:10 am · Flight 6E-1637 at 4:10 am from Terminal 2",
    "steps": [
     {
-     "en": "You land in the domestic terminal (likely T1).",
-     "kn": "ನೀವು ದೇಶೀಯ ಟರ್ಮಿನಲ್‌ನಲ್ಲಿ (ಬಹುಶಃ T1) ಇಳಿಯುತ್ತೀರಿ."
+     "en": "Follow 'Transfer / Connecting flights' signs. Ask IndiGo staff: 'International transfer to Hanoi?'",
+     "kn": "'ಟ್ರಾನ್ಸ್‌ಫರ್ / ಕನೆಕ್ಟಿಂಗ್ ಫ್ಲೈಟ್' ಫಲಕ ಅನುಸರಿಸಿ. ಇಂಡಿಗೋ ಸಿಬ್ಬಂದಿಗೆ ಕೇಳಿ: 'ಹನೋಯ್‌ಗೆ ಅಂತಾರಾಷ್ಟ್ರೀಯ ಟ್ರಾನ್ಸ್‌ಫರ್?'"
     },
     {
-     "en": "If bags were NOT checked through: collect bags at the belt.",
-     "kn": "ಬ್ಯಾಗ್ ನೇರ ಹೋಗದಿದ್ದರೆ: ಬೆಲ್ಟ್‌ನಿಂದ ಬ್ಯಾಗ್ ತೆಗೆದುಕೊಳ್ಳಿ."
+     "en": "If bags were NOT checked through: collect them at the belt and check in again at Terminal 2.",
+     "kn": "ಬ್ಯಾಗ್ ನೇರ ಹೋಗದಿದ್ದರೆ: ಬೆಲ್ಟ್‌ನಿಂದ ತೆಗೆದುಕೊಂಡು ಟರ್ಮಿನಲ್ 2ರಲ್ಲಿ ಮತ್ತೆ ಚೆಕ್-ಇನ್ ಮಾಡಿ."
     },
     {
-     "en": "Follow 'Inter-Terminal Transfer'. Free shuttle to T2 (15–20 min). Ask IndiGo staff for help.",
-     "kn": "'ಇಂಟರ್-ಟರ್ಮಿನಲ್ ಟ್ರಾನ್ಸ್‌ಫರ್' ಫಲಕ ಅನುಸರಿಸಿ. T2ಗೆ ಉಚಿತ ಬಸ್ (15–20 ನಿಮಿಷ). ಇಂಡಿಗೋ ಸಿಬ್ಬಂದಿಯ ಸಹಾಯ ಕೇಳಿ."
-    },
-    {
-     "en": "At T2: IndiGo international check-in (if needed).",
-     "kn": "T2ನಲ್ಲಿ: ಇಂಡಿಗೋ ಅಂತಾರಾಷ್ಟ್ರೀಯ ಚೆಕ್-ಇನ್ (ಬೇಕಿದ್ದರೆ)."
+     "en": "Check-in closes about 1 hour before 4:10 am. Don't wait till late.",
+     "kn": "ಚೆಕ್-ಇನ್ 4:10ಕ್ಕಿಂತ ಸುಮಾರು 1 ಗಂಟೆ ಮುಂಚೆ ಮುಚ್ಚುತ್ತದೆ. ತಡ ಮಾಡಬೇಡಿ."
     },
     {
      "en": "Emigration: show passport and boarding pass.",
@@ -341,7 +352,8 @@
      "en": "Security check → gate. Rest until boarding.",
      "kn": "ಸೆಕ್ಯೂರಿಟಿ → ಗೇಟ್. ಬೋರ್ಡಿಂಗ್‌ವರೆಗೆ ವಿಶ್ರಾಂತಿ."
     }
-   ]
+   ],
+   "when_kn": "ಮಂಗಳ 24 ನವೆಂಬರ್ · ಸುಮಾರು 12:10ಕ್ಕೆ ಇಳಿಯುವುದು · ಟರ್ಮಿನಲ್ 2ರಿಂದ ಬೆಳಿಗ್ಗೆ 4:10ಕ್ಕೆ 6E-1637"
   },
   {
    "id": "han1",
@@ -374,7 +386,8 @@
      "en": "Find the hotel driver with your name sign, or book Grab.",
      "kn": "ನಿಮ್ಮ ಹೆಸರಿನ ಫಲಕದ ಚಾಲಕನನ್ನು ಹುಡುಕಿ, ಅಥವಾ ಗ್ರ್ಯಾಬ್ ಬುಕ್ ಮಾಡಿ."
     }
-   ]
+   ],
+   "when_kn": "ಮಂಗಳ 24 ನವೆಂಬರ್ · ಬೆಳಿಗ್ಗೆ 10ಕ್ಕೆ ಇಳಿಯುವುದು · ನೋಯ್ ಬಾಯ್ ಟರ್ಮಿನಲ್ 2"
   },
   {
    "id": "han2",
@@ -392,6 +405,10 @@
      "kn": "T2ನಲ್ಲಿ ಇಂಡಿಗೋ ಚೆಕ್-ಇನ್. ಬೆಂಗಳೂರುವರೆಗೆ ಎರಡೂ ಬೋರ್ಡಿಂಗ್ ಪಾಸ್ ಕೇಳಿ."
     },
     {
+     "en": "Check-in closes about 1 hour before 7:05 pm.",
+     "kn": "ಚೆಕ್-ಇನ್ 7:05ಕ್ಕಿಂತ ಸುಮಾರು 1 ಗಂಟೆ ಮುಂಚೆ ಮುಚ್ಚುತ್ತದೆ."
+    },
+    {
      "en": "Exit immigration: show passport.",
      "kn": "ನಿರ್ಗಮನ ಇಮಿಗ್ರೇಶನ್: ಪಾಸ್‌ಪೋರ್ಟ್ ತೋರಿಸಿ."
     },
@@ -403,47 +420,53 @@
      "en": "Spend leftover đồng on snacks — it is hard to change in India.",
      "kn": "ಉಳಿದ ಡಾಂಗ್ ತಿಂಡಿಗೆ ಖರ್ಚು ಮಾಡಿ — ಭಾರತದಲ್ಲಿ ಬದಲಿಸುವುದು ಕಷ್ಟ."
     }
-   ]
+   ],
+   "when_kn": "ಭಾನು 29 ನವೆಂಬರ್ · ಸಂಜೆ 7:05ಕ್ಕೆ 6E-1638 · ಟರ್ಮಿನಲ್ 2"
   },
   {
    "id": "bom2",
    "icon": "🔄",
-   "en": "Mumbai — enter India, change terminal",
-   "kn": "ಮುಂಬೈ — ಭಾರತ ಪ್ರವೇಶ, ಟರ್ಮಿನಲ್ ಬದಲಾವಣೆ",
-   "when": "Sun 29 Nov · land 11:05 pm at T2 · Flight 6E-5193 at 7:30 am from T1",
+   "en": "Mumbai — enter India, wait in lounge",
+   "kn": "ಮುಂಬೈ — ಭಾರತ ಪ್ರವೇಶ, ಲೌಂಜ್‌ನಲ್ಲಿ ಕಾಯುವುದು",
+   "when": "Sun 29 Nov · land 11:05 pm at T2 · Flight 6E-5193 at 7:30 am (check terminal on boarding pass)",
    "steps": [
     {
      "en": "Immigration (Indian passport counter).",
      "kn": "ಇಮಿಗ್ರೇಶನ್ (ಭಾರತೀಯ ಪಾಸ್‌ಪೋರ್ಟ್ ಕೌಂಟರ್)."
     },
     {
-     "en": "Collect your bags at the belt.",
-     "kn": "ಬೆಲ್ಟ್‌ನಿಂದ ಬ್ಯಾಗ್ ತೆಗೆದುಕೊಳ್ಳಿ."
+     "en": "Collect your bags. Customs: green channel if nothing to declare.",
+     "kn": "ಬ್ಯಾಗ್ ತೆಗೆದುಕೊಳ್ಳಿ. ಕಸ್ಟಮ್ಸ್: ಘೋಷಿಸಲು ಏನೂ ಇಲ್ಲದಿದ್ದರೆ ಹಸಿರು ದಾರಿ."
     },
     {
-     "en": "Customs: green channel if nothing to declare.",
-     "kn": "ಕಸ್ಟಮ್ಸ್: ಘೋಷಿಸಲು ಏನೂ ಇಲ್ಲದಿದ್ದರೆ ಹಸಿರು ದಾರಿ."
+     "en": "Ask IndiGo staff: 'Where do I check in for 6E-5193 to Bengaluru?' Mumbai Terminal 1 is closed — check your boarding pass.",
+     "kn": "ಇಂಡಿಗೋ ಸಿಬ್ಬಂದಿಗೆ ಕೇಳಿ: 'ಬೆಂಗಳೂರಿನ 6E-5193 ಚೆಕ್-ಇನ್ ಎಲ್ಲಿ?' ಮುಂಬೈ ಟರ್ಮಿನಲ್ 1 ಮುಚ್ಚಿದೆ — ಬೋರ್ಡಿಂಗ್ ಪಾಸ್ ನೋಡಿ."
     },
     {
-     "en": "Follow 'Inter-Terminal Transfer' → free shuttle to T1 (15–20 min).",
-     "kn": "'ಇಂಟರ್-ಟರ್ಮಿನಲ್ ಟ್ರಾನ್ಸ್‌ಫರ್' → T1ಗೆ ಉಚಿತ ಬಸ್ (15–20 ನಿಮಿಷ)."
+     "en": "Check in your bags as early as the counter allows, then go through security.",
+     "kn": "ಕೌಂಟರ್ ತೆರೆದ ತಕ್ಷಣ ಬ್ಯಾಗ್ ಚೆಕ್-ಇನ್ ಮಾಡಿ, ನಂತರ ಸೆಕ್ಯೂರಿಟಿ."
     },
     {
-     "en": "Long wait (about 8 hours). Rest, eat, keep bags close.",
-     "kn": "ದೀರ್ಘ ಕಾಯುವಿಕೆ (ಸುಮಾರು 8 ಗಂಟೆ). ವಿಶ್ರಾಂತಿ, ಊಟ, ಬ್ಯಾಗ್ ಹತ್ತಿರ ಇರಲಿ."
+     "en": "Wait in the airport lounge — show your lounge-access credit card at the desk.",
+     "kn": "ಏರ್‌ಪೋರ್ಟ್ ಲೌಂಜ್‌ನಲ್ಲಿ ಕಾಯಿರಿ — ಲೌಂಜ್ ಪ್ರವೇಶದ ಕ್ರೆಡಿಟ್ ಕಾರ್ಡ್ ತೋರಿಸಿ."
     },
     {
-     "en": "IndiGo domestic check-in at T1 → security → gate.",
-     "kn": "T1ನಲ್ಲಿ ಇಂಡಿಗೋ ದೇಶೀಯ ಚೆಕ್-ಇನ್ → ಸೆಕ್ಯೂರಿಟಿ → ಗೇಟ್."
+     "en": "Ask the lounge for veg food. Set a phone alarm for 6:00 am.",
+     "kn": "ಲೌಂಜ್‌ನಲ್ಲಿ ಸಸ್ಯಾಹಾರ ಕೇಳಿ. ಬೆಳಿಗ್ಗೆ 6ಕ್ಕೆ ಫೋನ್ ಅಲಾರಂ ಇಡಿ."
+    },
+    {
+     "en": "Check-in closes about 1 hour before 7:30 am. If anything is unclear, go to the IndiGo desk.",
+     "kn": "ಚೆಕ್-ಇನ್ 7:30ಕ್ಕಿಂತ ಸುಮಾರು 1 ಗಂಟೆ ಮುಂಚೆ ಮುಚ್ಚುತ್ತದೆ. ಗೊಂದಲವಾದರೆ ಇಂಡಿಗೋ ಡೆಸ್ಕ್‌ಗೆ ಹೋಗಿ."
     }
-   ]
+   ],
+   "when_kn": "ಭಾನು 29 ನವೆಂಬರ್ · ರಾತ್ರಿ 11:05ಕ್ಕೆ T2ನಲ್ಲಿ ಇಳಿಯುವುದು · ಬೆಳಿಗ್ಗೆ 7:30ಕ್ಕೆ 6E-5193"
   },
   {
    "id": "blr2",
    "icon": "🏠",
    "en": "Bengaluru — home!",
    "kn": "ಬೆಂಗಳೂರು — ಮನೆಗೆ!",
-   "when": "Mon 30 Nov · land 9:15 am · Terminal 1",
+   "when": "Mon 30 Nov · land 9:15 am",
    "steps": [
     {
      "en": "Collect bags at the belt.",
@@ -457,7 +480,8 @@
      "en": "Walk out — welcome home! 🙏",
      "kn": "ಹೊರಗೆ ಬನ್ನಿ — ಮನೆಗೆ ಸ್ವಾಗತ! 🙏"
     }
-   ]
+   ],
+   "when_kn": "ಸೋಮ 30 ನವೆಂಬರ್ · ಬೆಳಿಗ್ಗೆ 9:15ಕ್ಕೆ ಇಳಿಯುವುದು"
   }
  ]
 }

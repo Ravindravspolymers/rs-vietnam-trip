@@ -66,10 +66,10 @@
   },
   {
    "icon": "🧈",
-   "vi": "Đậu phụ rán",
+   "vi": "Đậu phụ rán, chấm xì dầu",
    "en": "Fried tofu — dip in soy sauce",
    "kn": "ಕರಿದ ತೋಫು — ಸೋಯಾ ಸಾಸ್ ಜೊತೆ",
-   "nofish": false
+   "nofish": true
   },
   {
    "icon": "🍳",
@@ -80,17 +80,17 @@
   },
   {
    "icon": "🥖",
-   "vi": "Bánh mì trứng",
+   "vi": "Bánh mì trứng, không pa tê, không thịt",
    "en": "Bread roll with egg (no pâté)",
    "kn": "ಮೊಟ್ಟೆ ಬ್ರೆಡ್ ರೋಲ್",
-   "nofish": false
+   "nofish": true
   },
   {
    "icon": "🥖",
    "vi": "Bánh mì chay",
    "en": "Vegetarian bread roll",
    "kn": "ಸಸ್ಯಾಹಾರಿ ಬ್ರೆಡ್ ರೋಲ್",
-   "nofish": false
+   "nofish": true
   },
   {
    "icon": "🍲",
