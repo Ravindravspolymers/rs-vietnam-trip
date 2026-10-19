@@ -1,0 +1,352 @@
+{
+ "_note": "Pronunciation is a simple guide, northern (Hanoi) accent.",
+ "waiter": {
+  "vi": "Chúng tôi ăn chay. Xin đừng cho thịt, cá, tôm, nước mắm, dầu hào hoặc nước dùng thịt vào món ăn. Trứng thì được. Cảm ơn nhiều!",
+  "en": "We are vegetarian. Please do not put meat, fish, shrimp, fish sauce, oyster sauce or meat stock in our food. Eggs are OK. Thank you very much!",
+  "kn": "ನಾವು ಸಸ್ಯಾಹಾರಿಗಳು. ದಯವಿಟ್ಟು ಮಾಂಸ, ಮೀನು, ಸೀಗಡಿ, ಮೀನಿನ ಸಾಸ್, ಆಯ್ಸ್ಟರ್ ಸಾಸ್, ಮಾಂಸದ ಸಾರು ಹಾಕಬೇಡಿ. ಮೊಟ್ಟೆ ಪರವಾಗಿಲ್ಲ. ಧನ್ಯವಾದ!"
+ },
+ "groups": [
+  {
+   "name": "Greetings",
+   "phrases": [
+    {
+     "vi": "Xin chào",
+     "say": "sin chow",
+     "en": "Hello",
+     "kn": "ನಮಸ್ಕಾರ"
+    },
+    {
+     "vi": "Cảm ơn",
+     "say": "gahm uhn",
+     "en": "Thank you",
+     "kn": "ಧನ್ಯವಾದ"
+    },
+    {
+     "vi": "Cảm ơn nhiều",
+     "say": "gahm uhn nyew",
+     "en": "Thank you very much",
+     "kn": "ತುಂಬಾ ಧನ್ಯವಾದ"
+    },
+    {
+     "vi": "Xin lỗi",
+     "say": "sin loy",
+     "en": "Sorry / Excuse me",
+     "kn": "ಕ್ಷಮಿಸಿ"
+    },
+    {
+     "vi": "Vâng",
+     "say": "vung",
+     "en": "Yes",
+     "kn": "ಹೌದು"
+    },
+    {
+     "vi": "Không",
+     "say": "khohm",
+     "en": "No",
+     "kn": "ಇಲ್ಲ"
+    },
+    {
+     "vi": "Tạm biệt",
+     "say": "tahm byet",
+     "en": "Goodbye",
+     "kn": "ಹೋಗಿ ಬರುತ್ತೇವೆ"
+    },
+    {
+     "vi": "Chúng tôi đến từ Ấn Độ",
+     "say": "choong toy den too un doh",
+     "en": "We are from India",
+     "kn": "ನಾವು ಭಾರತದಿಂದ ಬಂದಿದ್ದೇವೆ"
+    },
+    {
+     "vi": "Tôi không hiểu",
+     "say": "toy khohm hyew",
+     "en": "I don't understand",
+     "kn": "ನನಗೆ ಅರ್ಥ ಆಗಲಿಲ್ಲ"
+    }
+   ]
+  },
+  {
+   "name": "Food",
+   "phrases": [
+    {
+     "vi": "Tôi ăn chay",
+     "say": "toy un chai",
+     "en": "I am vegetarian",
+     "kn": "ನಾನು ಸಸ್ಯಾಹಾರಿ"
+    },
+    {
+     "vi": "Không thịt",
+     "say": "khohm tit",
+     "en": "No meat",
+     "kn": "ಮಾಂಸ ಬೇಡ"
+    },
+    {
+     "vi": "Không cá",
+     "say": "khohm gah",
+     "en": "No fish",
+     "kn": "ಮೀನು ಬೇಡ"
+    },
+    {
+     "vi": "Không nước mắm",
+     "say": "khohm nuh-uhk mum",
+     "en": "No fish sauce",
+     "kn": "ಮೀನಿನ ಸಾಸ್ ಬೇಡ"
+    },
+    {
+     "vi": "Không tôm",
+     "say": "khohm tohm",
+     "en": "No shrimp",
+     "kn": "ಸೀಗಡಿ ಬೇಡ"
+    },
+    {
+     "vi": "Trứng thì được",
+     "say": "chung tee duh-uhk",
+     "en": "Eggs are OK",
+     "kn": "ಮೊಟ್ಟೆ ಪರವಾಗಿಲ್ಲ"
+    },
+    {
+     "vi": "Không cay",
+     "say": "khohm kai",
+     "en": "Not spicy",
+     "kn": "ಖಾರ ಬೇಡ"
+    },
+    {
+     "vi": "Nước lọc",
+     "say": "nuh-uhk lohk",
+     "en": "Drinking water",
+     "kn": "ಕುಡಿಯುವ ನೀರು"
+    },
+    {
+     "vi": "Không đá",
+     "say": "khohm dah",
+     "en": "No ice",
+     "kn": "ಐಸ್ ಬೇಡ"
+    },
+    {
+     "vi": "Trà nóng",
+     "say": "chah nong",
+     "en": "Hot tea",
+     "kn": "ಬಿಸಿ ಚಹಾ"
+    },
+    {
+     "vi": "Thực đơn",
+     "say": "tuck dun",
+     "en": "Menu",
+     "kn": "ಮೆನು"
+    },
+    {
+     "vi": "Tính tiền",
+     "say": "ting tyen",
+     "en": "Bill please",
+     "kn": "ಬಿಲ್ ಕೊಡಿ"
+    },
+    {
+     "vi": "Ngon quá!",
+     "say": "ngon gwah",
+     "en": "Very tasty!",
+     "kn": "ತುಂಬಾ ರುಚಿಯಾಗಿದೆ!"
+    }
+   ]
+  },
+  {
+   "name": "Shopping",
+   "phrases": [
+    {
+     "vi": "Bao nhiêu tiền?",
+     "say": "bow nyew tyen",
+     "en": "How much?",
+     "kn": "ಎಷ್ಟು ಬೆಲೆ?"
+    },
+    {
+     "vi": "Đắt quá!",
+     "say": "dut gwah",
+     "en": "Too expensive!",
+     "kn": "ತುಂಬಾ ದುಬಾರಿ!"
+    },
+    {
+     "vi": "Giảm giá được không?",
+     "say": "zahm zah duh-uhk khohm",
+     "en": "Can you reduce the price?",
+     "kn": "ಬೆಲೆ ಕಡಿಮೆ ಮಾಡ್ತೀರಾ?"
+    },
+    {
+     "vi": "Tôi chỉ xem thôi",
+     "say": "toy chee sem toy",
+     "en": "Just looking",
+     "kn": "ಸುಮ್ಮನೆ ನೋಡ್ತಾ ಇದ್ದೀನಿ"
+    },
+    {
+     "vi": "Tôi lấy cái này",
+     "say": "toy lay kai nay",
+     "en": "I'll take this",
+     "kn": "ಇದನ್ನು ತೆಗೆದುಕೊಳ್ಳುತ್ತೇನೆ"
+    },
+    {
+     "vi": "Cái này",
+     "say": "kai nay",
+     "en": "This one",
+     "kn": "ಇದು"
+    },
+    {
+     "vi": "Có cỡ lớn hơn không?",
+     "say": "gaw guh lun hun khohm",
+     "en": "Do you have a bigger size?",
+     "kn": "ದೊಡ್ಡ ಸೈಜ್ ಇದೆಯಾ?"
+    },
+    {
+     "vi": "Viết giá ra giấy giúp tôi",
+     "say": "vyet zah zah zay zoop toy",
+     "en": "Please write the price on paper",
+     "kn": "ಬೆಲೆಯನ್ನು ಕಾಗದದ ಮೇಲೆ ಬರೆಯಿರಿ"
+    }
+   ]
+  },
+  {
+   "name": "Directions",
+   "phrases": [
+    {
+     "vi": "Nhà vệ sinh ở đâu?",
+     "say": "nyah vay sing uh dow",
+     "en": "Where is the toilet?",
+     "kn": "ಶೌಚಾಲಯ ಎಲ್ಲಿದೆ?"
+    },
+    {
+     "vi": "Ở đâu?",
+     "say": "uh dow",
+     "en": "Where is it?",
+     "kn": "ಎಲ್ಲಿದೆ?"
+    },
+    {
+     "vi": "Xa không?",
+     "say": "sah khohm",
+     "en": "Is it far?",
+     "kn": "ದೂರ ಇದೆಯಾ?"
+    },
+    {
+     "vi": "Đi thẳng",
+     "say": "dee tahng",
+     "en": "Go straight",
+     "kn": "ನೇರ ಹೋಗಿ"
+    },
+    {
+     "vi": "Rẽ trái",
+     "say": "zeh chai",
+     "en": "Turn left",
+     "kn": "ಎಡಕ್ಕೆ ತಿರುಗಿ"
+    },
+    {
+     "vi": "Rẽ phải",
+     "say": "zeh fai",
+     "en": "Turn right",
+     "kn": "ಬಲಕ್ಕೆ ತಿರುಗಿ"
+    },
+    {
+     "vi": "Dừng ở đây",
+     "say": "zung uh day",
+     "en": "Stop here",
+     "kn": "ಇಲ್ಲಿ ನಿಲ್ಲಿಸಿ"
+    },
+    {
+     "vi": "Đi chậm thôi",
+     "say": "dee chum toy",
+     "en": "Please drive slowly",
+     "kn": "ನಿಧಾನವಾಗಿ ಓಡಿಸಿ"
+    }
+   ]
+  },
+  {
+   "name": "Hotel",
+   "phrases": [
+    {
+     "vi": "Cho tôi về khách sạn",
+     "say": "chaw toy vay khak sun",
+     "en": "Take me to my hotel",
+     "kn": "ನನ್ನನ್ನು ಹೋಟೆಲ್‌ಗೆ ಕರೆದುಕೊಂಡು ಹೋಗಿ"
+    },
+    {
+     "vi": "Phòng của tôi số…",
+     "say": "fong goo-uh toy soh",
+     "en": "My room number is…",
+     "kn": "ನನ್ನ ರೂಮ್ ನಂಬರ್…"
+    },
+    {
+     "vi": "Mật khẩu wifi là gì?",
+     "say": "mut khow wai-fai lah zee",
+     "en": "What is the WiFi password?",
+     "kn": "ವೈಫೈ ಪಾಸ್‌ವರ್ಡ್ ಏನು?"
+    },
+    {
+     "vi": "Gọi taxi giúp tôi",
+     "say": "goy tak-see zoop toy",
+     "en": "Please call a taxi",
+     "kn": "ಟ್ಯಾಕ್ಸಿ ಕರೆಸಿ"
+    },
+    {
+     "vi": "Nước nóng",
+     "say": "nuh-uhk nong",
+     "en": "Hot water",
+     "kn": "ಬಿಸಿ ನೀರು"
+    },
+    {
+     "vi": "Giữ hành lý giúp tôi",
+     "say": "zuh hahn lee zoop toy",
+     "en": "Please keep my luggage",
+     "kn": "ನನ್ನ ಲಗೇಜ್ ಇಟ್ಟುಕೊಳ್ಳಿ"
+    }
+   ]
+  },
+  {
+   "name": "Help",
+   "phrases": [
+    {
+     "vi": "Cứu với!",
+     "say": "gyew vuh-ee",
+     "en": "Help!",
+     "kn": "ಸಹಾಯ ಮಾಡಿ!"
+    },
+    {
+     "vi": "Tôi bị lạc",
+     "say": "toy bee lahk",
+     "en": "I am lost",
+     "kn": "ನಾನು ದಾರಿ ತಪ್ಪಿದ್ದೇನೆ"
+    },
+    {
+     "vi": "Gọi số này giúp tôi",
+     "say": "goy soh nay zoop toy",
+     "en": "Please call this number",
+     "kn": "ಈ ನಂಬರ್‌ಗೆ ಕರೆ ಮಾಡಿ"
+    },
+    {
+     "vi": "Bệnh viện",
+     "say": "ben vyen",
+     "en": "Hospital",
+     "kn": "ಆಸ್ಪತ್ರೆ"
+    },
+    {
+     "vi": "Hiệu thuốc",
+     "say": "hyew twohk",
+     "en": "Pharmacy",
+     "kn": "ಮೆಡಿಕಲ್ ಶಾಪ್"
+    },
+    {
+     "vi": "Tôi bị ốm",
+     "say": "toy bee ohm",
+     "en": "I am sick",
+     "kn": "ನನಗೆ ಹುಷಾರಿಲ್ಲ"
+    },
+    {
+     "vi": "Công an",
+     "say": "gohm ahn",
+     "en": "Police",
+     "kn": "ಪೊಲೀಸ್"
+    },
+    {
+     "vi": "Tôi mất ví",
+     "say": "toy mut vee",
+     "en": "I lost my wallet",
+     "kn": "ನನ್ನ ಪರ್ಸ್ ಕಳೆದುಹೋಯಿತು"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,946 @@
+{
+ "_note": "Prices approx., as of Oct 2026 (VND). null price = fixed tag / ask. Sources in sources.md.",
+ "cats": [
+  [
+   "food",
+   "Food & snacks"
+  ],
+  [
+   "coffee",
+   "Coffee & tea"
+  ],
+  [
+   "clothes",
+   "Clothes & silk"
+  ],
+  [
+   "craft",
+   "Handicrafts"
+  ],
+  [
+   "art",
+   "Lacquer & art"
+  ],
+  [
+   "gifts",
+   "Gifts for family"
+  ],
+  [
+   "kitchen",
+   "Kitchen"
+  ],
+  [
+   "kids",
+   "Kids"
+  ],
+  [
+   "quirky",
+   "Quirky / crazy"
+  ]
+ ],
+ "wheres": [
+  [
+   "oldquarter",
+   "Old Quarter"
+  ],
+  [
+   "night",
+   "Night Market"
+  ],
+  [
+   "ninhbinh",
+   "Ninh Binh"
+  ],
+  [
+   "halong",
+   "Ha Long"
+  ],
+  [
+   "airport",
+   "Airport"
+  ]
+ ],
+ "places": {
+  "dongxuan": {
+   "label": "Dong Xuan Market",
+   "q": "Dong Xuan Market Hanoi"
+  },
+  "hanggai": {
+   "label": "Hang Gai Street (silk)",
+   "q": "Hang Gai Street Hanoi"
+  },
+  "hangkhay": {
+   "label": "Hang Khay Street",
+   "q": "Hang Khay Street Hanoi"
+  },
+  "hangtrong": {
+   "label": "Hang Trong / Hang Gai galleries",
+   "q": "Hang Trong Street Hanoi"
+  },
+  "hangma": {
+   "label": "Hang Ma Street",
+   "q": "Hang Ma Street Hanoi"
+  },
+  "night": {
+   "label": "Weekend Night Market (Fri–Sun eve)",
+   "q": "Hanoi Weekend Night Market Hang Dao"
+  },
+  "super": {
+   "label": "Supermarket (e.g. WinMart)",
+   "q": "WinMart Hoan Kiem Hanoi"
+  },
+  "pharmacy": {
+   "label": "Any pharmacy (Nhà thuốc)",
+   "q": "pharmacy Hoan Kiem Hanoi"
+  },
+  "theatre": {
+   "label": "Water Puppet Theatre shop",
+   "q": "Thang Long Water Puppet Theatre"
+  },
+  "tamcoc": {
+   "label": "Tam Coc / Van Lam village stalls",
+   "q": "Van Lam embroidery village Ninh Binh"
+  },
+  "pearl": {
+   "label": "Pearl farm shop (cruise tour)",
+   "q": "pearl farm Ha Long Bay"
+  },
+  "airport": {
+   "label": "Noi Bai Airport shops",
+   "q": "Noi Bai International Airport Terminal 2"
+  }
+ },
+ "skip": {
+  "en": [
+   "Weasel (civet) coffee — mostly fake, cruel to animals",
+   "Branded jackets/bags at markets — fakes, can be seized",
+   "Antiques or old statues — need export permits",
+   "Coral, turtle shell, snake wine — illegal to bring home",
+   "Airport souvenir shops — same items, higher price"
+  ],
+  "kn": [
+   "ವೀಸೆಲ್ ಕಾಫಿ — ಹೆಚ್ಚಾಗಿ ನಕಲಿ, ಪ್ರಾಣಿಗಳಿಗೆ ಹಿಂಸೆ",
+   "ಮಾರುಕಟ್ಟೆಯ ಬ್ರ್ಯಾಂಡ್ ಜಾಕೆಟ್/ಬ್ಯಾಗ್ — ನಕಲಿ",
+   "ಹಳೆಯ ಪುರಾತನ ವಸ್ತು, ಮೂರ್ತಿ — ಅನುಮತಿ ಬೇಕು",
+   "ಹವಳ, ಆಮೆ ಚಿಪ್ಪು, ಹಾವಿನ ವೈನ್ — ತರುವುದು ಕಾನೂನುಬಾಹಿರ",
+   "ವಿಮಾನ ನಿಲ್ದಾಣದ ಅಂಗಡಿಗಳು — ಅದೇ ವಸ್ತು, ಹೆಚ್ಚು ಬೆಲೆ"
+  ]
+ },
+ "items": [
+  {
+   "id": "coffee",
+   "icon": "☕",
+   "cat": "coffee",
+   "where": [
+    "oldquarter",
+    "airport"
+   ],
+   "place": "dongxuan",
+   "vmin": 50000,
+   "vmax": 180000,
+   "easy": true,
+   "en": "Vietnamese ground coffee",
+   "kn": "ವಿಯೆಟ್ನಾಮೀಸ್ ಕಾಫಿ ಪುಡಿ",
+   "why_en": "Strong, chocolatey coffee. The No.1 gift.",
+   "why_kn": "ಗಟ್ಟಿಯಾದ, ಸ್ವಾದಿಷ್ಟ ಕಾಫಿ. ಮೊದಲನೇ ಉಡುಗೊರೆ.",
+   "tip_en": "Buy sealed packs (250–500 g).",
+   "tip_kn": "ಸೀಲ್ ಮಾಡಿದ ಪ್ಯಾಕ್ ಕೊಳ್ಳಿ."
+  },
+  {
+   "id": "instant",
+   "icon": "☕",
+   "cat": "coffee",
+   "where": [
+    "oldquarter",
+    "airport"
+   ],
+   "place": "super",
+   "vmin": null,
+   "vmax": null,
+   "easy": true,
+   "en": "Instant coffee (3-in-1)",
+   "kn": "ಇನ್‌ಸ್ಟಂಟ್ ಕಾಫಿ (3-ಇನ್-1)",
+   "why_en": "Easy gift for office friends. Just add hot water.",
+   "why_kn": "ಆಫೀಸ್ ಸ್ನೇಹಿತರಿಗೆ ಸುಲಭ ಉಡುಗೊರೆ. ಬಿಸಿ ನೀರು ಹಾಕಿದರೆ ಸಾಕು.",
+   "tip_en": "Supermarket price is fixed and cheapest.",
+   "tip_kn": "ಸೂಪರ್‌ಮಾರ್ಕೆಟ್ ಬೆಲೆ ಸ್ಥಿರ, ಅಗ್ಗ."
+  },
+  {
+   "id": "phin",
+   "icon": "🫖",
+   "cat": "coffee",
+   "where": [
+    "oldquarter"
+   ],
+   "place": "dongxuan",
+   "vmin": 60000,
+   "vmax": 150000,
+   "easy": true,
+   "en": "Phin coffee filter (steel)",
+   "kn": "ಫಿನ್ ಕಾಫಿ ಫಿಲ್ಟರ್ (ಸ್ಟೀಲ್)",
+   "why_en": "Like our South Indian filter, but one cup at a time!",
+   "why_kn": "ನಮ್ಮ ದಕ್ಷಿಣ ಭಾರತೀಯ ಫಿಲ್ಟರ್‌ನಂತೆ, ಒಂದು ಕಪ್‌ಗೆ!",
+   "tip_en": "Choose stainless steel, not aluminium — it lasts.",
+   "tip_kn": "ಅಲ್ಯೂಮಿನಿಯಂ ಬೇಡ, ಸ್ಟೀಲ್ ಆರಿಸಿ — ಬಾಳಿಕೆ ಬರುತ್ತದೆ."
+  },
+  {
+   "id": "coffeeset",
+   "icon": "🎁",
+   "cat": "coffee",
+   "where": [
+    "oldquarter"
+   ],
+   "place": "dongxuan",
+   "vmin": 140000,
+   "vmax": 250000,
+   "easy": true,
+   "en": "Coffee + filter gift set",
+   "kn": "ಕಾಫಿ + ಫಿಲ್ಟರ್ ಉಡುಗೊರೆ ಸೆಟ್",
+   "why_en": "Ready gift box. Nothing more to think about.",
+   "why_kn": "ತಯಾರಾದ ಉಡುಗೊರೆ ಡಬ್ಬ.",
+   "tip_en": "Offer half, settle around 60–70%.",
+   "tip_kn": "ಅರ್ಧ ಬೆಲೆ ಕೇಳಿ, 60–70%ಕ್ಕೆ ಒಪ್ಪಿಕೊಳ್ಳಿ."
+  },
+  {
+   "id": "lotustea",
+   "icon": "🪷",
+   "cat": "coffee",
+   "where": [
+    "oldquarter",
+    "airport"
+   ],
+   "place": "dongxuan",
+   "vmin": 90000,
+   "vmax": 220000,
+   "easy": true,
+   "en": "Lotus tea (100 g)",
+   "kn": "ಕಮಲದ ಚಹಾ (100 ಗ್ರಾಂ)",
+   "why_en": "Green tea scented with lotus flowers. Hanoi's royal tea.",
+   "why_kn": "ಕಮಲದ ಹೂವಿನ ಪರಿಮಳದ ಹಸಿರು ಚಹಾ. ಹನೋಯ್‌ನ ರಾಜ ಚಹಾ.",
+   "tip_en": "Very cheap 'lotus tea' is usually flavoured, not real.",
+   "tip_kn": "ತುಂಬಾ ಅಗ್ಗದ್ದು ಸಾಮಾನ್ಯವಾಗಿ ಕೃತಕ ಪರಿಮಳ."
+  },
+  {
+   "id": "greentea",
+   "icon": "🍵",
+   "cat": "coffee",
+   "where": [
+    "oldquarter"
+   ],
+   "place": "dongxuan",
+   "vmin": 45000,
+   "vmax": 100000,
+   "easy": true,
+   "en": "Thai Nguyen green tea (100 g)",
+   "kn": "ಥಾಯ್ ಎನ್ಗುಯೆನ್ ಹಸಿರು ಚಹಾ",
+   "why_en": "Vietnam's most famous green tea.",
+   "why_kn": "ವಿಯೆಟ್ನಾಂನ ಪ್ರಸಿದ್ಧ ಹಸಿರು ಚಹಾ.",
+   "tip_en": "Ask to smell before buying.",
+   "tip_kn": "ಕೊಳ್ಳುವ ಮುನ್ನ ಮೂಸಿ ನೋಡಿ."
+  },
+  {
+   "id": "artichoke",
+   "icon": "🌿",
+   "cat": "coffee",
+   "where": [
+    "oldquarter"
+   ],
+   "place": "dongxuan",
+   "vmin": 80000,
+   "vmax": 155000,
+   "easy": true,
+   "en": "Artichoke tea (100 g)",
+   "kn": "ಆರ್ಟಿಚೋಕ್ ಚಹಾ",
+   "why_en": "Herbal tea locals drink for good digestion.",
+   "why_kn": "ಜೀರ್ಣಕ್ರಿಯೆಗೆ ಸ್ಥಳೀಯರು ಕುಡಿಯುವ ಗಿಡಮೂಲಿಕೆ ಚಹಾ.",
+   "tip_en": "Comes in neat boxes — easy to gift.",
+   "tip_kn": "ಅಂದದ ಡಬ್ಬದಲ್ಲಿ ಬರುತ್ತದೆ."
+  },
+  {
+   "id": "coconut",
+   "icon": "🥥",
+   "cat": "food",
+   "where": [
+    "oldquarter",
+    "night",
+    "airport"
+   ],
+   "place": "dongxuan",
+   "vmin": 20000,
+   "vmax": 40000,
+   "easy": true,
+   "en": "Coconut candy",
+   "kn": "ತೆಂಗಿನಕಾಯಿ ಮಿಠಾಯಿ",
+   "why_en": "Soft, chewy, pure veg. Kids love it.",
+   "why_kn": "ಮೃದು, ಶುದ್ಧ ಸಸ್ಯಾಹಾರಿ. ಮಕ್ಕಳಿಗೆ ಇಷ್ಟ.",
+   "tip_en": "Buy many small packs to share.",
+   "tip_kn": "ಹಂಚಲು ಸಣ್ಣ ಪ್ಯಾಕ್‌ಗಳು ಕೊಳ್ಳಿ."
+  },
+  {
+   "id": "dryfruit",
+   "icon": "🥭",
+   "cat": "food",
+   "where": [
+    "oldquarter"
+   ],
+   "place": "dongxuan",
+   "vmin": 30000,
+   "vmax": 50000,
+   "easy": true,
+   "en": "Dried jackfruit & mango",
+   "kn": "ಒಣ ಹಲಸು ಮತ್ತು ಮಾವು",
+   "why_en": "Crunchy jackfruit chips — a tasty travel snack.",
+   "why_kn": "ಗರಿಗರಿ ಹಲಸಿನ ಚಿಪ್ಸ್ — ಪ್ರಯಾಣದ ತಿಂಡಿ.",
+   "tip_en": "Check the pack is sealed and has a date.",
+   "tip_kn": "ಪ್ಯಾಕ್ ಸೀಲ್ ಮತ್ತು ದಿನಾಂಕ ನೋಡಿ."
+  },
+  {
+   "id": "lotusseed",
+   "icon": "🪷",
+   "cat": "food",
+   "where": [
+    "oldquarter"
+   ],
+   "place": "dongxuan",
+   "vmin": 30000,
+   "vmax": 50000,
+   "easy": true,
+   "en": "Dried lotus seeds",
+   "kn": "ಒಣ ಕಮಲದ ಬೀಜ (ಮಖಾನ ತರಹ)",
+   "why_en": "Like our makhana cousin. Healthy snack.",
+   "why_kn": "ನಮ್ಮ ಮಖಾನದ ಸಂಬಂಧಿ. ಆರೋಗ್ಯಕರ ತಿಂಡಿ.",
+   "tip_en": "Sweetened ones are a dessert snack.",
+   "tip_kn": "ಸಕ್ಕರೆ ಹಾಕಿದ್ದು ಸಿಹಿ ತಿಂಡಿ."
+  },
+  {
+   "id": "pepper",
+   "icon": "🌶",
+   "cat": "food",
+   "where": [
+    "oldquarter"
+   ],
+   "place": "dongxuan",
+   "vmin": 40000,
+   "vmax": 80000,
+   "easy": true,
+   "en": "Black pepper (250 g)",
+   "kn": "ಕರಿಮೆಣಸು (250 ಗ್ರಾಂ)",
+   "why_en": "Vietnam is a top pepper grower. Fresh and strong.",
+   "why_kn": "ವಿಯೆಟ್ನಾಂ ಕರಿಮೆಣಸಿಗೆ ಪ್ರಸಿದ್ಧ. ತಾಜಾ, ಘಾಟು.",
+   "tip_en": "Little bargaining on spices.",
+   "tip_kn": "ಮಸಾಲೆಗಳಲ್ಲಿ ಚೌಕಾಸಿ ಕಡಿಮೆ."
+  },
+  {
+   "id": "spices",
+   "icon": "🧂",
+   "cat": "food",
+   "where": [
+    "oldquarter"
+   ],
+   "place": "dongxuan",
+   "vmin": 10000,
+   "vmax": 30000,
+   "easy": true,
+   "en": "Spice packs",
+   "kn": "ಮಸಾಲೆ ಪ್ಯಾಕ್",
+   "why_en": "Star anise and cinnamon — cheap and light.",
+   "why_kn": "ಚಕ್ರಮೊಗ್ಗು, ದಾಲ್ಚಿನ್ನಿ — ಅಗ್ಗ, ಹಗುರ.",
+   "tip_en": "Buy sealed packs only.",
+   "tip_kn": "ಸೀಲ್ ಮಾಡಿದ ಪ್ಯಾಕ್ ಮಾತ್ರ."
+  },
+  {
+   "id": "cashew",
+   "icon": "🥜",
+   "cat": "food",
+   "where": [
+    "oldquarter",
+    "airport"
+   ],
+   "place": "super",
+   "vmin": null,
+   "vmax": null,
+   "easy": true,
+   "en": "Cashew nuts",
+   "kn": "ಗೋಡಂಬಿ",
+   "why_en": "Big, fresh Vietnamese cashews.",
+   "why_kn": "ದೊಡ್ಡ, ತಾಜಾ ವಿಯೆಟ್ನಾಮೀಸ್ ಗೋಡಂಬಿ.",
+   "tip_en": "Buy at supermarkets. Tourist stalls charge several times more.",
+   "tip_kn": "ಸೂಪರ್‌ಮಾರ್ಕೆಟ್‌ನಲ್ಲಿ ಕೊಳ್ಳಿ. ಪ್ರವಾಸಿ ಅಂಗಡಿಗಳಲ್ಲಿ ತುಂಬಾ ದುಬಾರಿ."
+  },
+  {
+   "id": "greenbean",
+   "icon": "🍰",
+   "cat": "food",
+   "where": [
+    "oldquarter",
+    "airport"
+   ],
+   "place": "super",
+   "vmin": null,
+   "vmax": null,
+   "easy": true,
+   "en": "Green bean cake (bánh đậu xanh)",
+   "kn": "ಹೆಸರುಬೇಳೆ ಸಿಹಿ (ಬಾನ್ ದೌ ಷಾನ್)",
+   "why_en": "Melt-in-mouth sweet like soft moong burfi. Veg.",
+   "why_kn": "ಬಾಯಲ್ಲಿ ಕರಗುವ ಹೆಸರುಬೇಳೆ ಬರ್ಫಿಯಂತಹ ಸಿಹಿ.",
+   "tip_en": "Check the label for no animal fat.",
+   "tip_kn": "ಪ್ರಾಣಿಜನ್ಯ ಕೊಬ್ಬು ಇಲ್ಲವೆಂದು ಲೇಬಲ್ ನೋಡಿ."
+  },
+  {
+   "id": "chocolate",
+   "icon": "🍫",
+   "cat": "food",
+   "where": [
+    "oldquarter",
+    "airport"
+   ],
+   "place": "super",
+   "vmin": null,
+   "vmax": null,
+   "easy": true,
+   "en": "Vietnamese craft chocolate",
+   "kn": "ವಿಯೆಟ್ನಾಮೀಸ್ ಚಾಕೊಲೇಟ್",
+   "why_en": "Award-winning local cocoa. Fancy gift.",
+   "why_kn": "ಪ್ರಶಸ್ತಿ ಪಡೆದ ಸ್ಥಳೀಯ ಕೋಕೋ. ವಿಶೇಷ ಉಡುಗೊರೆ.",
+   "tip_en": "Keep away from heat in the suitcase.",
+   "tip_kn": "ಸೂಟ್‌ಕೇಸ್‌ನಲ್ಲಿ ಬಿಸಿಯಿಂದ ದೂರ ಇಡಿ."
+  },
+  {
+   "id": "scarf",
+   "icon": "🧣",
+   "cat": "clothes",
+   "where": [
+    "oldquarter",
+    "night"
+   ],
+   "place": "hanggai",
+   "vmin": 130000,
+   "vmax": 260000,
+   "easy": true,
+   "en": "Silk scarf",
+   "kn": "ರೇಷ್ಮೆ ಸ್ಕಾರ್ಫ್",
+   "why_en": "Light, pretty, and easy to pack.",
+   "why_kn": "ಹಗುರ, ಸುಂದರ, ಪ್ಯಾಕ್ ಮಾಡಲು ಸುಲಭ.",
+   "tip_en": "Real silk feels cool and soft. Very cheap 'silk' is often polyester.",
+   "tip_kn": "ನಿಜವಾದ ರೇಷ್ಮೆ ತಣ್ಣಗೆ, ಮೃದು. ತುಂಬಾ ಅಗ್ಗದ್ದು ಪಾಲಿಯೆಸ್ಟರ್."
+  },
+  {
+   "id": "silkcloth",
+   "icon": "🧵",
+   "cat": "clothes",
+   "where": [
+    "oldquarter"
+   ],
+   "place": "dongxuan",
+   "vmin": 100000,
+   "vmax": 195000,
+   "easy": false,
+   "en": "Silk cloth (per metre)",
+   "kn": "ರೇಷ್ಮೆ ಬಟ್ಟೆ (ಮೀಟರ್‌ಗೆ)",
+   "why_en": "Cheaper than India for some silks. Make a blouse at home.",
+   "why_kn": "ಕೆಲವು ರೇಷ್ಮೆ ಭಾರತಕ್ಕಿಂತ ಅಗ್ಗ. ಊರಲ್ಲಿ ಬ್ಲೌಸ್ ಹೊಲಿಸಿ.",
+   "tip_en": "Dong Xuan 2nd floor is cheaper than Hang Gai. Bargain.",
+   "tip_kn": "ಡಾಂಗ್ ಶುವಾನ್ 2ನೇ ಮಹಡಿ ಅಗ್ಗ. ಚೌಕಾಸಿ ಮಾಡಿ."
+  },
+  {
+   "id": "dress",
+   "icon": "👗",
+   "cat": "clothes",
+   "where": [
+    "oldquarter",
+    "night"
+   ],
+   "place": "dongxuan",
+   "vmin": 120000,
+   "vmax": 200000,
+   "easy": false,
+   "en": "Cotton dresses & wide trousers",
+   "kn": "ಹತ್ತಿ ಉಡುಪು, ಅಗಲ ಪ್ಯಾಂಟ್",
+   "why_en": "Cool, comfortable clothes for summer.",
+   "why_kn": "ಬೇಸಿಗೆಗೆ ತಂಪಾದ, ಆರಾಮದ ಬಟ್ಟೆ.",
+   "tip_en": "Offer half the first price.",
+   "tip_kn": "ಮೊದಲ ಬೆಲೆಯ ಅರ್ಧ ಕೇಳಿ."
+  },
+  {
+   "id": "tshirt",
+   "icon": "👕",
+   "cat": "clothes",
+   "where": [
+    "oldquarter",
+    "night"
+   ],
+   "place": "night",
+   "vmin": 100000,
+   "vmax": 150000,
+   "easy": true,
+   "en": "Hanoi T-shirt",
+   "kn": "ಹನೋಯ್ ಟಿ-ಶರ್ಟ್",
+   "why_en": "Fun designs for grandchildren and nephews.",
+   "why_kn": "ಮೊಮ್ಮಕ್ಕಳಿಗೆ ಮಜವಾದ ಡಿಸೈನ್‌ಗಳು.",
+   "tip_en": "Cotton costs more than acrylic — check the label.",
+   "tip_kn": "ಹತ್ತಿ ಸ್ವಲ್ಪ ದುಬಾರಿ — ಲೇಬಲ್ ನೋಡಿ."
+  },
+  {
+   "id": "hat",
+   "icon": "👒",
+   "cat": "clothes",
+   "where": [
+    "oldquarter",
+    "night"
+   ],
+   "place": "dongxuan",
+   "vmin": 45000,
+   "vmax": 90000,
+   "easy": false,
+   "en": "Conical hat (nón lá)",
+   "kn": "ವಿಯೆಟ್ನಾಂ ಟೋಪಿ (ನಾನ್ ಲಾ)",
+   "why_en": "The icon of Vietnam. Great for photos!",
+   "why_kn": "ವಿಯೆಟ್ನಾಂನ ಸಂಕೇತ. ಫೋಟೋಗೆ ಸೂಪರ್!",
+   "tip_en": "Carry it in your hand on the flight — it crushes in bags.",
+   "tip_kn": "ವಿಮಾನದಲ್ಲಿ ಕೈಯಲ್ಲಿ ಹಿಡಿಯಿರಿ — ಬ್ಯಾಗ್‌ನಲ್ಲಿ ಜಜ್ಜುತ್ತದೆ."
+  },
+  {
+   "id": "lantern",
+   "icon": "🏮",
+   "cat": "craft",
+   "where": [
+    "oldquarter",
+    "night"
+   ],
+   "place": "hangma",
+   "vmin": 30000,
+   "vmax": 120000,
+   "easy": true,
+   "en": "Silk lantern (folding)",
+   "kn": "ರೇಷ್ಮೆ ಲಾಂಟರ್ನ್ (ಮಡಚುವ)",
+   "why_en": "Folds flat. Beautiful for Deepavali at home!",
+   "why_kn": "ಮಡಚಿ ಇಡಬಹುದು. ಮನೆಯಲ್ಲಿ ದೀಪಾವಳಿಗೆ ಸುಂದರ!",
+   "tip_en": "Open and check the frame before paying.",
+   "tip_kn": "ಹಣ ಕೊಡುವ ಮುನ್ನ ತೆರೆದು ನೋಡಿ."
+  },
+  {
+   "id": "embroidery",
+   "icon": "🪡",
+   "cat": "craft",
+   "where": [
+    "ninhbinh",
+    "oldquarter"
+   ],
+   "place": "tamcoc",
+   "vmin": 45000,
+   "vmax": 100000,
+   "easy": true,
+   "en": "Hand embroidery",
+   "kn": "ಕೈ ಕಸೂತಿ",
+   "why_en": "Ninh Binh's Van Lam village is famous for it.",
+   "why_kn": "ನಿನ್ ಬಿನ್‌ನ ವಾನ್ ಲಾಮ್ ಹಳ್ಳಿ ಇದಕ್ಕೆ ಪ್ರಸಿದ್ಧ.",
+   "tip_en": "Hand work has a slightly uneven back. Machine work is perfect on both sides.",
+   "tip_kn": "ಕೈ ಕೆಲಸದ ಹಿಂಭಾಗ ಸ್ವಲ್ಪ ಅಸಮ. ಯಂತ್ರದ್ದು ಎರಡೂ ಕಡೆ ಸಮ."
+  },
+  {
+   "id": "chopsticks",
+   "icon": "🥢",
+   "cat": "kitchen",
+   "where": [
+    "oldquarter",
+    "night"
+   ],
+   "place": "dongxuan",
+   "vmin": 20000,
+   "vmax": 40000,
+   "easy": true,
+   "en": "Bamboo chopsticks & spoons",
+   "kn": "ಬಿದಿರಿನ ಚಾಪ್‌ಸ್ಟಿಕ್, ಚಮಚ",
+   "why_en": "Light, eco-friendly, very cheap.",
+   "why_kn": "ಹಗುರ, ಪರಿಸರ ಸ್ನೇಹಿ, ತುಂಬಾ ಅಗ್ಗ.",
+   "tip_en": "Buy a set of 10 and bargain for all.",
+   "tip_kn": "10ರ ಸೆಟ್ ಕೊಂಡು ಒಟ್ಟಿಗೆ ಚೌಕಾಸಿ ಮಾಡಿ."
+  },
+  {
+   "id": "basket",
+   "icon": "🧺",
+   "cat": "kitchen",
+   "where": [
+    "oldquarter",
+    "ninhbinh"
+   ],
+   "place": "dongxuan",
+   "vmin": 50000,
+   "vmax": 80000,
+   "easy": false,
+   "en": "Woven bamboo basket / tray",
+   "kn": "ಬಿದಿರಿನ ಬುಟ್ಟಿ / ತಟ್ಟೆ",
+   "why_en": "Handwoven — nice for fruits or puja items.",
+   "why_kn": "ಕೈಯಲ್ಲಿ ಹೆಣೆದದ್ದು — ಹಣ್ಣು ಅಥವಾ ಪೂಜೆ ಸಾಮಾನಿಗೆ.",
+   "tip_en": "Flat trays pack better than round baskets.",
+   "tip_kn": "ದುಂಡು ಬುಟ್ಟಿಗಿಂತ ಚಪ್ಪಟೆ ತಟ್ಟೆ ಪ್ಯಾಕ್ ಮಾಡಲು ಸುಲಭ."
+  },
+  {
+   "id": "bowls",
+   "icon": "🥣",
+   "cat": "kitchen",
+   "where": [
+    "oldquarter"
+   ],
+   "place": "dongxuan",
+   "vmin": 40000,
+   "vmax": 70000,
+   "easy": false,
+   "en": "Bat Trang ceramic bowls & mugs",
+   "kn": "ಬಾಟ್ ಚಾಂಗ್ ಪಿಂಗಾಣಿ ಬಟ್ಟಲು, ಮಗ್",
+   "why_en": "Blue-and-white pottery from a 500-year-old village.",
+   "why_kn": "500 ವರ್ಷ ಹಳೆಯ ಹಳ್ಳಿಯ ನೀಲಿ-ಬಿಳಿ ಪಿಂಗಾಣಿ.",
+   "tip_en": "Check for cracks. Wrap each piece in 3 layers of clothes.",
+   "tip_kn": "ಬಿರುಕು ನೋಡಿ. ಪ್ರತಿಯೊಂದನ್ನೂ ಬಟ್ಟೆಯಲ್ಲಿ ಮೂರು ಸುತ್ತು ಸುತ್ತಿ."
+  },
+  {
+   "id": "teacups",
+   "icon": "🍶",
+   "cat": "kitchen",
+   "where": [
+    "oldquarter"
+   ],
+   "place": "dongxuan",
+   "vmin": 80000,
+   "vmax": 155000,
+   "easy": false,
+   "en": "Ceramic tea cup set",
+   "kn": "ಪಿಂಗಾಣಿ ಚಹಾ ಕಪ್ ಸೆಟ್",
+   "why_en": "Pretty set for guests at home.",
+   "why_kn": "ಮನೆಗೆ ಬರುವ ಅತಿಥಿಗಳಿಗೆ ಸುಂದರ ಸೆಟ್.",
+   "tip_en": "Old Quarter costs more than the village — bargain.",
+   "tip_kn": "ಹಳೆಯ ಪೇಟೆಯಲ್ಲಿ ದುಬಾರಿ — ಚೌಕಾಸಿ ಮಾಡಿ."
+  },
+  {
+   "id": "incense",
+   "icon": "🪔",
+   "cat": "gifts",
+   "where": [
+    "oldquarter"
+   ],
+   "place": "dongxuan",
+   "vmin": 35000,
+   "vmax": 65000,
+   "easy": true,
+   "en": "Lotus / cinnamon incense",
+   "kn": "ಕಮಲ / ದಾಲ್ಚಿನ್ನಿ ಅಗರಬತ್ತಿ",
+   "why_en": "Gentle fragrance for the home puja.",
+   "why_kn": "ಮನೆಯ ಪೂಜೆಗೆ ಮೃದು ಪರಿಮಳ.",
+   "tip_en": "Smell a few — quality varies.",
+   "tip_kn": "ಕೆಲವನ್ನು ಮೂಸಿ ನೋಡಿ — ಗುಣಮಟ್ಟ ಬೇರೆ ಬೇರೆ."
+  },
+  {
+   "id": "balm",
+   "icon": "🌟",
+   "cat": "gifts",
+   "where": [
+    "oldquarter",
+    "airport"
+   ],
+   "place": "pharmacy",
+   "vmin": 23000,
+   "vmax": 45000,
+   "easy": true,
+   "en": "Golden Star balm (Cao Sao Vàng)",
+   "kn": "ಗೋಲ್ಡನ್ ಸ್ಟಾರ್ ಬಾಮ್",
+   "why_en": "Vietnam's Amrutanjan! Tiny tin, big love.",
+   "why_kn": "ವಿಯೆಟ್ನಾಂನ ಅಮೃತಾಂಜನ! ಸಣ್ಣ ಡಬ್ಬಿ, ದೊಡ್ಡ ಪ್ರೀತಿ.",
+   "tip_en": "Pharmacy price is fixed and fair.",
+   "tip_kn": "ಮೆಡಿಕಲ್ ಶಾಪ್ ಬೆಲೆ ಸ್ಥಿರ, ನ್ಯಾಯಯುತ."
+  },
+  {
+   "id": "facemask",
+   "icon": "🧴",
+   "cat": "gifts",
+   "where": [
+    "oldquarter"
+   ],
+   "place": "pharmacy",
+   "vmin": 45000,
+   "vmax": 135000,
+   "easy": true,
+   "en": "Green tea face masks (5-pack)",
+   "kn": "ಗ್ರೀನ್ ಟೀ ಫೇಸ್ ಮಾಸ್ಕ್ (5)",
+   "why_en": "Light gift for daughters and nieces.",
+   "why_kn": "ಮಗಳು, ಸೊಸೆಯರಿಗೆ ಹಗುರ ಉಡುಗೊರೆ.",
+   "tip_en": "Buy from pharmacies or beauty shops, not street stalls.",
+   "tip_kn": "ರಸ್ತೆ ಬದಿಯಲ್ಲಿ ಬೇಡ, ಮೆಡಿಕಲ್ ಅಥವಾ ಬ್ಯೂಟಿ ಶಾಪ್‌ನಲ್ಲಿ ಕೊಳ್ಳಿ."
+  },
+  {
+   "id": "magnet",
+   "icon": "🧲",
+   "cat": "gifts",
+   "where": [
+    "oldquarter",
+    "night",
+    "halong"
+   ],
+   "place": "night",
+   "vmin": 25000,
+   "vmax": 50000,
+   "easy": true,
+   "en": "Fridge magnets",
+   "kn": "ಫ್ರಿಜ್ ಮ್ಯಾಗ್ನೆಟ್",
+   "why_en": "Cheap memory of every place.",
+   "why_kn": "ಪ್ರತಿ ಜಾಗದ ಅಗ್ಗದ ನೆನಪು.",
+   "tip_en": "Buy 5, ask for a discount.",
+   "tip_kn": "5 ಕೊಂಡು ರಿಯಾಯಿತಿ ಕೇಳಿ."
+  },
+  {
+   "id": "fan",
+   "icon": "🪭",
+   "cat": "gifts",
+   "where": [
+    "oldquarter",
+    "night"
+   ],
+   "place": "night",
+   "vmin": 40000,
+   "vmax": 40000,
+   "easy": true,
+   "en": "Painted hand fan",
+   "kn": "ಬಣ್ಣದ ಕೈ ಬೀಸಣಿಗೆ",
+   "why_en": "Pretty and useful in Bengaluru summer.",
+   "why_kn": "ಸುಂದರ, ಬೆಂಗಳೂರು ಬೇಸಿಗೆಗೆ ಉಪಯುಕ್ತ.",
+   "tip_en": "Sold next to the hats. Bargain together.",
+   "tip_kn": "ಟೋಪಿಗಳ ಪಕ್ಕದಲ್ಲೇ ಸಿಗುತ್ತದೆ. ಒಟ್ಟಿಗೆ ಚೌಕಾಸಿ ಮಾಡಿ."
+  },
+  {
+   "id": "pearl",
+   "icon": "💎",
+   "cat": "gifts",
+   "where": [
+    "halong"
+   ],
+   "place": "pearl",
+   "vmin": 2800000,
+   "vmax": null,
+   "easy": true,
+   "en": "Ha Long pearl jewellery",
+   "kn": "ಹಾ ಲಾಂಗ್ ಮುತ್ತಿನ ಆಭರಣ",
+   "why_en": "A special gift. Cultured pearls from the bay farms.",
+   "why_kn": "ವಿಶೇಷ ಉಡುಗೊರೆ. ಕೊಲ್ಲಿಯ ಸಾಕಣೆ ಮುತ್ತು.",
+   "tip_en": "Buy only with a certificate. Never from boat sellers.",
+   "tip_kn": "ಪ್ರಮಾಣಪತ್ರದೊಂದಿಗೆ ಮಾತ್ರ ಕೊಳ್ಳಿ. ದೋಣಿ ವ್ಯಾಪಾರಿಗಳಿಂದ ಬೇಡ."
+  },
+  {
+   "id": "lacquerbox",
+   "icon": "🎨",
+   "cat": "art",
+   "where": [
+    "oldquarter"
+   ],
+   "place": "hangkhay",
+   "vmin": 180000,
+   "vmax": 340000,
+   "easy": true,
+   "en": "Lacquer box (small)",
+   "kn": "ಮೆರುಗಿನ ಪೆಟ್ಟಿಗೆ (ಸಣ್ಣ)",
+   "why_en": "Shiny hand-painted box for jewellery.",
+   "why_kn": "ಆಭರಣಕ್ಕೆ ಹೊಳೆಯುವ ಕೈ-ಬಣ್ಣದ ಪೆಟ್ಟಿಗೆ.",
+   "tip_en": "Real lacquer feels heavy and deep. Cheap ones are printed stickers.",
+   "tip_kn": "ನಿಜವಾದದ್ದು ಭಾರ, ಆಳವಾದ ಹೊಳಪು. ಅಗ್ಗದ್ದು ಸ್ಟಿಕ್ಕರ್."
+  },
+  {
+   "id": "lacquerbowl",
+   "icon": "🏺",
+   "cat": "art",
+   "where": [
+    "oldquarter"
+   ],
+   "place": "hangkhay",
+   "vmin": 670000,
+   "vmax": 1800000,
+   "easy": false,
+   "en": "Lacquer bowl (medium)",
+   "kn": "ಮೆರುಗಿನ ಬಟ್ಟಲು",
+   "why_en": "A showpiece for the living room.",
+   "why_kn": "ಹಾಲ್‌ಗೆ ಶೋಪೀಸ್.",
+   "tip_en": "Bargaining is hard here — walk away politely if too high.",
+   "tip_kn": "ಇಲ್ಲಿ ಚೌಕಾಸಿ ಕಷ್ಟ — ದುಬಾರಿ ಎನಿಸಿದರೆ ನಯವಾಗಿ ಹೊರಡಿ."
+  },
+  {
+   "id": "donghoprint",
+   "icon": "🖼",
+   "cat": "art",
+   "where": [
+    "oldquarter"
+   ],
+   "place": "hangtrong",
+   "vmin": 90000,
+   "vmax": 335000,
+   "easy": true,
+   "en": "Đông Hồ folk print",
+   "kn": "ಡಾಂಗ್ ಹೋ ಜಾನಪದ ಚಿತ್ರ",
+   "why_en": "Village woodblock art — like our Kalamkari spirit.",
+   "why_kn": "ಹಳ್ಳಿಯ ಮರದ ಅಚ್ಚಿನ ಕಲೆ — ನಮ್ಮ ಕಲಂಕಾರಿಯ ಹಾಗೆ.",
+   "tip_en": "Ask for a cardboard tube to carry it.",
+   "tip_kn": "ಒಯ್ಯಲು ಕಾರ್ಡ್‌ಬೋರ್ಡ್ ಕೊಳವೆ ಕೇಳಿ."
+  },
+  {
+   "id": "poster",
+   "icon": "📜",
+   "cat": "art",
+   "where": [
+    "oldquarter"
+   ],
+   "place": "hangtrong",
+   "vmin": 50000,
+   "vmax": 120000,
+   "easy": true,
+   "en": "Retro poster print",
+   "kn": "ಹಳೆಯ ಶೈಲಿಯ ಪೋಸ್ಟರ್",
+   "why_en": "Bold, colourful wall art.",
+   "why_kn": "ದಪ್ಪ, ಬಣ್ಣಬಣ್ಣದ ಗೋಡೆ ಕಲೆ.",
+   "tip_en": "Buy reproductions only — originals are a customs risk.",
+   "tip_kn": "ಪ್ರತಿಕೃತಿ ಮಾತ್ರ — ಮೂಲ ಪೋಸ್ಟರ್ ಕಸ್ಟಮ್ಸ್ ತೊಂದರೆ."
+  },
+  {
+   "id": "dopaper",
+   "icon": "📄",
+   "cat": "art",
+   "where": [
+    "oldquarter"
+   ],
+   "place": "hangtrong",
+   "vmin": 30000,
+   "vmax": 100000,
+   "easy": true,
+   "en": "Handmade dó paper cards",
+   "kn": "ಕೈಯಲ್ಲಿ ಮಾಡಿದ 'ಜೋ' ಕಾಗದದ ಕಾರ್ಡ್",
+   "why_en": "Paper made from tree bark, by hand.",
+   "why_kn": "ಮರದ ತೊಗಟೆಯಿಂದ ಕೈಯಲ್ಲಿ ಮಾಡಿದ ಕಾಗದ.",
+   "tip_en": "Flat and light — perfect for the suitcase.",
+   "tip_kn": "ಚಪ್ಪಟೆ, ಹಗುರ — ಸೂಟ್‌ಕೇಸ್‌ಗೆ ಸರಿ."
+  },
+  {
+   "id": "popup",
+   "icon": "🎴",
+   "cat": "kids",
+   "where": [
+    "oldquarter",
+    "night"
+   ],
+   "place": "night",
+   "vmin": 100000,
+   "vmax": 100000,
+   "easy": true,
+   "en": "Pop-up cards",
+   "kn": "ಪಾಪ್-ಅಪ್ ಕಾರ್ಡ್",
+   "why_en": "Open it and a pagoda pops up! Kids are amazed.",
+   "why_kn": "ತೆರೆದರೆ ಪಗೋಡ ಎದ್ದು ನಿಲ್ಲುತ್ತದೆ! ಮಕ್ಕಳಿಗೆ ಅಚ್ಚರಿ.",
+   "tip_en": "Buy several and bargain for the bundle.",
+   "tip_kn": "ಹಲವು ಕೊಂಡು ಒಟ್ಟಿಗೆ ಚೌಕಾಸಿ ಮಾಡಿ."
+  },
+  {
+   "id": "puppet",
+   "icon": "🎭",
+   "cat": "kids",
+   "where": [
+    "oldquarter"
+   ],
+   "place": "theatre",
+   "vmin": null,
+   "vmax": null,
+   "easy": false,
+   "en": "Wooden water puppet",
+   "kn": "ಮರದ ನೀರಿನ ಬೊಂಬೆ",
+   "why_en": "A souvenir of the show — the cheeky Chú Tễu!",
+   "why_kn": "ಪ್ರದರ್ಶನದ ನೆನಪು — ತುಂಟ ಚು ತೇವ್!",
+   "tip_en": "Ask the price at the theatre shop.",
+   "tip_kn": "ರಂಗಮಂದಿರದ ಅಂಗಡಿಯಲ್ಲಿ ಬೆಲೆ ಕೇಳಿ."
+  },
+  {
+   "id": "minilantern",
+   "icon": "🏮",
+   "cat": "kids",
+   "where": [
+    "oldquarter",
+    "night"
+   ],
+   "place": "hangma",
+   "vmin": 30000,
+   "vmax": 50000,
+   "easy": true,
+   "en": "Mini lanterns",
+   "kn": "ಸಣ್ಣ ಲಾಂಟರ್ನ್",
+   "why_en": "Colourful and light — kids' room decor.",
+   "why_kn": "ಬಣ್ಣಬಣ್ಣದ, ಹಗುರ — ಮಕ್ಕಳ ರೂಮಿಗೆ.",
+   "tip_en": "Hang Ma Street has the most choice.",
+   "tip_kn": "ಹಾಂಗ್ ಮಾ ಬೀದಿಯಲ್ಲಿ ಹೆಚ್ಚು ಆಯ್ಕೆ."
+  },
+  {
+   "id": "kidstee",
+   "icon": "👶",
+   "cat": "kids",
+   "where": [
+    "night"
+   ],
+   "place": "night",
+   "vmin": 100000,
+   "vmax": 150000,
+   "easy": true,
+   "en": "Kids' Vietnam T-shirt",
+   "kn": "ಮಕ್ಕಳ ವಿಯೆಟ್ನಾಂ ಟಿ-ಶರ್ಟ್",
+   "why_en": "Cute designs with buffalos and lanterns.",
+   "why_kn": "ಎಮ್ಮೆ, ಲಾಂಟರ್ನ್ ಚಿತ್ರಗಳ ಮುದ್ದಾದ ಡಿಸೈನ್.",
+   "tip_en": "Check the size with the child's age written on the tag.",
+   "tip_kn": "ಟ್ಯಾಗ್‌ನಲ್ಲಿ ವಯಸ್ಸಿನ ಸೈಜ್ ನೋಡಿ."
+  },
+  {
+   "id": "hangma",
+   "icon": "🧧",
+   "cat": "quirky",
+   "where": [
+    "oldquarter"
+   ],
+   "place": "hangma",
+   "vmin": null,
+   "vmax": null,
+   "easy": true,
+   "en": "Hang Ma paper offerings (just look!)",
+   "kn": "ಹಾಂಗ್ ಮಾ ಕಾಗದದ ಕಾಣಿಕೆಗಳು (ನೋಡಿ ಸಾಕು!)",
+   "why_en": "Paper iPhones, cars and houses made for ancestors. Crazy photos!",
+   "why_kn": "ಪೂರ್ವಜರಿಗಾಗಿ ಕಾಗದದ ಐಫೋನ್, ಕಾರು, ಮನೆ! ಮಜವಾದ ಫೋಟೋ!",
+   "tip_en": "Free to look. Ask before taking close photos.",
+   "tip_kn": "ನೋಡಲು ಉಚಿತ. ಹತ್ತಿರದ ಫೋಟೋಗೆ ಮುಂಚೆ ಕೇಳಿ."
+  },
+  {
+   "id": "tincan",
+   "icon": "🛵",
+   "cat": "quirky",
+   "where": [
+    "oldquarter",
+    "night"
+   ],
+   "place": "night",
+   "vmin": null,
+   "vmax": null,
+   "easy": true,
+   "en": "Tin-can motorbike model",
+   "kn": "ಡಬ್ಬದಿಂದ ಮಾಡಿದ ಬೈಕ್ ಮಾದರಿ",
+   "why_en": "Tiny motorbikes made from recycled cans!",
+   "why_kn": "ಹಳೆಯ ಡಬ್ಬಗಳಿಂದ ಮಾಡಿದ ಪುಟ್ಟ ಬೈಕ್!",
+   "tip_en": "Ask the price, then offer half.",
+   "tip_kn": "ಬೆಲೆ ಕೇಳಿ, ಅರ್ಧ ಹೇಳಿ."
+  },
+  {
+   "id": "eggcoffee",
+   "icon": "☕",
+   "cat": "quirky",
+   "where": [
+    "oldquarter"
+   ],
+   "place": "dongxuan",
+   "vmin": null,
+   "vmax": null,
+   "easy": false,
+   "en": "Try: egg coffee (drink, not buy!)",
+   "kn": "ಪ್ರಯತ್ನಿಸಿ: ಮೊಟ್ಟೆ ಕಾಫಿ",
+   "why_en": "Coffee topped with sweet whipped egg cream. Hanoi's famous drink.",
+   "why_kn": "ಸಿಹಿ ಮೊಟ್ಟೆ ಕ್ರೀಂ ಮೇಲಿನ ಕಾಫಿ. ಹನೋಯ್‌ನ ಪ್ರಸಿದ್ಧ ಪಾನೀಯ.",
+   "tip_en": "Eggs are OK for you — a must-try experience.",
+   "tip_kn": "ನಿಮಗೆ ಮೊಟ್ಟೆ ಪರವಾಗಿಲ್ಲ — ಖಂಡಿತ ಪ್ರಯತ್ನಿಸಿ."
+  }
+ ]
+}

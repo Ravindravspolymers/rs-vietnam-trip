@@ -1,0 +1,463 @@
+{
+ "_note": "Approx., as of Oct 2026. ⚠️ Confirm Mumbai terminals and through-checked bags with IndiGo.",
+ "lists": [
+  {
+   "id": "docs",
+   "icon": "🛂",
+   "en": "Documents",
+   "kn": "ದಾಖಲೆಗಳು",
+   "items": [
+    {
+     "id": "docs0",
+     "en": "Passport (valid 6+ months)",
+     "kn": "ಪಾಸ್‌ಪೋರ್ಟ್ (6 ತಿಂಗಳಿಗಿಂತ ಹೆಚ್ಚು ಅವಧಿ)"
+    },
+    {
+     "id": "docs1",
+     "en": "Vietnam e-visa printout ×2",
+     "kn": "ವಿಯೆಟ್ನಾಂ ಇ-ವೀಸಾ ಪ್ರಿಂಟ್ ×2"
+    },
+    {
+     "id": "docs2",
+     "en": "Flight tickets printout",
+     "kn": "ವಿಮಾನ ಟಿಕೆಟ್ ಪ್ರಿಂಟ್"
+    },
+    {
+     "id": "docs3",
+     "en": "Hotel + cruise vouchers",
+     "kn": "ಹೋಟೆಲ್ ಮತ್ತು ಹಡಗಿನ ವೋಚರ್"
+    },
+    {
+     "id": "docs4",
+     "en": "Travel insurance papers",
+     "kn": "ಪ್ರಯಾಣ ವಿಮೆ ಕಾಗದ"
+    },
+    {
+     "id": "docs5",
+     "en": "PAN / Aadhaar copies",
+     "kn": "ಪ್ಯಾನ್ / ಆಧಾರ್ ಪ್ರತಿಗಳು"
+    },
+    {
+     "id": "docs6",
+     "en": "Emergency numbers written on paper",
+     "kn": "ತುರ್ತು ನಂಬರ್‌ಗಳು ಕಾಗದದಲ್ಲಿ ಬರೆದಿಡಿ"
+    },
+    {
+     "id": "docs7",
+     "en": "Photos of all documents added in Docs",
+     "kn": "ಎಲ್ಲಾ ದಾಖಲೆಗಳ ಫೋಟೋ 'Docs' ನಲ್ಲಿ ಸೇರಿಸಿ"
+    }
+   ]
+  },
+  {
+   "id": "money",
+   "icon": "💵",
+   "en": "Money",
+   "kn": "ಹಣ",
+   "items": [
+    {
+     "id": "money0",
+     "en": "US dollars in crisp $50/$100 notes (no tears)",
+     "kn": "ಹರಿಯದ ಹೊಸ $50/$100 ಡಾಲರ್ ನೋಟುಗಳು"
+    },
+    {
+     "id": "money1",
+     "en": "Forex or zero-forex card + PIN",
+     "kn": "ಫಾರೆಕ್ಸ್ ಕಾರ್ಡ್ ಮತ್ತು ಪಿನ್"
+    },
+    {
+     "id": "money2",
+     "en": "Some rupees for Bengaluru and Mumbai",
+     "kn": "ಬೆಂಗಳೂರು, ಮುಂಬೈಗೆ ಸ್ವಲ್ಪ ರೂಪಾಯಿ"
+    },
+    {
+     "id": "money3",
+     "en": "Keep money in two different places",
+     "kn": "ಹಣವನ್ನು ಎರಡು ಬೇರೆ ಜಾಗದಲ್ಲಿ ಇಡಿ"
+    }
+   ]
+  },
+  {
+   "id": "phone",
+   "icon": "📱",
+   "en": "Phone",
+   "kn": "ಫೋನ್",
+   "items": [
+    {
+     "id": "phone0",
+     "en": "Airtel roaming pack activated",
+     "kn": "ಏರ್‌ಟೆಲ್ ರೋಮಿಂಗ್ ಪ್ಯಾಕ್ ಆಕ್ಟಿವೇಟ್"
+    },
+    {
+     "id": "phone1",
+     "en": "Grab app installed, OTP tested",
+     "kn": "ಗ್ರ್ಯಾಬ್ ಆ್ಯಪ್ ಹಾಕಿ, OTP ಪರೀಕ್ಷಿಸಿ"
+    },
+    {
+     "id": "phone2",
+     "en": "Google Translate + Vietnamese offline pack",
+     "kn": "ಗೂಗಲ್ ಟ್ರಾನ್ಸ್‌ಲೇಟ್ + ವಿಯೆಟ್ನಾಮೀಸ್ ಆಫ್‌ಲೈನ್"
+    },
+    {
+     "id": "phone3",
+     "en": "Google Maps offline: Hanoi, Ninh Binh, Ha Long",
+     "kn": "ಗೂಗಲ್ ಮ್ಯಾಪ್ ಆಫ್‌ಲೈನ್: ಹನೋಯ್, ನಿನ್ ಬಿನ್, ಹಾ ಲಾಂಗ್"
+    },
+    {
+     "id": "phone4",
+     "en": "This app on home screen, opened once online",
+     "kn": "ಈ ಆ್ಯಪ್ ಹೋಮ್ ಸ್ಕ್ರೀನ್‌ನಲ್ಲಿ, ಒಮ್ಮೆ ಇಂಟರ್ನೆಟ್ ಇದ್ದಾಗ ತೆರೆಯಿರಿ"
+    },
+    {
+     "id": "phone5",
+     "en": "Kannada + Vietnamese voices installed",
+     "kn": "ಕನ್ನಡ ಮತ್ತು ವಿಯೆಟ್ನಾಮೀಸ್ ಧ್ವನಿ ಹಾಕಿ"
+    },
+    {
+     "id": "phone6",
+     "en": "Contacts saved in Settings",
+     "kn": "ಸೆಟ್ಟಿಂಗ್ಸ್‌ನಲ್ಲಿ ಕಾಂಟ್ಯಾಕ್ಟ್ ಉಳಿಸಿ"
+    },
+    {
+     "id": "phone7",
+     "en": "Backup done and sent on WhatsApp",
+     "kn": "ಬ್ಯಾಕಪ್ ಮಾಡಿ WhatsApp ನಲ್ಲಿ ಕಳುಹಿಸಿ"
+    }
+   ]
+  },
+  {
+   "id": "health",
+   "icon": "💊",
+   "en": "Health & comfort",
+   "kn": "ಆರೋಗ್ಯ ಮತ್ತು ಆರಾಮ",
+   "items": [
+    {
+     "id": "health0",
+     "en": "Regular medicines + 3 extra days (cabin bag)",
+     "kn": "ದಿನದ ಔಷಧಿ + 3 ದಿನ ಹೆಚ್ಚು (ಕೈ ಬ್ಯಾಗ್‌ನಲ್ಲಿ)"
+    },
+    {
+     "id": "health1",
+     "en": "Doctor's prescription copy",
+     "kn": "ಡಾಕ್ಟರ್ ಚೀಟಿಯ ಪ್ರತಿ"
+    },
+    {
+     "id": "health2",
+     "en": "Motion-sickness tablets (cruise)",
+     "kn": "ವಾಂತಿ/ತಲೆಸುತ್ತು ಮಾತ್ರೆ (ಹಡಗಿಗೆ)"
+    },
+    {
+     "id": "health3",
+     "en": "Pain / fever tablets",
+     "kn": "ನೋವು / ಜ್ವರದ ಮಾತ್ರೆ"
+    },
+    {
+     "id": "health4",
+     "en": "ORS packets",
+     "kn": "ORS ಪ್ಯಾಕೆಟ್"
+    },
+    {
+     "id": "health5",
+     "en": "Sanitiser and masks",
+     "kn": "ಸ್ಯಾನಿಟೈಸರ್, ಮಾಸ್ಕ್"
+    },
+    {
+     "id": "health6",
+     "en": "Sunscreen and cap",
+     "kn": "ಸನ್‌ಸ್ಕ್ರೀನ್, ಟೋಪಿ"
+    },
+    {
+     "id": "health7",
+     "en": "Small umbrella",
+     "kn": "ಸಣ್ಣ ಛತ್ರಿ"
+    },
+    {
+     "id": "health8",
+     "en": "Light jacket + shawl",
+     "kn": "ತೆಳು ಜಾಕೆಟ್ + ಶಾಲು"
+    },
+    {
+     "id": "health9",
+     "en": "Comfortable walking shoes + slippers",
+     "kn": "ಆರಾಮದ ಶೂ + ಚಪ್ಪಲಿ"
+    },
+    {
+     "id": "health10",
+     "en": "Spare glasses",
+     "kn": "ಹೆಚ್ಚುವರಿ ಕನ್ನಡಕ"
+    }
+   ]
+  },
+  {
+   "id": "personal",
+   "icon": "🎒",
+   "en": "Personal items",
+   "kn": "ವೈಯಕ್ತಿಕ ವಸ್ತುಗಳು",
+   "items": [
+    {
+     "id": "personal0",
+     "en": "Universal travel adapter (Vietnam uses 2-pin plugs)",
+     "kn": "ಯುನಿವರ್ಸಲ್ ಅಡಾಪ್ಟರ್ (ವಿಯೆಟ್ನಾಂನಲ್ಲಿ 2-ಪಿನ್ ಪ್ಲಗ್)"
+    },
+    {
+     "id": "personal1",
+     "en": "Power bank — cabin bag only",
+     "kn": "ಪವರ್ ಬ್ಯಾಂಕ್ — ಕೈ ಬ್ಯಾಗ್‌ನಲ್ಲಿ ಮಾತ್ರ"
+    },
+    {
+     "id": "personal2",
+     "en": "3-socket extension board",
+     "kn": "3-ಸಾಕೆಟ್ ಎಕ್ಸ್‌ಟೆನ್ಶನ್ ಬೋರ್ಡ್"
+    },
+    {
+     "id": "personal3",
+     "en": "Toiletries (liquids under 100 ml in cabin bag)",
+     "kn": "ಶೌಚ ಸಾಮಗ್ರಿ (ಕೈ ಬ್ಯಾಗ್‌ನಲ್ಲಿ 100 ml ಒಳಗೆ)"
+    },
+    {
+     "id": "personal4",
+     "en": "Small towel",
+     "kn": "ಸಣ್ಣ ಟವೆಲ್"
+    },
+    {
+     "id": "personal5",
+     "en": "Snacks: thepla, khakhra, dry fruits (sealed)",
+     "kn": "ತಿಂಡಿ: ಥೇಪ್ಲಾ, ಖಾಕ್ರಾ, ಒಣಹಣ್ಣು (ಸೀಲ್ ಮಾಡಿ)"
+    },
+    {
+     "id": "personal6",
+     "en": "Steel bottle (empty at security)",
+     "kn": "ಸ್ಟೀಲ್ ಬಾಟಲ್ (ಸೆಕ್ಯೂರಿಟಿಯಲ್ಲಿ ಖಾಲಿ)"
+    },
+    {
+     "id": "personal7",
+     "en": "Small bag for day trips",
+     "kn": "ದಿನದ ಪ್ರವಾಸಕ್ಕೆ ಸಣ್ಣ ಬ್ಯಾಗ್"
+    },
+    {
+     "id": "personal8",
+     "en": "Zip pouches",
+     "kn": "ಜಿಪ್ ಪೌಚ್‌ಗಳು"
+    },
+    {
+     "id": "personal9",
+     "en": "Pen (for forms)",
+     "kn": "ಪೆನ್ (ಫಾರ್ಮ್ ತುಂಬಲು)"
+    }
+   ]
+  },
+  {
+   "id": "weather",
+   "icon": "🌤",
+   "en": "Weather & clothes",
+   "kn": "ಹವಾಮಾನ ಮತ್ತು ಬಟ್ಟೆ",
+   "items": [
+    {
+     "id": "weather0",
+     "en": "Late Nov Hanoi: about 16–24°C, mostly dry",
+     "kn": "ನವೆಂಬರ್ ಕೊನೆ ಹನೋಯ್: ಸುಮಾರು 16–24°C, ಒಣ ಹವೆ"
+    },
+    {
+     "id": "weather1",
+     "en": "Layers: cool mornings and evenings",
+     "kn": "ಪದರ ಬಟ್ಟೆ: ಬೆಳಿಗ್ಗೆ, ಸಂಜೆ ಚಳಿ"
+    },
+    {
+     "id": "weather2",
+     "en": "Warm layer for the windy cruise deck",
+     "kn": "ಗಾಳಿಯ ಡೆಕ್‌ಗೆ ಬೆಚ್ಚಗಿನ ಬಟ್ಟೆ"
+    },
+    {
+     "id": "weather3",
+     "en": "Breathable clothes for Ninh Binh day",
+     "kn": "ನಿನ್ ಬಿನ್ ದಿನಕ್ಕೆ ಗಾಳಿಯಾಡುವ ಬಟ್ಟೆ"
+    },
+    {
+     "id": "weather4",
+     "en": "Temple clothes covering shoulders and knees",
+     "kn": "ದೇವಾಲಯಕ್ಕೆ ಭುಜ, ಮಂಡಿ ಮುಚ್ಚುವ ಬಟ್ಟೆ"
+    }
+   ]
+  }
+ ],
+ "airport": [
+  {
+   "id": "blr1",
+   "icon": "🛫",
+   "en": "Bengaluru — leave",
+   "kn": "ಬೆಂಗಳೂರು — ಹೊರಡುವುದು",
+   "when": "Mon 23 Nov · Flight 6E-5094 at 10:00 pm (domestic)",
+   "steps": [
+    {
+     "en": "Reach the airport by 7:30 pm. Check the terminal on your ticket.",
+     "kn": "ಸಂಜೆ 7:30ಕ್ಕೆ ವಿಮಾನ ನಿಲ್ದಾಣ ತಲುಪಿ. ಟಿಕೆಟ್‌ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ನೋಡಿ."
+    },
+    {
+     "en": "IndiGo check-in: show passport, e-visa and both tickets.",
+     "kn": "ಇಂಡಿಗೋ ಚೆಕ್-ಇನ್: ಪಾಸ್‌ಪೋರ್ಟ್, ಇ-ವೀಸಾ, ಎರಡೂ ಟಿಕೆಟ್ ತೋರಿಸಿ."
+    },
+    {
+     "en": "Ask: 'Are bags checked through to Hanoi? Can I get both boarding passes?'",
+     "kn": "ಕೇಳಿ: 'ಬ್ಯಾಗ್ ನೇರ ಹನೋಯ್‌ಗೆ ಹೋಗುತ್ತದೆಯೇ? ಎರಡೂ ಬೋರ್ಡಿಂಗ್ ಪಾಸ್ ಕೊಡುತ್ತೀರಾ?'"
+    },
+    {
+     "en": "Security check → go to the gate.",
+     "kn": "ಸೆಕ್ಯೂರಿಟಿ ಚೆಕ್ → ಗೇಟ್‌ಗೆ ಹೋಗಿ."
+    },
+    {
+     "en": "No immigration in Bengaluru. That happens in Mumbai.",
+     "kn": "ಬೆಂಗಳೂರಿನಲ್ಲಿ ಇಮಿಗ್ರೇಶನ್ ಇಲ್ಲ. ಅದು ಮುಂಬೈನಲ್ಲಿ."
+    }
+   ]
+  },
+  {
+   "id": "bom1",
+   "icon": "🔄",
+   "en": "Mumbai — change to international",
+   "kn": "ಮುಂಬೈ — ಅಂತಾರಾಷ್ಟ್ರೀಯ ವಿಮಾನಕ್ಕೆ ಬದಲಾವಣೆ",
+   "when": "Tue 24 Nov · land ~12:10 am · Flight 6E-1637 at 4:10 am from T2",
+   "steps": [
+    {
+     "en": "You land in the domestic terminal (likely T1).",
+     "kn": "ನೀವು ದೇಶೀಯ ಟರ್ಮಿನಲ್‌ನಲ್ಲಿ (ಬಹುಶಃ T1) ಇಳಿಯುತ್ತೀರಿ."
+    },
+    {
+     "en": "If bags were NOT checked through: collect bags at the belt.",
+     "kn": "ಬ್ಯಾಗ್ ನೇರ ಹೋಗದಿದ್ದರೆ: ಬೆಲ್ಟ್‌ನಿಂದ ಬ್ಯಾಗ್ ತೆಗೆದುಕೊಳ್ಳಿ."
+    },
+    {
+     "en": "Follow 'Inter-Terminal Transfer'. Free shuttle to T2 (15–20 min). Ask IndiGo staff for help.",
+     "kn": "'ಇಂಟರ್-ಟರ್ಮಿನಲ್ ಟ್ರಾನ್ಸ್‌ಫರ್' ಫಲಕ ಅನುಸರಿಸಿ. T2ಗೆ ಉಚಿತ ಬಸ್ (15–20 ನಿಮಿಷ). ಇಂಡಿಗೋ ಸಿಬ್ಬಂದಿಯ ಸಹಾಯ ಕೇಳಿ."
+    },
+    {
+     "en": "At T2: IndiGo international check-in (if needed).",
+     "kn": "T2ನಲ್ಲಿ: ಇಂಡಿಗೋ ಅಂತಾರಾಷ್ಟ್ರೀಯ ಚೆಕ್-ಇನ್ (ಬೇಕಿದ್ದರೆ)."
+    },
+    {
+     "en": "Emigration: show passport and boarding pass.",
+     "kn": "ಎಮಿಗ್ರೇಶನ್: ಪಾಸ್‌ಪೋರ್ಟ್, ಬೋರ್ಡಿಂಗ್ ಪಾಸ್ ತೋರಿಸಿ."
+    },
+    {
+     "en": "Security check → gate. Rest until boarding.",
+     "kn": "ಸೆಕ್ಯೂರಿಟಿ → ಗೇಟ್. ಬೋರ್ಡಿಂಗ್‌ವರೆಗೆ ವಿಶ್ರಾಂತಿ."
+    }
+   ]
+  },
+  {
+   "id": "han1",
+   "icon": "🛬",
+   "en": "Hanoi — arrive",
+   "kn": "ಹನೋಯ್ — ತಲುಪುವುದು",
+   "when": "Tue 24 Nov · land 10:00 am · Noi Bai Terminal 2",
+   "steps": [
+    {
+     "en": "Immigration: passport + e-visa printout.",
+     "kn": "ಇಮಿಗ್ರೇಶನ್: ಪಾಸ್‌ಪೋರ್ಟ್ + ಇ-ವೀಸಾ ಪ್ರಿಂಟ್."
+    },
+    {
+     "en": "Collect bags at the belt.",
+     "kn": "ಬೆಲ್ಟ್‌ನಿಂದ ಬ್ಯಾಗ್ ತೆಗೆದುಕೊಳ್ಳಿ."
+    },
+    {
+     "en": "Customs: walk through the green lane.",
+     "kn": "ಕಸ್ಟಮ್ಸ್: ಹಸಿರು ದಾರಿಯಲ್ಲಿ ನಡೆಯಿರಿ."
+    },
+    {
+     "en": "Buy a Viettel SIM at the counter.",
+     "kn": "ಕೌಂಟರ್‌ನಲ್ಲಿ ವಿಯೆಟೆಲ್ ಸಿಮ್ ಕೊಳ್ಳಿ."
+    },
+    {
+     "en": "Change only a small amount of money here.",
+     "kn": "ಇಲ್ಲಿ ಸ್ವಲ್ಪ ಹಣ ಮಾತ್ರ ಬದಲಿಸಿ."
+    },
+    {
+     "en": "Find the hotel driver with your name sign, or book Grab.",
+     "kn": "ನಿಮ್ಮ ಹೆಸರಿನ ಫಲಕದ ಚಾಲಕನನ್ನು ಹುಡುಕಿ, ಅಥವಾ ಗ್ರ್ಯಾಬ್ ಬುಕ್ ಮಾಡಿ."
+    }
+   ]
+  },
+  {
+   "id": "han2",
+   "icon": "🛫",
+   "en": "Hanoi — leave",
+   "kn": "ಹನೋಯ್ — ಹೊರಡುವುದು",
+   "when": "Sun 29 Nov · Flight 6E-1638 at 7:05 pm · Terminal 2",
+   "steps": [
+    {
+     "en": "Leave the hotel by 3:30 pm.",
+     "kn": "ಮಧ್ಯಾಹ್ನ 3:30ರೊಳಗೆ ಹೋಟೆಲ್ ಬಿಡಿ."
+    },
+    {
+     "en": "IndiGo check-in at T2. Ask for both boarding passes to Bengaluru.",
+     "kn": "T2ನಲ್ಲಿ ಇಂಡಿಗೋ ಚೆಕ್-ಇನ್. ಬೆಂಗಳೂರುವರೆಗೆ ಎರಡೂ ಬೋರ್ಡಿಂಗ್ ಪಾಸ್ ಕೇಳಿ."
+    },
+    {
+     "en": "Exit immigration: show passport.",
+     "kn": "ನಿರ್ಗಮನ ಇಮಿಗ್ರೇಶನ್: ಪಾಸ್‌ಪೋರ್ಟ್ ತೋರಿಸಿ."
+    },
+    {
+     "en": "Security check → gate.",
+     "kn": "ಸೆಕ್ಯೂರಿಟಿ → ಗೇಟ್."
+    },
+    {
+     "en": "Spend leftover đồng on snacks — it is hard to change in India.",
+     "kn": "ಉಳಿದ ಡಾಂಗ್ ತಿಂಡಿಗೆ ಖರ್ಚು ಮಾಡಿ — ಭಾರತದಲ್ಲಿ ಬದಲಿಸುವುದು ಕಷ್ಟ."
+    }
+   ]
+  },
+  {
+   "id": "bom2",
+   "icon": "🔄",
+   "en": "Mumbai — enter India, change terminal",
+   "kn": "ಮುಂಬೈ — ಭಾರತ ಪ್ರವೇಶ, ಟರ್ಮಿನಲ್ ಬದಲಾವಣೆ",
+   "when": "Sun 29 Nov · land 11:05 pm at T2 · Flight 6E-5193 at 7:30 am from T1",
+   "steps": [
+    {
+     "en": "Immigration (Indian passport counter).",
+     "kn": "ಇಮಿಗ್ರೇಶನ್ (ಭಾರತೀಯ ಪಾಸ್‌ಪೋರ್ಟ್ ಕೌಂಟರ್)."
+    },
+    {
+     "en": "Collect your bags at the belt.",
+     "kn": "ಬೆಲ್ಟ್‌ನಿಂದ ಬ್ಯಾಗ್ ತೆಗೆದುಕೊಳ್ಳಿ."
+    },
+    {
+     "en": "Customs: green channel if nothing to declare.",
+     "kn": "ಕಸ್ಟಮ್ಸ್: ಘೋಷಿಸಲು ಏನೂ ಇಲ್ಲದಿದ್ದರೆ ಹಸಿರು ದಾರಿ."
+    },
+    {
+     "en": "Follow 'Inter-Terminal Transfer' → free shuttle to T1 (15–20 min).",
+     "kn": "'ಇಂಟರ್-ಟರ್ಮಿನಲ್ ಟ್ರಾನ್ಸ್‌ಫರ್' → T1ಗೆ ಉಚಿತ ಬಸ್ (15–20 ನಿಮಿಷ)."
+    },
+    {
+     "en": "Long wait (about 8 hours). Rest, eat, keep bags close.",
+     "kn": "ದೀರ್ಘ ಕಾಯುವಿಕೆ (ಸುಮಾರು 8 ಗಂಟೆ). ವಿಶ್ರಾಂತಿ, ಊಟ, ಬ್ಯಾಗ್ ಹತ್ತಿರ ಇರಲಿ."
+    },
+    {
+     "en": "IndiGo domestic check-in at T1 → security → gate.",
+     "kn": "T1ನಲ್ಲಿ ಇಂಡಿಗೋ ದೇಶೀಯ ಚೆಕ್-ಇನ್ → ಸೆಕ್ಯೂರಿಟಿ → ಗೇಟ್."
+    }
+   ]
+  },
+  {
+   "id": "blr2",
+   "icon": "🏠",
+   "en": "Bengaluru — home!",
+   "kn": "ಬೆಂಗಳೂರು — ಮನೆಗೆ!",
+   "when": "Mon 30 Nov · land 9:15 am · Terminal 1",
+   "steps": [
+    {
+     "en": "Collect bags at the belt.",
+     "kn": "ಬೆಲ್ಟ್‌ನಿಂದ ಬ್ಯಾಗ್ ತೆಗೆದುಕೊಳ್ಳಿ."
+    },
+    {
+     "en": "No immigration here (domestic flight).",
+     "kn": "ಇಲ್ಲಿ ಇಮಿಗ್ರೇಶನ್ ಇಲ್ಲ (ದೇಶೀಯ ವಿಮಾನ)."
+    },
+    {
+     "en": "Walk out — welcome home! 🙏",
+     "kn": "ಹೊರಗೆ ಬನ್ನಿ — ಮನೆಗೆ ಸ್ವಾಗತ! 🙏"
+    }
+   ]
+  }
+ ]
+}

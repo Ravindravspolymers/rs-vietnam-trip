@@ -1,0 +1,145 @@
+{
+ "_note": "'nofish': true = say 'không nước mắm' when ordering.",
+ "dishes": [
+  {
+   "icon": "🍚",
+   "vi": "Cơm chiên chay",
+   "en": "Vegetarian fried rice",
+   "kn": "ಸಸ್ಯಾಹಾರಿ ಫ್ರೈಡ್ ರೈಸ್",
+   "nofish": true
+  },
+  {
+   "icon": "🍜",
+   "vi": "Phở chay",
+   "en": "Vegetarian noodle soup (pho)",
+   "kn": "ಸಸ್ಯಾಹಾರಿ ನೂಡಲ್ಸ್ ಸೂಪ್",
+   "nofish": true
+  },
+  {
+   "icon": "🍜",
+   "vi": "Bún chay",
+   "en": "Rice noodles with tofu and vegetables",
+   "kn": "ತೋಫು, ತರಕಾರಿ ಜೊತೆ ಅಕ್ಕಿ ನೂಡಲ್ಸ್",
+   "nofish": true
+  },
+  {
+   "icon": "🥢",
+   "vi": "Đậu phụ sốt cà chua",
+   "en": "Tofu in tomato sauce",
+   "kn": "ಟೊಮೆಟೊ ಗ್ರೇವಿಯಲ್ಲಿ ತೋಫು (ಪನೀರ್‌ನಂತೆ)",
+   "nofish": true
+  },
+  {
+   "icon": "🥬",
+   "vi": "Rau muống xào tỏi",
+   "en": "Water spinach fried with garlic",
+   "kn": "ಬೆಳ್ಳುಳ್ಳಿ ಹಾಕಿ ಹುರಿದ ಸೊಪ್ಪು",
+   "nofish": true
+  },
+  {
+   "icon": "🥦",
+   "vi": "Rau củ xào thập cẩm",
+   "en": "Mixed stir-fried vegetables",
+   "kn": "ಮಿಶ್ರ ತರಕಾರಿ ಪಲ್ಯ",
+   "nofish": true
+  },
+  {
+   "icon": "🍆",
+   "vi": "Cà tím xào chay",
+   "en": "Stir-fried eggplant (vegetarian)",
+   "kn": "ಬದನೆಕಾಯಿ ಪಲ್ಯ",
+   "nofish": true
+  },
+  {
+   "icon": "🥟",
+   "vi": "Nem rán chay",
+   "en": "Fried vegetable spring rolls",
+   "kn": "ಎಣ್ಣೆಯಲ್ಲಿ ಕರಿದ ತರಕಾರಿ ರೋಲ್",
+   "nofish": true
+  },
+  {
+   "icon": "🌯",
+   "vi": "Gỏi cuốn chay",
+   "en": "Fresh rice-paper rolls with vegetables",
+   "kn": "ತಾಜಾ ತರಕಾರಿ ರೋಲ್ (ಕರಿಯದ್ದು)",
+   "nofish": true
+  },
+  {
+   "icon": "🧈",
+   "vi": "Đậu phụ rán",
+   "en": "Fried tofu — dip in soy sauce",
+   "kn": "ಕರಿದ ತೋಫು — ಸೋಯಾ ಸಾಸ್ ಜೊತೆ",
+   "nofish": false
+  },
+  {
+   "icon": "🍳",
+   "vi": "Trứng chiên",
+   "en": "Omelette",
+   "kn": "ಆಮ್ಲೆಟ್",
+   "nofish": true
+  },
+  {
+   "icon": "🥖",
+   "vi": "Bánh mì trứng",
+   "en": "Bread roll with egg (no pâté)",
+   "kn": "ಮೊಟ್ಟೆ ಬ್ರೆಡ್ ರೋಲ್",
+   "nofish": false
+  },
+  {
+   "icon": "🥖",
+   "vi": "Bánh mì chay",
+   "en": "Vegetarian bread roll",
+   "kn": "ಸಸ್ಯಾಹಾರಿ ಬ್ರೆಡ್ ರೋಲ್",
+   "nofish": false
+  },
+  {
+   "icon": "🍲",
+   "vi": "Canh rau chay",
+   "en": "Clear vegetable soup",
+   "kn": "ತರಕಾರಿ ಸೂಪ್",
+   "nofish": true
+  },
+  {
+   "icon": "🍙",
+   "vi": "Xôi chay",
+   "en": "Sticky rice (vegetarian)",
+   "kn": "ಜಿಗುಟು ಅನ್ನ (ಸಸ್ಯಾಹಾರಿ)",
+   "nofish": false
+  },
+  {
+   "icon": "🍮",
+   "vi": "Chè",
+   "en": "Sweet dessert soup with beans",
+   "kn": "ಬೇಳೆಯ ಸಿಹಿ ಪಾಯಸದಂತಹ ತಿನಿಸು",
+   "nofish": false
+  },
+  {
+   "icon": "🥣",
+   "vi": "Sữa chua",
+   "en": "Yogurt",
+   "kn": "ಮೊಸರು (ಸಿಹಿ)",
+   "nofish": false
+  },
+  {
+   "icon": "☕",
+   "vi": "Cà phê trứng",
+   "en": "Egg coffee — Hanoi special",
+   "kn": "ಮೊಟ್ಟೆ ಕಾಫಿ — ಹನೋಯ್ ವಿಶೇಷ",
+   "nofish": false
+  },
+  {
+   "icon": "🍍",
+   "vi": "Trái cây",
+   "en": "Fresh fruit plate",
+   "kn": "ತಾಜಾ ಹಣ್ಣುಗಳು",
+   "nofish": false
+  },
+  {
+   "icon": "🥤",
+   "vi": "Nước mía",
+   "en": "Sugarcane juice",
+   "kn": "ಕಬ್ಬಿನ ಹಾಲು",
+   "nofish": false
+  }
+ ]
+}

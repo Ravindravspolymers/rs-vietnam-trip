@@ -1,0 +1,497 @@
+{
+ "_note": "Each stop's time is local to stop.tz (or the day's tz). stop.date overrides the day's date. Coordinates approx. — verify in Phase 3.",
+ "hotel": {
+  "id": "hotel",
+  "en": "Hanoi Chic Boutique Hotel",
+  "vi": "Khách sạn Hanoi Chic Boutique",
+  "kn": "ಹನೋಯ್ ಚಿಕ್ ಬೊಟಿಕ್ ಹೋಟೆಲ್",
+  "address_vi": "51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
+  "address_en": "51-53 Bat Su Street, Hoan Kiem, Hanoi",
+  "lat": 21.0352,
+  "lng": 105.8476,
+  "driver_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội"
+ },
+ "flights": {
+  "out": [
+   {
+    "no": "6E-5094",
+    "from": "BLR",
+    "to": "BOM",
+    "dep": "2026-11-23T22:00+05:30",
+    "arr": "2026-11-24T00:10+05:30",
+    "depTerm": "",
+    "arrTerm": "⚠️ TODO: check with IndiGo"
+   },
+   {
+    "no": "6E-1637",
+    "from": "BOM",
+    "to": "HAN",
+    "dep": "2026-11-24T04:10+05:30",
+    "arr": "2026-11-24T10:00+07:00",
+    "depTerm": "T2",
+    "arrTerm": "T2"
+   }
+  ],
+  "back": [
+   {
+    "no": "6E-1638",
+    "from": "HAN",
+    "to": "BOM",
+    "dep": "2026-11-29T19:05+07:00",
+    "arr": "2026-11-29T23:05+05:30",
+    "depTerm": "T2",
+    "arrTerm": "T2"
+   },
+   {
+    "no": "6E-5193",
+    "from": "BOM",
+    "to": "BLR",
+    "dep": "2026-11-30T07:30+05:30",
+    "arr": "2026-11-30T09:15+05:30",
+    "depTerm": "T1",
+    "arrTerm": "T1"
+   }
+  ]
+ },
+ "days": [
+  {
+   "day": 0,
+   "date": "2026-11-23",
+   "tz": "IST",
+   "title_en": "Leave for Vietnam",
+   "title_kn": "ವಿಯೆಟ್ನಾಂ ಪ್ರಯಾಣ ಆರಂಭ",
+   "stops": [
+    {
+     "id": "d0-home",
+     "type": "home",
+     "en": "Leave home",
+     "vi": "",
+     "kn": "ಮನೆಯಿಂದ ಹೊರಡಿ",
+     "time": "18:30",
+     "mins": 0,
+     "anchor": true
+    },
+    {
+     "id": "d0-blr",
+     "type": "airport",
+     "en": "Bengaluru Airport (BLR)",
+     "vi": "",
+     "kn": "ಬೆಂಗಳೂರು ವಿಮಾನ ನಿಲ್ದಾಣ",
+     "time": "19:30",
+     "mins": 150,
+     "anchor": true,
+     "lat": 13.1986,
+     "lng": 77.7066,
+     "note_en": "Flight 6E-5094 at 10:00 pm to Mumbai",
+     "note_kn": "ರಾತ್ರಿ 10 ಗಂಟೆಗೆ ಮುಂಬೈಗೆ ವಿಮಾನ 6E-5094"
+    }
+   ]
+  },
+  {
+   "day": 1,
+   "date": "2026-11-24",
+   "tz": "ICT",
+   "title_en": "Arrive in Hanoi",
+   "title_kn": "ಹನೋಯ್ ತಲುಪುವುದು",
+   "stops": [
+    {
+     "id": "d1-bom",
+     "type": "airport",
+     "en": "Mumbai Airport — change flight",
+     "vi": "",
+     "kn": "ಮುಂಬೈ — ವಿಮಾನ ಬದಲಾವಣೆ",
+     "time": "00:10",
+     "mins": 240,
+     "anchor": true,
+     "note_en": "Flight 6E-1637 at 4:10 am (India time)",
+     "note_kn": "ಬೆಳಿಗ್ಗೆ 4:10ಕ್ಕೆ (ಭಾರತದ ಸಮಯ) ವಿಮಾನ 6E-1637",
+     "tz": "IST"
+    },
+    {
+     "id": "d1-han",
+     "type": "airport",
+     "en": "Noi Bai Airport (HAN)",
+     "vi": "Sân bay Nội Bài",
+     "kn": "ನೋಯ್ ಬಾಯ್ ವಿಮಾನ ನಿಲ್ದಾಣ",
+     "time": "10:00",
+     "mins": 90,
+     "anchor": true,
+     "lat": 21.2187,
+     "lng": 105.8042,
+     "note_en": "Land 10:00 am, Terminal 2",
+     "note_kn": "ಬೆಳಿಗ್ಗೆ 10ಕ್ಕೆ ಇಳಿಯುವುದು, ಟರ್ಮಿನಲ್ 2",
+     "addr_vi": "Sân bay Quốc tế Nội Bài – Nhà ga T2 (Quốc tế)",
+     "addr_en": "Noi Bai International Airport – Terminal 2 (International)"
+    },
+    {
+     "id": "d1-hotel",
+     "type": "hotel",
+     "en": "Hotel — check in and rest",
+     "vi": "Khách sạn",
+     "kn": "ಹೋಟೆಲ್ — ಚೆಕ್-ಇನ್, ವಿಶ್ರಾಂತಿ",
+     "time": "12:15",
+     "mins": 240,
+     "lat": 21.0352,
+     "lng": 105.8476,
+     "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
+     "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi",
+     "note_en": "Sleep 2–3 hours. You flew all night.",
+     "note_kn": "ರಾತ್ರಿಯಿಡೀ ಪ್ರಯಾಣ ಮಾಡಿದ್ದೀರಿ. 2–3 ಗಂಟೆ ನಿದ್ದೆ ಮಾಡಿ."
+    },
+    {
+     "id": "d1-lake",
+     "type": "lake",
+     "en": "Hoan Kiem Lake & Ngoc Son Temple",
+     "vi": "Hồ Hoàn Kiếm & Đền Ngọc Sơn",
+     "kn": "ಹೊವಾನ್ ಕಿಯೆಮ್ ಸರೋವರ ಮತ್ತು ಎನ್ಗೊಕ್ ಸೊನ್ ದೇವಾಲಯ",
+     "time": "16:30",
+     "mins": 120,
+     "lat": 21.0307,
+     "lng": 105.8524,
+     "walk": true,
+     "addr_vi": "Đền Ngọc Sơn, Hồ Hoàn Kiếm, phố Đinh Tiên Hoàng, Hà Nội",
+     "addr_en": "Ngoc Son Temple, Hoan Kiem Lake, Dinh Tien Hoang St, Hanoi",
+     "note_en": "Flat, easy walk. Red bridge lights up in the evening.",
+     "note_kn": "ಸಮತಟ್ಟಾದ ಸುಲಭ ನಡಿಗೆ. ಸಂಜೆ ಕೆಂಪು ಸೇತುವೆಗೆ ದೀಪ ಹಚ್ಚುತ್ತಾರೆ.",
+     "place": "hoankiem"
+    }
+   ]
+  },
+  {
+   "day": 2,
+   "date": "2026-11-25",
+   "tz": "ICT",
+   "title_en": "Ha Long Bay cruise",
+   "title_kn": "ಹಾ ಲಾಂಗ್ ಕೊಲ್ಲಿ ಹಡಗು ಪ್ರಯಾಣ",
+   "stops": [
+    {
+     "id": "d2-pickup",
+     "type": "hotel",
+     "en": "Cruise pickup at hotel",
+     "vi": "Khách sạn",
+     "kn": "ಹೋಟೆಲ್‌ನಲ್ಲಿ ಹಡಗಿನ ವಾಹನ",
+     "time": "08:00",
+     "mins": 0,
+     "anchor": true,
+     "lat": 21.0352,
+     "lng": 105.8476,
+     "todo": "⚠️ TODO: cruise pickup time",
+     "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
+     "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi"
+    },
+    {
+     "id": "d2-port",
+     "type": "cruise",
+     "en": "Ambassador Cruise — check in",
+     "vi": "Cảng tàu khách quốc tế Hạ Long",
+     "kn": "ಅಂಬಾಸಿಡರ್ ಹಡಗು — ಚೆಕ್-ಇನ್",
+     "time": "11:30",
+     "mins": 60,
+     "anchor": true,
+     "lat": 20.954,
+     "lng": 107.045,
+     "todo": "⚠️ TODO: confirm port and check-in time",
+     "addr_vi": "Cảng tàu khách quốc tế Hạ Long, Bãi Cháy, Hạ Long, Quảng Ninh",
+     "addr_en": "Ha Long International Cruise Port, Bai Chay, Ha Long"
+    },
+    {
+     "id": "d2-bay",
+     "type": "boat",
+     "en": "Bay tour — caves, bamboo boat, sunset",
+     "vi": "Vịnh Hạ Long",
+     "kn": "ಕೊಲ್ಲಿ ಪ್ರವಾಸ — ಗುಹೆ, ಬಿದಿರು ದೋಣಿ, ಸೂರ್ಯಾಸ್ತ",
+     "time": "13:30",
+     "mins": 300,
+     "note_en": "Carry a shawl. It gets cool on deck.",
+     "note_kn": "ಶಾಲು ತೆಗೆದುಕೊಳ್ಳಿ. ಡೆಕ್ ಮೇಲೆ ಚಳಿ ಇರುತ್ತದೆ.",
+     "place": "halong"
+    }
+   ]
+  },
+  {
+   "day": 3,
+   "date": "2026-11-26",
+   "tz": "ICT",
+   "title_en": "Cruise morning, back to Hanoi",
+   "title_kn": "ಹಡಗಿನಲ್ಲಿ ಬೆಳಗು, ಹನೋಯ್‌ಗೆ ವಾಪಸ್",
+   "stops": [
+    {
+     "id": "d3-sunrise",
+     "type": "boat",
+     "en": "Sunrise on deck & breakfast",
+     "vi": "Vịnh Hạ Long",
+     "kn": "ಡೆಕ್ ಮೇಲೆ ಸೂರ್ಯೋದಯ, ಉಪಾಹಾರ",
+     "time": "06:15",
+     "mins": 180,
+     "note_en": "Sunrise around 6:15 am. Tai chi on deck is optional.",
+     "note_kn": "ಸುಮಾರು 6:15ಕ್ಕೆ ಸೂರ್ಯೋದಯ. ಡೆಕ್ ಮೇಲಿನ ತಾಯ್ ಚಿ ಐಚ್ಛಿಕ.",
+     "place": "halong"
+    },
+    {
+     "id": "d3-port",
+     "type": "cruise",
+     "en": "Leave the ship",
+     "vi": "Cảng tàu khách quốc tế Hạ Long",
+     "kn": "ಹಡಗಿನಿಂದ ಇಳಿಯುವುದು",
+     "time": "11:00",
+     "mins": 30,
+     "anchor": true,
+     "lat": 20.954,
+     "lng": 107.045,
+     "todo": "⚠️ TODO: confirm disembark time",
+     "addr_vi": "Cảng tàu khách quốc tế Hạ Long, Bãi Cháy, Hạ Long, Quảng Ninh",
+     "addr_en": "Ha Long International Cruise Port, Bai Chay, Ha Long"
+    },
+    {
+     "id": "d3-hotel",
+     "type": "hotel",
+     "en": "Back to hotel",
+     "vi": "Khách sạn",
+     "kn": "ಹೋಟೆಲ್‌ಗೆ ವಾಪಸ್",
+     "time": "14:30",
+     "mins": 0,
+     "lat": 21.0352,
+     "lng": 105.8476,
+     "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
+     "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi"
+    }
+   ]
+  },
+  {
+   "day": 4,
+   "date": "2026-11-27",
+   "tz": "ICT",
+   "title_en": "Hanoi city day",
+   "title_kn": "ಹನೋಯ್ ನಗರ ದರ್ಶನ",
+   "stops": [
+    {
+     "id": "d4-temple",
+     "type": "temple",
+     "en": "Temple of Literature",
+     "vi": "Văn Miếu – Quốc Tử Giám",
+     "kn": "ವಾನ್ ಮಿಯೂ — ಸಾಹಿತ್ಯ ದೇವಾಲಯ",
+     "time": "09:00",
+     "mins": 90,
+     "lat": 21.02861,
+     "lng": 105.83556,
+     "addr_vi": "Văn Miếu – Quốc Tử Giám, 58 phố Quốc Tử Giám, Hà Nội",
+     "addr_en": "Temple of Literature, 58 Quoc Tu Giam St, Hanoi",
+     "note_en": "Cover shoulders and knees. Mostly flat paths.",
+     "note_kn": "ಭುಜ ಮತ್ತು ಮಂಡಿ ಮುಚ್ಚುವ ಬಟ್ಟೆ ಧರಿಸಿ. ದಾರಿ ಸಮತಟ್ಟು.",
+     "place": "vanmieu"
+    },
+    {
+     "id": "d4-market",
+     "type": "market",
+     "en": "Old Quarter & Dong Xuan Market",
+     "vi": "Phố cổ & Chợ Đồng Xuân",
+     "kn": "ಹಳೆಯ ಪೇಟೆ ಮತ್ತು ಡಾಂಗ್ ಶುವಾನ್ ಮಾರುಕಟ್ಟೆ",
+     "time": "11:00",
+     "mins": 120,
+     "lat": 21.038164,
+     "lng": 105.850031,
+     "addr_vi": "Chợ Đồng Xuân, phố Đồng Xuân, Hoàn Kiếm, Hà Nội",
+     "addr_en": "Dong Xuan Market, Dong Xuan St, Hoan Kiem, Hanoi",
+     "note_en": "Busy and noisy. Keep bag in front. Bargain politely.",
+     "note_kn": "ಜನಸಂದಣಿ ಹೆಚ್ಚು. ಬ್ಯಾಗ್ ಮುಂದೆ ಹಿಡಿಯಿರಿ. ನಯವಾಗಿ ಚೌಕಾಸಿ ಮಾಡಿ.",
+     "place": "oldquarter"
+    },
+    {
+     "id": "d4-rest",
+     "type": "hotel",
+     "en": "Rest at hotel",
+     "vi": "Khách sạn",
+     "kn": "ಹೋಟೆಲ್‌ನಲ್ಲಿ ವಿಶ್ರಾಂತಿ",
+     "time": "13:30",
+     "mins": 180,
+     "lat": 21.0352,
+     "lng": 105.8476,
+     "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
+     "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi"
+    },
+    {
+     "id": "d4-puppet",
+     "type": "theatre",
+     "en": "Thang Long Water Puppet Show",
+     "vi": "Nhà hát Múa rối nước Thăng Long",
+     "kn": "ಥಾಂಗ್ ಲಾಂಗ್ ನೀರಿನ ಬೊಂಬೆಯಾಟ",
+     "time": "17:20",
+     "mins": 50,
+     "anchor": true,
+     "lat": 21.0318,
+     "lng": 105.8535,
+     "walk": true,
+     "note_en": "Show starts 5:20 pm. Reach by 5:00.",
+     "note_kn": "ಸಂಜೆ 5:20ಕ್ಕೆ ಪ್ರದರ್ಶನ. 5 ಗಂಟೆಗೆ ತಲುಪಿ.",
+     "addr_vi": "Nhà hát Múa rối nước Thăng Long, 57B Đinh Tiên Hoàng, Hoàn Kiếm, Hà Nội",
+     "addr_en": "Thang Long Water Puppet Theatre, 57B Dinh Tien Hoang, Hanoi",
+     "place": "puppet"
+    }
+   ]
+  },
+  {
+   "day": 5,
+   "date": "2026-11-28",
+   "tz": "ICT",
+   "title_en": "Ninh Binh day trip",
+   "title_kn": "ನಿನ್ ಬಿನ್ ಒಂದು ದಿನದ ಪ್ರವಾಸ",
+   "stops": [
+    {
+     "id": "d5-pickup",
+     "type": "hotel",
+     "en": "Car pickup at hotel",
+     "vi": "Khách sạn",
+     "kn": "ಹೋಟೆಲ್‌ನಿಂದ ಕಾರು",
+     "time": "07:30",
+     "mins": 0,
+     "anchor": true,
+     "lat": 21.0352,
+     "lng": 105.8476,
+     "todo": "⚠️ TODO: pickup time and driver contact",
+     "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
+     "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi"
+    },
+    {
+     "id": "d5-baidinh",
+     "type": "temple",
+     "en": "Bai Dinh Pagoda",
+     "vi": "Chùa Bái Đính",
+     "kn": "ಬಾಯ್ ಡಿನ್ ಬೌದ್ಧ ವಿಹಾರ",
+     "time": "09:45",
+     "mins": 120,
+     "lat": 20.2741,
+     "lng": 105.8646,
+     "addr_vi": "Chùa Bái Đính, Gia Sinh, Ninh Bình",
+     "addr_en": "Bai Dinh Pagoda, Gia Sinh, Ninh Binh",
+     "note_en": "Very big. Take the electric buggy, not the long walk.",
+     "note_kn": "ತುಂಬಾ ದೊಡ್ಡ ಜಾಗ. ಉದ್ದದ ನಡಿಗೆ ಬೇಡ, ಎಲೆಕ್ಟ್ರಿಕ್ ವಾಹನ ಬಳಸಿ.",
+     "place": "baidinh"
+    },
+    {
+     "id": "d5-trangan",
+     "type": "boat",
+     "en": "Trang An boat ride",
+     "vi": "Khu du lịch Tràng An",
+     "kn": "ತ್ರಾಂಗ್ ಆನ್ ದೋಣಿ ಸವಾರಿ",
+     "time": "12:30",
+     "mins": 120,
+     "lat": 20.2556,
+     "lng": 105.9126,
+     "addr_vi": "Bến thuyền Khu du lịch Tràng An, Trường Yên, Ninh Bình",
+     "addr_en": "Trang An boat wharf, Truong Yen, Ninh Binh",
+     "note_en": "2 hours sitting in a small boat. Wear the life jacket. Low caves — bend your head.",
+     "note_kn": "ಸಣ್ಣ ದೋಣಿಯಲ್ಲಿ 2 ಗಂಟೆ ಕುಳಿತುಕೊಳ್ಳಬೇಕು. ಲೈಫ್ ಜಾಕೆಟ್ ಧರಿಸಿ. ಗುಹೆಗಳಲ್ಲಿ ತಲೆ ಬಗ್ಗಿಸಿ.",
+     "place": "trangan"
+    },
+    {
+     "id": "d5-mua",
+     "type": "viewpoint",
+     "en": "Mua Cave viewpoint",
+     "vi": "Hang Múa",
+     "kn": "ಹ್ಯಾಂಗ್ ಮುವಾ ಬೆಟ್ಟ",
+     "time": "15:15",
+     "mins": 90,
+     "lat": 20.2361,
+     "lng": 105.9283,
+     "note_en": "About 500 steps. Climb only if knees feel good.",
+     "note_kn": "ಸುಮಾರು 500 ಮೆಟ್ಟಿಲು. ಮಂಡಿ ಚೆನ್ನಾಗಿದ್ದರೆ ಮಾತ್ರ ಹತ್ತಿ.",
+     "addr_vi": "Hang Múa, Ninh Xuân, Ninh Bình",
+     "addr_en": "Mua Cave, Ninh Xuan, Ninh Binh",
+     "place": "mua"
+    },
+    {
+     "id": "d5-hotel",
+     "type": "hotel",
+     "en": "Back to hotel",
+     "vi": "Khách sạn",
+     "kn": "ಹೋಟೆಲ್‌ಗೆ ವಾಪಸ್",
+     "time": "19:00",
+     "mins": 0,
+     "lat": 21.0352,
+     "lng": 105.8476,
+     "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
+     "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi"
+    }
+   ]
+  },
+  {
+   "day": 6,
+   "date": "2026-11-29",
+   "tz": "ICT",
+   "title_en": "Free morning, fly home",
+   "title_kn": "ಬೆಳಿಗ್ಗೆ ಬಿಡುವು, ಮನೆಗೆ ಪ್ರಯಾಣ",
+   "stops": [
+    {
+     "id": "d6-free",
+     "type": "market",
+     "en": "Free time — last shopping & packing",
+     "vi": "Phố cổ",
+     "kn": "ಬಿಡುವು — ಕೊನೆಯ ಶಾಪಿಂಗ್, ಪ್ಯಾಕಿಂಗ್",
+     "time": "09:00",
+     "mins": 240,
+     "lat": 21.0352,
+     "lng": 105.8476,
+     "note_en": "Pack by 12 noon. Ask hotel to keep bags after checkout.",
+     "note_kn": "ಮಧ್ಯಾಹ್ನ 12ರೊಳಗೆ ಪ್ಯಾಕ್ ಮಾಡಿ. ಚೆಕ್-ಔಟ್ ನಂತರ ಬ್ಯಾಗ್ ಇಡಲು ಹೋಟೆಲ್‌ಗೆ ಕೇಳಿ."
+    },
+    {
+     "id": "d6-leave",
+     "type": "hotel",
+     "en": "Leave hotel for airport",
+     "vi": "Khách sạn",
+     "kn": "ವಿಮಾನ ನಿಲ್ದಾಣಕ್ಕೆ ಹೊರಡಿ",
+     "time": "15:30",
+     "mins": 0,
+     "anchor": true,
+     "lat": 21.0352,
+     "lng": 105.8476,
+     "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
+     "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi"
+    },
+    {
+     "id": "d6-han",
+     "type": "airport",
+     "en": "Noi Bai Airport — check in",
+     "vi": "Sân bay Nội Bài – Nhà ga T2",
+     "kn": "ನೋಯ್ ಬಾಯ್ — ಚೆಕ್-ಇನ್",
+     "time": "16:30",
+     "mins": 155,
+     "anchor": true,
+     "lat": 21.2187,
+     "lng": 105.8042,
+     "note_en": "Flight 6E-1638 at 7:05 pm, Terminal 2",
+     "note_kn": "ಸಂಜೆ 7:05ಕ್ಕೆ ವಿಮಾನ 6E-1638, ಟರ್ಮಿನಲ್ 2",
+     "addr_vi": "Sân bay Quốc tế Nội Bài – Nhà ga T2 (Quốc tế)",
+     "addr_en": "Noi Bai International Airport – Terminal 2 (International)"
+    },
+    {
+     "id": "d6-bom",
+     "type": "airport",
+     "en": "Mumbai — change terminal (T2 → T1)",
+     "vi": "",
+     "kn": "ಮುಂಬೈ — ಟರ್ಮಿನಲ್ ಬದಲಾವಣೆ (T2 → T1)",
+     "time": "23:05",
+     "mins": 505,
+     "anchor": true,
+     "note_en": "Land 11:05 pm India time. Flight 6E-5193 at 7:30 am from T1.",
+     "note_kn": "ಭಾರತದ ಸಮಯ ರಾತ್ರಿ 11:05ಕ್ಕೆ ಇಳಿಯುವುದು. T1ನಿಂದ ಬೆಳಿಗ್ಗೆ 7:30ಕ್ಕೆ 6E-5193.",
+     "tz": "IST"
+    },
+    {
+     "id": "d6-blr",
+     "type": "home",
+     "en": "Bengaluru — welcome home!",
+     "vi": "",
+     "kn": "ಬೆಂಗಳೂರು — ಮನೆಗೆ ಸ್ವಾಗತ!",
+     "time": "09:15",
+     "mins": 0,
+     "anchor": true,
+     "note_en": "Land 9:15 am India time",
+     "note_kn": "ಭಾರತದ ಸಮಯ ಬೆಳಿಗ್ಗೆ 9:15ಕ್ಕೆ ಇಳಿಯುವುದು",
+     "tz": "IST",
+     "date": "2026-11-30"
+    }
+   ]
+  }
+ ]
+}

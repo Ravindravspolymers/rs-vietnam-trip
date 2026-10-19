@@ -1,0 +1,69 @@
+{
+ "numbers": [
+  [
+   "🚓",
+   "Police",
+   "113"
+  ],
+  [
+   "🚑",
+   "Ambulance",
+   "115"
+  ],
+  [
+   "🚒",
+   "Fire",
+   "114"
+  ]
+ ],
+ "embassy": {
+  "en": "Embassy of India, Hanoi",
+  "vi": "Đại sứ quán Ấn Độ",
+  "addr_en": "58-60 Tran Hung Dao Street, Hanoi",
+  "addr_vi": "58-60 Phố Trần Hưng Đạo, Hà Nội",
+  "emergency": "+84 913 089 165",
+  "phone": "+84 24 3824 4989",
+  "consular": "+84 24 3633 0536",
+  "email": "cons.hanoi@mea.gov.in",
+  "hours": "Mon–Fri 9:00 am–5:30 pm (consular 9:30–12:30)",
+  "q": "Embassy of India 58-60 Tran Hung Dao Hanoi"
+ },
+ "hospitals": [
+  {
+   "id": "hfh",
+   "en": "Hanoi French Hospital",
+   "vi": "Bệnh viện Việt Pháp Hà Nội",
+   "addr_en": "1 Phuong Mai Street, Dong Da, Hanoi",
+   "addr_vi": "1 Phương Mai, Đống Đa, Hà Nội",
+   "phone": "+84 24 3574 1111",
+   "note_en": "24-hour emergency",
+   "note_kn": "24 ಗಂಟೆ ತುರ್ತು ಚಿಕಿತ್ಸೆ",
+   "q": "Hanoi French Hospital 1 Phuong Mai"
+  },
+  {
+   "id": "fmp",
+   "en": "Family Medical Practice Hanoi",
+   "vi": "Phòng khám Family Medical Practice Hà Nội",
+   "addr_en": "298I Kim Ma Street, Ba Dinh, Hanoi",
+   "addr_vi": "298I Kim Mã, Ba Đình, Hà Nội",
+   "phone": "+84 24 3843 0748",
+   "note_en": "24/7 clinic, English-speaking doctors",
+   "note_kn": "24/7 ಕ್ಲಿನಿಕ್, ಇಂಗ್ಲಿಷ್ ಮಾತನಾಡುವ ವೈದ್ಯರು",
+   "q": "Family Medical Practice Hanoi 298I Kim Ma"
+  },
+  {
+   "id": "vinmec",
+   "en": "Vinmec Times City International Hospital",
+   "vi": "Bệnh viện Đa khoa Quốc tế Vinmec Times City",
+   "addr_en": "458 Minh Khai Street, Hai Ba Trung, Hanoi",
+   "addr_vi": "458 Minh Khai, Hai Bà Trưng, Hà Nội",
+   "phone": "+84 24 3974 3556",
+   "note_en": "Large international hospital, English spoken",
+   "note_kn": "ದೊಡ್ಡ ಅಂತಾರಾಷ್ಟ್ರೀಯ ಆಸ್ಪತ್ರೆ, ಇಂಗ್ಲಿಷ್ ಮಾತನಾಡುತ್ತಾರೆ",
+   "q": "Vinmec Times City International Hospital"
+  }
+ ],
+ "help_vi": "Chúng tôi là khách du lịch Ấn Độ. Chúng tôi không nói được tiếng Việt. Chúng tôi cần giúp đỡ. Xin vui lòng gọi số điện thoại này:",
+ "help_en": "We are Indian tourists. We do not speak Vietnamese. We need help. Please call this number:",
+ "help_kn": "ನಾವು ಭಾರತೀಯ ಪ್ರವಾಸಿಗರು. ನಮಗೆ ವಿಯೆಟ್ನಾಮೀಸ್ ಬರುವುದಿಲ್ಲ. ನಮಗೆ ಸಹಾಯ ಬೇಕು. ದಯವಿಟ್ಟು ಈ ನಂಬರ್‌ಗೆ ಕರೆ ಮಾಡಿ:"
+}
