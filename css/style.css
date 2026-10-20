@@ -34,13 +34,12 @@
   --tabbar-h: 72px;
   color-scheme: light;
 }
-@media (prefers-color-scheme: dark) {
-  :root {
+/* v1.2: light always by default; dark only when chosen in Settings */
+:root[data-theme="dark"] {
     --red: #E5574C; --red-dark: #C2392F; --gold: #E3B54A; --gold-soft: #3A3020;
     --green: #5FB897; --bg: #1A1512; --card: #26201B; --text: #F5EDE2;
     --muted: #C9BBAA; --line: #3A3129; --shadow: 0 4px 14px rgba(0,0,0,.4);
     color-scheme: dark;
-  }
 }
 html[data-size="large"]  { --fs: 21px; }
 html[data-size="xlarge"] { --fs: 24px; }
@@ -425,9 +424,7 @@ body.fullscreen { padding-bottom: 24px; }
    notes (white on 70%-darkened colour) 6.0–8.5 · secondary border #9A7414 4.3 (UI ≥3)
    ====================================================================== */
 :root { --btn-red: #B3261E; --btn-green: #1F5F4A; --tab-active: #B3261E; }
-@media (prefers-color-scheme: dark) {
-  :root { --red: #FF8A80; --btn-red: #B3261E; --btn-green: #1F5F4A; --tab-active: #FFB4A8; }
-}
+:root[data-theme="dark"] { --red: #FF8A80; --btn-red: #B3261E; --btn-green: #1F5F4A; --tab-active: #FFB4A8; }
 
 /* F08: filled buttons/chips always use the dark tokens (white text passes AA in both themes) */
 .topbar, .btn, .stoprow .tag, .daychip[aria-current="true"], .fchip[aria-pressed="true"],
@@ -508,3 +505,40 @@ details.fold[open] > summary::after { content: '▴'; }
 /* v1.1 Docs pin */
 [data-pin][aria-pressed="true"] { border-color: var(--gold); background: var(--gold-soft); }
 .actions.three { grid-template-columns: 1fr 1fr; }
+
+/* ======================================================================
+   v1.2 LAYER: folder tiles, money quick chips, plan done/next
+   ====================================================================== */
+.tile.empty .count { color: var(--muted); }
+.tile.danger .count, .tile.danger .kn { color: var(--red); }
+/* Money: rate line + 💵 Notes link on one row; small quick chips right above each box */
+.money-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.money-top p { margin: 0; flex: 1; }
+.notes-link {
+  display: flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 16px;
+  border-radius: 14px; border: 2px solid #9A7414; background: var(--gold-soft); color: var(--text);
+  font-weight: 800; text-decoration: none; white-space: nowrap;
+}
+.qchips { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 4px 0 6px; }
+.qchip {
+  min-height: 44px; padding: 2px 4px; border-radius: 10px; font: inherit; font-size: 18px; font-weight: 700;
+  border: 1.5px solid #9A7414; background: var(--card); color: var(--text); cursor: pointer;
+}
+.qchip:active { transform: scale(.95); background: var(--gold-soft); }
+/* Plan: done = folded and faded (still tappable to undo); next = glowing border */
+.stop.visited { opacity: 1; }
+.stop.visited > :not(.stop-head):not(.tick) { display: none; }
+.stop.visited .stop-head { opacity: .45; }
+.stop.visited .stop-head .sicon { filter: grayscale(1); }
+.stop .tick[aria-pressed="true"] { background: transparent; color: var(--muted); border: 2px dashed var(--line); margin-top: 8px; }
+.leg.faded { opacity: .4; }
+.stop.next { border: 3px solid var(--gold); animation: nextglow 2.4s ease-in-out infinite; }
+@keyframes nextglow {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(201, 151, 28, .25), 0 0 14px rgba(201, 151, 28, .35); }
+  50%      { box-shadow: 0 0 0 6px rgba(201, 151, 28, .35), 0 0 26px rgba(201, 151, 28, .6); }
+}
+@media (prefers-reduced-motion: reduce) { .stop.next { animation: none; box-shadow: 0 0 0 5px rgba(201, 151, 28, .4); } }
+.nextflag { display: inline-block; margin: 0 0 8px; padding: 4px 12px; border-radius: 999px;
+  background: var(--gold); color: #2A1F1A; font-weight: 800; font-size: max(18px, 1em); }
+.nextflag .kn { color: #2A1F1A; }
+.stop .tick[aria-pressed="false"] { border: 2px solid var(--green); color: var(--green); }

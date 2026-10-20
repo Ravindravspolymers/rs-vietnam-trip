@@ -35,25 +35,25 @@ function renderMoney() {
   const r100k = 100000 / fx.VND * fx.INR;      // ₹ per 100k VND
   const vndPer100 = 100 / fx.INR * fx.VND;      // VND per ₹100
 
-  const quick = (cur, list) => list.map(([v, l]) =>
-    `<button type="button" class="chip" data-quick="${cur}:${v}">${l}</button>`).join('');
+  const quick = (cur, list) => `<div class="qchips">${list.map(([v, l]) =>
+    `<button type="button" class="qchip" data-quick="${cur}:${v}">${l}</button>`).join('')}</div>`;
 
-  return `<section class="card conv">
+  // v1.2: quick amounts sit right above their box; notes moved to their own page (💵 at top)
+  return `<div class="money-top">
+      <p class="muted small" id="fx-status">${esc(fxStatusText(fx))}</p>
+      <a class="notes-link" href="#notes" aria-label="Vietnam notes pictures">💵 Notes</a>
+    </div>
+    <section class="card conv">
       <label for="fx-INR">₹ Indian Rupee</label>
+      ${quick('INR', [[500, '₹500'], [1000, '₹1,000'], [2000, '₹2,000'], [5000, '₹5,000']])}
       <input id="fx-INR" data-cur="INR" type="text" inputmode="numeric" placeholder="0" autocomplete="off">
       <label for="fx-VND">₫ Vietnam Dong</label>
+      ${quick('VND', [[50000, '50k'], [100000, '100k'], [200000, '200k'], [500000, '500k']])}
       <input id="fx-VND" data-cur="VND" type="text" inputmode="numeric" placeholder="0" autocomplete="off">
       <label for="fx-USD">$ US Dollar</label>
       <input id="fx-USD" data-cur="USD" type="text" inputmode="decimal" placeholder="0" autocomplete="off">
-      <p class="muted small" id="fx-status">${esc(fxStatusText(fx))}</p>
     </section>
     ${renderAskPrice()}
-
-    <section class="card">
-      <h3>Quick amounts</h3>
-      <div class="chips">${quick('INR', [[500, '₹500'], [1000, '₹1,000'], [2000, '₹2,000'], [5000, '₹5,000']])}</div>
-      <div class="chips">${quick('VND', [[50000, '50k ₫'], [100000, '100k ₫'], [200000, '200k ₫'], [500000, '500k ₫']])}</div>
-    </section>
 
     <section class="card accent" id="fx-rule">
       <h3>Easy rule</h3>
@@ -61,14 +61,19 @@ function renderMoney() {
       <p class="kn">ಸುಲಭ ಲೆಕ್ಕ: 1 ಲಕ್ಷ ಡಾಂಗ್ ≈ ${fmtINR(r100k)}</p>
     </section>
 
-    <section class="card warn">
+    ${zerosCard()}`;
+}
+
+const zerosCard = () => `<section class="card warn">
       <h3>⚠️ Count the zeros!</h3>
       <p>Notes look alike. 20k and 500k are both blue. 10k and 100k differ by one zero.</p>
       <p class="kn">⚠️ ಸೊನ್ನೆಗಳನ್ನು ಎಣಿಸಿ! 20k ಮತ್ತು 500k ಎರಡೂ ನೀಲಿ ಬಣ್ಣ. 10k ಮತ್ತು 100k ನಲ್ಲಿ ಒಂದು ಸೊನ್ನೆ ಮಾತ್ರ ವ್ಯತ್ಯಾಸ.</p>
-    </section>
+    </section>`;
 
-    <h3 class="sect">Vietnam notes <span class="kn muted">ವಿಯೆಟ್ನಾಂ ನೋಟುಗಳು</span></h3>
-    <div id="fx-notes">${renderNotes(fx)}</div>`;
+/* v1.2: notes picture page (opened from 💵 at the top of Money) */
+function renderNotesPage() {
+  return `<p class="kn">ವಿಯೆಟ್ನಾಂ ನೋಟುಗಳು — ರೂಪಾಯಿಯಲ್ಲಿ ಎಷ್ಟು</p>
+    <div id="fx-notes">${renderNotes(getFx())}</div>${zerosCard()}`;
 }
 
 function renderNotes(fx) {
@@ -167,3 +172,4 @@ function startMoney() {
 
 ROUTES.money.render = renderMoney;
 ROUTES.money.after = startMoney;
+ROUTES.notes = { title: 'Vietnam notes', tab: 'money', back: 'money', render: renderNotesPage };

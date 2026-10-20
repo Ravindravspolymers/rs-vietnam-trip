@@ -2,7 +2,7 @@
    Router, tab bar, More grid, SOS, Settings, update banner, storage helpers. */
 'use strict';
 
-const APP_VERSION = '1.1.0'; // keep in sync with CACHE_VERSION in service-worker.js
+const APP_VERSION = '1.2.0'; // keep in sync with CACHE_VERSION in service-worker.js
 
 /* ---------- Storage helpers (localStorage, never crash) ---------- */
 const Store = {
@@ -59,6 +59,7 @@ const DEFAULT_SETTINGS = {
   hotelPhone: '+84 97 413 51 07',   // Hanoi Chic Boutique Hotel (business number)
   cruisePhone: '', driverPhone: '', insurancePhone: '', medical: '',
   textSize: 'normal',
+  theme: 'light',                 // v1.2: light always unless Dark chosen
   deepseekKey: ''
 };
 const getSettings = () => Object.assign({}, DEFAULT_SETTINGS, Store.get('settings', {}));
@@ -67,6 +68,7 @@ const saveSettings = s => Store.set('settings', s);
 function applyTextSize(size) {
   document.documentElement.dataset.size = size === 'normal' ? '' : size;
 }
+function applyTheme(t) { document.documentElement.dataset.theme = t === 'dark' ? 'dark' : 'light'; }
 
 /* ---------- Screens ---------- */
 // tab = which bottom tab is highlighted; back = show Back button (sub-screens)
@@ -98,8 +100,7 @@ function renderMore() {
   const tiles = [
     ['phrases', '💬', 'Phrases'], ['shopping', '🛍', 'Shopping'],
     ['docs', '📄', 'Docs'],       ['prep', '✅', 'Prep'],
-    ['emergency', '🚨', 'Emergency'], ['settings', '⚙', 'Settings'],
-    ['pinned', '🛂', 'Passport']
+    ['emergency', '🚨', 'Emergency'], ['settings', '⚙', 'Settings']
   ];
   return `<div class="grid">${tiles.map(([id, ic, label]) =>
     `<a class="tile${id === 'emergency' ? ' danger' : ''}" href="#${id}">
@@ -228,6 +229,11 @@ function renderSettings() {
     </details>
 
     <details class="card fold">
+      <summary>🎨 Colours</summary>
+      <div class="seg"><button type="button" data-theme="light" aria-pressed="${s.theme !== 'dark'}">☀ Light</button><button type="button" data-theme="dark" aria-pressed="${s.theme === 'dark'}">🌙 Dark</button></div>
+    </details>
+
+    <details class="card fold">
       <summary>💾 Backup</summary>
       <p>Save documents, ticks and contacts in one file.</p>
       <p class="muted small">Last backup: ${last ? new Date(last).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : 'never'}</p>
@@ -297,6 +303,13 @@ document.addEventListener('click', async e => {
     const s = getSettings(); s.textSize = t.dataset.size; saveSettings(s);
     applyTextSize(s.textSize);
     document.querySelectorAll('[data-size]').forEach(b => b.setAttribute('aria-pressed', b === t));
+    return;
+  }
+
+  if (t.dataset.theme) {
+    const s = getSettings(); s.theme = t.dataset.theme; saveSettings(s);
+    applyTheme(s.theme);
+    document.querySelectorAll('button[data-theme]').forEach(b => b.setAttribute('aria-pressed', b === t));
     return;
   }
 
@@ -420,6 +433,7 @@ if ('serviceWorker' in navigator) {
 // Runs after all screen scripts (today.js, money.js…) have registered their routes
 document.addEventListener('DOMContentLoaded', async () => {
   applyTextSize(getSettings().textSize);
+  applyTheme(getSettings().theme);
   await Promise.all(['trip', 'places', 'restaurants', 'dishes', 'phrases', 'shopping', 'prep', 'emergency'].map(loadJSON));
   render();
   // F23: ask for protected storage; remember the answer and retry on later opens until granted

@@ -6,55 +6,62 @@ const mapHref = q => `https://www.google.com/maps/search/?api=1&query=${encodeUR
 
 const hotelDay = () => { const d = currentTripDay().day.day; return d >= 1 ? d : 1; };
 
-/* F21: one primary area — help card, hotel, family. Everything else under "More help". */
+/* v1.2: Emergency home = one big help-card button + tiles. Each tile opens one small page. */
+const EM_TILES = [
+  ['hotel', '🏨', 'Hotel', 'ಹೋಟೆಲ್'], ['family', '👪', 'Family', 'ಮನೆಯವರು'],
+  ['call', '🚓', 'Police · Ambulance', 'ಪೊಲೀಸ್ · ಆಂಬುಲೆನ್ಸ್'], ['embassy', '🇮🇳', 'Indian Embassy', 'ಭಾರತ ರಾಯಭಾರ ಕಚೇರಿ'],
+  ['hosp', '🏥', 'Hospitals', 'ಆಸ್ಪತ್ರೆ'], ['mine', '📒', 'My numbers', 'ನನ್ನ ನಂಬರ್‌ಗಳು']
+];
 function renderEmergency() {
-  const E = DATA.emergency;
-  const s = getSettings();
-  if (!E) return renderSOS();
-  const tel = digits(s.hotelPhone);
-  const mine = [['🏨 Hotel', s.hotelPhone], ['🚢 Cruise', s.cruisePhone], ['🚗 Ninh Binh driver', s.driverPhone], ['🛡 Insurance helpline', s.insurancePhone]]
-    .filter(([, n]) => digits(n));
-  const em = E.embassy;
-
+  if (!DATA.emergency) return renderSOS();
   return `<a class="btn sos-big" href="#helpcard">🆘 Show help card to anyone</a>
-    <a class="btn" href="#driver:hotel-${hotelDay()}">🏨 Take me to hotel</a>
-    ${tel ? `<a class="btn green" href="tel:+${tel}">📞 Call hotel</a>` : ''}
-    ${renderFamilySOS()}
+    <div class="grid">${EM_TILES.map(([id, ic, en, kn]) =>
+      `<a class="tile area${id === 'call' ? ' danger' : ''}" href="#em:${id}"><span>${ic}</span><span>${en}</span><span class="kn small">${kn}</span></a>`).join('')}
+      <a class="tile area" href="#print"><span>🖨</span><span>Print sheet</span><span class="kn small">ಮುದ್ರಿಸಿ</span></a>
+    </div>
+    <p class="muted small center">Details checked Oct 2026. <span class="kn">ಅಕ್ಟೋಬರ್ 2026ರಲ್ಲಿ ಪರಿಶೀಲಿಸಲಾಗಿದೆ.</span></p>`;
+}
 
-    <details class="card fold">
-      <summary>More help ›</summary>
-      <h3>Call for help (Vietnam)</h3>
+function renderEmPage() {
+  const E = DATA.emergency, s = getSettings(), id = routeParam();
+  const t = EM_TILES.find(x => x[0] === id);
+  if (!E || !t) return `<div class="card"><p>Not found.</p></div>`;
+  document.getElementById('screen-title').textContent = t[2];
+  const em = E.embassy, h = DATA.trip.hotel, tel = digits(s.hotelPhone);
+  switch (id) {
+    case 'hotel': return `<section class="card accent"><h3>🏨 ${esc(h.en)}</h3><p class="vi">${esc(h.driver_vi)}</p><p>${esc(h.address_en)}</p></section>
+      <a class="btn" href="#driver:hotel-${hotelDay()}">🚕 Take me to hotel</a>
+      ${tel ? `<a class="btn green" href="tel:+${tel}">📞 Call hotel</a>` : '<a class="btn secondary" href="#settings">Add hotel phone in Settings</a>'}`;
+    case 'family': return renderFamilySOS();
+    case 'call': return `<p class="kn">ತುರ್ತು ಸಂಖ್ಯೆಗಳು — ಒತ್ತಿದರೆ ಕರೆ ಹೋಗುತ್ತದೆ</p>
       <a class="btn" href="tel:113">🚓 Police — 113</a>
       <a class="btn" href="tel:115">🚑 Ambulance — 115</a>
-      <a class="btn" href="tel:114">🚒 Fire — 114</a>
-
-      <h3>🇮🇳 ${esc(em.en)}</h3>
+      <a class="btn" href="tel:114">🚒 Fire — 114</a>`;
+    case 'embassy': return `<section class="card"><h3>🇮🇳 ${esc(em.en)}</h3>
       <p class="vi">${esc(em.vi)}</p>
-      <p>${esc(em.addr_en)}<br><span class="muted small">${esc(em.hours)}</span><br><span class="kn">${esc(em.hours_kn || '')}</span></p>
+      <p>${esc(em.addr_en)}<br><span class="muted small">${esc(em.hours)}</span><br><span class="kn">${esc(em.hours_kn || '')}</span></p></section>
       <a class="btn" href="${telHref(em.emergency)}">📞 Emergency: ${esc(em.emergency)}</a>
       <a class="btn secondary" href="${telHref(em.phone)}">📞 Office: ${esc(em.phone)}</a>
       <div class="actions">
         <a class="btn secondary" href="${mapHref(em.q)}" target="_blank" rel="noopener">📍 Map</a>
         <a class="btn secondary" href="#driver:embassy">🚕 Show driver</a>
       </div>
-      <p class="muted small">Lost passport? Go here. <span class="kn">ಪಾಸ್‌ಪೋರ್ಟ್ ಕಳೆದುಹೋದರೆ ಇಲ್ಲಿಗೆ ಹೋಗಿ.</span></p>
-
-      <h3>🏥 Hospitals (English-speaking)</h3>
-      ${E.hospitals.map(h => `<div class="hosp">
-        <p><strong>${esc(h.en)}</strong><br><span class="vi">${esc(h.vi)}</span><br>${esc(h.addr_en)}<br>${esc(h.note_en)}<br><span class="kn">${esc(h.note_kn)}</span></p>
-        <a class="btn" href="${telHref(h.phone)}">📞 ${esc(h.phone)}</a>
+      <p class="muted small">Lost passport? Go here. <span class="kn">ಪಾಸ್‌ಪೋರ್ಟ್ ಕಳೆದುಹೋದರೆ ಇಲ್ಲಿಗೆ ಹೋಗಿ.</span></p>`;
+    case 'hosp': return `<p class="kn">ಇಂಗ್ಲಿಷ್ ಮಾತನಾಡುವ ಆಸ್ಪತ್ರೆಗಳು</p>${E.hospitals.map(x => `<section class="card">
+        <p><strong>${esc(x.en)}</strong><br><span class="vi">${esc(x.vi)}</span><br>${esc(x.addr_en)}<br>${esc(x.note_en)}<br><span class="kn">${esc(x.note_kn)}</span></p>
+        <a class="btn" href="${telHref(x.phone)}">📞 ${esc(x.phone)}</a>
         <div class="actions">
-          <a class="btn secondary" href="${mapHref(h.q)}" target="_blank" rel="noopener">📍 Map</a>
-          <a class="btn secondary" href="#driver:${h.id}">🚕 Show driver</a>
-        </div></div>`).join('')}
-
-      <h3>📒 My numbers</h3>
-      ${mine.length ? mine.map(([l, n]) => `<a class="btn secondary" href="${telHref(n)}">${l}: ${esc(n)}</a>`).join('')
+          <a class="btn secondary" href="${mapHref(x.q)}" target="_blank" rel="noopener">📍 Map</a>
+          <a class="btn secondary" href="#driver:${x.id}">🚕 Show driver</a>
+        </div></section>`).join('')}`;
+    case 'mine': {
+      const mine = [['🏨 Hotel', s.hotelPhone], ['🚢 Cruise', s.cruisePhone], ['🚗 Ninh Binh driver', s.driverPhone], ['🛡 Insurance helpline', s.insurancePhone]]
+        .filter(([, n]) => digits(n));
+      return `${mine.length ? mine.map(([l, n]) => `<a class="btn secondary" href="${telHref(n)}">${l}: ${esc(n)}</a>`).join('')
         : '<p class="muted">Add numbers in Settings.</p>'}
-      <a class="btn secondary" href="#settings">⚙ Edit in Settings</a>
-      <a class="btn secondary" href="#print">🖨 Printable help sheet</a>
-    </details>
-    <p class="muted small center">Details checked Oct 2026. <span class="kn">ಅಕ್ಟೋಬರ್ 2026ರಲ್ಲಿ ಪರಿಶೀಲಿಸಲಾಗಿದೆ.</span></p>`;
+        <a class="btn secondary" href="#settings">⚙ Edit in Settings</a>`;
+    }
+  }
 }
 
 /* ----- Help card: full screen, big Vietnamese (F05: hotel first) ----- */
@@ -101,6 +108,7 @@ function renderPrint() {
 ROUTES.emergency.render = renderEmergency;
 ROUTES.helpcard = { title: 'Help card', tab: '', back: 'emergency', render: renderHelpCard,
   after: () => { document.body.classList.add('fullscreen'); return () => document.body.classList.remove('fullscreen'); } };
+ROUTES.em = { title: 'Emergency', tab: 'more', back: 'emergency', render: renderEmPage };
 ROUTES.print = { title: 'Help sheet', tab: 'more', back: 'emergency', render: renderPrint };
 
 // U1: SOS screen — Take me to hotel first, then help card, family, emergency numbers, embassy
@@ -108,4 +116,4 @@ ROUTES.sos.render = () => `<a class="btn" href="#driver:hotel-${hotelDay()}">�
   <a class="btn sos-big" href="#helpcard">🆘 Show help card</a>
   ${renderSOS()}
   ${DATA.emergency ? `<a class="btn secondary" href="${telHref(DATA.emergency.embassy.emergency)}">🇮🇳 Indian Embassy emergency</a>
-  <a class="btn secondary" href="#emergency">More: hospitals, embassy ›</a>` : ''}`;
+  <a class="btn secondary" href="#emergency">More: hospitals, embassy, police ›</a>` : ''}`;

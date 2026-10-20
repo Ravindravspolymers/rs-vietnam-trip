@@ -35,19 +35,27 @@ function chipRow(key, options) {
     `<button type="button" class="fchip" data-f="${key}:${v}" aria-pressed="${shopF[key] === v}">${esc(l)}</button>`).join('')}</div>`;
 }
 
+/* v1.2: Shopping home = category tiles. Tap a tile → that category's items. */
+const SHOP_ICON = { food: '🥥', coffee: '☕', clothes: '🧣', craft: '🏮', art: '🎨', gifts: '🎁', kitchen: '🥢', kids: '🧸', quirky: '🧧' };
+
 function renderShopping() {
   const S = DATA.shopping;
   if (!S) return `<div class="card"><p>Shopping list not loaded. Close and reopen the app.</p></div>`;
-  const list = shopFiltered();
   const bought = getBought();
   const nBought = S.items.filter(i => bought[i.id]).length;
-  const active = [shopF.cat, shopF.price, shopF.where, shopF.easy ? 'easy' : ''].filter(Boolean).length;
+  return `<a class="banner nudge" href="#shop:tips">🌙 Best shopping night: <strong>Fri 27 Nov</strong> ›</a>
+    <div class="grid">${S.cats.map(([c, name]) => {
+      const items = S.items.filter(i => i.cat === c), n = items.filter(i => bought[i.id]).length;
+      return `<a class="tile area${n && n === items.length ? ' done' : ''}" href="#shop:${c}"><span>${SHOP_ICON[c] || '🛍'}</span>
+        <span>${esc(name)}</span><span class="count">${items.length} items${n ? ` · ${n} ✓` : ''}</span></a>`;
+    }).join('')}
+      <a class="tile area" href="#shop:tips"><span>💡</span><span>Bargain &amp; tips</span><span class="count">Don't buy list</span></a>
+    </div>
+    <p class="muted center">Bought ${nBought} of ${S.items.length} ✓</p>`;
+}
 
-  // Group by category (in category order) for easy scanning
-  const groups = S.cats.map(([c, name]) => [name, list.filter(i => i.cat === c)]).filter(([, l]) => l.length);
-  const cards = groups.map(([name, l]) =>
-    `<h3 class="sect">${esc(name)}</h3>${l.map(it => shopCard(it, !!bought[it.id])).join('')}`).join('');
-
+function renderShopTips() {
+  const S = DATA.shopping;
   return `<section class="card accent">
       <h3>🌙 Best shopping night: Fri 27 Nov</h3>
       <p>After the puppet show, walk to the Weekend Night Market (Fri–Sun evenings).</p>
@@ -58,23 +66,32 @@ function renderShopping() {
       <p>Offer half. Settle at 60–70%. Smile. Pay cash in đồng. Walk away if too high.</p>
       <p class="kn">ಅರ್ಧ ಬೆಲೆ ಹೇಳಿ. 60–70%ಕ್ಕೆ ಒಪ್ಪಿ. ನಗುತ್ತಿರಿ. ಡಾಂಗ್ ನಗದು ಕೊಡಿ. ದುಬಾರಿ ಎನಿಸಿದರೆ ಹೊರಡಿ.</p>
     </section>
+    <section class="card warn">
+      <h3>🚫 Don't buy</h3>
+      <ul>${S.skip.en.map((t, i) => `<li>${esc(t)}<br><span class="kn">${esc(S.skip.kn[i])}</span></li>`).join('')}</ul>
+    </section>`;
+}
 
-    <button type="button" class="btn secondary" id="shop-filters">🔎 Filters${active ? ` (${active})` : ''}</button>
+function renderShopCat() {
+  const S = DATA.shopping;
+  if (!S) return `<div class="card"><p>Shopping list not loaded. Close and reopen the app.</p></div>`;
+  const c = routeParam();
+  if (c === 'tips') { document.getElementById('screen-title').textContent = 'Bargain & tips'; return renderShopTips(); }
+  const cat = S.cats.find(x => x[0] === c);
+  if (!cat) return `<div class="card"><p>Not found.</p></div>`;
+  document.getElementById('screen-title').textContent = cat[1];
+  shopF.cat = c;
+  const list = shopFiltered(), bought = getBought();
+  const active = [shopF.price, shopF.where, shopF.easy ? 'easy' : ''].filter(Boolean).length;
+  return `<button type="button" class="btn secondary" id="shop-filters">🔎 Filters${active ? ` (${active})` : ''}</button>
     <section class="card filters" id="shop-panel" ${shopF.open ? '' : 'hidden'}>
-      <p class="flabel">Category</p>${chipRow('cat', S.cats)}
       <p class="flabel">Price</p>${chipRow('price', [['low', 'Under 100k ₫'], ['mid', '100k–300k ₫'], ['high', 'Over 300k ₫'], ['ask', 'Ask / tag']])}
       <p class="flabel">Where</p>${chipRow('where', S.wheres)}
       <button type="button" class="fchip wide" data-f="easy:" aria-pressed="${shopF.easy}">🎒 Easy to carry only</button>
       ${active ? '<button type="button" class="btn" data-f="clear:">Clear filters</button>' : ''}
     </section>
-
-    <p class="muted center">Showing ${list.length} of ${S.items.length} · Bought ${nBought} ✓</p>
-    ${cards || `<div class="card"><p>Nothing matches. Clear the filters.</p><p class="kn">ಫಿಲ್ಟರ್ ತೆಗೆದು ನೋಡಿ.</p></div>`}
-
-    <section class="card warn">
-      <h3>🚫 Don't buy</h3>
-      <ul>${S.skip.en.map((t, i) => `<li>${esc(t)}<br><span class="kn">${esc(S.skip.kn[i])}</span></li>`).join('')}</ul>
-    </section>`;
+    ${list.map(it => shopCard(it, !!bought[it.id])).join('')
+      || `<div class="card"><p>Nothing matches. Clear the filters.</p><p class="kn">ಫಿಲ್ಟರ್ ತೆಗೆದು ನೋಡಿ.</p></div>`}`;
 }
 
 function shopCard(it, done) {
@@ -109,7 +126,7 @@ function startShopping() {
     }
     if (b.dataset.f) {
       const [k, v] = b.dataset.f.split(':');
-      if (k === 'clear') Object.assign(shopF, { cat: '', price: '', where: '', easy: false });
+      if (k === 'clear') Object.assign(shopF, { price: '', where: '', easy: false });
       else if (k === 'easy') shopF.easy = !shopF.easy;
       else shopF[k] = v;
       const y = window.scrollY; render(); window.scrollTo(0, y);   // keep position while filtering
@@ -121,3 +138,4 @@ function startShopping() {
 
 ROUTES.shopping.render = renderShopping;
 ROUTES.shopping.after = startShopping;
+ROUTES.shop = { title: 'Shopping', tab: 'more', back: 'shopping', render: renderShopCat, after: startShopping };

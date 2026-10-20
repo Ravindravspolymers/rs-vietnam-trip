@@ -5,7 +5,7 @@
 
 const TYPE_LABEL = {
   home: 'Home', airport: 'Airport', hotel: 'Hotel', lake: 'Lake', cruise: 'Cruise',
-  boat: 'Boat', temple: 'Temple', market: 'Market', theatre: 'Show', viewpoint: 'Viewpoint'
+  boat: 'Boat', temple: 'Temple', market: 'Market', theatre: 'Show', viewpoint: 'Viewpoint', meal: 'Meal'
 };
 const LONG_DRIVE_MINS = 150;   // F35: also flagged per day in trip.json (longDrive)
 
@@ -90,24 +90,27 @@ function renderPlan() {
       ${day.day >= 1 ? `<a class="btn secondary" href="#driver:hotel-${day.day}">🏨 Hotel address for driver</a>` : ''}
     </section>`;
 
+  const nextS = dayNextStop(day);          // v1.2: glow the next activity
   const cards = day.stops.map(s => {
     const leg = legs[s.id];
+    const fade = visited[s.id] ? ' faded' : '';
     const legHtml = !leg ? '' : leg.mode === 'flight'
-      ? `<div class="leg">✈️ Flight</div>`
-      : `<div class="leg">${leg.mode === 'walk' ? '🚶 Walk' : '🚗 Drive'} about ${fmtDurApprox(leg.mins)}</div>`;
-    return legHtml + stopCard(day, s, !!visited[s.id]);
+      ? `<div class="leg${fade}">✈️ Flight</div>`
+      : `<div class="leg${fade}">${leg.mode === 'walk' ? '🚶 Walk' : '🚗 Drive'} about ${fmtDurApprox(leg.mins)}</div>`;
+    return legHtml + stopCard(day, s, !!visited[s.id], nextS === s);
   }).join('');
 
   return `<nav class="daybar" aria-label="Days">${chips}</nav>${head}${cards}`;
 }
 
-function stopCard(day, s, done) {
+function stopCard(day, s, done, isNext) {
   const hasMap = s.lat != null;
   const mode = s.walk ? 'walking' : 'driving';
   // Navigate by full name + address (robust); fall back to coordinates
   const dest = s.addr_en ? encodeURIComponent(s.addr_en) : `${s.lat},${s.lng}`;
   const goUrl = hasMap ? `https://www.google.com/maps/dir/?api=1&destination=${dest}&travelmode=${mode}` : '';
-  return `<article class="card stop${done ? ' visited' : ''}" id="stop-${esc(s.id)}">
+  return `<article class="card stop${done ? ' visited' : ''}${isNext ? ' next' : ''}" id="stop-${esc(s.id)}">
+    ${isNext ? '<p class="nextflag">▶ NEXT <span class="kn">ಮುಂದಿನದು</span></p>' : ''}
     <div class="stop-head">
       <span class="sicon" aria-hidden="true">${STOP_ICON[s.type] || '📍'}</span>
       <div>
@@ -131,21 +134,45 @@ function stopCard(day, s, done) {
       ${hasMap ? `<a class="btn green" href="${goUrl}" target="_blank" rel="noopener">▶ Go</a>` : ''}
       ${s.addr_vi ? `<a class="btn secondary" href="#driver:${esc(s.id)}">🚕 Show driver</a>` : ''}
     </div>
-    ${isPlace(s) ? `<button type="button" class="tick" data-tick="${esc(s.id)}" aria-pressed="${done}">
-      ${done ? '✓ Visited' : '○ Mark as visited'}</button>` : ''}
+    <button type="button" class="tick" data-tick="${esc(s.id)}" aria-pressed="${done}">${tickLabel(done)}</button>
   </article>`;
+}
+
+// Card top just under the title bar, with a sliver of the done card above it
+function scrollToCard(el, smooth) {
+  const bar = document.querySelector('.topbar')?.offsetHeight || 64;
+  window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - bar - 56, behavior: smooth ? 'smooth' : 'auto' });
+}
+const tickLabel = on => on ? '✓ Done — tap to undo' : '○ Mark done';
+
+// v1.2: re-mark which card glows as NEXT (after a tick / untick), without re-drawing the screen
+function refreshNext(day) {
+  const n = dayNextStop(day);
+  document.querySelectorAll('.stop').forEach(el => {
+    const on = !!n && el.id === 'stop-' + n.id;
+    el.classList.toggle('next', on);
+    const f = el.querySelector('.nextflag');
+    if (on && !f) el.insertAdjacentHTML('afterbegin', '<p class="nextflag">▶ NEXT <span class="kn">ಮುಂದಿನದು</span></p>');
+    if (!on && f) f.remove();
+  });
+  return n;
 }
 
 function startPlan() {
   const main = document.getElementById('screen');
-  // Jump to the stop opened from Today (e.g. #plan:d4-temple)
+  const day = planDayFromParam(routeParam()) || currentTripDay().day;
+  // Jump to the stop opened from Today (e.g. #plan:d4-temple); otherwise open at the NEXT activity
   const target = document.getElementById('stop-' + routeParam());
+  const next = document.querySelector('.stop.next');
   if (target) {
     target.scrollIntoView({ block: 'center' });
     target.classList.add('flash');
+  } else if (next && next.previousElementSibling?.matches('.stop, .leg')) {
+    scrollToCard(next);
   }
-  // Keep the selected day chip in view
-  document.querySelector('.daychip[aria-current="true"]')?.scrollIntoView({ inline: 'center', block: 'nearest' });
+  // Keep the selected day chip in view (scroll the chip bar only, not the page)
+  const chip = document.querySelector('.daychip[aria-current="true"]'), bar = chip?.parentElement;
+  if (bar) bar.scrollLeft = chip.offsetLeft - (bar.clientWidth - chip.offsetWidth) / 2;
 
   const onClick = e => {
     const b = e.target.closest('[data-tick]');
@@ -153,8 +180,13 @@ function startPlan() {
     const on = b.getAttribute('aria-pressed') !== 'true';
     setVisited(b.dataset.tick, on);
     b.setAttribute('aria-pressed', on);
-    b.textContent = on ? '✓ Visited' : '○ Mark as visited';
-    b.closest('.stop').classList.toggle('visited', on);
+    b.textContent = tickLabel(on);
+    const card = b.closest('.stop');
+    card.classList.toggle('visited', on);
+    const leg = card.previousElementSibling;
+    if (leg?.classList.contains('leg')) leg.classList.toggle('faded', on);
+    const n = refreshNext(day);
+    if (on && n) setTimeout(() => { const el = document.getElementById('stop-' + n.id); if (el) scrollToCard(el, true); }, 250);
   };
   main.addEventListener('click', onClick);
   return () => main.removeEventListener('click', onClick);
@@ -167,12 +199,12 @@ function driverTarget() {
   if (p.startsWith('hotel-')) {
     const h = trip.hotel;
     return { vi: 'Khách sạn Hanoi Chic Boutique', addr_vi: h.address_vi, en: h.en, addr_en: h.address_en,
-             back: 'plan:day' + p.split('-')[1], hotel: true };
+             back: /^#(em:|sos|helpcard)/.test(prevHash) ? prevHash.slice(1) : 'plan:day' + p.split('-')[1], hotel: true };   // v1.2: back to where it was opened
   }
   const E = DATA.emergency;
-  if (E && p === 'embassy') return { vi: E.embassy.vi, addr_vi: E.embassy.addr_vi, en: E.embassy.en, addr_en: E.embassy.addr_en, back: 'emergency' };
+  if (E && p === 'embassy') return { vi: E.embassy.vi, addr_vi: E.embassy.addr_vi, en: E.embassy.en, addr_en: E.embassy.addr_en, back: 'em:embassy' };
   const h = E?.hospitals.find(x => x.id === p);
-  if (h) return { vi: h.vi, addr_vi: h.addr_vi, en: h.en, addr_en: h.addr_en, back: 'emergency' };
+  if (h) return { vi: h.vi, addr_vi: h.addr_vi, en: h.en, addr_en: h.addr_en, back: 'em:hosp' };
   for (const d of trip.days) {
     const s = d.stops.find(x => x.id === p);
     if (s) return { vi: s.type === 'hotel' ? 'Khách sạn Hanoi Chic Boutique' : s.vi,

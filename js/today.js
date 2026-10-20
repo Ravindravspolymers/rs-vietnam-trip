@@ -147,7 +147,7 @@ function renderProgress(day) {
     ${today.length ? ring(count(today), today.length, 'Today', 'ಇಂದು ನೋಡಿದ್ದು') : ''}
     ${ring(count(all), all.length, 'Whole trip', 'ಪೂರ್ತಿ ಪ್ರವಾಸ')}
   </section>
-  <p class="muted small center">Tick places in Plan.<br><span class="kn">"Plan" ನಲ್ಲಿ ನೋಡಿದ ಸ್ಥಳಗಳನ್ನು ಟಿಕ್ ಮಾಡಿ.</span></p>`;
+  <p class="muted small center">Tick each activity in Plan when done.<br><span class="kn">"Plan" ನಲ್ಲಿ ಮುಗಿದ ಪ್ರತಿ ಕೆಲಸವನ್ನು ಟಿಕ್ ಮಾಡಿ.</span></p>`;
 }
 
 function startTodayClocks() {

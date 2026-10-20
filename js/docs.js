@@ -91,8 +91,8 @@ const docFileName = d => {
 
 const markDocsChanged = () => Store.set('docsChangedAt', Date.now());   // F23
 
-/* ---------- Docs screen ---------- */
-let docsAddCat = '';
+/* ---------- Docs screen (v1.2: folder tiles → open a folder → act) ---------- */
+let docsAddCat = '';                     // kept for older code paths; folders pass their own category
 
 function renderDocs() { return '<div id="docs-root"><p class="muted center">Loading…</p></div>'; }
 
@@ -102,33 +102,9 @@ async function fillDocs() {
   let docs = [];
   try { docs = await DocDB.all(); }
   catch (e) { root.innerHTML = `<div class="card warn"><p>Storage not available in this browser.</p></div>`; return; }
-  const live = docs.filter(d => !d.deleted).sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0) || b.added - a.added);
+  const live = docs.filter(d => !d.deleted);
   const binCount = docs.length - live.length;
   const used = live.reduce((s, d) => s + d.size, 0);
-  let est = '';
-  try { const e = await navigator.storage.estimate(); est = ` · Phone allows ${fmtSize(e.quota)}`; } catch (e) {}
-
-  const add = docsAddCat
-    ? `<section class="card accent">
-        <h3>${docCat(docsAddCat)[1]} Add to ${docCat(docsAddCat)[2]}</h3>
-        <label class="btn green file-btn">📷 Take a photo
-          <input type="file" accept="image/*" capture="environment" data-add hidden></label>
-        <label class="btn secondary file-btn">📁 Choose from phone
-          <input type="file" accept="image/*,application/pdf" multiple data-add hidden></label>
-        <button type="button" class="btn secondary" data-addcat="">Cancel</button>
-      </section>`
-    : `<details class="card fold"${live.length ? '' : ' open'}>
-        <summary>➕ Add a document</summary>
-        <div class="grid">${DOC_CATS.map(([id, ic, l]) =>
-          `<button type="button" class="tile area" data-addcat="${id}"><span>${ic}</span><span>${l}</span></button>`).join('')}</div>
-      </details>`;
-
-  const pinned = live.filter(d => d.pinned);
-  const groups = DOC_CATS.map(([id, ic, l]) => [ic + ' ' + l, live.filter(d => d.cat === id && !d.pinned)]).filter(([, l]) => l.length);
-  const list = live.length
-    ? (pinned.length ? `<h3 class="sect">⭐ Pinned</h3>${pinned.map(docCard).join('')}` : '')
-      + groups.map(([title, l]) => `<h3 class="sect">${title}</h3>${l.map(docCard).join('')}`).join('')
-    : `<div class="card center"><p>No documents yet.</p><p class="kn">ಇನ್ನೂ ಯಾವುದೇ ದಾಖಲೆ ಇಲ್ಲ. ಪಾಸ್‌ಪೋರ್ಟ್, ವೀಸಾ, ಟಿಕೆಟ್ ಫೋಟೋ ಸೇರಿಸಿ.</p></div>`;
 
   const persisted = Store.get('persisted', false);
   const docsAt = Store.get('docsChangedAt', 0), bk = Store.get('lastBackup', 0);
@@ -137,16 +113,39 @@ async function fillDocs() {
     + (docsAt && bk < docsAt ? `<section class="card warn"><p><strong>Documents changed since your last backup.</strong></p>
       <p class="kn">ಕೊನೆಯ ಬ್ಯಾಕಪ್ ನಂತರ ದಾಖಲೆಗಳು ಬದಲಾಗಿವೆ.</p>
       <button type="button" class="btn green" data-backup>💾 Backup now</button></section>` : '');
-  root.innerHTML = `${warn}${docsAddCat ? add : ''}${list}${docsAddCat ? '' : add}
-    <p class="muted small center">${live.length} documents · ${fmtSize(used)} used${est}</p>
-    <a class="btn secondary" href="#bin">🗑 Bin (${binCount})</a>
-    <section class="card">
-      <h3>💾 Backup</h3>
+  const tiles = DOC_CATS.map(([id, ic, l]) => {
+    const n = live.filter(d => d.cat === id).length;
+    return `<a class="tile area${n ? '' : ' empty'}" href="#folder:${id}"><span>${ic}</span><span>${l}</span>
+      <span class="count">${n ? n + (n === 1 ? ' file' : ' files') : 'Empty'}</span></a>`;
+  }).join('');
+  root.innerHTML = `${warn}<div class="grid">${tiles}
+      <a class="tile area" href="#bin"><span>🗑</span><span>Bin</span><span class="count">${binCount}</span></a></div>
+    <p class="muted small center">${live.length} documents · ${fmtSize(used)} used</p>
+    <details class="card fold">
+      <summary>💾 Backup &amp; restore</summary>
       <p>Save everything in one file. Send it to yourself on WhatsApp.</p>
       <p class="kn">ಎಲ್ಲವನ್ನೂ ಒಂದು ಫೈಲ್‌ನಲ್ಲಿ ಉಳಿಸಿ. WhatsApp ನಲ್ಲಿ ನಿಮಗೇ ಕಳುಹಿಸಿ.</p>
       <button type="button" class="btn green" data-backup>💾 Backup now</button>
       <button type="button" class="btn secondary" data-restore>♻️ Restore from backup</button>
-    </section>`;
+    </details>`;
+}
+
+/* One folder: add buttons on top, then its documents */
+function renderFolder() { return '<div id="folder-root"><p class="muted center">Loading…</p></div>'; }
+async function fillFolder() {
+  const root = document.getElementById('folder-root');
+  const cat = docCat(routeParam());
+  const docs = (await DocDB.all().catch(() => [])).filter(d => !d.deleted && d.cat === cat[0]).sort((a, b) => b.added - a.added);
+  if (!root) return;
+  document.getElementById('screen-title').textContent = cat[2];
+  root.innerHTML = `<div class="actions">
+      <label class="btn green file-btn">📷 Take photo
+        <input type="file" accept="image/*" capture="environment" data-add="${cat[0]}" hidden></label>
+      <label class="btn secondary file-btn">📁 From phone
+        <input type="file" accept="image/*,application/pdf" multiple data-add="${cat[0]}" hidden></label>
+    </div>
+    ${docs.length ? docs.map(docCard).join('')
+      : `<div class="card center"><p>${cat[1]} No files here yet.</p><p class="kn">ಇಲ್ಲಿ ಇನ್ನೂ ಯಾವುದೇ ದಾಖಲೆ ಇಲ್ಲ. ಮೇಲಿನ ಬಟನ್ ಒತ್ತಿ ಸೇರಿಸಿ.</p></div>`}`;
 }
 
 function docCard(d) {
@@ -159,7 +158,7 @@ function docCard(d) {
     <div class="actions three">
       <a class="btn secondary" href="#doc:${id}">👁 View</a>
       <button type="button" class="btn secondary" data-share="${id}">📤 Share</button>
-      <button type="button" class="btn secondary" data-pin="${id}" aria-pressed="${!!d.pinned}">${d.pinned ? '⭐ Pinned' : '☆ Pin'}</button>
+      <button type="button" class="btn secondary" data-rename="${id}">✏️ Rename</button>
       <button type="button" class="btn secondary" data-del="${id}">🗑 Bin</button>
     </div>
   </article>`;
@@ -172,6 +171,7 @@ async function fillDoc() {
   const d = await DocDB.get(routeParam()).catch(() => null);
   if (!root) return;
   if (!d) { root.innerHTML = '<div class="card"><p>Document not found.</p></div>'; return; }
+  docBack = 'folder:' + docCat(d.cat)[0];
   document.getElementById('screen-title').textContent = docCat(d.cat)[2];
   const url = blobUrl(d.blob);
   const body = d.type.startsWith('image/')
@@ -251,7 +251,7 @@ function doRestore() {
       const keepKey = getSettings().deepseekKey;
       Object.entries(data.local || {}).forEach(([k, v]) => { if (k.startsWith('rs.')) localStorage.setItem(k, v); });
       if (keepKey) { const st = getSettings(); st.deepseekKey = keepKey; saveSettings(st); }
-      applyTextSize(getSettings().textSize);
+      applyTextSize(getSettings().textSize); applyTheme(getSettings().theme);
       toast(`Restored ✓ (${toAdd.length} documents) / ಮರುಸ್ಥಾಪಿಸಲಾಗಿದೆ`, 4000);
       render();
     } catch (e) { toast('Restore stopped. Phone storage may be full.', 5000); }
@@ -290,7 +290,7 @@ function startDocsScreen(fill) {
     };
     const onChange = async e => {
       if (!e.target.matches('[data-add]') || !e.target.files.length) return;
-      const cat = docsAddCat; docsAddCat = '';
+      const cat = e.target.dataset.add || docsAddCat; docsAddCat = '';
       toast('Saving… / ಉಳಿಸಲಾಗುತ್ತಿದೆ…', 2000);
       await addFiles([...e.target.files], cat);
       freeUrls(); fill();
@@ -303,14 +303,7 @@ function startDocsScreen(fill) {
 
 ROUTES.docs.render = renderDocs;
 ROUTES.docs.after = startDocsScreen(fillDocs);
-ROUTES.doc = { title: 'Document', tab: 'more', back: 'docs', render: renderDoc, after: startDocsScreen(fillDoc) };
+let docBack = 'docs';                 // set when a document opens: Back returns to its folder
+ROUTES.folder = { title: 'Folder', tab: 'more', back: 'docs', render: renderFolder, after: startDocsScreen(fillFolder) };
+ROUTES.doc = { title: 'Document', tab: 'more', back: () => docBack, render: renderDoc, after: startDocsScreen(fillDoc) };
 ROUTES.bin = { title: 'Bin', tab: 'more', back: 'docs', render: renderBin, after: startDocsScreen(fillBin) };
-
-/* U5: "Passport" tile in More opens the first pinned document */
-async function openPinned() {
-  const docs = (await DocDB.all().catch(() => [])).filter(d => d.pinned && !d.deleted).sort((a, b) => b.added - a.added);
-  if (docs.length) location.hash = '#doc:' + docs[0].id;
-  else { toast('Pin a document with ☆ Pin first. / ಮೊದಲು ☆ Pin ಒತ್ತಿ.', 3500); location.hash = '#docs'; }
-}
-ROUTES.pinned = { title: 'Passport', tab: 'more', back: 'more', render: () => '<p class="muted center">Opening…</p>',
-  after: () => { openPinned(); } };

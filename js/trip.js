@@ -67,7 +67,30 @@ function tripNowNext(now = new Date()) {
   const grace = 30 * 60000;
   const nowItem = prev && now < new Date(prev.end.getTime() + grace) ? prev : null;
   const inFlight = !!(prev && next && prev.s.type === 'airport' && next.s.type === 'airport' && now >= prev.end);
-  return { now: inFlight ? null : nowItem, next, inFlight };
+  const base = { now: inFlight ? null : nowItem, next, inFlight };
+  // v1.2: Plan ticks win over the clock. If anything is ticked today, the first unticked stop
+  // after the last tick is the one to do now (if its time has come) or next.
+  const v = getVisited(), cd = currentTripDay(now);
+  if (cd.before || cd.after) return base;
+  const todays = tl.filter(x => x.day === cd.day);
+  const lastT = todays.map(x => !!v[x.s.id]).lastIndexOf(true);
+  if (lastT < 0) return base;
+  const rest = tl.slice(tl.indexOf(todays[lastT]) + 1).filter(x => !v[x.s.id]);
+  const cand = rest[0] || null;
+  if (cand && cand.start <= now) return { now: cand, next: rest[1] || null, inFlight: false };
+  return { now: null, next: cand, inFlight: base.inFlight };
+}
+
+/* v1.2: the stop to glow in Plan. After the last tick of that day → first unticked stop.
+   No ticks that day → on the current trip day use the clock (now, else next); other days: none. */
+function dayNextStop(day, now = new Date()) {
+  const v = getVisited(), st = day.stops;
+  const lastT = st.map(s => !!v[s.id]).lastIndexOf(true);
+  if (lastT >= 0) return st.slice(lastT + 1).find(s => !v[s.id]) || null;
+  const cd = currentTripDay(now);
+  if (cd.before || cd.after || cd.day !== day) return null;
+  const r = tripNowNext(now), x = r.now || r.next;
+  return x && x.day === day ? x.s : null;
 }
 
 // Kept for compatibility (Plan uses day-level logic)
