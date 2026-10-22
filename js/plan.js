@@ -205,6 +205,8 @@ function driverTarget() {
   if (E && p === 'embassy') return { vi: E.embassy.vi, addr_vi: E.embassy.addr_vi, en: E.embassy.en, addr_en: E.embassy.addr_en, back: 'em:embassy' };
   const h = E?.hospitals.find(x => x.id === p);
   if (h) return { vi: h.vi, addr_vi: h.addr_vi, en: h.en, addr_en: h.addr_en, back: 'em:hosp' };
+  const xp = DATA.explore?.places.find(x => x.id === p);       // v1.3: optional places
+  if (xp) return { vi: xp.vi, addr_vi: xp.addr_vi, en: xp.en, addr_en: xp.addr_en, back: 'explore:' + xp.id };
   for (const d of trip.days) {
     const s = d.stops.find(x => x.id === p);
     if (s) return { vi: s.type === 'hotel' ? 'Khách sạn Hanoi Chic Boutique' : s.vi,

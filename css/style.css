@@ -542,3 +542,59 @@ details.fold[open] > summary::after { content: '▴'; }
   background: var(--gold); color: #2A1F1A; font-weight: 800; font-size: max(18px, 1em); }
 .nextflag .kn { color: #2A1F1A; }
 .stop .tick[aria-pressed="false"] { border: 2px solid var(--green); color: var(--green); }
+/* v1.2.1: day summary card = deep green heading, so it never looks like an activity */
+.card.dayhead { background: #1F5F4A; color: #fff; border: 0; }
+.dayhead .dayline { color: #FFE08A; }
+.dayhead h2, .dayhead .daysum, .dayhead .daysum strong { color: #fff; }
+.dayhead .kn.muted { color: #DCEFE6; }
+.dayhead .drivewarn { background: #FFF6D6; color: #2A1F1A; }
+.dayhead .drivewarn .kn { color: #2A1F1A; }
+.dayhead .btn.secondary { background: #FFF6D6; color: #2A1F1A; border-color: #FFE08A; }
+
+/* ======================================================================
+   v1.3 EXPLORE: swipe cards for optional places
+   ====================================================================== */
+.tile.feature { grid-column: 1 / -1; flex-direction: row; gap: 14px; min-height: 84px;
+  background: linear-gradient(120deg, #1F5F4A, #2F6E8C); color: #fff; border: 0; }
+.tile.feature .ic { font-size: 2em; }
+.xintro { margin: 0 0 10px; }
+.xnav { display: flex; align-items: center; gap: 10px; }
+.xbtn { flex: 0 0 56px; height: 56px; border-radius: 50%; border: 2px solid #9A7414; background: var(--gold-soft);
+  color: var(--text); font: inherit; font-size: 32px; font-weight: 800; line-height: 1; cursor: pointer; }
+.xbtn:disabled { opacity: .35; }
+.xcount { flex: 1; margin: 0; text-align: center; font-size: 1.15em; }
+.xcount span { display: block; font-size: max(18px, .8em); color: var(--muted); }
+.xdots { display: flex; justify-content: center; gap: 6px; margin: 8px 0 4px; }
+.xdots i { width: 8px; height: 8px; border-radius: 50%; background: var(--line); transition: all .25s; }
+.xdots i.on { width: 24px; border-radius: 4px; background: var(--btn-red); }
+.xtrack { display: flex; gap: 12px; align-items: flex-start; overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory; margin: 0 -16px; padding: 8px 16px 16px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.xtrack::-webkit-scrollbar { display: none; }
+.xcard { flex: 0 0 calc(100% - 28px); scroll-snap-align: center; scroll-snap-stop: always; background: var(--card);
+  border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); transform: scale(.96); opacity: .6;
+  transition: transform .3s, opacity .3s; }
+.xcard.active { transform: none; opacity: 1; }
+.xhead { position: relative; min-height: 132px; padding: 14px 16px; color: #fff;
+  background: radial-gradient(circle at 85% 30%, rgba(255,255,255,.25), transparent 55%), var(--xc); }
+.xrank { display: inline-block; font-size: 1.6em; font-weight: 800; margin-right: 8px; }
+.xtag { display: inline-block; padding: 3px 12px; border-radius: 999px; background: rgba(255,255,255,.92); color: #2A1F1A;
+  font-weight: 800; font-size: max(18px, .9em); vertical-align: 6px; }
+.xicon { position: absolute; right: 16px; top: 10px; font-size: 3.4em; line-height: 1; }
+.xdist { position: absolute; left: 16px; bottom: 12px; padding: 4px 12px; border-radius: 12px;
+  background: rgba(0,0,0,.35); font-weight: 800; }
+.xbody { padding: 14px 16px 16px; }
+.xbody h2 { margin-bottom: 2px; }
+.xbody .vi { color: var(--red); margin: 0; }
+.xh { margin: 14px 0 2px; font-weight: 800; color: var(--green); }
+.xbody p { margin: 4px 0; }
+.xfits { margin: 14px 0 !important; padding: 10px 12px; border-radius: 14px; border: 2px solid var(--gold); background: var(--gold-soft); }
+.xfacts { list-style: none; padding: 0; margin: 0 0 12px; }
+.xfacts li { padding: 8px 0; border-top: 1px solid var(--line); }
+@media (prefers-reduced-motion: reduce) { .xcard { transition: none; } }
+/* v1.3.1: whole coloured header and the name open navigation */
+a.xhead { display: block; text-decoration: none; }
+.xnavhint { position: absolute; right: 12px; bottom: 12px; padding: 4px 10px; border-radius: 12px;
+  background: rgba(255,255,255,.92); color: #2A1F1A; font-weight: 800; font-size: 18px; }
+.xname { color: inherit; text-decoration: none; }
+.xhead { min-height: 168px; }
+.xnavhint { right: auto; left: 16px; bottom: 58px; }

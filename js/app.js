@@ -2,7 +2,7 @@
    Router, tab bar, More grid, SOS, Settings, update banner, storage helpers. */
 'use strict';
 
-const APP_VERSION = '1.2.0'; // keep in sync with CACHE_VERSION in service-worker.js
+const APP_VERSION = '1.3.1'; // keep in sync with CACHE_VERSION in service-worker.js
 
 /* ---------- Storage helpers (localStorage, never crash) ---------- */
 const Store = {
@@ -98,12 +98,13 @@ function soon(icon, what, phase) {
 
 function renderMore() {
   const tiles = [
-    ['phrases', '💬', 'Phrases'], ['shopping', '🛍', 'Shopping'],
+    ['explore', '🧭', 'More places'], ['phrases', '💬', 'Phrases'],
+    ['shopping', '🛍', 'Shopping'],
     ['docs', '📄', 'Docs'],       ['prep', '✅', 'Prep'],
     ['emergency', '🚨', 'Emergency'], ['settings', '⚙', 'Settings']
   ];
   return `<div class="grid">${tiles.map(([id, ic, label]) =>
-    `<a class="tile${id === 'emergency' ? ' danger' : ''}" href="#${id}">
+    `<a class="tile${id === 'emergency' ? ' danger' : ''}${id === 'explore' ? ' feature' : ''}" href="#${id}">
        <span class="ic" aria-hidden="true">${ic}</span><span>${label}</span></a>`).join('')}</div>`;
 }
 
@@ -434,7 +435,7 @@ if ('serviceWorker' in navigator) {
 document.addEventListener('DOMContentLoaded', async () => {
   applyTextSize(getSettings().textSize);
   applyTheme(getSettings().theme);
-  await Promise.all(['trip', 'places', 'restaurants', 'dishes', 'phrases', 'shopping', 'prep', 'emergency'].map(loadJSON));
+  await Promise.all(['trip', 'places', 'restaurants', 'dishes', 'phrases', 'shopping', 'prep', 'emergency', 'explore'].map(loadJSON));
   render();
   // F23: ask for protected storage; remember the answer and retry on later opens until granted
   if (navigator.storage?.persist && !Store.get('persisted', false)) {
