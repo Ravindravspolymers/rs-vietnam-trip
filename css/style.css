@@ -554,9 +554,6 @@ details.fold[open] > summary::after { content: '▴'; }
 /* ======================================================================
    v1.3 EXPLORE: swipe cards for optional places
    ====================================================================== */
-.tile.feature { grid-column: 1 / -1; flex-direction: row; gap: 14px; min-height: 84px;
-  background: linear-gradient(120deg, #1F5F4A, #2F6E8C); color: #fff; border: 0; }
-.tile.feature .ic { font-size: 2em; }
 .xintro { margin: 0 0 10px; }
 .xnav { display: flex; align-items: center; gap: 10px; }
 .xbtn { flex: 0 0 56px; height: 56px; border-radius: 50%; border: 2px solid #9A7414; background: var(--gold-soft);
@@ -598,3 +595,27 @@ a.xhead { display: block; text-decoration: none; }
 .xname { color: inherit; text-decoration: none; }
 .xhead { min-height: 168px; }
 .xnavhint { right: auto; left: 16px; bottom: 58px; }
+
+/* v1.4: short plan for cruise / Ninh Binh days, More places link */
+.brief-who { font-weight: 700; padding: 10px 12px; border-radius: 14px; background: var(--gold-soft); margin: 0 0 8px; }
+.brief-list { list-style: none; margin: 0; padding: 0; }
+.brief-list li { display: flex; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
+.brief-list li:first-child { border-top: 0; }
+.bicon { flex: 0 0 44px; font-size: 2em; line-height: 1.1; text-align: center; }
+.brief-list li > div { flex: 1; min-width: 0; }
+.bwhen { margin: 0; font-weight: 800; color: var(--green); }
+.btitle { margin: 0 0 4px; }
+.bnote { margin: 4px 0 8px; color: var(--muted); }
+.bnote .kn { color: var(--muted); }
+.brief-list .story-btn { margin-top: 6px; }
+.morelink { display: flex; align-items: center; gap: 12px; min-height: 72px; text-decoration: none; color: var(--text);
+  border: 2px dashed var(--green); }
+.morelink .sicon { font-size: 2em; }
+.morelink .chev { margin-left: auto; font-size: 1.6em; color: var(--muted); }
+
+/* v1.5: Journey card (home → airports → flights on one card) */
+.jlist { list-style: none; margin: 8px 0 12px; padding: 0; }
+.jlist li { display: flex; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); }
+.jlist li:first-child { border-top: 0; }
+.jtime { flex: 0 0 92px; font-weight: 800; color: var(--green); }
+.journey.visited .jlist, .journey.visited .actions { display: none; }

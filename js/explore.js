@@ -97,4 +97,10 @@ function startExplore() {
   return () => { document.removeEventListener('keydown', onKey); cancelAnimationFrame(raf); };
 }
 
-ROUTES.explore = { title: 'More places', tab: 'more', back: 'more', render: renderExplore, after: startExplore };
+// v1.4: Back returns to where More places was opened (More tab or a Plan day)
+let xFrom = 'more';
+function renderExploreFrom() {
+  if (!/^#(driver|explore)/.test(prevHash)) xFrom = prevHash.startsWith('#plan') ? prevHash.slice(1) : 'more';
+  return renderExplore();
+}
+ROUTES.explore = { title: 'More places', tab: 'more', back: () => xFrom, render: renderExploreFrom, after: startExplore };

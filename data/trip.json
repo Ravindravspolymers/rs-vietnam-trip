@@ -7,8 +7,8 @@
   "kn": "ಹನೋಯ್ ಚಿಕ್ ಬೊಟಿಕ್ ಹೋಟೆಲ್",
   "address_vi": "51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
   "address_en": "51-53 Bat Su Street, Hoan Kiem, Hanoi",
-  "lat": 21.0352,
-  "lng": 105.8476,
+  "lat": 21.03424,
+  "lng": 105.84735,
   "driver_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội"
  },
  "flights": {
@@ -124,7 +124,8 @@
      "note_kn": "ಬೆಳಿಗ್ಗೆ 10ಕ್ಕೆ ಇಳಿಯುವುದು, ಟರ್ಮಿನಲ್ 2",
      "addr_vi": "Sân bay Quốc tế Nội Bài – Nhà ga T2 (Quốc tế)",
      "addr_en": "Noi Bai International Airport – Terminal 2 (International)",
-     "airport": "han1"
+     "airport": "han1",
+     "driverTo": "d1-hotel"
     },
     {
      "id": "d1-hotel",
@@ -134,8 +135,8 @@
      "kn": "ಹೋಟೆಲ್ — ಚೆಕ್-ಇನ್, ವಿಶ್ರಾಂತಿ",
      "time": "12:15",
      "mins": 240,
-     "lat": 21.0352,
-     "lng": 105.8476,
+     "lat": 21.03424,
+     "lng": 105.84735,
      "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
      "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi",
      "note_en": "Sleep 2–3 hours. You flew all night.",
@@ -175,8 +176,8 @@
      "kn": "ಹೋಟೆಲ್‌ನಲ್ಲಿ ಹಡಗಿನ ಬಸ್",
      "time": "08:00",
      "mins": 0,
-     "lat": 21.0352,
-     "lng": 105.8476,
+     "lat": 21.03424,
+     "lng": 105.84735,
      "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
      "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi",
      "anchor": true,
@@ -237,7 +238,48 @@
      "note_kn": "ಶಾಲು ಜೊತೆಗಿರಲಿ. ರಾತ್ರಿ 7ಕ್ಕೆ ಊಟ."
     }
    ],
-   "longDrive": true
+   "longDrive": true,
+   "brief": {
+    "who_en": "The cruise takes care of everything today — bus, boat, meals and guide. Just relax.",
+    "who_kn": "ಇಂದು ಎಲ್ಲವನ್ನೂ ಹಡಗಿನವರೇ ನೋಡಿಕೊಳ್ಳುತ್ತಾರೆ — ಬಸ್, ದೋಣಿ, ಊಟ, ಗೈಡ್. ಆರಾಮವಾಗಿರಿ.",
+    "rows": [
+     {
+      "when": "Morning*",
+      "icon": "🚌",
+      "en": "Cruise bus picks you up at the hotel",
+      "kn": "ಹೋಟೆಲ್‌ನಿಂದ ಹಡಗಿನ ಬಸ್ ಕರೆದುಕೊಂಡು ಹೋಗುತ್ತದೆ",
+      "note_en": "Pickup time comes on WhatsApp by 7 pm on 24 Nov. Keep passports with you.",
+      "note_kn": "ಪಿಕಪ್ ಸಮಯ 24 ನವೆಂಬರ್ ಸಂಜೆ 7ರೊಳಗೆ WhatsApp ನಲ್ಲಿ ಬರುತ್ತದೆ. ಪಾಸ್‌ಪೋರ್ಟ್ ಜೊತೆಗಿರಲಿ."
+     },
+     {
+      "when": "11:00 am",
+      "icon": "🚢",
+      "en": "Check in at Ambassador's Lounge, board at 12:00",
+      "kn": "ಅಂಬಾಸಿಡರ್ ಲೌಂಜ್‌ನಲ್ಲಿ ಚೆಕ್-ಇನ್, 12ಕ್ಕೆ ಹಡಗು ಹತ್ತುವುದು",
+      "note_en": "1st floor, Halong International Cruise Port. The bus drops you there.",
+      "note_kn": "ಹಾ ಲಾಂಗ್ ಬಂದರಿನ 1ನೇ ಮಹಡಿ. ಬಸ್ ಅಲ್ಲಿಗೇ ಬಿಡುತ್ತದೆ."
+     },
+     {
+      "when": "Afternoon",
+      "icon": "⛵",
+      "en": "Ha Long Bay: Luon Cave bamboo boat & Sung Sot Cave",
+      "kn": "ಹಾ ಲಾಂಗ್ ಕೊಲ್ಲಿ: ಲುವಾನ್ ಗುಹೆ ಬಿದಿರು ದೋಣಿ ಮತ್ತು ಸುಂಗ್ ಸೋಟ್ ಗುಹೆ",
+      "note_en": "Sung Sot Cave has many steps — you may stay on board with tea.",
+      "note_kn": "ಸುಂಗ್ ಸೋಟ್ ಗುಹೆಯಲ್ಲಿ ಹಲವು ಮೆಟ್ಟಿಲು — ಬೇಕಿದ್ದರೆ ಹಡಗಿನಲ್ಲೇ ಚಹಾ ಕುಡಿಯುತ್ತಾ ಇರಿ.",
+      "story": "d2-bay"
+     },
+     {
+      "when": "Evening",
+      "icon": "🌅",
+      "en": "Sunset on deck, dinner at 7 pm, night on the ship",
+      "kn": "ಡೆಕ್ ಮೇಲೆ ಸೂರ್ಯಾಸ್ತ, ರಾತ್ರಿ 7ಕ್ಕೆ ಊಟ, ಹಡಗಿನಲ್ಲೇ ನಿದ್ರೆ",
+      "note_en": "Carry a shawl — it is cool on the water.",
+      "note_kn": "ಶಾಲು ಜೊತೆಗಿರಲಿ — ನೀರಿನ ಮೇಲೆ ಚಳಿ."
+     }
+    ],
+    "food_en": "Pure-veg Indian meals are booked for every meal on the ship. Remind the staff once at the first meal: \"vegetarian, no fish sauce\".",
+    "food_kn": "ಹಡಗಿನಲ್ಲಿ ಎಲ್ಲಾ ಊಟಕ್ಕೂ ಶುದ್ಧ ಸಸ್ಯಾಹಾರಿ ಭಾರತೀಯ ಊಟ ಬುಕ್ ಆಗಿದೆ. ಮೊದಲ ಊಟದಲ್ಲಿ ಒಮ್ಮೆ \"ವೆಜಿಟೇರಿಯನ್, ಫಿಶ್ ಸಾಸ್ ಬೇಡ\" ಎಂದು ನೆನಪಿಸಿ."
+   }
   },
   {
    "day": 3,
@@ -294,13 +336,55 @@
      "kn": "ಹೋಟೆಲ್‌ಗೆ ವಾಪಸ್ (ಸುಮಾರು)",
      "time": "13:30",
      "mins": 0,
-     "lat": 21.0352,
-     "lng": 105.8476,
+     "lat": 21.03424,
+     "lng": 105.84735,
      "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
      "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi"
     }
    ],
-   "longDrive": true
+   "longDrive": true,
+   "brief": {
+    "who_en": "Still with the cruise. They bring you back to the hotel. The afternoon is free.",
+    "who_kn": "ಇನ್ನೂ ಹಡಗಿನವರ ಜೊತೆ. ಅವರೇ ಹೋಟೆಲ್‌ಗೆ ವಾಪಸ್ ಬಿಡುತ್ತಾರೆ. ಮಧ್ಯಾಹ್ನ ಬಿಡುವು.",
+    "rows": [
+     {
+      "when": "6:10 am",
+      "icon": "🧘",
+      "en": "Tai chi and sunrise on deck (optional)",
+      "kn": "ಡೆಕ್ ಮೇಲೆ ತಾಯ್ ಚಿ ಮತ್ತು ಸೂರ್ಯೋದಯ (ಐಚ್ಛಿಕ)",
+      "note_en": "Tea and a light breakfast at 6:30.",
+      "note_kn": "6:30ಕ್ಕೆ ಚಹಾ, ಲಘು ಉಪಾಹಾರ."
+     },
+     {
+      "when": "7:15 am",
+      "icon": "🏝",
+      "en": "Titov Island",
+      "kn": "ಟಿಟೋವ್ ದ್ವೀಪ",
+      "note_en": "Flat beach. The viewpoint has many steep steps — climb only if knees feel good.",
+      "note_kn": "ಕಡಲತೀರ ಸಮತಟ್ಟು. ಮೇಲಿನ ದೃಶ್ಯಕ್ಕೆ ಕಡಿದಾದ ಮೆಟ್ಟಿಲು — ಮಂಡಿ ಚೆನ್ನಾಗಿದ್ದರೆ ಮಾತ್ರ.",
+      "story": "d3-titov"
+     },
+     {
+      "when": "8:30 am",
+      "icon": "🍳",
+      "en": "Breakfast, pack, leave the ship at 10:30",
+      "kn": "ಉಪಾಹಾರ, ಬ್ಯಾಗ್ ಕಟ್ಟಿ, 10:30ಕ್ಕೆ ಹಡಗಿನಿಂದ ಇಳಿಯುವುದು",
+      "note_en": "The same cruise bus takes you back.",
+      "note_kn": "ಅದೇ ಹಡಗಿನ ಬಸ್ ವಾಪಸ್ ಕರೆದುಕೊಂಡು ಹೋಗುತ್ತದೆ."
+     },
+     {
+      "when": "~1:30 pm",
+      "icon": "🏨",
+      "en": "Back at the hotel — rest, then free time",
+      "kn": "ಹೋಟೆಲ್‌ಗೆ ವಾಪಸ್ — ವಿಶ್ರಾಂತಿ, ನಂತರ ಬಿಡುವು",
+      "note_en": "Feel fresh? See More places below.",
+      "note_kn": "ಆಯಾಸವಿಲ್ಲದಿದ್ದರೆ ಕೆಳಗಿನ 'More places' ನೋಡಿ."
+     }
+    ],
+    "food_en": "Veg breakfast on the ship. Lunch: many pure-veg Indian places near the hotel.",
+    "food_kn": "ಹಡಗಿನಲ್ಲಿ ಸಸ್ಯಾಹಾರಿ ಉಪಾಹಾರ. ಮಧ್ಯಾಹ್ನದ ಊಟಕ್ಕೆ ಹೋಟೆಲ್ ಹತ್ತಿರ ಹಲವು ಶುದ್ಧ ಸಸ್ಯಾಹಾರಿ ಭಾರತೀಯ ಹೋಟೆಲ್‌ಗಳಿವೆ.",
+    "foodLink": "hotel"
+   }
   },
   {
    "day": 4,
@@ -344,27 +428,15 @@
     {
      "id": "d4-lunch",
      "type": "meal",
-     "en": "Lunch — veg restaurant nearby",
+     "en": "Lunch near the hotel, then rest",
      "vi": "",
-     "kn": "ಮಧ್ಯಾಹ್ನದ ಊಟ — ಹತ್ತಿರದ ಸಸ್ಯಾಹಾರಿ ಹೋಟೆಲ್",
+     "kn": "ಹೋಟೆಲ್ ಹತ್ತಿರ ಮಧ್ಯಾಹ್ನದ ಊಟ, ನಂತರ ವಿಶ್ರಾಂತಿ",
      "time": "12:30",
-     "mins": 75,
+     "mins": 240,
      "food": "hotel",
-     "note_en": "Many pure-veg Indian places are near the hotel.",
-     "note_kn": "ಹೋಟೆಲ್ ಹತ್ತಿರ ಹಲವು ಶುದ್ಧ ಸಸ್ಯಾಹಾರಿ ಭಾರತೀಯ ಹೋಟೆಲ್‌ಗಳಿವೆ."
-    },
-    {
-     "id": "d4-rest",
-     "type": "hotel",
-     "en": "Rest at hotel",
-     "vi": "Khách sạn",
-     "kn": "ಹೋಟೆಲ್‌ನಲ್ಲಿ ವಿಶ್ರಾಂತಿ",
-     "time": "14:00",
-     "mins": 150,
-     "lat": 21.0352,
-     "lng": 105.8476,
-     "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
-     "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi"
+     "note_en": "Many pure-veg Indian places are near the hotel. Then rest at the hotel until about 4:30 pm.",
+     "note_kn": "ಹೋಟೆಲ್ ಹತ್ತಿರ ಹಲವು ಶುದ್ಧ ಸಸ್ಯಾಹಾರಿ ಭಾರತೀಯ ಹೋಟೆಲ್‌ಗಳಿವೆ. ನಂತರ ಸಂಜೆ 4:30ರವರೆಗೆ ಹೋಟೆಲ್‌ನಲ್ಲಿ ವಿಶ್ರಾಂತಿ.",
+     "driverTo": "hotel"
     },
     {
      "id": "d4-puppet",
@@ -402,8 +474,8 @@
      "time": "07:30",
      "mins": 0,
      "anchor": true,
-     "lat": 21.0352,
-     "lng": 105.8476,
+     "lat": 21.03424,
+     "lng": 105.84735,
      "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
      "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi",
      "pending": true,
@@ -418,8 +490,8 @@
      "en": "Bai Dinh Pagoda",
      "vi": "Chùa Bái Đính",
      "kn": "ಬಾಯ್ ಡಿನ್ ಬೌದ್ಧ ವಿಹಾರ",
-     "time": "09:45",
-     "mins": 120,
+     "time": "09:30",
+     "mins": 90,
      "lat": 20.2741,
      "lng": 105.8646,
      "addr_vi": "Chùa Bái Đính, Gia Sinh, Ninh Bình",
@@ -429,24 +501,12 @@
      "place": "baidinh"
     },
     {
-     "id": "d5-lunch",
-     "type": "meal",
-     "en": "Lunch at Tam Coc",
-     "vi": "Tam Cốc",
-     "kn": "ತಾಮ್ ಕೋಕ್‌ನಲ್ಲಿ ಮಧ್ಯಾಹ್ನದ ಊಟ",
-     "time": "12:00",
-     "mins": 60,
-     "food": "ninhbinh",
-     "note_en": "Indian veg places on Tam Coc road. Carry snacks too.",
-     "note_kn": "ತಾಮ್ ಕೋಕ್ ರಸ್ತೆಯಲ್ಲಿ ಭಾರತೀಯ ಸಸ್ಯಾಹಾರಿ ಹೋಟೆಲ್. ತಿಂಡಿಯೂ ಜೊತೆಗಿರಲಿ."
-    },
-    {
      "id": "d5-trangan",
      "type": "boat",
      "en": "Trang An boat ride",
      "vi": "Khu du lịch Tràng An",
      "kn": "ತ್ರಾಂಗ್ ಆನ್ ದೋಣಿ ಸವಾರಿ",
-     "time": "13:30",
+     "time": "11:15",
      "mins": 120,
      "lat": 20.2556,
      "lng": 105.9126,
@@ -457,12 +517,24 @@
      "place": "trangan"
     },
     {
+     "id": "d5-lunch",
+     "type": "meal",
+     "en": "Lunch at Tam Coc",
+     "vi": "Tam Cốc",
+     "kn": "ತಾಮ್ ಕೋಕ್‌ನಲ್ಲಿ ಮಧ್ಯಾಹ್ನದ ಊಟ",
+     "time": "13:30",
+     "mins": 60,
+     "food": "ninhbinh",
+     "note_en": "Indian veg places on Tam Coc road. Carry snacks too.",
+     "note_kn": "ತಾಮ್ ಕೋಕ್ ರಸ್ತೆಯಲ್ಲಿ ಭಾರತೀಯ ಸಸ್ಯಾಹಾರಿ ಹೋಟೆಲ್. ತಿಂಡಿಯೂ ಜೊತೆಗಿರಲಿ."
+    },
+    {
      "id": "d5-mua",
      "type": "viewpoint",
      "en": "Mua Cave viewpoint",
      "vi": "Hang Múa",
      "kn": "ಹ್ಯಾಂಗ್ ಮುವಾ ಬೆಟ್ಟ",
-     "time": "16:00",
+     "time": "15:00",
      "mins": 75,
      "lat": 20.2361,
      "lng": 105.9283,
@@ -478,15 +550,75 @@
      "en": "Back to hotel",
      "vi": "Khách sạn",
      "kn": "ಹೋಟೆಲ್‌ಗೆ ವಾಪಸ್",
-     "time": "19:30",
+     "time": "19:00",
      "mins": 0,
-     "lat": 21.0352,
-     "lng": 105.8476,
+     "lat": 21.03424,
+     "lng": 105.84735,
      "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
      "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi"
     }
    ],
-   "longDrive": true
+   "longDrive": true,
+   "brief": {
+    "who_en": "The hotel's driver plans the whole day: he picks you up, shows you around, stops for tea, toilet and lunch, and brings you back. The order below may change — follow the driver.",
+    "who_kn": "ಹೋಟೆಲ್‌ನ ಚಾಲಕರೇ ಇಡೀ ದಿನ ನೋಡಿಕೊಳ್ಳುತ್ತಾರೆ: ಕರೆದುಕೊಂಡು ಹೋಗಿ, ಸ್ಥಳಗಳನ್ನು ತೋರಿಸಿ, ಚಹಾ-ಶೌಚಾಲಯ-ಊಟಕ್ಕೆ ನಿಲ್ಲಿಸಿ, ವಾಪಸ್ ಬಿಡುತ್ತಾರೆ. ಕ್ರಮ ಬದಲಾಗಬಹುದು — ಚಾಲಕರನ್ನು ಅನುಸರಿಸಿ.",
+    "rows": [
+     {
+      "when": "~7:30 am*",
+      "icon": "🚗",
+      "en": "Driver picks you up at the hotel",
+      "kn": "ಹೋಟೆಲ್‌ನಿಂದ ಚಾಲಕರು ಕರೆದುಕೊಂಡು ಹೋಗುತ್ತಾರೆ",
+      "note_en": "About 2 hours' drive. Ask the hotel for the exact time and save the driver's number in Settings.",
+      "note_kn": "ಸುಮಾರು 2 ಗಂಟೆ ಪ್ರಯಾಣ. ನಿಖರ ಸಮಯ ಹೋಟೆಲ್‌ನಲ್ಲಿ ಕೇಳಿ; ಚಾಲಕರ ನಂಬರ್ Settings ನಲ್ಲಿ ಉಳಿಸಿ."
+     },
+     {
+      "when": "",
+      "icon": "🛕",
+      "en": "Bai Dinh Pagoda",
+      "kn": "ಬಾಯ್ ಡಿನ್ ಬೌದ್ಧ ವಿಹಾರ",
+      "note_en": "Very big — take the electric buggy.",
+      "note_kn": "ತುಂಬಾ ದೊಡ್ಡ ಜಾಗ — ಎಲೆಕ್ಟ್ರಿಕ್ ವಾಹನ ಬಳಸಿ.",
+      "story": "d5-baidinh"
+     },
+     {
+      "when": "",
+      "icon": "🚣",
+      "en": "Trang An boat ride",
+      "kn": "ತ್ರಾಂಗ್ ಆನ್ ದೋಣಿ ಸವಾರಿ",
+      "note_en": "About 2 hours sitting in a small boat. Wear the life jacket; bend your head in low caves.",
+      "note_kn": "ಸುಮಾರು 2 ಗಂಟೆ ಸಣ್ಣ ದೋಣಿಯಲ್ಲಿ. ಲೈಫ್ ಜಾಕೆಟ್ ಧರಿಸಿ; ತಗ್ಗಿನ ಗುಹೆಯಲ್ಲಿ ತಲೆ ಬಗ್ಗಿಸಿ.",
+      "story": "d5-trangan"
+     },
+     {
+      "when": "",
+      "icon": "🍽",
+      "en": "Lunch at Tam Coc",
+      "kn": "ತಾಮ್ ಕೋಕ್‌ನಲ್ಲಿ ಮಧ್ಯಾಹ್ನದ ಊಟ",
+      "note_en": "Ask the driver for an Indian veg restaurant on Tam Coc road.",
+      "note_kn": "ತಾಮ್ ಕೋಕ್ ರಸ್ತೆಯ ಭಾರತೀಯ ಸಸ್ಯಾಹಾರಿ ಹೋಟೆಲ್‌ಗೆ ಕರೆದುಕೊಂಡು ಹೋಗಲು ಚಾಲಕರಿಗೆ ಹೇಳಿ."
+     },
+     {
+      "when": "",
+      "icon": "⛰",
+      "en": "Mua Cave viewpoint",
+      "kn": "ಹ್ಯಾಂಗ್ ಮುವಾ ಬೆಟ್ಟ",
+      "note_en": "About 500 steps — optional. You can wait at the bottom.",
+      "note_kn": "ಸುಮಾರು 500 ಮೆಟ್ಟಿಲು — ಐಚ್ಛಿಕ. ಕೆಳಗೇ ಕಾಯಬಹುದು.",
+      "story": "d5-mua"
+     },
+     {
+      "when": "~7:00 pm",
+      "icon": "🏨",
+      "en": "Back at the hotel",
+      "kn": "ಹೋಟೆಲ್‌ಗೆ ವಾಪಸ್",
+      "note_en": "",
+      "note_kn": ""
+     }
+    ],
+    "food_en": "Carry biscuits, fruit and water in the car. At any local restaurant, show the Waiter card and order: Cơm chiên chay (veg fried rice), Đậu phụ sốt cà chua (tofu in tomato), Rau củ xào (mixed vegetables) — say \"không nước mắm\" (no fish sauce).",
+    "food_kn": "ಕಾರಿನಲ್ಲಿ ಬಿಸ್ಕತ್, ಹಣ್ಣು, ನೀರು ಇರಲಿ. ಯಾವುದೇ ಸ್ಥಳೀಯ ಹೋಟೆಲ್‌ನಲ್ಲಿ ವೇಟರ್ ಕಾರ್ಡ್ ತೋರಿಸಿ, ಇವನ್ನು ಕೇಳಿ: ಸಸ್ಯಾಹಾರಿ ಫ್ರೈಡ್ ರೈಸ್, ಟೊಮೆಟೊ ಗ್ರೇವಿಯಲ್ಲಿ ತೋಫು, ಮಿಶ್ರ ತರಕಾರಿ — \"ಫಿಶ್ ಸಾಸ್ ಬೇಡ\" ಎನ್ನಿ.",
+    "foodLink": "ninhbinh"
+   }
   },
   {
    "day": 6,
@@ -503,8 +635,6 @@
      "kn": "ಬಿಡುವು — ಕೊನೆಯ ಶಾಪಿಂಗ್, ಪ್ಯಾಕಿಂಗ್",
      "time": "09:00",
      "mins": 240,
-     "lat": 21.0352,
-     "lng": 105.8476,
      "note_en": "Pack by 12 noon. Ask hotel to keep bags after checkout.",
      "note_kn": "ಮಧ್ಯಾಹ್ನ 12ರೊಳಗೆ ಪ್ಯಾಕ್ ಮಾಡಿ. ಚೆಕ್-ಔಟ್ ನಂತರ ಬ್ಯಾಗ್ ಇಡಲು ಹೋಟೆಲ್‌ಗೆ ಕೇಳಿ."
     },
@@ -517,10 +647,11 @@
      "time": "15:30",
      "mins": 0,
      "anchor": true,
-     "lat": 21.0352,
-     "lng": 105.8476,
+     "lat": 21.03424,
+     "lng": 105.84735,
      "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
-     "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi"
+     "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi",
+     "driverTo": "d6-han"
     },
     {
      "id": "d6-han",

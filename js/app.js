@@ -2,7 +2,7 @@
    Router, tab bar, More grid, SOS, Settings, update banner, storage helpers. */
 'use strict';
 
-const APP_VERSION = '1.3.1'; // keep in sync with CACHE_VERSION in service-worker.js
+const APP_VERSION = '1.5.0'; // keep in sync with CACHE_VERSION in service-worker.js
 
 /* ---------- Storage helpers (localStorage, never crash) ---------- */
 const Store = {
@@ -98,13 +98,13 @@ function soon(icon, what, phase) {
 
 function renderMore() {
   const tiles = [
-    ['explore', '🧭', 'More places'], ['phrases', '💬', 'Phrases'],
-    ['shopping', '🛍', 'Shopping'],
+    ['phrases', '💬', 'Phrases'], ['shopping', '🛍', 'Shopping'],
+    ['explore', '🧭', 'More places'],
     ['docs', '📄', 'Docs'],       ['prep', '✅', 'Prep'],
     ['emergency', '🚨', 'Emergency'], ['settings', '⚙', 'Settings']
   ];
   return `<div class="grid">${tiles.map(([id, ic, label]) =>
-    `<a class="tile${id === 'emergency' ? ' danger' : ''}${id === 'explore' ? ' feature' : ''}" href="#${id}">
+    `<a class="tile${id === 'emergency' ? ' danger' : ''}" href="#${id}">
        <span class="ic" aria-hidden="true">${ic}</span><span>${label}</span></a>`).join('')}</div>`;
 }
 

@@ -16,6 +16,8 @@ function renderToday() {
   if (cur.after) banner = `<div class="banner green"><strong>Welcome home! 🙏</strong><span class="kn">ಮನೆಗೆ ಸ್ವಾಗತ!</span></div>`;
 
   // F17 order: banner → greeting (one line) → Now/Next → hotel → ready/backup → clocks → rings
+  // v1.5: during the trip, clocks/progress/helper fold away so NOW/NEXT and the hotel fill the screen
+  const during = !cur.before && !cur.after;
   return `${banner}
     <p class="hello1"><strong>Namaskara 🙏</strong> <span class="kn">ನಮಸ್ಕಾರ</span>${cur.after ? '' :
       ` · <span class="dayline">${esc(dayLabel(day))}</span>`}</p>
@@ -23,6 +25,7 @@ function renderToday() {
     ${renderHotelCard(cur)}
     ${renderReadyCard()}
     ${renderBackupNudge()}
+    ${during ? '<details class="card fold"><summary>🕒 Clocks &amp; progress</summary>' : ''}
     <section class="clocks" aria-label="Clocks">
       <div class="clock"><div class="clabel">🇮🇳 India</div>
         <div class="ctime" id="clock-in">--:--</div><div class="cdate" id="date-in"></div></div>
@@ -33,7 +36,8 @@ function renderToday() {
       <span class="kn">ವಿಯೆಟ್ನಾಂ ಸಮಯ ಭಾರತಕ್ಕಿಂತ 1½ ಗಂಟೆ ಮುಂದೆ.</span></p>
     ${renderProgress(day)}
     ${renderAsk(['What should we do if we finish early?', 'We are tired. What is an easy plan for the rest of today?'],
-      `Today is ${dayLabel(day)}: ${day.title_en}. Plan: ${day.stops.map(s => s.time + ' ' + s.en).join('; ')}. Hotel in Hanoi Old Quarter (Bat Su street).`)}`;
+      `Today is ${dayLabel(day)}: ${day.title_en}. Plan: ${day.stops.map(s => s.time + ' ' + s.en).join('; ')}. Hotel in Hanoi Old Quarter (Bat Su street).`)}
+    ${during ? '</details>' : ''}`;
 }
 
 // F02: a pending stop never shows a raw TODO — it shows a bilingual "to be confirmed" line
