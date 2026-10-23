@@ -2,7 +2,7 @@
    Router, tab bar, More grid, SOS, Settings, update banner, storage helpers. */
 'use strict';
 
-const APP_VERSION = '1.5.0'; // keep in sync with CACHE_VERSION in service-worker.js
+const APP_VERSION = '2.0.0'; // keep in sync with CACHE_VERSION in service-worker.js
 
 /* ---------- Storage helpers (localStorage, never crash) ---------- */
 const Store = {
@@ -116,7 +116,8 @@ function renderAbout() {
     <section class="card"><h3>🔒 Privacy</h3>
       <p>No account, no tracking. Your documents, ticks and contacts stay only on this phone.</p>
       <p class="kn">ಯಾವುದೇ ಖಾತೆ ಇಲ್ಲ. ನಿಮ್ಮ ದಾಖಲೆಗಳು ಈ ಫೋನ್‌ನಲ್ಲಿ ಮಾತ್ರ ಇರುತ್ತವೆ.</p>
-      <p class="muted small">Internet is used only for exchange rates, the DeepSeek helper and Google Maps.</p></section>
+      <p class="muted small">Internet is used only for exchange rates, the 🎤 helper (DeepSeek + the phone's voice typing) and Google Maps.
+        The helper sends your question, the trip plan, saved numbers and document names/notes to DeepSeek. Passport and Visa are never sent.</p></section>
     <section class="card"><h3>📚 Information sources</h3>
       <ul>
         <li>Embassy of India, Hanoi (indembassyhanoi.gov.in)</li>
@@ -244,7 +245,8 @@ function renderSettings() {
 
     <details class="card fold">
       <summary>🤖 DeepSeek helper</summary>
-      <p class="muted small">Optional. Key stays on this phone only and is never put in backups.</p>
+      <p class="muted small">Powers the 🎤 Ask helper. Key stays on this phone only and is never put in backups.
+        Questions are sent to DeepSeek with the trip plan, saved numbers and document names/notes — never Passport or Visa.</p>
       <p>Status: <strong id="ds-status">${s.deepseekKey ? 'Saved ✓' : 'Not set'}</strong></p>
       <label for="ds-key">API key</label>
       <input id="ds-key" type="password" placeholder="Paste key here" autocomplete="off">
@@ -379,7 +381,8 @@ function render() {
   const route = ROUTES[name];
   $('#screen-title').textContent = route.title;
   $('#back-btn').hidden = !(typeof route.back === 'function' ? route.back() : route.back);
-  $('#sos-btn').hidden = name === 'sos';
+  $('#mic-btn').hidden = name === 'chat';
+  document.querySelector('.sos-top').hidden = name === 'sos';   // v2.0: SOS always in the top bar
   document.querySelectorAll('.tabbar a').forEach(a =>
     a.classList.toggle('active', a.dataset.tab === route.tab));
   const main = $('#screen');

@@ -154,7 +154,8 @@ function docCard(d) {
   const thumb = isImg ? `<img class="doc-thumb" src="${blobUrl(d.blob)}" alt="" loading="lazy">` : `<span class="doc-thumb pdf">PDF</span>`;
   return `<article class="card doc">
     <a class="doc-row" href="#doc:${id}">${thumb}
-      <span><strong>${esc(d.name)}</strong><br><span class="muted small">${fmtDay(d.added)} · ${fmtSize(d.size)}</span></span></a>
+      <span><strong>${esc(d.name)}</strong><br><span class="muted small">${fmtDay(d.added)} · ${fmtSize(d.size)}</span>
+        ${d.note ? `<br><span class="docnote">📝 ${esc(d.note)}</span>` : ''}</span></a>
     <div class="actions three">
       <a class="btn secondary" href="#doc:${id}">👁 View</a>
       <button type="button" class="btn secondary" data-share="${id}">📤 Share</button>
@@ -179,7 +180,14 @@ async function fillDoc() {
     : `<div class="card center"><p class="doc-thumb pdf big">PDF</p>
         <button type="button" class="btn green" data-share="${esc(d.id)}">📤 Open with… (Share)</button>
         <a class="btn secondary" href="${url}" target="_blank" rel="noopener">📖 Open PDF</a></div>`;
+  const priv = ['passport', 'visa'].includes(d.cat);
   root.innerHTML = `<h2>${esc(d.name)}</h2>${body}
+    <section class="card">
+      <h3>📝 Note for the helper</h3>
+      <p>${d.note ? esc(d.note) : '<span class="muted">No note yet. Add key details the 🎤 helper can use, e.g. "Cruise check-in 11 am, booking 12345".</span>'}</p>
+      <p class="muted small">${priv ? '🔒 Passport and Visa are private: the helper never reads them.' : 'Only this note and the document name are shared with the helper — not the picture.'}</p>
+      <button type="button" class="btn secondary" data-note="${esc(d.id)}">${d.note ? '✏️ Edit note' : '➕ Add note'}</button>
+    </section>
     <div class="actions">
       <button type="button" class="btn secondary" data-share="${esc(d.id)}">📤 Share</button>
       <button type="button" class="btn secondary" data-rename="${esc(d.id)}">✏️ Rename</button>
@@ -265,15 +273,20 @@ function startDocsScreen(fill) {
     const main = document.getElementById('screen');
     fill();
     const onClick = async e => {
-      const b = e.target.closest('[data-addcat],[data-share],[data-del],[data-undel],[data-rename],[data-pin],[data-backup],[data-restore]');
+      const b = e.target.closest('[data-addcat],[data-share],[data-del],[data-undel],[data-rename],[data-note],[data-pin],[data-backup],[data-restore]');
       if (!b) return;
       if (b.dataset.addcat !== undefined) { docsAddCat = b.dataset.addcat; freeUrls(); return fill(); }
       if (b.dataset.backup !== undefined) { await doBackup(); freeUrls(); return fill(); }
       if (b.dataset.restore !== undefined) return doRestore();
-      const id = b.dataset.share || b.dataset.del || b.dataset.undel || b.dataset.rename || b.dataset.pin;
+      const id = b.dataset.share || b.dataset.del || b.dataset.undel || b.dataset.rename || b.dataset.note || b.dataset.pin;
       const d = await DocDB.get(id);
       if (!d) return;
       if (b.dataset.share) return shareOrDownload(d.blob, docFileName(d));
+      if (b.dataset.note) {                       // v2.0: short note the 🎤 helper can read
+        const n = prompt('Note for the helper (e.g. booking number, check-in time):', d.note || '');
+        if (n !== null) { d.note = n.trim().slice(0, 300); await DocDB.put(d); markDocsChanged(); freeUrls(); fill(); }
+        return;
+      }
       if (b.dataset.rename) {
         const n = prompt('New name:', d.name);
         if (n && n.trim()) { d.name = n.trim(); await DocDB.put(d); markDocsChanged(); freeUrls(); fill(); }

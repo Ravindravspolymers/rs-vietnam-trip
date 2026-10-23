@@ -25,8 +25,8 @@
   <!-- All screens render here -->
   <main id="screen" tabindex="-1"></main>
 
-  <!-- Persistent SOS button -->
-  <a href="#sos" id="sos-btn" class="sos-btn" aria-label="SOS emergency">SOS</a>
+  <!-- v2.0: floating mic = ask the helper (SOS lives in the top bar on every screen) -->
+  <a href="#chat" id="mic-btn" class="sos-btn mic-btn" aria-label="Ask a question by voice">🎤</a>
 
   <!-- Bottom tab bar: 5 tabs -->
   <nav class="tabbar" aria-label="Main">
@@ -51,5 +51,6 @@
   <script src="js/emergency.js"></script>
   <script src="js/ask.js"></script>
   <script src="js/explore.js"></script>
+  <script src="js/chat.js"></script>
 </body>
 </html>
