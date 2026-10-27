@@ -128,6 +128,16 @@
      "driverTo": "d1-hotel"
     },
     {
+     "id": "d1-cash",
+     "type": "airport",
+     "en": "Noi Bai — change dollars to đồng",
+     "kn": "ನೋಯ್ ಬಾಯ್ — ಡಾಲರ್ ಅನ್ನು ಡಾಂಗ್‌ಗೆ ಬದಲಿಸಿ",
+     "time": "10:50",
+     "mins": 20,
+     "note_en": "BIDV counter, arrivals hall (open daily). Change about US$430; keep US$220 for the hotel. See Money → Cash plan.",
+     "note_kn": "ಆಗಮನ ಹಾಲ್‌ನ BIDV ಕೌಂಟರ್. ಸುಮಾರು 430 ಡಾಲರ್ ಬದಲಿಸಿ; ಹೋಟೆಲ್‌ಗೆ 220 ಡಾಲರ್ ಇಟ್ಟುಕೊಳ್ಳಿ."
+    },
+    {
      "id": "d1-hotel",
      "type": "hotel",
      "en": "Hotel — check in and rest",
@@ -139,8 +149,8 @@
      "lng": 105.84735,
      "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
      "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi",
-     "note_en": "Sleep 2–3 hours. You flew all night.",
-     "note_kn": "ರಾತ್ರಿಯಿಡೀ ಪ್ರಯಾಣ ಮಾಡಿದ್ದೀರಿ. 2–3 ಗಂಟೆ ನಿದ್ದೆ ಮಾಡಿ."
+     "note_en": "Sleep 2–3 hours. You flew all night. Pay the hotel balance of US$220 when asked — keep the receipt.",
+     "note_kn": "2–3 ಗಂಟೆ ನಿದ್ದೆ ಮಾಡಿ. ಹೋಟೆಲ್ ಕೇಳಿದಾಗ ಬಾಕಿ 220 ಡಾಲರ್ ಕೊಡಿ — ರಸೀದಿ ಪಡೆಯಿರಿ."
     },
     {
      "id": "d1-lake",
@@ -669,6 +679,16 @@
      "addr_vi": "Sân bay Quốc tế Nội Bài – Nhà ga T2 (Quốc tế)",
      "addr_en": "Noi Bai International Airport – Terminal 2 (International)",
      "airport": "han2"
+    },
+    {
+     "id": "d6-cashback",
+     "type": "airport",
+     "en": "Noi Bai — change leftover đồng to dollars",
+     "kn": "ನೋಯ್ ಬಾಯ್ — ಉಳಿದ ಡಾಂಗ್ ಅನ್ನು ಡಾಲರ್‌ಗೆ ಬದಲಿಸಿ",
+     "time": "17:00",
+     "mins": 15,
+     "note_en": "Before security, at a bank counter. Keep the receipt. See Money → Cash plan.",
+     "note_kn": "ಭದ್ರತಾ ತಪಾಸಣೆಗೆ ಮೊದಲು ಬ್ಯಾಂಕ್ ಕೌಂಟರ್‌ನಲ್ಲಿ. ರಸೀದಿ ಇಟ್ಟುಕೊಳ್ಳಿ."
     },
     {
      "id": "d6-bom",

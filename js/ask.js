@@ -55,7 +55,7 @@ async function askDeepSeek(question, context) {
 let askSeq = 0;
 function renderAsk(presets, context) {
   // v2.0: one helper for everything — the small preset boxes now point to the 🎤 Ask screen
-  return getSettings().deepseekKey ? `<a class="btn secondary" href="#chat">🎤 Ask the helper <span class="kn">ಸಹಾಯಕನನ್ನು ಕೇಳಿ</span></a>` : '';
+  return getSettings().deepseekKey ? `<a class="btn secondary" href="#chat">💬 Ask the helper <span class="kn">ಸಹಾಯಕನನ್ನು ಕೇಳಿ</span></a>` : '';
 }
 function renderAskOld(presets, context) {
   if (!getSettings().deepseekKey) return '';           // hidden until a key is saved

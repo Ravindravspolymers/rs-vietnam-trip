@@ -53,6 +53,7 @@ function renderMoney() {
       <label for="fx-USD">$ US Dollar</label>
       <input id="fx-USD" data-cur="USD" type="text" inputmode="decimal" placeholder="0" autocomplete="off">
     </section>
+    ${renderCashPlan()}
     ${renderAskPrice()}
 
     <section class="card accent" id="fx-rule">

@@ -2,7 +2,7 @@
    Router, tab bar, More grid, SOS, Settings, update banner, storage helpers. */
 'use strict';
 
-const APP_VERSION = '2.0.0'; // keep in sync with CACHE_VERSION in service-worker.js
+const APP_VERSION = '2.2.0'; // keep in sync with CACHE_VERSION in service-worker.js
 
 /* ---------- Storage helpers (localStorage, never crash) ---------- */
 const Store = {
@@ -99,7 +99,7 @@ function soon(icon, what, phase) {
 function renderMore() {
   const tiles = [
     ['phrases', '💬', 'Phrases'], ['shopping', '🛍', 'Shopping'],
-    ['explore', '🧭', 'More places'],
+    ['explore', '🧭', 'More places'], ['sim', '📶', 'SIM & internet'],
     ['docs', '📄', 'Docs'],       ['prep', '✅', 'Prep'],
     ['emergency', '🚨', 'Emergency'], ['settings', '⚙', 'Settings']
   ];
@@ -381,7 +381,7 @@ function render() {
   const route = ROUTES[name];
   $('#screen-title').textContent = route.title;
   $('#back-btn').hidden = !(typeof route.back === 'function' ? route.back() : route.back);
-  $('#mic-btn').hidden = name === 'chat';
+  $('#mic-btn').hidden = $('#chat-btn').hidden = ['chat', 'translate'].includes(name);
   document.querySelector('.sos-top').hidden = name === 'sos';   // v2.0: SOS always in the top bar
   document.querySelectorAll('.tabbar a').forEach(a =>
     a.classList.toggle('active', a.dataset.tab === route.tab));

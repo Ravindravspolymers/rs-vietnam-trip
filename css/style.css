@@ -294,7 +294,7 @@ input:focus { border-color: var(--gold); outline: none; }
 .tick[aria-pressed="true"] { background: var(--green); color: #fff; border: 2px solid var(--green); }
 
 /* ===== Driver card (full screen) ===== */
-body.fullscreen .tabbar, body.fullscreen .mic-btn { display: none; }
+body.fullscreen .tabbar, body.fullscreen .mic-btn, body.fullscreen .chat-btn { display: none; }
 body.fullscreen { padding-bottom: 24px; }
 .driver { background: #fff; color: #111; border-radius: var(--radius); padding: 20px; min-height: 70vh; }
 .dr-ask { font-size: 22px; margin: 0 0 8px; }
@@ -660,3 +660,73 @@ a.xhead { display: block; text-decoration: none; }
 .chat-quick::-webkit-scrollbar { display: none; }
 .chat-quick .fchip { flex: 0 0 auto; white-space: nowrap; }
 .chat-bar { position: sticky; bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom) + 8px); z-index: 5; }
+
+/* ======================================================================
+   v2.1: 🎤 translator (big FAB) + 💬 helper (small FAB) · translator screen
+   ====================================================================== */
+.mic-btn { width: 64px; height: 64px; right: 16px; bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom) + 80px); }
+.chat-btn { width: 52px; height: 52px; right: 22px; font-size: 24px; background: var(--card); border: 2px solid var(--btn-green);
+  box-shadow: var(--shadow); }
+.chat-btn[hidden] { display: none; }
+main { padding-bottom: 170px; }
+.tr .chat-log { margin-bottom: 8px; }
+.vi-big { font-size: 1.35em; font-weight: 800; line-height: 1.35; margin: 0 0 6px; }
+.tr-me { max-width: 92%; }
+.tr-them { max-width: 94%; }
+.tr-price { margin: 8px 0 4px; padding: 8px 10px; border-radius: 12px; background: var(--gold-soft); }
+.tr-advice { margin: 6px 0; font-weight: 600; color: var(--green); }
+.tr-tap { margin: 10px 0 4px; font-weight: 700; }
+.tr-tap .kn { display: block; font-weight: 400; color: var(--muted); }
+.tr-replies { display: flex; flex-wrap: wrap; gap: 8px; }
+.tr-replies .fchip { background: var(--btn-green); color: #fff; border-color: var(--btn-green); }
+.tr-bar { position: sticky; bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom) + 8px); z-index: 5;
+  padding: 10px; border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow); }
+.tr-bar .chat-status { margin: 0 0 8px; text-align: center; }
+.tr-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.tr-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 92px;
+  border: 0; border-radius: 20px; font: inherit; font-size: 28px; color: #fff; cursor: pointer; }
+.tr-btn span { font-size: max(15px, .55em); font-weight: 800; }
+.tr-btn .kn { font-weight: 400; }
+.tr-btn.me { background: var(--btn-green); }
+.tr-btn.them { background: #8A5A00; }
+.tr-btn:disabled { opacity: .4; }
+.tr-btn.on { background: var(--btn-red); animation: micpulse 1.2s ease-in-out infinite; }
+.tr-new { display: block; width: 100%; min-height: 48px; margin-top: 8px; border: 0; background: transparent;
+  color: var(--muted); font: inherit; font-weight: 700; cursor: pointer; }
+.tr-new[hidden] { display: none; }
+.tr-show { position: fixed; inset: 0; z-index: 50; background: #fff; color: #111; display: flex; flex-direction: column;
+  justify-content: center; padding: 24px; }
+.tr-show p { font-size: clamp(30px, 9vw, 48px); font-weight: 800; line-height: 1.3; margin: 0 0 24px; }
+.tr-show-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+/* keep the newest message above the sticky voice bars */
+.tr .chat-log > * { scroll-margin-bottom: 300px; }
+.chat .chat-log > * { scroll-margin-bottom: 140px; }
+
+/* ======================================================================
+   v2.2: cash plan · SIM · bright Today reminders
+   ====================================================================== */
+.alertcard { display: flex; align-items: stretch; gap: 0; margin: 0 0 12px; border-radius: var(--radius); overflow: hidden;
+  background: linear-gradient(120deg, #C2410C, #B3261E); color: #fff; box-shadow: 0 6px 18px rgba(179,38,30,.35);
+  border: 3px solid #FFD54F; }
+.alertcard a { flex: 1; display: flex; flex-direction: column; gap: 2px; padding: 12px 14px; color: #fff; text-decoration: none; }
+.alertcard strong { font-size: 1.1em; }
+.alertcard .kn { color: #FFF3E0; }
+.alertcard .asub { font-size: max(15px, .9em); color: #FFE0B2; font-weight: 700; }
+.adone { flex: 0 0 76px; border: 0; border-left: 2px solid rgba(255,255,255,.4); background: rgba(0,0,0,.18); color: #fff;
+  font: inherit; font-weight: 800; cursor: pointer; min-height: 48px; }
+.cashplan h3 { margin-bottom: 4px; }
+.cashrow { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); color: var(--text); text-decoration: none; min-height: 48px; }
+.cashrow .cnum { flex: 0 0 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  background: var(--btn-red); color: #fff; font-weight: 800; }
+.cashrow.done { opacity: .45; }
+.cashrow.done .cnum { background: var(--btn-green); }
+.cashrow .chev { margin-left: auto; color: var(--muted); font-size: 1.4em; }
+table.kv { width: 100%; border-collapse: collapse; }
+table.kv th { text-align: left; vertical-align: top; width: 38%; padding: 7px 8px 7px 0; color: var(--muted); font-weight: 700; }
+table.kv td { padding: 7px 0; }
+table.kv tr + tr th, table.kv tr + tr td { border-top: 1px solid var(--line); }
+.fx h3 { margin-bottom: 6px; }
+.nudge-ok { border: 2px solid var(--btn-green); }
+/* Done button on the LEFT so the floating 🎤/💬 buttons never cover it */
+.alertcard { flex-direction: row-reverse; }
+.adone { border-left: 0; border-right: 2px solid rgba(255,255,255,.4); }

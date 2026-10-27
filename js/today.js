@@ -19,6 +19,7 @@ function renderToday() {
   // v1.5: during the trip, clocks/progress/helper fold away so NOW/NEXT and the hotel fill the screen
   const during = !cur.before && !cur.after;
   return `${banner}
+    ${renderTaskAlerts(cur)}
     <p class="hello1"><strong>Namaskara 🙏</strong> <span class="kn">ನಮಸ್ಕಾರ</span>${cur.after ? '' :
       ` · <span class="dayline">${esc(dayLabel(day))}</span>`}</p>
     <div id="nownext">${renderNowNext(cur)}</div>

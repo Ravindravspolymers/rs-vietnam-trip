@@ -25,8 +25,9 @@
   <!-- All screens render here -->
   <main id="screen" tabindex="-1"></main>
 
-  <!-- v2.0: floating mic = ask the helper (SOS lives in the top bar on every screen) -->
-  <a href="#chat" id="mic-btn" class="sos-btn mic-btn" aria-label="Ask a question by voice">🎤</a>
+  <!-- v2.1: 🎤 = translator (big), 💬 = ask the helper (small). SOS lives in the top bar on every screen -->
+  <a href="#translate" id="mic-btn" class="sos-btn mic-btn" aria-label="Translate: speak with Vietnamese people">🎤</a>
+  <a href="#chat" id="chat-btn" class="sos-btn chat-btn" aria-label="Ask the trip helper">💬</a>
 
   <!-- Bottom tab bar: 5 tabs -->
   <nav class="tabbar" aria-label="Main">
@@ -52,5 +53,7 @@
   <script src="js/ask.js"></script>
   <script src="js/explore.js"></script>
   <script src="js/chat.js"></script>
+  <script src="js/translate.js"></script>
+  <script src="js/cash.js"></script>
 </body>
 </html>

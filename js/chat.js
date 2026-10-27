@@ -51,6 +51,15 @@ function kbStatic() {
   }
   L.push('# MONEY', 'Currency: Vietnamese dong (₫). Notes: 10k, 20k, 50k, 100k, 200k, 500k. 20,000 and 500,000 are both blue; 10,000 and 100,000 differ by one zero — count the zeros.',
     'Bargaining: offer half, settle at 60–70%, smile, pay cash in dong, walk away if too high.');
+  if (typeof CASH_STEPS !== 'undefined') {                // v2.2: cash plan + SIM
+    L.push('# CASH PLAN', `Take US$${CASH_TOTAL} cash: US$${HOTEL_USD} is the hotel balance (pay at the hotel, keep receipt); the rest for meals, Hanoi taxis, tickets, shopping. Ha Long cruise and Ninh Binh are already paid.`,
+      ...CASH_STEPS.map((s, i) => `Step ${i + 1} (${s.when}): ${s.en}.`),
+      'Buy dollars in Bengaluru from: ' + BLR_FX.map(f => `${f.name} (${f.how}; ${f.docs})`).join('; ') + '. Ask for clean $100 notes, 2013 series or newer. Keep the forex receipt.',
+      'Dollars to dong in Vietnam: ' + VN_FX.map(f => `${f.name} — ${f.hours}; ${f.note}`).join(' | '),
+      'Leftover dong: spend first, keep ~200,000 dong; on Sunday 29 Nov change at Quang Huy 130 Hang Bac (open Sunday) or the airport bank counter before security.',
+      '# SIM / INTERNET', 'Airtel free roaming pack (new postpaid plans ₹499+): 5 GB data, 60 min calls, 25 SMS, 5 days from first connecting abroad; turn on data roaming and activate in the Airtel Thanks app after landing in Hanoi (not in Mumbai). Visit the Airtel store in Sahakar Nagar before the trip to confirm plan, Vietnam coverage and enable roaming.',
+      'Backup local SIM at Noi Bai arrivals (passport needed): ' + VN_SIMS.map(v => `${v[0]} ${v[1]}, ${v[2]}`).join('; ') + '.');
+  }
   if (DATA.shopping) {
     L.push('# SHOPPING (prices in dong)');
     DATA.shopping.items.forEach(i => L.push(`- ${i.en}: ${i.vmin == null ? 'fixed/ask' : i.vmin + (i.vmax ? '–' + i.vmax : '+')} ₫. ${i.why_en} Tip: ${i.tip_en}`));
