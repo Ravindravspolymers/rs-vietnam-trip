@@ -1,12 +1,14 @@
-/* RS Vietnam Trip — 🎤 Translator (v2.1)
+/* RS Vietnam Trip — 🎤 Translator (v2.1; v2.3 = strict translation only, 2-day memory)
    🗣 I speak (Kannada / English) → DeepSeek writes short, polite, persuasive Vietnamese → phone speaks it (vi-VN).
-   👂 They speak (Vietnamese) → spoken Kannada/English + price in ₹ + bargaining coach with one-tap replies.
+   👂 They speak (Vietnamese) → spoken Kannada/English. Strict translation only (v2.3).
    Always truthful and on our side. No tactics with police / airport / hospital. Offline: quick phrases with sound. */
 'use strict';
 
 const tr = { busy: false, rec: null, show: null };
-const getTrLog = () => { try { return JSON.parse(sessionStorage.getItem('rs.trLog') || '[]'); } catch (e) { return []; } };
-const saveTrLog = l => { try { sessionStorage.setItem('rs.trLog', JSON.stringify(l.slice(-30))); } catch (e) {} };
+// v2.3: conversation kept on this phone for 2 days only, then erased
+const KEEP_MS = 2 * 24 * 3600 * 1000;
+const getTrLog = () => Store.get('trLog', []).filter(m => m.t && Date.now() - m.t < KEEP_MS);
+const saveTrLog = l => Store.set('trLog', l.filter(m => m.t && Date.now() - m.t < KEEP_MS).slice(-40));
 
 // Offline quick phrases (from data/phrases.json, spoken by the phone — no internet needed)
 const TR_QUICK = ['How much?', 'Too expensive!', 'Can you reduce the price?', 'Please write the price on paper', "I'll take this",
@@ -18,23 +20,13 @@ const vndToInr = v => { const fx = getFx(); return Math.round(v / fx.VND * fx.IN
 const fmtV = v => Number(v).toLocaleString('en-US') + ' ₫';
 
 /* ---------- DeepSeek ---------- */
-function trPrices() {
-  const S = DATA.shopping;
-  return S ? S.items.filter(i => i.vmin != null).map(i => `${i.en}: ${i.vmin}${i.vmax ? '–' + i.vmax : '+'} VND`).join('; ') : '';
-}
-const TR_RULES = `You are the voice of two Indian travellers, about 60 years old, pure vegetarian, visiting Vietnam (Hanoi, Ha Long Bay, Ninh Binh). You are ALWAYS on their side.
-Style for anything said to Vietnamese people: short (1–2 sentences), warm, polite and respectful. Use "tôi"/"chúng tôi" for us; avoid "bạn" — use polite forms (anh/chị only if clearly known, otherwise leave out the pronoun). Add "ạ" or "nhé" where natural.
-Be persuasive in a gentle way: a sincere compliment (liking), a reason (we'll buy two, we are guests — reciprocity), calibrated questions ("How can we make this price work?"), labeling ("It looks like you work hard on these"), and a polite no ("That is a bit hard for us").
-Be TRUTHFUL: never invent facts, other shops' prices, deadlines or promises they did not make. Keep every number exactly as given. If they say an amount in rupees, convert it to đồng with the rate given.
-If their words are rude or angry, keep their meaning but say it politely.
-With police, officials, airport, immigration, hotel reception for problems, doctors or hospitals: translate plainly and respectfully, no persuasion tactics.
-Current rate: 1 USD = ${'${fx}'}.
-Typical fair prices in Hanoi markets: ${'${prices}'}`;
-
-function trSystem() {
-  const fx = getFx();
-  return TR_RULES.replace('${fx}', `${fx.INR} INR = ${fx.VND} VND (100,000 VND ≈ ₹${vndToInr(100000)})`).replace('${prices}', trPrices());
-}
+// v2.3: STRICT translation only — no advice, no persuasion, nothing added. Respectful guardrail only.
+const TR_RULES = `You are a strict interpreter between Indian travellers (Kannada or English) and Vietnamese people.
+Translate ONLY the new sentence, exactly what was said. Add nothing, remove nothing, explain nothing, give no advice, no greetings or extra sentences of your own.
+Keep every number, price, name, time and place exactly as said.
+Guardrail: always use respectful, polite language (Vietnamese: "tôi"/"chúng tôi" for the speaker, polite particle "ạ" is fine). If the words are rude, insulting or aggressive, translate the meaning politely and respectfully, without the insult.
+Reply with JSON only.`;
+const trSystem = () => TR_RULES;
 
 async function trCall(task, text) {
   const key = getSettings().deepseekKey;
@@ -43,21 +35,14 @@ async function trCall(task, text) {
   const hist = getTrLog().filter(m => (m.who === 'me' && m.vi) || (m.who === 'them' && !m.pending)).slice(-6).map(m => m.who === 'me' ? `Traveller said (in Vietnamese): ${m.vi}` : `Vietnamese person said: ${m.said}`).join('\n') || '(start of conversation)';
   const lang = chat.lang === 'kn' ? 'Kannada (simple spoken Kannada, Kannada script)' : 'simple English';
   const user = task === 'me'
-    ? `Conversation so far:\n${hist}\n\nThe traveller now says (in ${chat.lang === 'kn' ? 'Kannada or English' : 'English'}): "${text}"
-Return JSON: {"vi": "<what to say in Vietnamese>", "back": "<the same Vietnamese message in ${lang}, so the traveller knows what is being said>"}`
-    : `Conversation so far:\n${hist}\n\nThe Vietnamese person now says: "${text}"
-Return JSON: {"meaning": "<what they said, in ${lang}>",
-"price_vnd": <number if they named a price for something, else null>,
-"fair_low": <fair price low in VND if you can judge from the fair-price list or common sense, else null>, "fair_high": <number or null>,
-"advice": "<one short tip for the traveller in ${lang}, on their side>",
-"replies": [ {"label": "<2–5 word button text in ${lang}>", "vi": "<polite persuasive Vietnamese to say>"} ] }
-Give 2–3 replies the traveller can tap (e.g. a counter-offer about 30–40% lower if a price was named, a polite question, a polite thank-you-and-leave). If no price, replies can be a simple polite answer.`;
+    ? `Earlier in this conversation (for context only):\n${hist}\n\nTranslate this into Vietnamese: "${text}"\nReturn JSON: {"vi": "<the translation>"}`
+    : `Earlier in this conversation (for context only):\n${hist}\n\nTranslate this Vietnamese into ${lang}: "${text}"\nReturn JSON: {"text": "<the translation>"}`;
   const ctrl = new AbortController(), timer = setTimeout(() => ctrl.abort(), 30000);
   try {
     const r = await fetch(DS_URL, {
       method: 'POST', signal: ctrl.signal,
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + key },
-      body: JSON.stringify({ model: 'deepseek-chat', temperature: 0.3, max_tokens: 400, response_format: { type: 'json_object' },
+      body: JSON.stringify({ model: 'deepseek-chat', temperature: 0.1, max_tokens: 300, response_format: { type: 'json_object' },
         messages: [{ role: 'system', content: trSystem() }, { role: 'user', content: user }] })
     });
     if (r.status === 401) return { error: 'The DeepSeek key was not accepted. Ask family to check Settings.' };
@@ -86,21 +71,15 @@ async function trSayHome(text) {                       // Kannada (or English) f
 function trMsgHtml(m, i) {
   if (m.who === 'me') return `<div class="bub me tr-me">
       <p class="vi-big" lang="vi">${esc(m.vi)}</p>
-      ${m.back ? `<p class="${chat.lang === 'kn' ? 'kn ' : ''}muted">🗣 ${esc(m.back)}</p>` : ''}
+      <p class="muted small">🗣 ${esc(m.said || '')}</p>
       <div class="bub-foot"><button type="button" class="hear" data-trsay="${i}">🔊 Again</button>
         <button type="button" class="hear" data-trshow="${i}">📺 Show vendor</button></div></div>`;
   if (m.err) return `<div class="bub bot err"><p>${esc(m.err)}</p>${m.errKn ? `<p class="kn">${esc(m.errKn)}</p>` : ''}</div>`;
   if (m.pending) return `<div class="bub ${m.who === 'them' ? 'bot' : 'me'}"><p class="muted">${m.who === 'them' ? '👂' : '🗣'} “${esc(m.said || '')}”<br>Translating… <span class="kn">ಅನುವಾದಿಸುತ್ತಿದೆ…</span></p></div>`;
-  const price = m.price ? `<p class="tr-price">💰 ${fmtV(m.price)} = <strong>₹${vndToInr(m.price).toLocaleString('en-IN')}</strong>
-      ${m.fl && m.fh ? `<br><span class="muted">Fair: ${fmtV(m.fl)}–${fmtV(m.fh)} (₹${vndToInr(m.fl)}–${vndToInr(m.fh)})</span>` : ''}</p>` : '';
   return `<div class="bub bot tr-them">
       <p class="${chat.lang === 'kn' ? 'kn ' : ''}big">${esc(m.meaning)}</p>
       <p class="muted small" lang="vi">👂 ${esc(m.said)}</p>
-      ${price}
-      ${m.advice ? `<p class="tr-advice">💡 <span class="${chat.lang === 'kn' ? 'kn' : ''}">${esc(m.advice)}</span></p>` : ''}
       <div class="bub-foot"><button type="button" class="hear" data-trhear="${i}">🔊 Hear</button></div>
-      ${(m.replies || []).length ? `<p class="tr-tap">Tap to reply in Vietnamese <span class="kn">ಒತ್ತಿ — ವಿಯೆಟ್ನಾಮೀಸ್‌ನಲ್ಲಿ ಹೇಳುತ್ತದೆ</span></p>
-        <div class="tr-replies">${m.replies.map((r, k) => `<button type="button" class="fchip" data-trreply="${i}:${k}">${esc(r.label)}</button>`).join('')}</div>` : ''}
     </div>`;
 }
 
@@ -146,23 +125,19 @@ async function trHandle(who, said) {
   said = (said || '').trim();
   if (!said || tr.busy) return;
   tr.busy = true;
-  const log = getTrLog(); log.push({ who, said, pending: true }); saveTrLog(log); trPaint();
+  const log = getTrLog(); log.push({ who, said, pending: true, t: Date.now() }); saveTrLog(log); trPaint();
   const res = await trCall(who, said);
   const l2 = getTrLog(), m = l2[l2.length - 1];
   delete m.pending;
   if (res.error) Object.assign(m, { who: 'err', err: res.error, errKn: res.errorKn || '' });
-  else if (who === 'me') Object.assign(m, { vi: res.data.vi || '', back: res.data.back || '' });
-  else {
-    const d = res.data, num = v => (typeof v === 'number' && v > 0 ? Math.round(v) : null);
-    Object.assign(m, { meaning: d.meaning || said, price: num(d.price_vnd), fl: num(d.fair_low), fh: num(d.fair_high), advice: d.advice || '',
-      replies: (Array.isArray(d.replies) ? d.replies : []).filter(r => r && r.vi && r.label).slice(0, 3) });
-  }
+  else if (who === 'me') Object.assign(m, { vi: res.data.vi || '' });
+  else Object.assign(m, { meaning: res.data.text || res.data.meaning || said });
   if (m.who === 'me' && !m.vi) Object.assign(m, { who: 'err', err: 'Could not translate. Please try again.' });
   saveTrLog(l2); tr.busy = false;
   if (currentRoute() !== 'translate') return;
   trPaint();
   if (m.who === 'me') speakVi(m.vi);
-  else if (m.who === 'them') trSayHome(m.meaning + (m.price ? (chat.lang === 'kn' ? ` — ${vndToInr(m.price)} ರೂಪಾಯಿ.` : ` — about ${vndToInr(m.price)} rupees.`) : ''));
+  else if (m.who === 'them') trSayHome(m.meaning);
 }
 
 function trListen(who) {
@@ -220,12 +195,6 @@ function startTranslate() {
     if (b.dataset.trsay) return speakVi(log[+b.dataset.trsay]?.vi || '');
     if (b.dataset.trshow) return trShowVendor(log[+b.dataset.trshow]?.vi || '');
     if (b.dataset.trhear) { const m = log[+b.dataset.trhear]; return trSayHome(m?.meaning || ''); }
-    if (b.dataset.trreply) {                                    // one tap: say the suggested reply in Vietnamese
-      const [i, k] = b.dataset.trreply.split(':').map(Number), r = log[i]?.replies?.[k];
-      if (!r) return;
-      log.push({ who: 'me', said: r.label, vi: r.vi, back: r.label }); saveTrLog(log); trPaint(); speakVi(r.vi);
-      return;
-    }
     if (b.dataset.clang) {
       chat.lang = b.dataset.clang; Store.set('chatLang', chat.lang);
       document.querySelectorAll('[data-clang]').forEach(x => x.setAttribute('aria-pressed', x === b));

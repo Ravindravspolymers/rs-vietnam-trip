@@ -134,8 +134,9 @@
      "kn": "ನೋಯ್ ಬಾಯ್ — ಡಾಲರ್ ಅನ್ನು ಡಾಂಗ್‌ಗೆ ಬದಲಿಸಿ",
      "time": "10:50",
      "mins": 20,
-     "note_en": "BIDV counter, arrivals hall (open daily). Change about US$430; keep US$220 for the hotel. See Money → Cash plan.",
-     "note_kn": "ಆಗಮನ ಹಾಲ್‌ನ BIDV ಕೌಂಟರ್. ಸುಮಾರು 430 ಡಾಲರ್ ಬದಲಿಸಿ; ಹೋಟೆಲ್‌ಗೆ 220 ಡಾಲರ್ ಇಟ್ಟುಕೊಳ್ಳಿ."
+     "note_en": "BIDV counter, arrivals hall (open daily). Change about US$480; keep US$220 for the hotel.",
+     "note_kn": "ಆಗಮನ ಹಾಲ್‌ನ BIDV ಕೌಂಟರ್. ಸುಮಾರು 480 ಡಾಲರ್ ಬದಲಿಸಿ; ಹೋಟೆಲ್‌ಗೆ 220 ಡಾಲರ್ ಇಟ್ಟುಕೊಳ್ಳಿ.",
+     "link": "cash:vnd"
     },
     {
      "id": "d1-hotel",
@@ -688,7 +689,8 @@
      "time": "17:00",
      "mins": 15,
      "note_en": "Before security, at a bank counter. Keep the receipt. See Money → Cash plan.",
-     "note_kn": "ಭದ್ರತಾ ತಪಾಸಣೆಗೆ ಮೊದಲು ಬ್ಯಾಂಕ್ ಕೌಂಟರ್‌ನಲ್ಲಿ. ರಸೀದಿ ಇಟ್ಟುಕೊಳ್ಳಿ."
+     "note_kn": "ಭದ್ರತಾ ತಪಾಸಣೆಗೆ ಮೊದಲು ಬ್ಯಾಂಕ್ ಕೌಂಟರ್‌ನಲ್ಲಿ. ರಸೀದಿ ಇಟ್ಟುಕೊಳ್ಳಿ.",
+     "link": "cash:back"
     },
     {
      "id": "d6-bom",
@@ -718,6 +720,19 @@
      "tz": "IST",
      "date": "2026-11-30",
      "airport": "blr2"
+    },
+    {
+     "id": "t-usdinr",
+     "type": "money",
+     "en": "Change leftover dollars to rupees",
+     "kn": "ಉಳಿದ ಡಾಲರ್ ಅನ್ನು ರೂಪಾಯಿಗೆ ಬದಲಿಸಿ",
+     "date": "2026-11-30",
+     "tz": "IST",
+     "time": "11:00",
+     "mins": 0,
+     "link": "cash:home",
+     "note_en": "Any day after you are home — BookMyForex or Thomas Cook / Unimoni. Carry passport, PAN and the forex receipt. Not the airport counter (poor rate).",
+     "note_kn": "ಮನೆಗೆ ಬಂದ ಮೇಲೆ ಯಾವಾಗ ಬೇಕಾದರೂ. ಪಾಸ್‌ಪೋರ್ಟ್, ಪ್ಯಾನ್, ಫಾರೆಕ್ಸ್ ರಸೀದಿ ತೆಗೆದುಕೊಂಡು ಹೋಗಿ. ವಿಮಾನ ನಿಲ್ದಾಣದ ಕೌಂಟರ್ ಬೇಡ."
     }
    ]
   }

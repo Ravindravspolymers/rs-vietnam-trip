@@ -54,11 +54,11 @@ function kbStatic() {
   if (typeof CASH_STEPS !== 'undefined') {                // v2.2: cash plan + SIM
     L.push('# CASH PLAN', `Take US$${CASH_TOTAL} cash: US$${HOTEL_USD} is the hotel balance (pay at the hotel, keep receipt); the rest for meals, Hanoi taxis, tickets, shopping. Ha Long cruise and Ninh Binh are already paid.`,
       ...CASH_STEPS.map((s, i) => `Step ${i + 1} (${s.when}): ${s.en}.`),
-      'Buy dollars in Bengaluru from: ' + BLR_FX.map(f => `${f.name} (${f.how}; ${f.docs})`).join('; ') + '. Ask for clean $100 notes, 2013 series or newer. Keep the forex receipt.',
+      'Buy dollars in Bengaluru from: ' + BLR_FX.map(f => `${f.name} [${f.type}] (${f.how}; ${f.docs})`).join('; ') + '. Ask for clean $100 notes, 2013 series or newer. Keep the forex receipt.',
       'Dollars to dong in Vietnam: ' + VN_FX.map(f => `${f.name} — ${f.hours}; ${f.note}`).join(' | '),
       'Leftover dong: spend first, keep ~200,000 dong; on Sunday 29 Nov change at Quang Huy 130 Hang Bac (open Sunday) or the airport bank counter before security.',
       '# SIM / INTERNET', 'Airtel free roaming pack (new postpaid plans ₹499+): 5 GB data, 60 min calls, 25 SMS, 5 days from first connecting abroad; turn on data roaming and activate in the Airtel Thanks app after landing in Hanoi (not in Mumbai). Visit the Airtel store in Sahakar Nagar before the trip to confirm plan, Vietnam coverage and enable roaming.',
-      'Backup local SIM at Noi Bai arrivals (passport needed): ' + VN_SIMS.map(v => `${v[0]} ${v[1]}, ${v[2]}`).join('; ') + '.');
+      'Backup local SIM at Noi Bai arrivals (passport needed): ' + VN_SIMS.map(v => `${v[0]}: ${v[1]}, calls ${v[2]}, ${v[3]}, ${v[4]}`).join('; ') + '.');
   }
   if (DATA.shopping) {
     L.push('# SHOPPING (prices in dong)');
@@ -153,8 +153,10 @@ function parseAnswer(raw) {
 }
 
 /* ---------- Log (last 20, on this phone) ---------- */
-const getChatLog = () => Store.get('chatLog', []);
-const saveChatLog = l => Store.set('chatLog', l.slice(-20));
+// v2.3: kept for 2 days only, then erased
+const CHAT_KEEP_MS = 2 * 24 * 3600 * 1000;
+const getChatLog = () => Store.get('chatLog', []).filter(m => m.t && Date.now() - m.t < CHAT_KEEP_MS);
+const saveChatLog = l => Store.set('chatLog', l.filter(m => m.t && Date.now() - m.t < CHAT_KEEP_MS).slice(-20));
 
 /* ---------- Voice out ---------- */
 async function chatSpeak(a) {
@@ -220,7 +222,7 @@ async function chatSubmit(q) {
   if (!q || chat.busy) return;
   chat.busy = true;
   if ('speechSynthesis' in window) speechSynthesis.cancel();
-  const log = getChatLog(); log.push({ q }); saveChatLog(log);
+  const log = getChatLog(); log.push({ q, t: Date.now() }); saveChatLog(log);
   paintLog();
   const res = await chatAsk(q);
   const l2 = getChatLog(), m = l2[l2.length - 1];

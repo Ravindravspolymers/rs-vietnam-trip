@@ -5,7 +5,7 @@
    Details researched Oct 2026 — confirm locally. Ticks share the Plan "done" store (getVisited/setVisited). */
 'use strict';
 
-const CASH_TOTAL = 650, HOTEL_USD = 220;
+const CASH_TOTAL = 700, HOTEL_USD = 220;
 const mapQ = q => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
 const isDone = id => !!getVisited()[id];
 const r1 = n => n.toLocaleString('en-IN', { maximumFractionDigits: 1 });
@@ -18,17 +18,22 @@ const CASH_STEPS = [
   { id: 't-usdinr', page: 'home', icon: '🇮🇳', en: 'Change leftover dollars to rupees', kn: 'ಉಳಿದ ಡಾಲರ್ → ರೂಪಾಯಿ', when: 'Back home · from Mon 30 Nov' }
 ];
 
-const BLR_FX = [
-  { name: 'BookMyForex (MakeMyTrip)', how: 'Order online — cash delivered home', link: 'https://www.bookmyforex.com/currency-exchange/bangalore/',
-    margin: [0.3, 0.8], charges: 'GST ≈ ₹110 on $650; delivery fee shown at checkout', docs: 'Passport, air ticket, PAN (upload)', trust: 'RBI-authorised · MakeMyTrip group' },
-  { name: 'Thomas Cook India', how: 'Branch or online order', link: 'https://www.thomascook.in/foreign-exchange',
-    margin: [1, 2], charges: 'GST ≈ ₹110; small service fee possible', docs: 'Passport, air ticket, PAN (originals at branch)', trust: "India's largest forex company · RBI-authorised" },
-  { name: 'Orient Exchange', how: 'Walk-in, 70 Kanakapura Rd, Basavanagudi', link: mapQ('Orient Exchange and Financial Services, 70 Kanakapura Rd, Basavanagudi, Bengaluru'),
-    margin: [0.5, 1.2], charges: 'GST ≈ ₹110; ask the rate by phone first', docs: 'Passport, air ticket, PAN (originals)', trust: 'RBI-licensed money changer · long-running in Bengaluru' }
+const BLR_FX = [   // v2.3: 1 online + 3 walk-in shops near Sahakar Nagar / MG Road
+  { name: 'BookMyForex (MakeMyTrip)', type: 'Online', how: 'Order online — cash delivered home', link: 'https://www.bookmyforex.com/currency-exchange/bangalore/sahakar-nagar/',
+    margin: [0.3, 0.8], charges: 'GST ≈ ₹120 on $700; delivery fee shown at checkout', docs: 'Passport, air ticket, PAN (upload)', trust: 'RBI-authorised · MakeMyTrip group' },
+  { name: 'Thomas Cook — Sahakara Nagar', type: 'Walk-in · near home', how: '1st Floor, SV Arcade, 60 Feet Main Rd, Park View Layout, Sahakara Nagar',
+    link: mapQ('Thomas Cook, SV Arcade, 60 Feet Main Road, Sahakara Nagar, Bengaluru 560092'),
+    margin: [1, 2], charges: 'GST ≈ ₹120; small service fee possible', docs: 'Passport, air ticket/visa, PAN (originals)', trust: "India's largest forex company · RBI-authorised" },
+  { name: 'Thomas Cook — MG Road', type: 'Walk-in · MG Road', how: 'Building No 70, 2nd–3rd Floor, Ashok Nagar, MG Road',
+    link: mapQ('Thomas Cook, Building No 70, MG Road, Ashok Nagar, Bengaluru 560001'),
+    margin: [1, 2], charges: 'GST ≈ ₹120; small service fee possible', docs: 'Passport, air ticket/visa, PAN (originals)', trust: "India's largest forex company · RBI-authorised" },
+  { name: 'Unimoni (formerly UAE Exchange) — MG Road', type: 'Walk-in · off MG Road', how: 'Ground Floor, North Block, Manipal Centre, Dickenson Rd',
+    link: mapQ('Unimoni, Manipal Centre, Dickenson Road, Bengaluru 560042'),
+    margin: [1, 2], charges: 'GST ≈ ₹120', docs: 'Passport, air ticket/visa, PAN (originals)', trust: 'Large RBI-licensed chain · helpline 1800 102 0555' }
 ];
 const BUDGET = [
   ['🏨 Hotel balance (pay at the hotel)', HOTEL_USD], ['🍽 Lunch + dinner, 5 days (veg, for two)', 150], ['🚕 Taxis in Hanoi (Grab)', 40],
-  ['🎟 Tickets (puppet show, temples)', 20], ['🛍 Shopping', 150], ['🆘 Spare money', 70]
+  ['🎟 Tickets (puppet show, temples)', 20], ['🛍 Shopping', 150], ['🆘 Spare money', 120]
 ];
 const VN_FX = [
   { name: 'BIDV bank counter — Noi Bai airport (arrivals)', link: mapQ('BIDV currency exchange Noi Bai International Airport Terminal 2'),
@@ -77,7 +82,7 @@ function renderCashPage() {
     return head + `<p>Exchangers add a small margin over the market rate. Compare, then buy from the cheapest.<br>
         <span class="kn">ಮಾರುಕಟ್ಟೆ ದರಕ್ಕಿಂತ ಸ್ವಲ್ಪ ಹೆಚ್ಚು ತೆಗೆದುಕೊಳ್ಳುತ್ತಾರೆ. ಹೋಲಿಸಿ, ಕಡಿಮೆ ಬೆಲೆಯಲ್ಲಿ ಕೊಳ್ಳಿ.</span></p>
       ${BLR_FX.map(f => `<section class="card fx">
-        <h3>${esc(f.name)}</h3>
+        <h3>${esc(f.name)} <span class="ftype">${esc(f.type)}</span></h3>
         ${kv([['Where', `<a href="${f.link}" target="_blank" rel="noopener">${esc(f.how)} ↗</a>`],
               ['Rate (approx.)', `₹${r1(m.inr * (1 + f.margin[0] / 100))}–${r1(m.inr * (1 + f.margin[1] / 100))} per $`],
               [`$${CASH_TOTAL} costs`, `≈ ₹${Math.round(CASH_TOTAL * m.inr * (1 + f.margin[0] / 100)).toLocaleString('en-IN')}–${Math.round(CASH_TOTAL * m.inr * (1 + f.margin[1] / 100)).toLocaleString('en-IN')}`],
@@ -135,7 +140,7 @@ function renderCashPage() {
   // home: USD → INR
   return head + `<p>Small amounts (under $100) are fine to keep for the next trip. For more:<br>
       <span class="kn">100 ಡಾಲರ್‌ಗಿಂತ ಕಡಿಮೆ ಇದ್ದರೆ ಮುಂದಿನ ಪ್ರವಾಸಕ್ಕೆ ಇಟ್ಟುಕೊಳ್ಳಿ.</span></p>
-    ${BLR_FX.slice(0, 2).map(f => `<section class="card fx"><h3>${esc(f.name)}</h3>
+    ${BLR_FX.map(f => `<section class="card fx"><h3>${esc(f.name)} <span class="ftype">${esc(f.type)}</span></h3>
       ${kv([['Where', `<a href="${f.link}" target="_blank" rel="noopener">${esc(f.how.replace('cash delivered home', 'they collect and pay to bank'))} ↗</a>`],
             ['They pay (approx.)', `₹${r1(m.inr * 0.97)}–${r1(m.inr * 0.985)} per $`], ['Carry', 'Passport, PAN, the forex receipt']])}</section>`).join('')}
     <p class="muted small">Avoid the Bengaluru airport counter — lowest rate. <span class="kn">ವಿಮಾನ ನಿಲ್ದಾಣದ ಕೌಂಟರ್ ಬೇಡ.</span></p>
@@ -154,12 +159,13 @@ function vnTable(list, sell) {
 }
 
 /* ---------- SIM (More → SIM) ---------- */
-const VN_SIMS = [
-  ['Viettel tourist SIM', '200,000 ₫ (≈ ₹740)', '60 GB / 30 days (≈ 2 GB a day)', 'Best coverage — also on the cruise and in Ninh Binh'],
-  ['Vinaphone tourist SIM', '180,000 ₫ (≈ ₹670)', '45 GB / 30 days (≈ 1.5 GB a day)', 'Good in cities'],
-  ['Mobifone tourist SIM', '150,000 ₫ (≈ ₹560)', '40 GB / 30 days', 'Cheapest; sometimes includes call minutes'],
-  ['eSIM (Airalo / Gigago)', 'from about $6', '5 GB / 15 days', 'Data only — no phone number; set up before you fly']
+const VN_SIMS = [   // [name, data, calls, validity, price, note] — v2.3: ₹240 daily plan first (recommended)
+  ['Vinaphone daily plan ⭐', '1.5 GB a day', 'Check at kiosk', '7 days', '~70,000 ₫ (≈ ₹240)', 'Recommended — enough for WhatsApp, maps and video calls'],
+  ['Pre-booked airport pickup SIM', '6 GB a day', '200 local minutes', '7 days', '~$7.75 (≈ ₹680)', 'Book online before the trip, collect at Noi Bai'],
+  ['Viettel tourist SIM', '5 GB a day', 'Unlimited local', '30 days', '~200,000 ₫ (≈ ₹700)', 'Best coverage, more than needed'],
+  ['Mobifone tourist SIM', '30 GB total', 'Check at kiosk', '30 days', '~250,000 ₫ (≈ ₹850)', '']
 ];
+
 function renderSim() {
   const p = routeParam();
   if (p === 'airtel') {
@@ -190,11 +196,11 @@ function renderSim() {
     document.getElementById('screen-title').textContent = 'Vietnam SIM';
     return `<section class="card accent"><h2>🇻🇳 Vietnam local SIM — only if Airtel does not work</h2>
         <p class="kn">ಏರ್‌ಟೆಲ್ ಕೆಲಸ ಮಾಡದಿದ್ದರೆ ಮಾತ್ರ ಸ್ಥಳೀಯ ಸಿಮ್</p></section>
-      ${VN_SIMS.map(([n, price, data, note]) => `<section class="card fx"><h3>${n}</h3>${kv([['Price', price], ['Data', data], ['Good for', note]])}</section>`).join('')}
+      ${VN_SIMS.map(([n, data, calls, valid, price, note]) => `<section class="card fx"><h3>${n}</h3>${kv([['Data', data], ['Calls', calls], ['Validity', valid], ['Price', price]].concat(note ? [['Note', note]] : []))}</section>`).join('')}
       <section class="card"><h3>🛂 How to buy</h3><ul>
         <li>SIM kiosks in Noi Bai arrivals hall — open for every flight. Airport price is a little higher (about 250,000–300,000 ₫).</li>
         <li>Bring the <strong>passport</strong>; they take a photo and set it up in about 5 minutes. Test before paying.</li>
-        <li>About 1.5 GB a day is plenty for WhatsApp, maps and video calls.</li>
+        <li>Ask for the <strong>Vinaphone 1.5 GB/day, 7-day plan (~70,000 ₫)</strong> — plenty for WhatsApp, maps and video calls.</li>
       </ul><p class="kn">ಪಾಸ್‌ಪೋರ್ಟ್ ಬೇಕು. 5 ನಿಮಿಷದಲ್ಲಿ ಸಿದ್ಧ. ದಿನಕ್ಕೆ 1.5 GB ಸಾಕು.</p></section>`;
   }
   return `<p>Two ways to have internet in Vietnam. <span class="kn">ವಿಯೆಟ್ನಾಂನಲ್ಲಿ ಇಂಟರ್ನೆಟ್‌ಗೆ ಎರಡು ದಾರಿ.</span></p>
@@ -208,23 +214,27 @@ function renderSim() {
 
 /* ---------- Today: bright reminders until ticked done ---------- */
 function renderTaskAlerts(cur) {
-  const today = dateIn('ICT'), list = [];
-  if (cur.before || (cur.day.day === 0 && !cur.after)) {
-    if (!isDone('t-cash')) list.push(['t-cash', '#cash:buy', `💵 Collect US$${CASH_TOTAL} cash`, `${CASH_TOTAL} ಡಾಲರ್ ನಗದು ಪಡೆಯಿರಿ`, 'See Money → Cash plan']);
-    if (!isDone('t-airtel')) list.push(['t-airtel', '#sim:airtel', '📶 Airtel store, Sahakar Nagar: free roaming pack', 'ಸಹಕಾರ ನಗರ ಏರ್‌ಟೆಲ್ ಆಫೀಸ್: ಉಚಿತ ರೋಮಿಂಗ್', 'See More → SIM']);
-    if (!isDone('t-cards')) list.push(['t-cards', '#cash:buy', '💳 Turn on cards for use abroad', 'ಕಾರ್ಡ್‌ಗೆ ವಿದೇಶ ಬಳಕೆ ಆನ್ ಮಾಡಿ', 'In your bank app']);
+  // v2.3: done items stay (greyed) with an Undo button; pre-trip block ends with a link to Prep
+  const list = [], pre = cur.before || (cur.day.day === 0 && !cur.after);
+  const during = !cur.before && !cur.after;
+  if (pre) {
+    list.push(['t-cash', '#cash:buy', `💵 Collect US$${CASH_TOTAL} cash`, `${CASH_TOTAL} ಡಾಲರ್ ನಗದು ಪಡೆಯಿರಿ`, 'See Money → Cash plan']);
+    list.push(['t-airtel', '#sim:airtel', '📶 Airtel store, Sahakar Nagar: free roaming pack', 'ಸಹಕಾರ ನಗರ ಏರ್‌ಟೆಲ್ ಆಫೀಸ್: ಉಚಿತ ರೋಮಿಂಗ್', 'See More → SIM']);
+    list.push(['t-cards', '#cash:buy', '💳 Turn on cards for use abroad', 'ಕಾರ್ಡ್‌ಗೆ ವಿದೇಶ ಬಳಕೆ ಆನ್ ಮಾಡಿ', 'In your bank app']);
   }
-  if (!cur.before && !cur.after && cur.day.day === 1 && !isDone('d1-cash'))
+  if (during && cur.day.day === 1)
     list.push(['d1-cash', '#cash:vnd', '🇻🇳 Change dollars to đồng at the airport', 'ವಿಮಾನ ನಿಲ್ದಾಣದಲ್ಲಿ ಡಾಲರ್ → ಡಾಂಗ್', `Keep US$${HOTEL_USD} for the hotel`]);
-  if (!cur.before && !cur.after && cur.day.day === 6 && !isDone('d6-cashback'))
+  if (during && cur.day.day === 6)
     list.push(['d6-cashback', '#cash:back', '↩️ Leftover đồng → dollars today', 'ಉಳಿದ ಡಾಂಗ್ → ಡಾಲರ್ ಇಂದು', 'Old Quarter shop or airport counter']);
-  if (cur.after && !isDone('t-usdinr'))
+  if (cur.after)
     list.push(['t-usdinr', '#cash:home', '🇮🇳 Leftover dollars → rupees', 'ಉಳಿದ ಡಾಲರ್ → ರೂಪಾಯಿ', 'Keep the forex receipt and PAN ready']);
-  void today;
-  return list.map(([id, href, en, kn, sub]) => `<section class="alertcard">
-      <a href="${href}"><strong>${esc(en)}</strong><span class="kn">${esc(kn)}</span><span class="asub">${esc(sub)} ›</span></a>
-      <button type="button" class="adone" data-task="${id}" aria-label="Mark done">✓ Done</button>
-    </section>`).join('');
+  return list.map(([id, href, en, kn, sub]) => {
+    const done = isDone(id);
+    return `<section class="alertcard${done ? ' done' : ''}">
+      <a href="${href}"><strong>${done ? '✓ ' : ''}${esc(en)}</strong><span class="kn">${esc(kn)}</span><span class="asub">${done ? 'Done' : esc(sub) + ' ›'}</span></a>
+      <button type="button" class="adone" data-task="${id}" aria-label="${done ? 'Undo' : 'Mark done'}">${done ? '↺ Undo' : '✓ Done'}</button>
+    </section>`;
+  }).join('') + (pre ? `<a class="btn secondary preplink" href="#prep">✅ Check all prep items <span class="kn">ಎಲ್ಲಾ ತಯಾರಿ ಪಟ್ಟಿ ನೋಡಿ</span></a>` : '');
 }
 
 /* ---------- One click handler for ticks (Today, Money pages) ---------- */

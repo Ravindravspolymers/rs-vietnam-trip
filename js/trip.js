@@ -6,11 +6,11 @@ const TZ_NAME   = { IST: 'Asia/Kolkata', ICT: 'Asia/Ho_Chi_Minh' };
 
 const STOP_ICON = {
   home: '🏠', airport: '✈️', hotel: '🏨', lake: '🌊', cruise: '🚢', boat: '⛵',
-  temple: '🛕', market: '🛍', theatre: '🎭', viewpoint: '⛰', meal: '🍽'
+  temple: '🛕', market: '🛍', theatre: '🎭', viewpoint: '⛰', meal: '🍽', money: '💵'
 };
 
 // Transit stops (home, airport, hotel) and meals don't count as "places visited"
-const isPlace = s => !['home', 'airport', 'hotel', 'meal'].includes(s.type);
+const isPlace = s => !['home', 'airport', 'hotel', 'meal', 'money'].includes(s.type);
 
 const stopTz    = (day, s) => s.tz || day.tz;
 const stopStart = (day, s) => new Date(`${s.date || day.date}T${s.time}:00${TZ_OFFSET[stopTz(day, s)]}`);

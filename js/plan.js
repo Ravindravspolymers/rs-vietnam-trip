@@ -5,7 +5,7 @@
 
 const TYPE_LABEL = {
   home: 'Home', airport: 'Airport', hotel: 'Hotel', lake: 'Lake', cruise: 'Cruise',
-  boat: 'Boat', temple: 'Temple', market: 'Market', theatre: 'Show', viewpoint: 'Viewpoint', meal: 'Meal'
+  boat: 'Boat', temple: 'Temple', market: 'Market', theatre: 'Show', viewpoint: 'Viewpoint', meal: 'Meal', money: 'Money'
 };
 const LONG_DRIVE_MINS = 150;   // F35: also flagged per day in trip.json (longDrive)
 
@@ -187,6 +187,7 @@ function stopCard(day, s, done, isNext) {
     ${s.place && DATA.places?.[s.place] ? `<a class="btn story-btn" href="#story:${esc(s.id)}">🎧 Guide story</a>` : ''}
     ${s.airport ? `<a class="btn secondary" href="#airport:${esc(s.airport)}">✈️ Airport steps</a>` : ''}
     ${s.food ? `<a class="btn secondary" href="#food:${esc(s.food)}">🍽 Veg restaurants nearby</a>` : ''}
+    ${s.link ? `<a class="btn secondary" href="#${esc(s.link)}">💵 Where and how ›</a>` : ''}
     ${goDriver(day, s)}
     <button type="button" class="tick" data-tick="${esc(s.id)}" aria-pressed="${done}">${tickLabel(done)}</button>
   </article>`;
@@ -209,7 +210,8 @@ function journeyCard(day, items, visited, nextS) {
     <ol class="jlist">${items.map(x => `<li>
       <span class="jtime">${x.pending ? '⏳' : esc(stopTimeLabel(day, x))}</span>
       <span><strong>${STOP_ICON[x.type] || '📍'} ${esc(x.en)}</strong><br><span class="kn">${esc(x.kn)}</span>
-        ${x.note_en ? `<br><span class="muted">${esc(x.note_en)}</span>` : ''}</span></li>`).join('')}</ol>
+        ${x.note_en ? `<br><span class="muted">${esc(x.note_en)}</span>` : ''}
+        ${x.link ? `<br><a class="jlink" href="#${esc(x.link)}">💵 Where and how ›</a>` : ''}</span></li>`).join('')}</ol>
     ${legs.length ? `<div class="actions">${legs.map(x =>
       `<a class="btn secondary" href="#airport:${esc(x.airport)}">✈️ ${esc(x.en.split(/ — | \(/)[0].replace(' Airport', ''))} steps</a>`).join('')}</div>` : ''}
     ${main ? goDriver(day, main) : ''}
