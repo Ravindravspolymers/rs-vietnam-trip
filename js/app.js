@@ -2,7 +2,7 @@
    Router, tab bar, More grid, SOS, Settings, update banner, storage helpers. */
 'use strict';
 
-const APP_VERSION = '2.3.0'; // keep in sync with CACHE_VERSION in service-worker.js
+const APP_VERSION = '2.4.0'; // keep in sync with CACHE_VERSION in service-worker.js
 
 /* ---------- Storage helpers (localStorage, never crash) ---------- */
 const Store = {

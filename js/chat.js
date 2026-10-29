@@ -92,6 +92,7 @@ async function kbLive() {
     nn.inFlight ? 'They are in flight now.' : nn.now ? `Now: ${nn.now.s.en} (${stopTimeLabel(nn.now.day, nn.now.s)}).` : '',
     nn.next ? `Next: ${nn.next.s.en} at ${stopTimeLabel(nn.next.day, nn.next.s)} (${dayLabel(nn.next.day)}).` : '',
     `Marked done in Plan: ${Object.keys(v).join(', ') || 'nothing yet'}.`];
+  if (typeof wxForHelper === 'function') L.push('# WEATHER (Celsius)', wxForHelper());
   const fx = getFx();
   L.push(`Exchange rate: 1 USD = ${fx.INR} INR = ${fx.VND} VND, so 100,000 ₫ ≈ ₹${Math.round(100000 / fx.VND * fx.INR)}.`);
   L.push('# SAVED NUMBERS');

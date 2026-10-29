@@ -68,7 +68,7 @@ function renderPlan() {
   const chips = DATA.trip.days.map(d => {
     const dt = new Date(d.date + 'T12:00:00Z').toLocaleDateString('en-GB', { timeZone: 'UTC', weekday: 'short', day: 'numeric' });
     return `<a class="daychip" href="#plan:day${d.day}" aria-current="${d === day}">
-      <strong>Day ${d.day}</strong><span>${dt.replace(',', '')}</span></a>`;
+      <strong>Day ${d.day}</strong><span>${dt.replace(',', '')}</span><span class="wxc" data-wxchip="${d.day}">${wxChip(d)}</span></a>`;
   }).join('');
 
   const last = day.stops[day.stops.length - 1];
@@ -85,6 +85,7 @@ function renderPlan() {
           ? ' · ' + new Date(last.date + 'T12:00:00Z').toLocaleDateString('en-GB', { timeZone: 'UTC', weekday: 'short', day: 'numeric', month: 'short' }).replace(',', '')
           : ''}</strong>
       </p>
+      <p class="wxline" data-wxline="${day.day}">${wxLine(day)}</p>
       ${longDrive ? `<p class="drivewarn">Long drive today. Ask the driver to stop for tea and toilet break.<br>
         <span class="kn">ಇಂದು ದೀರ್ಘ ಪ್ರಯಾಣ. ಚಹಾ ಮತ್ತು ಶೌಚಾಲಯಕ್ಕೆ ನಿಲ್ಲಿಸಲು ಚಾಲಕನಿಗೆ ಹೇಳಿ.</span></p>` : ''}
       ${day.day >= 1 ? `<a class="btn secondary" href="#driver:hotel-${day.day}">🏨 Hotel address for driver</a>` : ''}
@@ -242,6 +243,7 @@ function refreshNext(day) {
 
 function startPlan() {
   const main = document.getElementById('screen');
+  wxFetch();                                        // v2.4: refresh the forecast if online and old
   const day = planDayFromParam(routeParam()) || currentTripDay().day;
   // Jump to the stop opened from Today (e.g. #plan:d4-temple); otherwise open at the NEXT activity
   const target = document.getElementById('stop-' + routeParam())

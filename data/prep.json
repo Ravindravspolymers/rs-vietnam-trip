@@ -24,8 +24,8 @@
     },
     {
      "id": "docs3",
-     "en": "Hotel + cruise vouchers",
-     "kn": "ಹೋಟೆಲ್ ಮತ್ತು ಹಡಗಿನ ವೋಚರ್"
+     "en": "Hotel, cruise and Ninh Binh booking vouchers",
+     "kn": "ಹೋಟೆಲ್, ಹಡಗು, ನಿನ್ ಬಿನ್ ಬುಕಿಂಗ್ ವೋಚರ್"
     },
     {
      "id": "docs4",
@@ -51,6 +51,11 @@
      "id": "docs8",
      "en": "Also save the e-visa as a photo in Docs",
      "kn": "ಇ-ವೀಸಾವನ್ನು ಫೋಟೋ ಆಗಿಯೂ 'Docs' ನಲ್ಲಿ ಉಳಿಸಿ"
+    },
+    {
+     "id": "docs9",
+     "en": "Keep the forex receipt (needed to change dollars back to rupees)",
+     "kn": "ಫಾರೆಕ್ಸ್ ರಸೀದಿ ಜೋಪಾನ (ಡಾಲರ್ ವಾಪಸ್ ಬದಲಿಸಲು ಬೇಕು)"
     }
    ]
   },
@@ -62,18 +67,18 @@
    "items": [
     {
      "id": "money0",
-     "en": "US dollars in crisp $50/$100 notes (no tears)",
-     "kn": "ಹರಿಯದ ಹೊಸ $50/$100 ಡಾಲರ್ ನೋಟುಗಳು"
+     "en": "US$700 cash: clean $100 notes, 2013 series or newer, no tears",
+     "kn": "700 ಡಾಲರ್ ನಗದು: ಹರಿಯದ ಹೊಸ 100 ಡಾಲರ್ ನೋಟುಗಳು"
     },
     {
      "id": "money1",
-     "en": "Forex or zero-forex card + PIN",
-     "kn": "ಫಾರೆಕ್ಸ್ ಕಾರ್ಡ್ ಮತ್ತು ಪಿನ್"
+     "en": "Debit + credit card switched ON for use abroad (bank app)",
+     "kn": "ಡೆಬಿಟ್, ಕ್ರೆಡಿಟ್ ಕಾರ್ಡ್‌ಗೆ ವಿದೇಶ ಬಳಕೆ ಆನ್ (ಬ್ಯಾಂಕ್ ಆ್ಯಪ್)"
     },
     {
      "id": "money2",
-     "en": "Some rupees for Bengaluru and Mumbai",
-     "kn": "ಬೆಂಗಳೂರು, ಮುಂಬೈಗೆ ಸ್ವಲ್ಪ ರೂಪಾಯಿ"
+     "en": "₹2,000–3,000 in rupees for Bengaluru and Mumbai",
+     "kn": "ಬೆಂಗಳೂರು, ಮುಂಬೈಗೆ ₹2,000–3,000"
     },
     {
      "id": "money3",
@@ -84,6 +89,11 @@
      "id": "money4",
      "en": "A credit card with free airport lounge access for two (Mumbai night)",
      "kn": "ಇಬ್ಬರಿಗೆ ಉಚಿತ ಏರ್‌ಪೋರ್ಟ್ ಲೌಂಜ್ ಪ್ರವೇಶ ಇರುವ ಕ್ರೆಡಿಟ್ ಕಾರ್ಡ್ (ಮುಂಬೈ ರಾತ್ರಿ)"
+    },
+    {
+     "id": "money5",
+     "en": "US$220 kept aside for the hotel balance",
+     "kn": "ಹೋಟೆಲ್ ಬಾಕಿಗೆ 220 ಡಾಲರ್ ಬೇರೆ ಇಡಿ"
     }
    ]
   },
@@ -95,18 +105,18 @@
    "items": [
     {
      "id": "phone0",
-     "en": "Airtel roaming pack activated",
-     "kn": "ಏರ್‌ಟೆಲ್ ರೋಮಿಂಗ್ ಪ್ಯಾಕ್ ಆಕ್ಟಿವೇಟ್"
+     "en": "Airtel store visit: new postpaid plan, Vietnam covered, roaming ON (activate the pack only after landing in Hanoi)",
+     "kn": "ಏರ್‌ಟೆಲ್ ಆಫೀಸ್: ಹೊಸ ಪ್ಲಾನ್, ವಿಯೆಟ್ನಾಂ ಸೇರಿದೆ, ರೋಮಿಂಗ್ ಆನ್ (ಪ್ಯಾಕ್ ಹನೋಯ್ ತಲುಪಿದ ಮೇಲೆ)"
     },
     {
      "id": "phone1",
-     "en": "Grab app installed, OTP tested",
-     "kn": "ಗ್ರ್ಯಾಬ್ ಆ್ಯಪ್ ಹಾಕಿ, OTP ಪರೀಕ್ಷಿಸಿ"
+     "en": "Grab app installed and signed up with the +91 number (do it in Bengaluru)",
+     "kn": "ಗ್ರಾಬ್ ಆ್ಯಪ್ ಹಾಕಿ +91 ನಂಬರ್‌ನಲ್ಲಿ ಸೈನ್ ಅಪ್ (ಬೆಂಗಳೂರಿನಲ್ಲೇ)"
     },
     {
      "id": "phone2",
-     "en": "Google Translate + Vietnamese offline pack",
-     "kn": "ಗೂಗಲ್ ಟ್ರಾನ್ಸ್‌ಲೇಟ್ + ವಿಯೆಟ್ನಾಮೀಸ್ ಆಫ್‌ಲೈನ್"
+     "en": "Google Translate + Vietnamese offline pack (backup to the 🎤 translator)",
+     "kn": "ಗೂಗಲ್ ಟ್ರಾನ್ಸ್‌ಲೇಟ್ + ವಿಯೆಟ್ನಾಮೀಸ್ ಆಫ್‌ಲೈನ್ (ಬ್ಯಾಕಪ್)"
     },
     {
      "id": "phone3",
@@ -120,18 +130,28 @@
     },
     {
      "id": "phone5",
-     "en": "Kannada + Vietnamese voices installed",
+     "en": "Kannada + Vietnamese voices installed (Today → Ready list)",
      "kn": "ಕನ್ನಡ ಮತ್ತು ವಿಯೆಟ್ನಾಮೀಸ್ ಧ್ವನಿ ಹಾಕಿ"
     },
     {
      "id": "phone6",
-     "en": "Contacts saved in Settings",
-     "kn": "ಸೆಟ್ಟಿಂಗ್ಸ್‌ನಲ್ಲಿ ಕಾಂಟ್ಯಾಕ್ಟ್ ಉಳಿಸಿ"
+     "en": "Family, hotel, cruise, Ninh Binh driver and insurance numbers saved in Settings",
+     "kn": "ಮನೆಯವರು, ಹೋಟೆಲ್, ಹಡಗು, ಚಾಲಕ, ವಿಮೆ ನಂಬರ್ Settings ನಲ್ಲಿ"
     },
     {
      "id": "phone7",
      "en": "Backup done and sent on WhatsApp",
      "kn": "ಬ್ಯಾಕಪ್ ಮಾಡಿ WhatsApp ನಲ್ಲಿ ಕಳುಹಿಸಿ"
+    },
+    {
+     "id": "phone8",
+     "en": "DeepSeek key saved and tested — 🎤 translator and 💬 helper work",
+     "kn": "DeepSeek ಕೀ ಉಳಿಸಿ ಪರೀಕ್ಷಿಸಿ — 🎤 ಮತ್ತು 💬 ಕೆಲಸ ಮಾಡುತ್ತವೆ"
+    },
+    {
+     "id": "phone9",
+     "en": "Vietnamese voice typing works (translator → They speak)",
+     "kn": "ವಿಯೆಟ್ನಾಮೀಸ್ ಧ್ವನಿ ಟೈಪಿಂಗ್ ಕೆಲಸ ಮಾಡುತ್ತದೆ"
     }
    ]
   },
@@ -168,8 +188,8 @@
     },
     {
      "id": "health5",
-     "en": "Sanitiser and masks",
-     "kn": "ಸ್ಯಾನಿಟೈಸರ್, ಮಾಸ್ಕ್"
+     "en": "N95 masks (Hanoi air is often poor in November) + sanitiser",
+     "kn": "N95 ಮಾಸ್ಕ್ (ನವೆಂಬರ್‌ನಲ್ಲಿ ಹನೋಯ್ ಗಾಳಿ ಕಲುಷಿತ) + ಸ್ಯಾನಿಟೈಸರ್"
     },
     {
      "id": "health6",
@@ -264,8 +284,8 @@
    "items": [
     {
      "id": "weather0",
-     "en": "Late Nov Hanoi: about 16–24°C, mostly dry",
-     "kn": "ನವೆಂಬರ್ ಕೊನೆ ಹನೋಯ್: ಸುಮಾರು 16–24°C, ಒಣ ಹವೆ"
+     "en": "Late Nov: about 17–24°C, mostly dry — check Plan for the live forecast",
+     "kn": "ನವೆಂಬರ್ ಕೊನೆ: ಸುಮಾರು 17–24°C — ಹವಾಮಾನಕ್ಕೆ Plan ನೋಡಿ"
     },
     {
      "id": "weather1",

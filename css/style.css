@@ -759,3 +759,16 @@ table.kv tr + tr th, table.kv tr + tr td { border-top: 1px solid var(--line); }
 .mp-big { font-size: 18px; font-weight: 800; text-align: center; margin: 6px 0; }
 .mp-stars { color: #E3A008; text-align: center; font-size: 14px; }
 .fares th { width: 55%; }
+
+/* v2.4 weather */
+.daychip .wxc { display: block; font-size: max(15px, .9em); font-weight: 700; }
+.wxline { display: flex; flex-direction: column; gap: 3px; margin: 10px 0; padding: 10px 12px; border-radius: 14px;
+  background: rgba(255,255,255,.12); }
+.dayhead .wxline { color: #fff; }
+.dayhead .wxline .kn { color: #DCEFE6; }
+.wxmain strong { font-size: 1.15em; }
+.wxtips { font-weight: 700; }
+.wxsrc { opacity: .75; font-size: max(15px, .85em); }
+.wxtoday { display: block; text-decoration: none; color: var(--text); }
+.wxtoday .wxline { background: var(--gold-soft); margin: 4px 0 0; }
+.wxtoday .wxline .kn { color: var(--muted); }

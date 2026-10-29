@@ -23,6 +23,8 @@ function renderToday() {
     <p class="hello1"><strong>Namaskara 🙏</strong> <span class="kn">ನಮಸ್ಕಾರ</span>${cur.after ? '' :
       ` · <span class="dayline">${esc(dayLabel(day))}</span>`}</p>
     <div id="nownext">${renderNowNext(cur)}</div>
+    ${cur.after ? '' : (() => { const wd = cur.before || cur.day.day === 0 ? DATA.trip.days[1] : cur.day;
+      return `<a class="card wxtoday" href="#plan:day${wd.day}">${cur.before || cur.day.day === 0 ? `<span class="muted small">${esc(dayLabel(wd))} — Hanoi</span>` : ''}<span class="wxline" data-wxline="${wd.day}">${wxLine(wd)}</span></a>`; })()}
     ${renderHotelCard(cur)}
     ${renderReadyCard()}
     ${renderBackupNudge()}
@@ -177,4 +179,4 @@ function startTodayClocks() {
 }
 
 ROUTES.today.render = renderToday;
-ROUTES.today.after = () => { fillVoiceChecks(); return startTodayClocks(); };
+ROUTES.today.after = () => { fillVoiceChecks(); wxFetch(); return startTodayClocks(); };
