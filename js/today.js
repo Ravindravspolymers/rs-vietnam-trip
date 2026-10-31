@@ -20,7 +20,7 @@ function renderToday() {
   const during = !cur.before && !cur.after;
   return `${banner}
     ${renderTaskAlerts(cur)}
-    <p class="hello1"><strong>Namaskara 🙏</strong> <span class="kn">ನಮಸ್ಕಾರ</span>${cur.after ? '' :
+    <p class="hello1"><strong>Namaskara${getSettings().travellers ? ' ' + esc(getSettings().travellers.replace(/^Mr\s+|Mrs\s+/g, '').replace(' and ', ' & ')) : ''} 🙏</strong> <span class="kn">ನಮಸ್ಕಾರ</span>${cur.after ? '' :
       ` · <span class="dayline">${esc(dayLabel(day))}</span>`}</p>
     <div id="nownext">${renderNowNext(cur)}</div>
     ${cur.after ? '' : (() => { const wd = cur.before || cur.day.day === 0 ? DATA.trip.days[1] : cur.day;

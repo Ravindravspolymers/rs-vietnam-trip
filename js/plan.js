@@ -311,13 +311,28 @@ function renderDriver() {
     <hr>
     <p class="dr-en"><strong>Please take me to:</strong><br>${esc(t.en)}<br>${esc(t.addr_en || '')}</p>
     <p class="kn muted">ಈ ಪರದೆಯನ್ನು ಚಾಲಕನಿಗೆ ತೋರಿಸಿ.</p>
+    <button type="button" class="btn secondary" data-copydrv>📋 Copy for the driver (Vietnamese + English)</button>
     ${t.hotel && hotelTel ? `<a class="btn green" href="tel:+${hotelTel}">📞 Call hotel</a>` : ''}
   </section>`;
+}
+// v2.8: copy-paste text for a driver (WhatsApp / Grab chat)
+function driverText(t) {
+  const who = getSettings().travellers;
+  const vi = t.addr_vi && t.addr_vi.includes(t.vi || '') && t.vi ? t.addr_vi : [t.vi || t.en, t.addr_vi].filter(Boolean).join(', ');
+  const en = t.addr_en && t.addr_en.startsWith(t.en) ? t.addr_en : [t.en, t.addr_en].filter(Boolean).join(', ');
+  return `Xin vui lòng đưa chúng tôi đến: ${vi}.${who ? ` (Khách: ${who})` : ''}\n\nPlease take us to: ${en}.`;
 }
 
 function startDriver() {
   document.body.classList.add('fullscreen');
-  return () => document.body.classList.remove('fullscreen');
+  const main = document.getElementById('screen');
+  const onClick = async e => {
+    if (!e.target.closest('[data-copydrv]')) return;
+    try { await navigator.clipboard.writeText(driverText(driverTarget())); toast('Copied ✓ — paste in WhatsApp or Grab chat / ನಕಲಿಸಲಾಗಿದೆ'); }
+    catch (err) { toast('Could not copy — show this screen to the driver.', 3500); }
+  };
+  main.addEventListener('click', onClick);
+  return () => { document.body.classList.remove('fullscreen'); main.removeEventListener('click', onClick); };
 }
 
 ROUTES.plan.render = renderPlan;

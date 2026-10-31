@@ -16,7 +16,7 @@ function kbStatic() {
   const T = DATA.trip, L = [];
   const fmtF = iso => new Date(iso).toLocaleString('en-GB', { timeZone: iso.endsWith('+07:00') ? 'Asia/Ho_Chi_Minh' : 'Asia/Kolkata',
     weekday: 'short', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' });
-  L.push('# TRAVELLERS', 'Two parents, about 60, from Bengaluru, Kannada speakers, first trip abroad. Pure vegetarian (eggs OK). Relaxed pace.',
+  L.push('# TRAVELLERS', 'Two parents, about 60, from Bengaluru (Mr Ravindra and Mrs Sudha), Kannada speakers, first trip abroad. Pure vegetarian (eggs OK). Relaxed pace.',
     'Trip: 23–30 Nov 2026. Hanoi, Ha Long Bay cruise, Ninh Binh. Vietnam time = India time + 1 h 30 min.');
   L.push('# HOTEL', `${T.hotel.en}, ${T.hotel.address_en} (Vietnamese: ${T.hotel.address_vi}). In the Old Quarter.`);
   L.push('# FLIGHTS (IndiGo)');

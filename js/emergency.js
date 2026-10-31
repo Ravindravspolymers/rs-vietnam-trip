@@ -71,6 +71,7 @@ function renderHelpCard() {
     .filter(([, n]) => digits(n));
   return `<section class="driver">
     <p class="dr-name" style="font-size:clamp(24px,7vw,34px)">${esc(E.help_vi)}</p>
+    ${s.travellers ? `<p class="dr-ask">Tên / Names: <strong>${esc(s.travellers)}</strong></p>` : ''}
     ${nums.map(([l, n]) => `<a class="help-num" href="${telHref(n)}">${esc(n)}<span>${esc(l)}</span></a>`).join('')
       || '<p class="todo">Add phone numbers in Settings.</p>'}
     <p class="dr-ask">Khách sạn của chúng tôi / Our hotel:</p>
@@ -94,6 +95,7 @@ function renderPrint() {
   return `<button type="button" class="btn no-print" onclick="window.print()">🖨 Print / Save as PDF</button>
     <section class="printsheet">
       <h2>RS Vietnam Trip — Help sheet</h2>
+      ${s.travellers ? `<p><strong>${esc(s.travellers)}</strong></p>` : ''}
       <p class="ps-vi">${esc(E.help_vi)}</p>
       <p>${esc(E.help_en)}</p>
       <h3>Hotel / Khách sạn</h3>

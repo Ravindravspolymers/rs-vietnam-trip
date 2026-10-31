@@ -2,7 +2,7 @@
    Router, tab bar, More grid, SOS, Settings, update banner, storage helpers. */
 'use strict';
 
-const APP_VERSION = '2.7.0'; // keep in sync with CACHE_VERSION in service-worker.js
+const APP_VERSION = '2.8.0'; // keep in sync with CACHE_VERSION in service-worker.js
 
 /* ---------- Storage helpers (localStorage, never crash) ---------- */
 const Store = {
@@ -57,13 +57,19 @@ const DEFAULT_SETTINGS = {
   c1Name: '', c1Phone: '',
   c2Name: '', c2Phone: '',
   hotelPhone: '+84 97 413 51 07',   // Hanoi Chic Boutique Hotel (business number)
-  cruisePhone: '', driverPhone: '', insurancePhone: '', medical: '',
-  fasttrackPhone: '+84 96 246 0477',   // Klook express-immigration operator hotline (business number)
+  cruisePhone: '', driverPhone: '+84 97 413 51 07', insurancePhone: '', medical: '',   // Ninh Binh car is arranged by the hotel → hotel number
+  fasttrackPhone: '+84 96 246 0477',
+  travellers: 'Mr Ravindra and Mrs Sudha',   // v2.8: shown in messages, help card and greeting   // Klook express-immigration operator hotline (business number)
   textSize: 'normal',
   theme: 'light',                 // v1.2: light always unless Dark chosen
   deepseekKey: ''
 };
-const getSettings = () => Object.assign({}, DEFAULT_SETTINGS, Store.get('settings', {}));
+const getSettings = () => {
+  const s = Object.assign({}, DEFAULT_SETTINGS, Store.get('settings', {}));
+  if (!s.driverPhone) s.driverPhone = s.hotelPhone;          // v2.8: Ninh Binh car is arranged by the hotel
+  if (!s.travellers) s.travellers = DEFAULT_SETTINGS.travellers;
+  return s;
+};
 const saveSettings = s => Store.set('settings', s);
 
 function applyTextSize(size) {
@@ -214,6 +220,7 @@ function renderSettings() {
       <summary>📞 Contacts and health notes</summary>
       <form id="contacts-form">
         <p class="muted small">Indian mobiles: 10 digits is fine (+91 is added). Others: with country code.</p>
+        ${field('travellers', 'Travellers (names used in messages)', 'text', 'Mr Ravindra and Mrs Sudha')}
         ${field('c1Name', 'Family 1 — name', 'text', 'e.g. Son')}
         ${field('c1Phone', 'Family 1 — phone', 'tel', '+91 9XXXX XXXXX')}
         ${field('c2Name', 'Family 2 — name', 'text', 'e.g. Daughter')}
@@ -221,7 +228,7 @@ function renderSettings() {
         ${field('hotelPhone', 'Hotel phone')}
         ${field('cruisePhone', 'Cruise phone', 'tel', 'Not set')}
         ${field('fasttrackPhone', 'Express immigration (Klook) WhatsApp')}
-        ${field('driverPhone', 'Ninh Binh car driver phone', 'tel', 'Ask the hotel')}
+        ${field('driverPhone', 'Ninh Binh car (arranged by the hotel)', 'tel', 'Hotel number')}
         ${field('insurancePhone', 'Insurance helpline', 'tel', 'Not set')}
         ${field('medical', 'Medicines / health notes (shown on help card)', 'text', 'e.g. BP tablets daily')}
         <button class="btn" type="submit">Save contacts</button>
@@ -360,7 +367,7 @@ document.addEventListener('submit', e => {
     }
     s[id] = r.pretty;
   }
-  ['c1Name', 'c2Name', 'medical'].forEach(id => { s[id] = $('#' + id).value.trim(); });
+  ['travellers', 'c1Name', 'c2Name', 'medical'].forEach(id => { s[id] = $('#' + id).value.trim(); });
   saveSettings(s);
   PHONE_FIELDS.forEach(id => { $('#' + id).value = s[id]; });       // show the formatted numbers back
   toast(`✓ Saved${s.c1Phone ? ': ' + s.c1Phone : ''} / ಉಳಿಸಲಾಗಿದೆ`, 3500);

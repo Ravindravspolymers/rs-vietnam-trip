@@ -4,7 +4,7 @@
 'use strict';
 
 const MSG_TASKS = ['t-msg-hotel', 't-msg-cruise', 't-msg-ft'];
-const getMsgInfo = () => Object.assign({ names: '', hotelRef: '', cruiseRef: '', ftRef: '' }, Store.get('msgInfo', {}));
+const getMsgInfo = () => { const i = Object.assign({ names: '', hotelRef: '', cruiseRef: '', ftRef: '' }, Store.get('msgInfo', {})); if (!i.names) i.names = getSettings().travellers || ''; return i; };
 const refEn = r => r ? ` (booking ${r})` : '', refVi = r => r ? ` (mã đặt chỗ ${r})` : '';
 
 function confirmMessages() {
@@ -13,20 +13,20 @@ function confirmMessages() {
     { id: 't-msg-hotel', icon: '🏨', title: 'Hanoi Chic Boutique Hotel', phone: s.hotelPhone,
       en: `Hello Hanoi Chic Boutique Hotel. This is ${n}, staying with you from 24 to 29 November${refEn(i.hotelRef)}. This is my WhatsApp number.
 We land at Noi Bai Airport, Terminal 2, at 10:00 am on 24 November (IndiGo 6E-1637). We have express immigration.
-1. Please confirm the airport car: driver at the arrivals exit at 10:45–11:00 am, with a sign showing our name.
+1. Please confirm the airport car: driver at the arrivals exit at 10:45–11:00 am, with a sign showing our name. Please send the driver's name, phone number and car number plate.
 2. We reach the hotel around 12 noon — early check-in if possible, or a place to rest.
 3. Please confirm the Ninh Binh tour pickup time on 28 November.
 4. On 28 November we move to a standard room for the last night — please move our packed bags while we are in Ninh Binh.
-5. Please book the car to the airport on 29 November at 3:30 pm.
+5. Please book the car to the airport on 29 November at 3:30 pm, and send the driver's details for the Ninh Binh day too.
 6. Please tell us the balance to pay in đồng — we will pay in đồng.
 Thank you very much!`,
       vi: `Xin chào khách sạn Hanoi Chic Boutique. Tôi là ${n}, ở khách sạn từ ngày 24 đến 29 tháng 11${refVi(i.hotelRef)}. Đây là số WhatsApp của tôi.
 Chúng tôi hạ cánh tại sân bay Nội Bài, nhà ga T2, lúc 10:00 sáng ngày 24/11 (chuyến bay IndiGo 6E-1637). Chúng tôi có dịch vụ nhập cảnh nhanh.
-1. Xin vui lòng xác nhận xe đón sân bay: tài xế chờ ở cửa ra khu đến lúc 10:45–11:00 sáng, cầm biển ghi tên chúng tôi.
+1. Xin vui lòng xác nhận xe đón sân bay: tài xế chờ ở cửa ra khu đến lúc 10:45–11:00 sáng, cầm biển ghi tên chúng tôi. Xin gửi tên, số điện thoại và biển số xe của tài xế.
 2. Chúng tôi đến khách sạn khoảng 12 giờ trưa — xin cho nhận phòng sớm nếu được, hoặc một chỗ để nghỉ.
 3. Xin xác nhận giờ đón đi Ninh Bình ngày 28/11.
 4. Ngày 28/11 chúng tôi chuyển sang phòng tiêu chuẩn cho đêm cuối — xin chuyển giúp hành lý đã đóng gói khi chúng tôi đi Ninh Bình.
-5. Xin đặt xe ra sân bay ngày 29/11 lúc 3:30 chiều.
+5. Xin đặt xe ra sân bay ngày 29/11 lúc 3:30 chiều, và gửi thông tin tài xế cho ngày đi Ninh Bình.
 6. Xin cho biết số tiền còn lại phải trả bằng tiền đồng — chúng tôi sẽ trả bằng tiền đồng.
 Cảm ơn rất nhiều!` },
     { id: 't-msg-cruise', icon: '🚢', title: 'Ambassador Cruise', phone: s.cruisePhone,
@@ -54,7 +54,7 @@ function renderConfirm() {
   return `<section class="card accent"><h2>📲 Send 3 short messages, once</h2>
       <p>So the hotel, cruise and airport staff know this is your number and when you arrive. Copy a message and paste it in WhatsApp — or tap "Open WhatsApp".</p>
       <p class="kn">ಹೋಟೆಲ್, ಹಡಗು, ವಿಮಾನ ನಿಲ್ದಾಣದ ಸಿಬ್ಬಂದಿಗೆ ಒಮ್ಮೆ ಸಂದೇಶ ಕಳುಹಿಸಿ — ಇದು ನಿಮ್ಮ ನಂಬರ್, ನೀವು ಯಾವಾಗ ಬರುತ್ತೀರಿ ಎಂದು ತಿಳಿಯಲು.</p></section>
-    <details class="card fold"${i.names ? '' : ' open'}><summary>✏️ Names and booking numbers</summary>
+    <details class="card fold"><summary>✏️ Names and booking numbers</summary>
       ${inp('names', 'Your names (as on the booking)', 'e.g. Mr & Mrs Rao')}
       ${inp('hotelRef', 'Hotel booking number (optional)', '')}
       ${inp('cruiseRef', 'Cruise booking number (optional)', '')}
