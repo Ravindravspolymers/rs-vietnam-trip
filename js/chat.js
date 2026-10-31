@@ -52,7 +52,7 @@ function kbStatic() {
   L.push('# MONEY', 'Currency: Vietnamese dong (₫). Notes: 10k, 20k, 50k, 100k, 200k, 500k. 20,000 and 500,000 are both blue; 10,000 and 100,000 differ by one zero — count the zeros.',
     'Bargaining: offer half, settle at 60–70%, smile, pay cash in dong, walk away if too high.');
   if (typeof CASH_STEPS !== 'undefined') {                // v2.2: cash plan + SIM
-    L.push('# CASH PLAN', `Take US$${CASH_TOTAL} cash: US$${HOTEL_USD} is the hotel balance (pay at the hotel, keep receipt); the rest for meals, Hanoi taxis, tickets, shopping. Ha Long cruise and Ninh Binh are already paid.`,
+    L.push('# CASH PLAN', `Carry US$${CASH_TOTAL} (in $100 notes) + ₹${INR_CASH} for India. IMPORTANT: in Vietnam pay EVERYTHING in đồng (VND), never in US dollars. Change US$${AIRPORT_USD} at Noi Bai on arrival; change the rest at the hotel reception only if needed. Already paid: ₹${PAID_INR} (flights, cruise, hotel booking, visa). Budget in Vietnam (₹): ${BUDGET.map(([k, v, must]) => `${k.replace(/^\S+ /, '')} ${v}${must ? ' (must pay)' : ''}`).join('; ')}. Tickets per person (₫): ${TICKETS.map(t => `${t[0].replace(/^\S+ /, '')} ${t[1]}`).join('; ')}. On 28 Nov they move to a standard room for the last night. One phone uses Airtel roaming, the other a local Vinaphone SIM bought at the airport. Ha Long cruise and Ninh Binh are already paid.`,
       ...CASH_STEPS.map((s, i) => `Step ${i + 1} (${s.when}): ${s.en}.`),
       'Buy dollars in Bengaluru from: ' + BLR_FX.map(f => `${f.name} [${f.type}] (${f.how}; ${f.docs})`).join('; ') + '. Ask for clean $100 notes, 2013 series or newer. Keep the forex receipt.',
       'Dollars to dong in Vietnam: ' + VN_FX.map(f => `${f.name} — ${f.hours}; ${f.note}`).join(' | '),
@@ -97,7 +97,7 @@ async function kbLive() {
   L.push(`Exchange rate: 1 USD = ${fx.INR} INR = ${fx.VND} VND, so 100,000 ₫ ≈ ₹${Math.round(100000 / fx.VND * fx.INR)}.`);
   L.push('# SAVED NUMBERS');
   [[s.c1Name || 'Family 1', s.c1Phone], [s.c2Name || 'Family 2', s.c2Phone], ['Hotel', s.hotelPhone], ['Cruise', s.cruisePhone],
-   ['Ninh Binh driver', s.driverPhone], ['Insurance helpline', s.insurancePhone]]
+   ['Ninh Binh driver', s.driverPhone], ['Insurance helpline', s.insurancePhone], ['Express immigration (Klook) operator', s.fasttrackPhone]]
     .forEach(([n, p]) => L.push(`${n}: ${p || 'not saved'}`));
   if (s.medical) L.push(`Health notes: ${s.medical}`);
   try {

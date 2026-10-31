@@ -5,9 +5,9 @@
 
 const DOC_CATS = [
   ['passport', '🛂', 'Passports'], ['visa', '📑', 'Visa'], ['flight', '✈️', 'Flights'],
-  ['hotel', '🏨', 'Hotel'], ['cruise', '🚢', 'Cruise'], ['insurance', '🛡', 'Insurance'], ['other', '📁', 'Other']
+  ['hotel', '🏨', 'Hotel'], ['cruise', '🚢', 'Cruise'], ['fasttrack', '⚡', 'Fast track'], ['insurance', '🛡', 'Insurance'], ['other', '📁', 'Other']
 ];
-const docCat = id => DOC_CATS.find(c => c[0] === id) || DOC_CATS[6];
+const docCat = id => DOC_CATS.find(c => c[0] === id) || DOC_CATS[DOC_CATS.length - 1];
 
 /* ---------- IndexedDB (tiny helper) ---------- */
 const DocDB = {

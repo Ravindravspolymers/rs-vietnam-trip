@@ -56,6 +56,16 @@
      "id": "docs9",
      "en": "Keep the forex receipt (needed to change dollars back to rupees)",
      "kn": "ಫಾರೆಕ್ಸ್ ರಸೀದಿ ಜೋಪಾನ (ಡಾಲರ್ ವಾಪಸ್ ಬದಲಿಸಲು ಬೇಕು)"
+    },
+    {
+     "id": "docs10",
+     "en": "Express immigration (Klook) voucher saved in Docs → Fast track",
+     "kn": "ಎಕ್ಸ್‌ಪ್ರೆಸ್ ಇಮಿಗ್ರೇಶನ್ ವೋಚರ್ Docs → Fast track ನಲ್ಲಿ"
+    },
+    {
+     "id": "docs11",
+     "en": "Passports and most cash in the hotel safe; carry one day's cash",
+     "kn": "ಪಾಸ್‌ಪೋರ್ಟ್, ಹೆಚ್ಚಿನ ಹಣ ಹೋಟೆಲ್ ಸೇಫ್‌ನಲ್ಲಿ; ಒಂದು ದಿನದ ಹಣ ಮಾತ್ರ ಜೊತೆಗೆ"
     }
    ]
   },
@@ -67,8 +77,8 @@
    "items": [
     {
      "id": "money0",
-     "en": "US$700 cash: clean $100 notes, 2013 series or newer, no tears",
-     "kn": "700 ಡಾಲರ್ ನಗದು: ಹರಿಯದ ಹೊಸ 100 ಡಾಲರ್ ನೋಟುಗಳು"
+     "en": "US$650 cash in $100 notes (clean, no tears) — keep the forex receipt",
+     "kn": "650 ಡಾಲರ್ ನಗದು, 100 ಡಾಲರ್ ನೋಟುಗಳು (ಹರಿಯದ) — ರಸೀದಿ ಇಡಿ"
     },
     {
      "id": "money1",
@@ -77,8 +87,8 @@
     },
     {
      "id": "money2",
-     "en": "₹2,000–3,000 in rupees for Bengaluru and Mumbai",
-     "kn": "ಬೆಂಗಳೂರು, ಮುಂಬೈಗೆ ₹2,000–3,000"
+     "en": "₹5,000 cash for India (Bengaluru and Mumbai)",
+     "kn": "ಭಾರತಕ್ಕೆ ₹5,000 ನಗದು"
     },
     {
      "id": "money3",
@@ -92,8 +102,18 @@
     },
     {
      "id": "money5",
-     "en": "US$220 kept aside for the hotel balance",
-     "kn": "ಹೋಟೆಲ್ ಬಾಕಿಗೆ 220 ಡಾಲರ್ ಬೇರೆ ಇಡಿ"
+     "en": "Must-pay in đồng: hotel rooms (~₹18,100) + two airport cars (~₹3,400)",
+     "kn": "ಡಾಂಗ್‌ನಲ್ಲಿ ಕೊಡಲೇಬೇಕಾದದ್ದು: ಹೋಟೆಲ್ (~₹18,100) + ಎರಡು ಕಾರು (~₹3,400)"
+    },
+    {
+     "id": "money6",
+     "en": "In Vietnam pay everything in đồng — never in US dollars",
+     "kn": "ವಿಯೆಟ್ನಾಂನಲ್ಲಿ ಎಲ್ಲಾ ಪಾವತಿ ಡಾಂಗ್‌ನಲ್ಲಿ — ಡಾಲರ್ ಅಲ್ಲ"
+    },
+    {
+     "id": "money7",
+     "en": "Ask for small đồng notes (50k, 100k, 200k) — taxis and stalls can't change 500k",
+     "kn": "ಸಣ್ಣ ಡಾಂಗ್ ನೋಟುಗಳನ್ನು ಕೇಳಿ (50k, 100k, 200k)"
     }
    ]
   },
@@ -105,8 +125,8 @@
    "items": [
     {
      "id": "phone0",
-     "en": "Airtel store visit: new postpaid plan, Vietnam covered, roaming ON (activate the pack only after landing in Hanoi)",
-     "kn": "ಏರ್‌ಟೆಲ್ ಆಫೀಸ್: ಹೊಸ ಪ್ಲಾನ್, ವಿಯೆಟ್ನಾಂ ಸೇರಿದೆ, ರೋಮಿಂಗ್ ಆನ್ (ಪ್ಯಾಕ್ ಹನೋಯ್ ತಲುಪಿದ ಮೇಲೆ)"
+     "en": "Airtel store visit (for ONE phone): new postpaid plan, Vietnam covered, roaming ON — activate the pack after landing in Hanoi",
+     "kn": "ಒಂದು ಫೋನ್‌ಗೆ ಏರ್‌ಟೆಲ್: ಹೊಸ ಪ್ಲಾನ್, ವಿಯೆಟ್ನಾಂ ಸೇರಿದೆ, ರೋಮಿಂಗ್ ಆನ್ — ಪ್ಯಾಕ್ ಹನೋಯ್‌ನಲ್ಲಿ"
     },
     {
      "id": "phone1",
@@ -152,6 +172,21 @@
      "id": "phone9",
      "en": "Vietnamese voice typing works (translator → They speak)",
      "kn": "ವಿಯೆಟ್ನಾಮೀಸ್ ಧ್ವನಿ ಟೈಪಿಂಗ್ ಕೆಲಸ ಮಾಡುತ್ತದೆ"
+    },
+    {
+     "id": "phone10",
+     "en": "Confirmation messages sent: hotel, cruise, express immigration (Today → 📲)",
+     "kn": "ಹೋಟೆಲ್, ಹಡಗು, ಎಕ್ಸ್‌ಪ್ರೆಸ್ ಇಮಿಗ್ರೇಶನ್‌ಗೆ ದೃಢೀಕರಣ ಸಂದೇಶ ಕಳುಹಿಸಿ"
+    },
+    {
+     "id": "phone11",
+     "en": "Other phone: buy a Vinaphone SIM at Noi Bai (1.5 GB/day, ~70,000 ₫, passport)",
+     "kn": "ಇನ್ನೊಂದು ಫೋನ್: ನೋಯ್ ಬಾಯ್‌ನಲ್ಲಿ ವಿನಾಫೋನ್ ಸಿಮ್ (ಪಾಸ್‌ಪೋರ್ಟ್)"
+    },
+    {
+     "id": "phone12",
+     "en": "Practise once at home: send a message, open Plan, tap 🎤 and ask 💬",
+     "kn": "ಮನೆಯಲ್ಲೇ ಒಮ್ಮೆ ಅಭ್ಯಾಸ: ಸಂದೇಶ, Plan, 🎤, 💬"
     }
    ]
   },
@@ -215,6 +250,11 @@
      "id": "health10",
      "en": "Spare glasses",
      "kn": "ಹೆಚ್ಚುವರಿ ಕನ್ನಡಕ"
+    },
+    {
+     "id": "health11",
+     "en": "Drink only bottled or filtered water; avoid ice from street stalls",
+     "kn": "ಬಾಟಲ್ ನೀರು ಮಾತ್ರ ಕುಡಿಯಿರಿ; ಬೀದಿ ಅಂಗಡಿಯ ಐಸ್ ಬೇಡ"
     }
    ]
   },
@@ -383,28 +423,32 @@
    "when": "Tue 24 Nov · land 10:00 am · Noi Bai Terminal 2",
    "steps": [
     {
-     "en": "Immigration: passport + e-visa printout.",
-     "kn": "ಇಮಿಗ್ರೇಶನ್: ಪಾಸ್‌ಪೋರ್ಟ್ + ಇ-ವೀಸಾ ಪ್ರಿಂಟ್."
+     "en": "Express immigration staff wait at the aircraft door / bridge with your name sign. Stay with them.",
+     "kn": "ವಿಮಾನದ ಬಾಗಿಲಲ್ಲಿ ನಿಮ್ಮ ಹೆಸರಿನ ಫಲಕದೊಂದಿಗೆ ಸಿಬ್ಬಂದಿ ಕಾಯುತ್ತಾರೆ. ಅವರ ಜೊತೆಯೇ ಇರಿ."
     },
     {
-     "en": "Collect bags at the belt.",
-     "kn": "ಬೆಲ್ಟ್‌ನಿಂದ ಬ್ಯಾಗ್ ತೆಗೆದುಕೊಳ್ಳಿ."
+     "en": "Priority immigration lane (about 30 min): passport + e-visa printout. Staff cannot enter the lane with you.",
+     "kn": "ಆದ್ಯತೆಯ ಇಮಿಗ್ರೇಶನ್ (ಸುಮಾರು 30 ನಿಮಿಷ): ಪಾಸ್‌ಪೋರ್ಟ್ + ಇ-ವೀಸಾ ಪ್ರಿಂಟ್. ಸಿಬ್ಬಂದಿ ಒಳಗೆ ಬರುವುದಿಲ್ಲ."
+    },
+    {
+     "en": "Collect your bags at the belt yourself (not part of the service). Take a trolley.",
+     "kn": "ಬೆಲ್ಟ್‌ನಿಂದ ಬ್ಯಾಗ್ ನೀವೇ ತೆಗೆದುಕೊಳ್ಳಿ. ಟ್ರಾಲಿ ಬಳಸಿ."
     },
     {
      "en": "Customs: walk through the green lane.",
      "kn": "ಕಸ್ಟಮ್ಸ್: ಹಸಿರು ದಾರಿಯಲ್ಲಿ ನಡೆಯಿರಿ."
     },
     {
-     "en": "Buy a Viettel SIM at the counter.",
-     "kn": "ಕೌಂಟರ್‌ನಲ್ಲಿ ವಿಯೆಟೆಲ್ ಸಿಮ್ ಕೊಳ್ಳಿ."
+     "en": "Change US$400–500 at the BIDV counter in the arrivals hall. Ask for small notes. Pay everything in đồng.",
+     "kn": "BIDV ಕೌಂಟರ್‌ನಲ್ಲಿ 400–500 ಡಾಲರ್ ಬದಲಿಸಿ. ಸಣ್ಣ ನೋಟು ಕೇಳಿ. ಎಲ್ಲಾ ಪಾವತಿ ಡಾಂಗ್‌ನಲ್ಲಿ."
     },
     {
-     "en": "Change only a small amount of money here.",
-     "kn": "ಇಲ್ಲಿ ಸ್ವಲ್ಪ ಹಣ ಮಾತ್ರ ಬದಲಿಸಿ."
+     "en": "Phone 1: turn on data roaming and activate the Airtel 5-day pack. Phone 2: buy a Vinaphone SIM at the kiosk (passport).",
+     "kn": "ಫೋನ್ 1: ಏರ್‌ಟೆಲ್ ರೋಮಿಂಗ್ ಪ್ಯಾಕ್. ಫೋನ್ 2: ವಿನಾಫೋನ್ ಸಿಮ್ ಕೊಳ್ಳಿ (ಪಾಸ್‌ಪೋರ್ಟ್)."
     },
     {
-     "en": "Find the hotel driver with your name sign, or book Grab.",
-     "kn": "ನಿಮ್ಮ ಹೆಸರಿನ ಫಲಕದ ಚಾಲಕನನ್ನು ಹುಡುಕಿ, ಅಥವಾ ಗ್ರ್ಯಾಬ್ ಬುಕ್ ಮಾಡಿ."
+     "en": "Hotel driver waits at the arrivals exit 10:45–11:00 am with your name sign.",
+     "kn": "ಹೋಟೆಲ್ ಚಾಲಕರು 10:45–11:00ಕ್ಕೆ ಹೆಸರಿನ ಫಲಕದೊಂದಿಗೆ ಕಾಯುತ್ತಾರೆ."
     }
    ],
    "when_kn": "ಮಂಗಳ 24 ನವೆಂಬರ್ · ಬೆಳಿಗ್ಗೆ 10ಕ್ಕೆ ಇಳಿಯುವುದು · ನೋಯ್ ಬಾಯ್ ಟರ್ಮಿನಲ್ 2"

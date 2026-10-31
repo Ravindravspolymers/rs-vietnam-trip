@@ -772,3 +772,15 @@ table.kv tr + tr th, table.kv tr + tr td { border-top: 1px solid var(--line); }
 .wxtoday { display: block; text-decoration: none; color: var(--text); }
 .wxtoday .wxline { background: var(--gold-soft); margin: 4px 0 0; }
 .wxtoday .wxline .kn { color: var(--muted); }
+/* v2.5 confirmation messages */
+.msgbox { margin-top: 10px; }
+.msgtext { white-space: pre-wrap; font: inherit; margin: 0 0 8px; padding: 10px 12px; border-radius: 12px; background: var(--bg);
+  border: 1px solid var(--line); user-select: text; -webkit-user-select: text; }
+.msgcard.done { opacity: .55; }
+/* v2.6 */
+.paydong { display: flex; flex-direction: column; gap: 4px; margin: 0 0 12px; padding: 12px 14px; border-radius: var(--radius);
+  background: linear-gradient(120deg, #C2410C, #B3261E); color: #fff; border: 3px solid #FFD54F; }
+.paydong strong { font-size: 1.1em; }
+.paydong .kn { color: #FFF3E0; }
+.sendboth { background: #1F7A4D; }
+.must { display: inline-block; margin-left: 4px; padding: 0 8px; border-radius: 999px; background: var(--btn-red); color: #fff; font-size: max(15px, .75em); font-weight: 700; }

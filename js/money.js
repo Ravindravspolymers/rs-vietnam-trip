@@ -43,6 +43,7 @@ function renderMoney() {
       <p class="muted small" id="fx-status">${esc(fxStatusText(fx))}</p>
       <a class="notes-link" href="#notes" aria-label="Vietnam notes pictures">💵 Notes</a>
     </div>
+    ${payDong()}
     <section class="card conv">
       <label for="fx-INR">₹ Indian Rupee</label>
       ${quick('INR', [[500, '₹500'], [1000, '₹1,000'], [2000, '₹2,000'], [5000, '₹5,000']])}

@@ -55,7 +55,7 @@ function renderEmPage() {
           <a class="btn secondary" href="#driver:${x.id}">🚕 Show driver</a>
         </div></section>`).join('')}`;
     case 'mine': {
-      const mine = [['🏨 Hotel', s.hotelPhone], ['🚢 Cruise', s.cruisePhone], ['🚗 Ninh Binh driver', s.driverPhone], ['🛡 Insurance helpline', s.insurancePhone]]
+      const mine = [['🏨 Hotel', s.hotelPhone], ['🚢 Cruise', s.cruisePhone], ['⚡ Express immigration', s.fasttrackPhone], ['🚗 Ninh Binh driver', s.driverPhone], ['🛡 Insurance helpline', s.insurancePhone]]
         .filter(([, n]) => digits(n));
       return `${mine.length ? mine.map(([l, n]) => `<a class="btn secondary" href="${telHref(n)}">${l}: ${esc(n)}</a>`).join('')
         : '<p class="muted">Add numbers in Settings.</p>'}

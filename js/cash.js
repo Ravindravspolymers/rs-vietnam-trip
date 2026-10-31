@@ -5,7 +5,7 @@
    Details researched Oct 2026 — confirm locally. Ticks share the Plan "done" store (getVisited/setVisited). */
 'use strict';
 
-const CASH_TOTAL = 700, HOTEL_USD = 220;
+const CASH_TOTAL = 650, INR_CASH = 5000, AIRPORT_USD = '400–500', HOTEL_USD = 190;   // v2.7: family's plan — $100 notes; change $400–500 at the airport, rest at the hotel if needed
 const mapQ = q => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
 const isDone = id => !!getVisited()[id];
 const r1 = n => n.toLocaleString('en-IN', { maximumFractionDigits: 1 });
@@ -20,7 +20,7 @@ const CASH_STEPS = [
 
 const BLR_FX = [   // v2.3: 1 online + 3 walk-in shops near Sahakar Nagar / MG Road
   { name: 'BookMyForex (MakeMyTrip)', type: 'Online', how: 'Order online — cash delivered home', link: 'https://www.bookmyforex.com/currency-exchange/bangalore/sahakar-nagar/',
-    margin: [0.3, 0.8], charges: 'GST ≈ ₹120 on $700; delivery fee shown at checkout', docs: 'Passport, air ticket, PAN (upload)', trust: 'RBI-authorised · MakeMyTrip group' },
+    margin: [0.3, 0.8], charges: 'GST ≈ ₹110 on $650; delivery fee shown at checkout', docs: 'Passport, air ticket, PAN (upload)', trust: 'RBI-authorised · MakeMyTrip group' },
   { name: 'Thomas Cook — Sahakara Nagar', type: 'Walk-in · near home', how: '1st Floor, SV Arcade, 60 Feet Main Rd, Park View Layout, Sahakara Nagar',
     link: mapQ('Thomas Cook, SV Arcade, 60 Feet Main Road, Sahakara Nagar, Bengaluru 560092'),
     margin: [1, 2], charges: 'GST ≈ ₹120; small service fee possible', docs: 'Passport, air ticket/visa, PAN (originals)', trust: "India's largest forex company · RBI-authorised" },
@@ -31,9 +31,18 @@ const BLR_FX = [   // v2.3: 1 online + 3 walk-in shops near Sahakar Nagar / MG R
     link: mapQ('Unimoni, Manipal Centre, Dickenson Road, Bengaluru 560042'),
     margin: [1, 2], charges: 'GST ≈ ₹120', docs: 'Passport, air ticket/visa, PAN (originals)', trust: 'Large RBI-licensed chain · helpline 1800 102 0555' }
 ];
-const BUDGET = [
-  ['🏨 Hotel balance (pay at the hotel)', HOTEL_USD], ['🍽 Lunch + dinner, 5 days (veg, for two)', 150], ['🚕 Taxis in Hanoi (Grab)', 40],
-  ['🎟 Tickets (puppet show, temples)', 20], ['🛍 Shopping', 150], ['🆘 Spare money', 120]
+// v2.7: the family's own budget (₹). Already paid before the trip: ₹1,62,000 (flights, cruise, hotel, visa).
+const BUDGET = [   // [label, ₹, must-pay]
+  ['🏨 Hotel — premium room balance', 14100, true], ['🏨 Hotel — standard room, 28–29 Nov', 4000, true],
+  ['🚕 Airport → hotel car', 1700, true], ['🚕 Hotel → airport car', 1700, true],
+  ['🍽 Lunch + dinner', 7000], ['🚖 Local taxis', 8000], ['🛍 Shopping', 20000], ['🆘 Extra', 5000]
+];
+const PAID_INR = 162000;
+const TICKETS = [   // per person, ₫ (researched Oct 2026; confirm locally)
+  ['🎭 Water puppet show (Day 4)', '100,000–200,000', 'Economy / Standard / VIP seats'],
+  ['🏛 Temple of Literature (Day 4)', '70,000', ''], ['🌊 Ngoc Son Temple, Hoan Kiem Lake (Day 1)', '50,000', ''],
+  ['🚣 Trang An boat (Day 5)', '250,000–350,000', 'Ask the driver if included'], ['🛕 Bai Dinh buggy + stupa (Day 5)', '100,000 + 60,000', 'Ask the driver if included'],
+  ['⛰ Mua Cave (Day 5)', '100,000', 'Ask the driver if included']
 ];
 const VN_FX = [
   { name: 'BIDV bank counter — Noi Bai airport (arrivals)', link: mapQ('BIDV currency exchange Noi Bai International Airport Terminal 2'),
@@ -58,6 +67,11 @@ function kv(rows) {                                            // mobile "table"
   return `<table class="kv">${rows.map(([k, v]) => `<tr><th>${k}</th><td>${v}</td></tr>`).join('')}</table>`;
 }
 
+/* v2.6: everything in Vietnam is paid in đồng */
+const payDong = () => `<section class="paydong"><strong>₫ In Vietnam, pay everything in đồng — not US dollars</strong>
+    <span>Hotel, taxis, food, shops, tickets: all in đồng. Dollars are only for changing money.</span>
+    <span class="kn">ವಿಯೆಟ್ನಾಂನಲ್ಲಿ ಎಲ್ಲಾ ಪಾವತಿ ಡಾಂಗ್‌ನಲ್ಲೇ — ಡಾಲರ್‌ನಲ್ಲಿ ಅಲ್ಲ. ಹೋಟೆಲ್, ಟ್ಯಾಕ್ಸಿ, ಊಟ, ಅಂಗಡಿ — ಎಲ್ಲಾ ಡಾಂಗ್.</span></section>`;
+
 /* ---------- Money tab: the cash plan list ---------- */
 function renderCashPlan() {
   return `<section class="card cashplan">
@@ -78,7 +92,7 @@ function renderCashPage() {
       <p class="muted small">${esc(step.when)} · Market rate ${fxDate(m.date)}: <strong>$1 = ₹${r1(m.inr)} = ${Math.round(m.vnd).toLocaleString('en-US')} ₫</strong></p></section>`;
 
   if (step.page === 'buy') {
-    const total = BUDGET.reduce((a, [, v]) => a + v, 0);
+    const total = BUDGET.reduce((a, [, v]) => a + v, 0);   // ₹
     return head + `<p>Exchangers add a small margin over the market rate. Compare, then buy from the cheapest.<br>
         <span class="kn">ಮಾರುಕಟ್ಟೆ ದರಕ್ಕಿಂತ ಸ್ವಲ್ಪ ಹೆಚ್ಚು ತೆಗೆದುಕೊಳ್ಳುತ್ತಾರೆ. ಹೋಲಿಸಿ, ಕಡಿಮೆ ಬೆಲೆಯಲ್ಲಿ ಕೊಳ್ಳಿ.</span></p>
       ${BLR_FX.map(f => `<section class="card fx">
@@ -89,9 +103,16 @@ function renderCashPage() {
               ['Charges', esc(f.charges)], ['Carry', esc(f.docs)], ['Trust', esc(f.trust)]])}
       </section>`).join('')}
       <section class="card">
-        <h3>🧮 Why $${CASH_TOTAL}?</h3>
-        ${kv(BUDGET.map(([k, v]) => [k, `$${v}`]).concat([['<strong>Total</strong>', `<strong>$${total}</strong>`]]))}
-        <p class="muted small">Ha Long cruise and Ninh Binh are already paid.</p>
+        <h3>🧮 Your budget in Vietnam <span class="kn muted">ಖರ್ಚಿನ ಅಂದಾಜು</span></h3>
+        ${kv(BUDGET.map(([k, v, must]) => [k + (must ? ' <span class="must">must pay</span>' : ''), `₹${v.toLocaleString('en-IN')} <span class="muted">≈ ${(Math.round(v / m.inr * m.vnd / 100000) / 10)}M ₫</span>`])
+          .concat([['<strong>Total</strong>', `<strong>₹${total.toLocaleString('en-IN')}</strong> <span class="muted">≈ $${Math.round(total / m.inr)}</span>`]]))}
+        <p><strong>Carry: US$${CASH_TOTAL} (in $100 notes) + ₹${INR_CASH.toLocaleString('en-IN')} cash for India.</strong></p>
+        <p class="muted small">Already paid: ₹${PAID_INR.toLocaleString('en-IN')} (flights, cruise, hotel booking, visa). Ninh Binh tour is paid.</p>
+      </section>
+      <section class="card">
+        <h3>🎟 Entry tickets to pay there (per person)</h3>
+        ${kv(TICKETS.map(([k, v, note]) => [k, `${v} ₫${note ? `<br><span class="muted small">${note}</span>` : ''}`]))}
+        <p class="muted small">Hanoi tickets fit in "Extra". If Ninh Binh entries are not in the tour, keep about 1.5 million ₫ for two.</p>
       </section>
       <section class="card warn">
         <h3>✅ When you buy</h3>
@@ -112,11 +133,12 @@ function renderCashPage() {
 
   if (step.page === 'vnd') {
     const good = Math.round(m.vnd * 0.985 / 100) * 100;
-    return head + `<section class="card nudge-ok">
+    return head + payDong() + `<section class="card nudge-ok">
         <p><strong>Good rate check:</strong> accept if they give <strong>${good.toLocaleString('en-US')} ₫ or more</strong> for $1.</p>
         <p class="kn">1 ಡಾಲರ್‌ಗೆ ${good.toLocaleString('en-US')} ಡಾಂಗ್ ಅಥವಾ ಹೆಚ್ಚು ಕೊಟ್ಟರೆ ಒಪ್ಪಿ.</p>
-        <p>Change about <strong>US$${CASH_TOTAL - HOTEL_USD}</strong> ≈ ${Math.round((CASH_TOTAL - HOTEL_USD) * m.vnd * 0.99 / 100000) / 10} million ₫. Keep <strong>US$${HOTEL_USD}</strong> in dollars for the hotel.</p>
-        <p class="kn">ಸುಮಾರು ${CASH_TOTAL - HOTEL_USD} ಡಾಲರ್ ಬದಲಿಸಿ. ಹೋಟೆಲ್‌ಗೆ ${HOTEL_USD} ಡಾಲರ್ ಇಟ್ಟುಕೊಳ್ಳಿ.</p>
+        <p>Change <strong>US$${AIRPORT_USD}</strong> (four or five $100 notes) ≈ ${Math.round(400 * m.vnd * 0.99 / 100000) / 10}–${Math.round(500 * m.vnd * 0.99 / 100000) / 10} million ₫. This covers the hotel, the cars and the first days. Change the rest at the hotel reception later, only if needed.</p>
+        <p class="kn">ವಿಮಾನ ನಿಲ್ದಾಣದಲ್ಲಿ 400–500 ಡಾಲರ್ ಬದಲಿಸಿ. ಉಳಿದದ್ದು ಬೇಕಾದರೆ ಮಾತ್ರ ಹೋಟೆಲ್‌ನಲ್ಲಿ.</p>
+        <p class="muted small">Must-pay in đồng: hotel rooms (≈ ₹18,100) and the two airport cars (≈ ₹3,400) — about ${(Math.round(21500 / m.inr * m.vnd / 100000) / 10)} million ₫.</p>
       </section>
       ${vnTable(VN_FX)}
       <section class="card warn"><h3>⚠️ Safety</h3><ul>
@@ -170,7 +192,7 @@ function renderSim() {
   const p = routeParam();
   if (p === 'airtel') {
     document.getElementById('screen-title').textContent = 'Airtel roaming';
-    return `<section class="card accent"><h2>📶 Airtel — free 5-day roaming pack</h2>
+    return `<section class="card accent"><h2>📶 Airtel — free 5-day roaming pack (phone 1)</h2>
         <p class="kn">ಏರ್‌ಟೆಲ್ — ಉಚಿತ 5 ದಿನದ ರೋಮಿಂಗ್ ಪ್ಯಾಕ್</p></section>
       <section class="card">${kv([['Data', '5 GB high-speed'], ['Calls', '60 minutes (outgoing + incoming)'], ['SMS', '25 outgoing · incoming free'],
         ['Validity', '5 days from when the phone first connects abroad'], ['Cost', 'Free — one trip a year per SIM'],
@@ -194,8 +216,8 @@ function renderSim() {
   }
   if (p === 'local') {
     document.getElementById('screen-title').textContent = 'Vietnam SIM';
-    return `<section class="card accent"><h2>🇻🇳 Vietnam local SIM — only if Airtel does not work</h2>
-        <p class="kn">ಏರ್‌ಟೆಲ್ ಕೆಲಸ ಮಾಡದಿದ್ದರೆ ಮಾತ್ರ ಸ್ಥಳೀಯ ಸಿಮ್</p></section>
+    return `<section class="card accent"><h2>🇻🇳 Vietnam local SIM — for the second phone</h2>
+        <p class="kn">ಎರಡನೇ ಫೋನ್‌ಗೆ ಸ್ಥಳೀಯ ಸಿಮ್ — ನೋಯ್ ಬಾಯ್ ವಿಮಾನ ನಿಲ್ದಾಣದಲ್ಲಿ ಕೊಳ್ಳಿ</p></section>
       ${VN_SIMS.map(([n, data, calls, valid, price, note]) => `<section class="card fx"><h3>${n}</h3>${kv([['Data', data], ['Calls', calls], ['Validity', valid], ['Price', price]].concat(note ? [['Note', note]] : []))}</section>`).join('')}
       <section class="card"><h3>🛂 How to buy</h3><ul>
         <li>SIM kiosks in Noi Bai arrivals hall — open for every flight. Airport price is a little higher (about 250,000–300,000 ₫).</li>
@@ -203,11 +225,11 @@ function renderSim() {
         <li>Ask for the <strong>Vinaphone 1.5 GB/day, 7-day plan (~70,000 ₫)</strong> — plenty for WhatsApp, maps and video calls.</li>
       </ul><p class="kn">ಪಾಸ್‌ಪೋರ್ಟ್ ಬೇಕು. 5 ನಿಮಿಷದಲ್ಲಿ ಸಿದ್ಧ. ದಿನಕ್ಕೆ 1.5 GB ಸಾಕು.</p></section>`;
   }
-  return `<p>Two ways to have internet in Vietnam. <span class="kn">ವಿಯೆಟ್ನಾಂನಲ್ಲಿ ಇಂಟರ್ನೆಟ್‌ಗೆ ಎರಡು ದಾರಿ.</span></p>
+  return `<p><strong>Plan:</strong> phone 1 = Airtel roaming, phone 2 = local Vinaphone SIM bought at Noi Bai. <span class="kn">ಫೋನ್ 1 = ಏರ್‌ಟೆಲ್ ರೋಮಿಂಗ್, ಫೋನ್ 2 = ಸ್ಥಳೀಯ ಸಿಮ್.</span></p>
     <div class="grid">
       <a class="tile area${isDone('t-airtel') ? ' done' : ''}" href="#sim:airtel"><span>📶</span><span>Airtel roaming</span><span class="kn small">ಏರ್‌ಟೆಲ್</span>
-        <span class="count">${isDone('t-airtel') ? 'Done ✓' : 'Free · do first'}</span></a>
-      <a class="tile area" href="#sim:local"><span>🇻🇳</span><span>Vietnam local</span><span class="kn small">ಸ್ಥಳೀಯ ಸಿಮ್</span><span class="count">Backup</span></a>
+        <span class="count">${isDone('t-airtel') ? 'Done ✓' : 'Phone 1 · free'}</span></a>
+      <a class="tile area" href="#sim:local"><span>🇻🇳</span><span>Vietnam local</span><span class="kn small">ಸ್ಥಳೀಯ ಸಿಮ್</span><span class="count">${isDone('d1-sim') ? 'Bought ✓' : 'Buy at airport'}</span></a>
     </div>
     <p class="muted small">Details checked Oct 2026 — confirm at the store/kiosk.</p>`;
 }
@@ -218,12 +240,14 @@ function renderTaskAlerts(cur) {
   const list = [], pre = cur.before || (cur.day.day === 0 && !cur.after);
   const during = !cur.before && !cur.after;
   if (pre) {
-    list.push(['t-cash', '#cash:buy', `💵 Collect US$${CASH_TOTAL} cash`, `${CASH_TOTAL} ಡಾಲರ್ ನಗದು ಪಡೆಯಿರಿ`, 'See Money → Cash plan']);
+    list.push(['t-cash', '#cash:buy', `💵 Collect US$${CASH_TOTAL} + ₹${INR_CASH.toLocaleString('en-IN')} cash`, `${CASH_TOTAL} ಡಾಲರ್ + ₹${INR_CASH} ನಗದು ಪಡೆಯಿರಿ`, 'See Money → Cash plan']);
     list.push(['t-airtel', '#sim:airtel', '📶 Airtel store, Sahakar Nagar: free roaming pack', 'ಸಹಕಾರ ನಗರ ಏರ್‌ಟೆಲ್ ಆಫೀಸ್: ಉಚಿತ ರೋಮಿಂಗ್', 'See More → SIM']);
     list.push(['t-cards', '#cash:buy', '💳 Turn on cards for use abroad', 'ಕಾರ್ಡ್‌ಗೆ ವಿದೇಶ ಬಳಕೆ ಆನ್ ಮಾಡಿ', 'In your bank app']);
+    list.push(['t-msgs', '#confirm', '📲 Message hotel, cruise & express immigration', 'ಹೋಟೆಲ್, ಹಡಗು, ಇಮಿಗ್ರೇಶನ್‌ಗೆ ಸಂದೇಶ ಕಳುಹಿಸಿ', 'Ready-made English + Vietnamese messages']);
   }
   if (during && cur.day.day === 1)
-    list.push(['d1-cash', '#cash:vnd', '🇻🇳 Change dollars to đồng at the airport', 'ವಿಮಾನ ನಿಲ್ದಾಣದಲ್ಲಿ ಡಾಲರ್ → ಡಾಂಗ್', `Keep US$${HOTEL_USD} for the hotel`]);
+    list.push(['d1-cash', '#cash:vnd', '🇻🇳 Change dollars to đồng at the airport', 'ವಿಮಾನ ನಿಲ್ದಾಣದಲ್ಲಿ ಡಾಲರ್ → ಡಾಂಗ್', 'Change $400–500 · pay everything in đồng']);
+    list.push(['d1-sim', '#sim:local', '📶 Buy one local SIM at the airport', 'ವಿಮಾನ ನಿಲ್ದಾಣದಲ್ಲಿ ಒಂದು ಸ್ಥಳೀಯ ಸಿಮ್', 'Vinaphone 1.5 GB/day · ~70,000 ₫ · passport']);
   if (during && cur.day.day === 6)
     list.push(['d6-cashback', '#cash:back', '↩️ Leftover đồng → dollars today', 'ಉಳಿದ ಡಾಂಗ್ → ಡಾಲರ್ ಇಂದು', 'Old Quarter shop or airport counter']);
   if (cur.after)

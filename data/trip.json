@@ -116,12 +116,12 @@
      "vi": "Sân bay Nội Bài",
      "kn": "ನೋಯ್ ಬಾಯ್ ವಿಮಾನ ನಿಲ್ದಾಣ",
      "time": "10:00",
-     "mins": 90,
+     "mins": 50,
      "anchor": true,
      "lat": 21.2187,
      "lng": 105.8042,
-     "note_en": "Land 10:00 am, Terminal 2",
-     "note_kn": "ಬೆಳಿಗ್ಗೆ 10ಕ್ಕೆ ಇಳಿಯುವುದು, ಟರ್ಮಿನಲ್ 2",
+     "note_en": "Express immigration: staff meet you at the aircraft door / bridge with your name sign → priority lane (about 30 min). Then collect your own bags (not included).",
+     "note_kn": "ಎಕ್ಸ್‌ಪ್ರೆಸ್ ಇಮಿಗ್ರೇಶನ್: ವಿಮಾನದ ಬಾಗಿಲಲ್ಲೇ ನಿಮ್ಮ ಹೆಸರಿನ ಫಲಕದೊಂದಿಗೆ ಸಿಬ್ಬಂದಿ ಸಿಗುತ್ತಾರೆ → ಆದ್ಯತೆಯ ಸಾಲು (ಸುಮಾರು 30 ನಿಮಿಷ). ನಂತರ ನಿಮ್ಮ ಬ್ಯಾಗ್ ನೀವೇ ತೆಗೆದುಕೊಳ್ಳಿ.",
      "addr_vi": "Sân bay Quốc tế Nội Bài – Nhà ga T2 (Quốc tế)",
      "addr_en": "Noi Bai International Airport – Terminal 2 (International)",
      "airport": "han1",
@@ -132,11 +132,32 @@
      "type": "airport",
      "en": "Noi Bai — change dollars to đồng",
      "kn": "ನೋಯ್ ಬಾಯ್ — ಡಾಲರ್ ಅನ್ನು ಡಾಂಗ್‌ಗೆ ಬದಲಿಸಿ",
-     "time": "10:50",
-     "mins": 20,
-     "note_en": "BIDV counter, arrivals hall (open daily). Change about US$480; keep US$220 for the hotel.",
-     "note_kn": "ಆಗಮನ ಹಾಲ್‌ನ BIDV ಕೌಂಟರ್. ಸುಮಾರು 480 ಡಾಲರ್ ಬದಲಿಸಿ; ಹೋಟೆಲ್‌ಗೆ 220 ಡಾಲರ್ ಇಟ್ಟುಕೊಳ್ಳಿ.",
+     "time": "10:45",
+     "mins": 10,
+     "note_en": "BIDV counter, arrivals hall (open daily). Change US$400–500 (four or five $100 notes). Ask for small notes. Pay everything in Vietnam in đồng.",
+     "note_kn": "ಆಗಮನ ಹಾಲ್‌ನ BIDV ಕೌಂಟರ್. 400–500 ಡಾಲರ್ ಬದಲಿಸಿ. ಸಣ್ಣ ನೋಟು ಕೇಳಿ. ವಿಯೆಟ್ನಾಂನಲ್ಲಿ ಎಲ್ಲಾ ಪಾವತಿ ಡಾಂಗ್‌ನಲ್ಲಿ.",
      "link": "cash:vnd"
+    },
+    {
+     "id": "d1-sim",
+     "type": "airport",
+     "en": "Buy one local SIM (for one phone)",
+     "kn": "ಒಂದು ಫೋನ್‌ಗೆ ಸ್ಥಳೀಯ ಸಿಮ್ ಕೊಳ್ಳಿ",
+     "time": "10:55",
+     "mins": 10,
+     "link": "sim:local",
+     "note_en": "SIM kiosk, arrivals hall: Vinaphone 1.5 GB/day, 7 days (~70,000 ₫). Show passport; they set it up. The other phone uses Airtel roaming.",
+     "note_kn": "ಆಗಮನ ಹಾಲ್‌ನ ಸಿಮ್ ಕೌಂಟರ್: ವಿನಾಫೋನ್ ದಿನಕ್ಕೆ 1.5 GB, 7 ದಿನ (~70,000 ಡಾಂಗ್). ಪಾಸ್‌ಪೋರ್ಟ್ ತೋರಿಸಿ. ಇನ್ನೊಂದು ಫೋನ್‌ನಲ್ಲಿ ಏರ್‌ಟೆಲ್ ರೋಮಿಂಗ್."
+    },
+    {
+     "id": "d1-car",
+     "type": "airport",
+     "en": "Hotel car at the arrivals exit",
+     "kn": "ಆಗಮನ ದ್ವಾರದಲ್ಲಿ ಹೋಟೆಲ್ ಕಾರು",
+     "time": "11:05",
+     "mins": 0,
+     "note_en": "Hotel driver waits at the arrivals exit from 10:45 with your name sign. Car cost about ₹1,700 — pay in đồng as the hotel says. Can't find him? WhatsApp or call the hotel.",
+     "note_kn": "ಹೋಟೆಲ್ ಚಾಲಕರು 10:45–11:00ಕ್ಕೆ ನಿಮ್ಮ ಹೆಸರಿನ ಫಲಕದೊಂದಿಗೆ ಕಾಯುತ್ತಾರೆ. ಸಿಗದಿದ್ದರೆ ಹೋಟೆಲ್‌ಗೆ ಕರೆ ಮಾಡಿ."
     },
     {
      "id": "d1-hotel",
@@ -144,14 +165,14 @@
      "en": "Hotel — check in and rest",
      "vi": "Khách sạn",
      "kn": "ಹೋಟೆಲ್ — ಚೆಕ್-ಇನ್, ವಿಶ್ರಾಂತಿ",
-     "time": "12:15",
+     "time": "12:00",
      "mins": 240,
      "lat": 21.03424,
      "lng": 105.84735,
      "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
      "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi",
-     "note_en": "Sleep 2–3 hours. You flew all night. Pay the hotel balance of US$220 when asked — keep the receipt.",
-     "note_kn": "2–3 ಗಂಟೆ ನಿದ್ದೆ ಮಾಡಿ. ಹೋಟೆಲ್ ಕೇಳಿದಾಗ ಬಾಕಿ 220 ಡಾಲರ್ ಕೊಡಿ — ರಸೀದಿ ಪಡೆಯಿರಿ."
+     "note_en": "Early check-in requested (normal check-in is 2 pm) — if the room isn't ready, rest in the lobby. Sleep 2–3 hours. Pay the room balance (about ₹14,100) in đồng when asked — keep the receipt.",
+     "note_kn": "ಬೇಗ ಚೆಕ್-ಇನ್ ಕೇಳಿದ್ದೇವೆ — ಕೋಣೆ ಸಿದ್ಧವಿಲ್ಲದಿದ್ದರೆ ಲಾಬಿಯಲ್ಲಿ ವಿಶ್ರಾಂತಿ. ಕೋಣೆಯ ಬಾಕಿ (ಸುಮಾರು ₹14,100) ಡಾಂಗ್‌ನಲ್ಲಿ ಕೊಡಿ — ರಸೀದಿ ಪಡೆಯಿರಿ."
     },
     {
      "id": "d1-lake",
@@ -166,7 +187,7 @@
      "walk": true,
      "addr_vi": "Đền Ngọc Sơn, Hồ Hoàn Kiếm, phố Đinh Tiên Hoàng, Hà Nội",
      "addr_en": "Ngoc Son Temple, Hoan Kiem Lake, Dinh Tien Hoang St, Hanoi",
-     "note_en": "Flat, easy walk. Red bridge lights up in the evening.",
+     "note_en": "Flat, easy walk. Red bridge lights up in the evening. Ngoc Son Temple ticket: 50,000 ₫ each.",
      "note_kn": "ಸಮತಟ್ಟಾದ ಸುಲಭ ನಡಿಗೆ. ಸಂಜೆ ಕೆಂಪು ಸೇತುವೆಗೆ ದೀಪ ಹಚ್ಚುತ್ತಾರೆ.",
      "place": "hoankiem"
     }
@@ -416,7 +437,7 @@
      "lng": 105.83556,
      "addr_vi": "Văn Miếu – Quốc Tử Giám, 58 phố Quốc Tử Giám, Hà Nội",
      "addr_en": "Temple of Literature, 58 Quoc Tu Giam St, Hanoi",
-     "note_en": "Cover shoulders and knees. Mostly flat paths.",
+     "note_en": "Cover shoulders and knees. Mostly flat paths. Ticket: 70,000 ₫ each.",
      "note_kn": "ಭುಜ ಮತ್ತು ಮಂಡಿ ಮುಚ್ಚುವ ಬಟ್ಟೆ ಧರಿಸಿ. ದಾರಿ ಸಮತಟ್ಟು.",
      "place": "vanmieu"
     },
@@ -461,7 +482,7 @@
      "lat": 21.0318,
      "lng": 105.8535,
      "walk": true,
-     "note_en": "Show starts 5:20 pm. Reach by 5:00.",
+     "note_en": "Show starts 5:20 pm (about 50 min). Reach by 5:00. Tickets 100,000–200,000 ₫ each — buy at the counter early in the day, or ask the hotel.",
      "note_kn": "ಸಂಜೆ 5:20ಕ್ಕೆ ಪ್ರದರ್ಶನ. 5 ಗಂಟೆಗೆ ತಲುಪಿ.",
      "addr_vi": "Nhà hát Múa rối nước Thăng Long, 57B Đinh Tiên Hoàng, Hoàn Kiếm, Hà Nội",
      "addr_en": "Thang Long Water Puppet Theatre, 57B Dinh Tien Hoang, Hanoi",
@@ -575,6 +596,14 @@
     "who_kn": "ಹೋಟೆಲ್‌ನ ಚಾಲಕರೇ ಇಡೀ ದಿನ ನೋಡಿಕೊಳ್ಳುತ್ತಾರೆ: ಕರೆದುಕೊಂಡು ಹೋಗಿ, ಸ್ಥಳಗಳನ್ನು ತೋರಿಸಿ, ಚಹಾ-ಶೌಚಾಲಯ-ಊಟಕ್ಕೆ ನಿಲ್ಲಿಸಿ, ವಾಪಸ್ ಬಿಡುತ್ತಾರೆ. ಕ್ರಮ ಬದಲಾಗಬಹುದು — ಚಾಲಕರನ್ನು ಅನುಸರಿಸಿ.",
     "rows": [
      {
+      "when": "Before leaving",
+      "icon": "🧳",
+      "en": "Pack your bags — tonight you move to a standard room",
+      "kn": "ಬ್ಯಾಗ್ ಕಟ್ಟಿ — ಇಂದು ರಾತ್ರಿ ಸ್ಟ್ಯಾಂಡರ್ಡ್ ಕೋಣೆಗೆ ಬದಲಾವಣೆ",
+      "note_en": "Leave the packed bags with reception; the hotel moves them to the new room for 28–29 Nov.",
+      "note_kn": "ಕಟ್ಟಿದ ಬ್ಯಾಗ್ ರಿಸೆಪ್ಶನ್‌ನಲ್ಲಿ ಕೊಡಿ; ಹೊಸ ಕೋಣೆಗೆ ಹೋಟೆಲ್‌ನವರು ಸಾಗಿಸುತ್ತಾರೆ."
+     },
+     {
       "when": "~7:30 am*",
       "icon": "🚗",
       "en": "Driver picks you up at the hotel",
@@ -626,7 +655,7 @@
       "note_kn": ""
      }
     ],
-    "food_en": "Carry biscuits, fruit and water in the car. At any local restaurant, show the Waiter card and order: Cơm chiên chay (veg fried rice), Đậu phụ sốt cà chua (tofu in tomato), Rau củ xào (mixed vegetables) — say \"không nước mắm\" (no fish sauce).",
+    "food_en": "Carry biscuits, fruit and water in the car. At any local restaurant, show the Waiter card and order: Cơm chiên chay (veg fried rice), Đậu phụ sốt cà chua (tofu in tomato), Rau củ xào (mixed vegetables) — say \"không nước mắm\" (no fish sauce). Entry tickets: ask the driver if they are included. If not: Trang An boat 250,000–350,000 ₫, Bai Dinh buggy 100,000 ₫, Mua Cave 100,000 ₫ — each person.",
     "food_kn": "ಕಾರಿನಲ್ಲಿ ಬಿಸ್ಕತ್, ಹಣ್ಣು, ನೀರು ಇರಲಿ. ಯಾವುದೇ ಸ್ಥಳೀಯ ಹೋಟೆಲ್‌ನಲ್ಲಿ ವೇಟರ್ ಕಾರ್ಡ್ ತೋರಿಸಿ, ಇವನ್ನು ಕೇಳಿ: ಸಸ್ಯಾಹಾರಿ ಫ್ರೈಡ್ ರೈಸ್, ಟೊಮೆಟೊ ಗ್ರೇವಿಯಲ್ಲಿ ತೋಫು, ಮಿಶ್ರ ತರಕಾರಿ — \"ಫಿಶ್ ಸಾಸ್ ಬೇಡ\" ಎನ್ನಿ.",
     "foodLink": "ninhbinh"
    }
@@ -662,7 +691,9 @@
      "lng": 105.84735,
      "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
      "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi",
-     "driverTo": "d6-han"
+     "driverTo": "d6-han",
+     "note_en": "Hotel car to the airport (about ₹1,700) — pay in đồng. Check out and pay the standard-room balance (about ₹4,000) before leaving.",
+     "note_kn": "ಹೋಟೆಲ್ ಕಾರು ವಿಮಾನ ನಿಲ್ದಾಣಕ್ಕೆ (ಸುಮಾರು ₹1,700) — ಡಾಂಗ್‌ನಲ್ಲಿ. ಹೊರಡುವ ಮೊದಲು ಸ್ಟ್ಯಾಂಡರ್ಡ್ ಕೋಣೆಯ ಬಾಕಿ (ಸುಮಾರು ₹4,000) ಕೊಡಿ."
     },
     {
      "id": "d6-han",

@@ -17,6 +17,7 @@ function renderPrep() {
         <span class="count">${n}/${l.items.length}${n === l.items.length ? ' ✓' : ''}</span></a>`;
     }).join('')}</div>
     <a class="btn" href="#airport" style="margin-top:18px">✈️ Airport guide — step by step</a>
+    <a class="btn green" href="#confirm">📲 Confirmation messages (hotel, cruise, immigration)</a>
     <a class="btn secondary" href="#print">🖨 Printable help sheet</a>`;
 }
 

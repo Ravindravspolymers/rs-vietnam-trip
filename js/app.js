@@ -2,7 +2,7 @@
    Router, tab bar, More grid, SOS, Settings, update banner, storage helpers. */
 'use strict';
 
-const APP_VERSION = '2.4.0'; // keep in sync with CACHE_VERSION in service-worker.js
+const APP_VERSION = '2.7.0'; // keep in sync with CACHE_VERSION in service-worker.js
 
 /* ---------- Storage helpers (localStorage, never crash) ---------- */
 const Store = {
@@ -22,7 +22,7 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&l
 const digits = s => String(s || '').replace(/\D/g, '');
 
 /* F03: phone normaliser. Returns { ok, pretty } — pretty is '+91 98450 12345' style, '' if empty. */
-const PHONE_FIELDS = ['c1Phone', 'c2Phone', 'hotelPhone', 'cruisePhone', 'driverPhone', 'insurancePhone'];
+const PHONE_FIELDS = ['c1Phone', 'c2Phone', 'hotelPhone', 'cruisePhone', 'fasttrackPhone', 'driverPhone', 'insurancePhone'];
 function normPhone(raw) {
   const t = String(raw || '').trim();
   if (!t) return { ok: true, pretty: '' };
@@ -58,6 +58,7 @@ const DEFAULT_SETTINGS = {
   c2Name: '', c2Phone: '',
   hotelPhone: '+84 97 413 51 07',   // Hanoi Chic Boutique Hotel (business number)
   cruisePhone: '', driverPhone: '', insurancePhone: '', medical: '',
+  fasttrackPhone: '+84 96 246 0477',   // Klook express-immigration operator hotline (business number)
   textSize: 'normal',
   theme: 'light',                 // v1.2: light always unless Dark chosen
   deepseekKey: ''
@@ -219,6 +220,7 @@ function renderSettings() {
         ${field('c2Phone', 'Family 2 — phone', 'tel', '+91 9XXXX XXXXX')}
         ${field('hotelPhone', 'Hotel phone')}
         ${field('cruisePhone', 'Cruise phone', 'tel', 'Not set')}
+        ${field('fasttrackPhone', 'Express immigration (Klook) WhatsApp')}
         ${field('driverPhone', 'Ninh Binh car driver phone', 'tel', 'Ask the hotel')}
         ${field('insurancePhone', 'Insurance helpline', 'tel', 'Not set')}
         ${field('medical', 'Medicines / health notes (shown on help card)', 'text', 'e.g. BP tablets daily')}
@@ -349,7 +351,7 @@ document.addEventListener('submit', e => {
   if (e.target.id !== 'contacts-form') return;
   e.preventDefault();
   const s = getSettings();
-  const LABEL = { c1Phone: 'Family 1', c2Phone: 'Family 2', hotelPhone: 'Hotel', cruisePhone: 'Cruise', driverPhone: 'Driver', insurancePhone: 'Insurance' };
+  const LABEL = { c1Phone: 'Family 1', c2Phone: 'Family 2', hotelPhone: 'Hotel', cruisePhone: 'Cruise', fasttrackPhone: 'Express immigration', driverPhone: 'Driver', insurancePhone: 'Insurance' };
   for (const id of PHONE_FIELDS) {
     const r = normPhone($('#' + id).value);
     if (!r.ok) {
