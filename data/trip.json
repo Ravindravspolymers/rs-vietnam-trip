@@ -1,771 +1,1388 @@
 {
- "_note": "Each stop's time is local to stop.tz (or the day's tz). stop.date overrides the day's date. Coordinates approx. — verify in Phase 3.",
- "hotel": {
-  "id": "hotel",
-  "en": "Hanoi Chic Boutique Hotel",
-  "vi": "Khách sạn Hanoi Chic Boutique",
-  "kn": "ಹನೋಯ್ ಚಿಕ್ ಬೊಟಿಕ್ ಹೋಟೆಲ್",
-  "address_vi": "51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
-  "address_en": "51-53 Bat Su Street, Hoan Kiem, Hanoi",
-  "lat": 21.03424,
-  "lng": 105.84735,
-  "driver_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội"
- },
- "flights": {
-  "out": [
-   {
-    "no": "6E-5094",
-    "from": "BLR",
-    "to": "BOM",
-    "dep": "2026-11-23T22:00+05:30",
-    "arr": "2026-11-24T00:10+05:30",
-    "depTerm": "",
-    "arrTerm": ""
-   },
-   {
-    "no": "6E-1637",
-    "from": "BOM",
-    "to": "HAN",
-    "dep": "2026-11-24T04:10+05:30",
-    "arr": "2026-11-24T10:00+07:00",
-    "depTerm": "T2",
-    "arrTerm": "T2"
-   }
-  ],
-  "back": [
-   {
-    "no": "6E-1638",
-    "from": "HAN",
-    "to": "BOM",
-    "dep": "2026-11-29T19:05+07:00",
-    "arr": "2026-11-29T23:05+05:30",
-    "depTerm": "T2",
-    "arrTerm": "T2"
-   },
-   {
-    "no": "6E-5193",
-    "from": "BOM",
-    "to": "BLR",
-    "dep": "2026-11-30T07:30+05:30",
-    "arr": "2026-11-30T09:15+05:30",
-    "depTerm": "see boarding pass (T1 closed)",
-    "arrTerm": "T1"
-   }
+  "_note": "Each stop's time is local to stop.tz (or the day's tz). stop.date overrides the day's date. Coordinates approx. — verify in Phase 3.",
+  "hotel": {
+    "id": "hotel",
+    "en": "Hanoi Chic Boutique Hotel",
+    "vi": "Khách sạn Hanoi Chic Boutique",
+    "kn": "ಹನೋಯ್ ಚಿಕ್ ಬೊಟಿಕ್ ಹೋಟೆಲ್",
+    "address_vi": "51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
+    "address_en": "51-53 Bat Su Street, Hoan Kiem, Hanoi",
+    "lat": 21.034608,
+    "lng": 105.847953,
+    "driver_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
+    "go": "Chic Boutique Hotel Hanoi, 51 P. Bát Sứ, Hoàn Kiếm, Hà Nội"
+  },
+  "flights": {
+    "out": [
+      {
+        "no": "6E-5094",
+        "from": "BLR",
+        "to": "BOM",
+        "dep": "2026-11-23T22:00+05:30",
+        "arr": "2026-11-24T00:10+05:30",
+        "depTerm": "",
+        "arrTerm": ""
+      },
+      {
+        "no": "6E-1637",
+        "from": "BOM",
+        "to": "HAN",
+        "dep": "2026-11-24T04:10+05:30",
+        "arr": "2026-11-24T10:00+07:00",
+        "depTerm": "T2",
+        "arrTerm": "T2"
+      }
+    ],
+    "back": [
+      {
+        "no": "6E-1638",
+        "from": "HAN",
+        "to": "BOM",
+        "dep": "2026-11-29T19:05+07:00",
+        "arr": "2026-11-29T23:05+05:30",
+        "depTerm": "T2",
+        "arrTerm": "T2"
+      },
+      {
+        "no": "6E-5193",
+        "from": "BOM",
+        "to": "BLR",
+        "dep": "2026-11-30T07:30+05:30",
+        "arr": "2026-11-30T09:15+05:30",
+        "depTerm": "see boarding pass (T1 closed)",
+        "arrTerm": "T1"
+      }
+    ]
+  },
+  "days": [
+    {
+      "day": 0,
+      "date": "2026-11-23",
+      "tz": "IST",
+      "title_en": "Leave for Vietnam",
+      "title_kn": "ವಿಯೆಟ್ನಾಂ ಪ್ರಯಾಣ ಆರಂಭ",
+      "stops": [
+        {
+          "id": "d0-home",
+          "type": "home",
+          "en": "Leave home",
+          "vi": "",
+          "kn": "ಮನೆಯಿಂದ ಹೊರಡಿ",
+          "time": "18:30",
+          "mins": 0,
+          "anchor": true
+        },
+        {
+          "id": "d0-blr",
+          "type": "airport",
+          "en": "Bengaluru Airport (BLR)",
+          "vi": "",
+          "kn": "ಬೆಂಗಳೂರು ವಿಮಾನ ನಿಲ್ದಾಣ",
+          "time": "19:30",
+          "mins": 150,
+          "anchor": true,
+          "lat": 13.1986,
+          "lng": 77.7066,
+          "note_en": "Flight 6E-5094 at 10:00 pm to Mumbai",
+          "note_kn": "ರಾತ್ರಿ 10 ಗಂಟೆಗೆ ಮುಂಬೈಗೆ ವಿಮಾನ 6E-5094",
+          "airport": "blr1"
+        }
+      ]
+    },
+    {
+      "day": 1,
+      "date": "2026-11-24",
+      "tz": "ICT",
+      "title_en": "Arrive in Hanoi · Old Quarter walk",
+      "title_kn": "ಹನೋಯ್ ತಲುಪುವುದು · ಹಳೆಯ ಪೇಟೆ ನಡಿಗೆ",
+      "stops": [
+        {
+          "id": "d1-bom",
+          "type": "airport",
+          "en": "Mumbai — change flight",
+          "vi": "",
+          "kn": "ಮುಂಬೈ — ವಿಮಾನ ಬದಲಾವಣೆ",
+          "time": "00:10",
+          "mins": 240,
+          "anchor": true,
+          "note_en": "Flight 6E-1637 at 4:10 am from Terminal 2.",
+          "note_kn": "ಟರ್ಮಿನಲ್ 2ರಿಂದ ಬೆಳಿಗ್ಗೆ 4:10ಕ್ಕೆ ವಿಮಾನ 6E-1637.",
+          "tz": "IST",
+          "airport": "bom1"
+        },
+        {
+          "id": "d1-han",
+          "type": "airport",
+          "en": "Noi Bai Airport (HAN)",
+          "vi": "Sân bay Nội Bài",
+          "kn": "ನೋಯ್ ಬಾಯ್ ವಿಮಾನ ನಿಲ್ದಾಣ",
+          "time": "10:00",
+          "mins": 50,
+          "anchor": true,
+          "lat": 21.2187,
+          "lng": 105.8042,
+          "note_en": "Express immigration: staff meet you at the aircraft door / bridge with your name sign → priority lane (about 30 min). Then collect your own bags (not included).",
+          "note_kn": "ಎಕ್ಸ್‌ಪ್ರೆಸ್ ಇಮಿಗ್ರೇಶನ್: ವಿಮಾನದ ಬಾಗಿಲಲ್ಲೇ ನಿಮ್ಮ ಹೆಸರಿನ ಫಲಕದೊಂದಿಗೆ ಸಿಬ್ಬಂದಿ ಸಿಗುತ್ತಾರೆ → ಆದ್ಯತೆಯ ಸಾಲು (ಸುಮಾರು 30 ನಿಮಿಷ). ನಂತರ ನಿಮ್ಮ ಬ್ಯಾಗ್ ನೀವೇ ತೆಗೆದುಕೊಳ್ಳಿ.",
+          "addr_vi": "Sân bay Quốc tế Nội Bài – Nhà ga T2 (Quốc tế)",
+          "addr_en": "Noi Bai International Airport – Terminal 2 (International)",
+          "airport": "han1",
+          "driverTo": "d1-hotel",
+          "go": "Noi Bai International Airport Terminal 2, Sóc Sơn, Hà Nội"
+        },
+        {
+          "id": "d1-cash",
+          "type": "airport",
+          "en": "Noi Bai — change dollars to đồng",
+          "kn": "ನೋಯ್ ಬಾಯ್ — ಡಾಲರ್ ಅನ್ನು ಡಾಂಗ್‌ಗೆ ಬದಲಿಸಿ",
+          "time": "10:45",
+          "mins": 10,
+          "note_en": "BIDV counter, arrivals hall (open daily). Change US$400–500 (four or five $100 notes). Ask for small notes. Pay everything in Vietnam in đồng.",
+          "note_kn": "ಆಗಮನ ಹಾಲ್‌ನ BIDV ಕೌಂಟರ್. 400–500 ಡಾಲರ್ ಬದಲಿಸಿ. ಸಣ್ಣ ನೋಟು ಕೇಳಿ. ವಿಯೆಟ್ನಾಂನಲ್ಲಿ ಎಲ್ಲಾ ಪಾವತಿ ಡಾಂಗ್‌ನಲ್ಲಿ.",
+          "link": "cash:vnd"
+        },
+        {
+          "id": "d1-sim",
+          "type": "airport",
+          "en": "Buy one local SIM (for one phone)",
+          "kn": "ಒಂದು ಫೋನ್‌ಗೆ ಸ್ಥಳೀಯ ಸಿಮ್ ಕೊಳ್ಳಿ",
+          "time": "10:55",
+          "mins": 10,
+          "link": "sim:local",
+          "note_en": "SIM kiosk, arrivals hall: Vinaphone 1.5 GB/day, 7 days (~70,000 ₫). Show passport; they set it up. The other phone uses Airtel roaming.",
+          "note_kn": "ಆಗಮನ ಹಾಲ್‌ನ ಸಿಮ್ ಕೌಂಟರ್: ವಿನಾಫೋನ್ ದಿನಕ್ಕೆ 1.5 GB, 7 ದಿನ (~70,000 ಡಾಂಗ್). ಪಾಸ್‌ಪೋರ್ಟ್ ತೋರಿಸಿ. ಇನ್ನೊಂದು ಫೋನ್‌ನಲ್ಲಿ ಏರ್‌ಟೆಲ್ ರೋಮಿಂಗ್."
+        },
+        {
+          "id": "d1-car",
+          "type": "airport",
+          "en": "Hotel car at the arrivals exit",
+          "kn": "ಆಗಮನ ದ್ವಾರದಲ್ಲಿ ಹೋಟೆಲ್ ಕಾರು",
+          "time": "11:05",
+          "mins": 0,
+          "note_en": "Hotel driver waits at the arrivals exit from 10:45 with your name sign. Car cost about ₹1,700 — pay in đồng as the hotel says. Can't find him? WhatsApp or call the hotel.",
+          "note_kn": "ಹೋಟೆಲ್ ಚಾಲಕರು 10:45–11:00ಕ್ಕೆ ನಿಮ್ಮ ಹೆಸರಿನ ಫಲಕದೊಂದಿಗೆ ಕಾಯುತ್ತಾರೆ. ಸಿಗದಿದ್ದರೆ ಹೋಟೆಲ್‌ಗೆ ಕರೆ ಮಾಡಿ."
+        },
+        {
+          "id": "d1-hotel",
+          "type": "hotel",
+          "en": "Hotel — check in and rest",
+          "vi": "Khách sạn",
+          "kn": "ಹೋಟೆಲ್ — ಚೆಕ್-ಇನ್, ವಿಶ್ರಾಂತಿ",
+          "time": "12:00",
+          "mins": 30,
+          "lat": 21.034608,
+          "lng": 105.847953,
+          "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
+          "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi",
+          "note_en": "Early check-in requested (normal check-in is 2 pm) — if the room isn't ready, rest in the lobby. Pay the room balance (about ₹14,100) in đồng when asked — keep the receipt.",
+          "note_kn": "ಬೇಗ ಚೆಕ್-ಇನ್ ಕೇಳಿದ್ದೇವೆ — ಕೋಣೆ ಸಿದ್ಧವಿಲ್ಲದಿದ್ದರೆ ಲಾಬಿಯಲ್ಲಿ ವಿಶ್ರಾಂತಿ. ಕೋಣೆಯ ಬಾಕಿ (ಸುಮಾರು ₹14,100) ಡಾಂಗ್‌ನಲ್ಲಿ ಕೊಡಿ — ರಸೀದಿ ಪಡೆಯಿರಿ.",
+          "go": "Chic Boutique Hotel Hanoi, 51 P. Bát Sứ, Hoàn Kiếm, Hà Nội"
+        },
+        {
+          "id": "d1-lunch",
+          "type": "meal",
+          "en": "Lunch at AMY Indian Restaurant",
+          "vi": "Nhà hàng AMY Indian",
+          "kn": "AMY ಇಂಡಿಯನ್ ರೆಸ್ಟೋರೆಂಟ್‌ನಲ್ಲಿ ಮಧ್ಯಾಹ್ನದ ಊಟ",
+          "time": "12:45",
+          "mins": 75,
+          "lat": 21.03358,
+          "lng": 105.848834,
+          "go": "AMY Indian Restaurant, 10 P. Hàng Thiếc, Hoàn Kiếm, Hà Nội",
+          "addr_en": "AMY Indian Restaurant, 10 P. Hàng Thiếc, Hoàn Kiếm, Hà Nội",
+          "addr_vi": "Nhà hàng AMY Indian, 10 phố Hàng Thiếc, Hoàn Kiếm, Hà Nội",
+          "walk": true,
+          "how": {
+            "mode": "walk",
+            "en": "150 m from the hotel",
+            "kn": "ಹೋಟೆಲ್‌ನಿಂದ 150 ಮೀ"
+          },
+          "note_en": "Pure vegetarian and Jain Indian food. After lunch, go back and rest at the hotel. Leave the hotel by 3:30 pm at the latest.",
+          "note_kn": "ಶುದ್ಧ ಸಸ್ಯಾಹಾರಿ, ಜೈನ ಭಾರತೀಯ ಊಟ. ಊಟದ ನಂತರ ಹೋಟೆಲ್‌ನಲ್ಲಿ ವಿಶ್ರಾಂತಿ. ಮಧ್ಯಾಹ್ನ 3:30ರೊಳಗೆ ಹೊರಡಿ.",
+          "den": "AMY Indian Restaurant"
+        },
+        {
+          "id": "d1-bachma",
+          "type": "temple",
+          "en": "Bach Ma Temple",
+          "vi": "Đền Bạch Mã",
+          "kn": "ಬಾಚ್ ಮಾ ದೇವಾಲಯ",
+          "time": "15:40",
+          "mins": 65,
+          "lat": 21.035416,
+          "lng": 105.852441,
+          "go": "Bach Ma Temple, 76 P. Hàng Buồm, Hoàn Kiếm, Hà Nội",
+          "addr_en": "Bach Ma Temple, 76 P. Hàng Buồm, Hoàn Kiếm, Hà Nội",
+          "addr_vi": "Đền Bạch Mã, 76 phố Hàng Buồm, Hoàn Kiếm, Hà Nội",
+          "walk": true,
+          "closes": "5:00 pm",
+          "how": {
+            "mode": "walk",
+            "en": "500 m from the hotel",
+            "kn": "ಹೋಟೆಲ್‌ನಿಂದ 500 ಮೀ"
+          },
+          "about": {
+            "why_en": "Hanoi's oldest temple, about 1,000 years old, built for the white-horse spirit that guards the city. A quiet, peaceful break from the busy streets.",
+            "why_kn": "ಸುಮಾರು 1,000 ವರ್ಷ ಹಳೆಯ, ಹನೋಯ್‌ನ ಅತಿ ಹಳೆಯ ದೇವಾಲಯ — ನಗರವನ್ನು ಕಾಯುವ 'ಬಿಳಿ ಕುದುರೆ' ದೇವರಿಗಾಗಿ. ಗದ್ದಲದ ಬೀದಿಗಳ ನಡುವೆ ಶಾಂತ ಸ್ಥಳ.",
+            "best_en": "Late afternoon. Closes 5:00 pm. 20–30 min is enough.",
+            "best_kn": "ಸಂಜೆಗೆ ಮುಂಚೆ. 5 ಗಂಟೆಗೆ ಮುಚ್ಚುತ್ತದೆ. 20–30 ನಿಮಿಷ ಸಾಕು.",
+            "entry": "Free (small donation)",
+            "tip_en": "Take off shoes only if others do. Don't point feet at the altar.",
+            "tip_kn": "ಬೇರೆಯವರು ಚಪ್ಪಲಿ ಬಿಟ್ಟರೆ ಮಾತ್ರ ಬಿಡಿ."
+          },
+          "note_en": "Leave the hotel by 3:30 pm (it closes at 5). After the temple, stroll the old streets around it. Leave by 4:45 pm for the market.",
+          "note_kn": "ಹೋಟೆಲ್‌ನಿಂದ 3:30ರೊಳಗೆ ಹೊರಡಿ (5ಕ್ಕೆ ಮುಚ್ಚುತ್ತದೆ). ನಂತರ ಸುತ್ತಲಿನ ಹಳೆಯ ಬೀದಿಗಳಲ್ಲಿ ನಡೆಯಿರಿ. 4:45ರೊಳಗೆ ಮಾರುಕಟ್ಟೆಗೆ ಹೊರಡಿ."
+        },
+        {
+          "id": "d1-market",
+          "type": "market",
+          "en": "Dong Xuan Market",
+          "vi": "Chợ Đồng Xuân",
+          "kn": "ಡಾಂಗ್ ಶುವಾನ್ ಮಾರುಕಟ್ಟೆ",
+          "time": "16:50",
+          "mins": 70,
+          "lat": 21.038167,
+          "lng": 105.849938,
+          "go": "Đồng Xuân Market, Hoàn Kiếm, Hà Nội",
+          "addr_en": "Đồng Xuân Market, Hoàn Kiếm, Hà Nội",
+          "addr_vi": "Chợ Đồng Xuân, phố Đồng Xuân, Hoàn Kiếm, Hà Nội",
+          "walk": true,
+          "closes": "6:00 pm",
+          "how": {
+            "mode": "walk",
+            "en": "300 m from Bach Ma Temple",
+            "kn": "ಬಾಚ್ ಮಾ ದೇವಾಲಯದಿಂದ 300 ಮೀ"
+          },
+          "about": {
+            "why_en": "Hanoi's biggest and oldest covered market (since 1889). Three floors of cloth, bags, dried fruit, coffee and souvenirs — real local life.",
+            "why_kn": "ಹನೋಯ್‌ನ ಅತಿ ದೊಡ್ಡ, ಹಳೆಯ ಮುಚ್ಚಿದ ಮಾರುಕಟ್ಟೆ (1889ರಿಂದ). ಬಟ್ಟೆ, ಬ್ಯಾಗ್, ಒಣ ಹಣ್ಣು, ಕಾಫಿ, ಸ್ಮರಣಿಕೆಗಳು — ನಿಜವಾದ ಸ್ಥಳೀಯ ಜೀವನ.",
+            "best_en": "Before 6:00 pm, when shops close. Busiest in the morning.",
+            "best_kn": "ಸಂಜೆ 6ರೊಳಗೆ — ಅಂಗಡಿಗಳು ಮುಚ್ಚುತ್ತವೆ.",
+            "entry": "Free",
+            "tip_en": "Look today, buy later — prices drop when you bargain. Keep bag in front.",
+            "tip_kn": "ಇಂದು ನೋಡಿ, ನಂತರ ಕೊಳ್ಳಿ. ಚೌಕಾಸಿ ಮಾಡಿ. ಬ್ಯಾಗ್ ಮುಂದೆ."
+          },
+          "place": "oldquarter",
+          "note_en": "Leave Bach Ma by 4:45 pm — the market closes at 6. Busy and noisy: keep your bag in front and bargain politely.",
+          "note_kn": "4:45ರೊಳಗೆ ಬಾಚ್ ಮಾದಿಂದ ಹೊರಡಿ — ಮಾರುಕಟ್ಟೆ 6ಕ್ಕೆ ಮುಚ್ಚುತ್ತದೆ. ಬ್ಯಾಗ್ ಮುಂದೆ ಹಿಡಿಯಿರಿ, ನಯವಾಗಿ ಚೌಕಾಸಿ ಮಾಡಿ."
+        },
+        {
+          "id": "d1-dinner",
+          "type": "meal",
+          "en": "Dinner at AMY Indian Restaurant",
+          "vi": "Nhà hàng AMY Indian",
+          "kn": "AMY ರೆಸ್ಟೋರೆಂಟ್‌ನಲ್ಲಿ ರಾತ್ರಿ ಊಟ",
+          "time": "18:30",
+          "mins": 60,
+          "lat": 21.03358,
+          "lng": 105.848834,
+          "go": "AMY Indian Restaurant, 10 P. Hàng Thiếc, Hoàn Kiếm, Hà Nội",
+          "addr_en": "AMY Indian Restaurant, 10 P. Hàng Thiếc, Hoàn Kiếm, Hà Nội",
+          "addr_vi": "Nhà hàng AMY Indian, 10 phố Hàng Thiếc, Hoàn Kiếm, Hà Nội",
+          "walk": true,
+          "how": {
+            "mode": "walk",
+            "en": "Walk back — 150 m from the hotel",
+            "kn": "ವಾಪಸ್ ನಡೆದು — ಹೋಟೆಲ್‌ನಿಂದ 150 ಮೀ"
+          },
+          "note_en": "Then rest for the day — the cruise bus comes tomorrow morning.",
+          "note_kn": "ನಂತರ ವಿಶ್ರಾಂತಿ — ನಾಳೆ ಬೆಳಿಗ್ಗೆ ಹಡಗಿನ ಬಸ್ ಬರುತ್ತದೆ.",
+          "den": "AMY Indian Restaurant"
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "date": "2026-11-25",
+      "tz": "ICT",
+      "title_en": "Ha Long Bay cruise",
+      "title_kn": "ಹಾ ಲಾಂಗ್ ಕೊಲ್ಲಿ ಹಡಗು ಪ್ರಯಾಣ",
+      "stops": [
+        {
+          "id": "d2-pickup",
+          "type": "hotel",
+          "en": "Cruise bus pickup at hotel",
+          "vi": "Khách sạn",
+          "kn": "ಹೋಟೆಲ್‌ನಲ್ಲಿ ಹಡಗಿನ ಬಸ್",
+          "time": "08:00",
+          "mins": 0,
+          "lat": 21.034608,
+          "lng": 105.847953,
+          "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
+          "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi",
+          "anchor": true,
+          "pending": true,
+          "pending_en": "Pickup time comes on WhatsApp by 7 pm on 24 Nov.",
+          "pending_kn": "ಪಿಕಪ್ ಸಮಯ 24 ನವೆಂಬರ್ ಸಂಜೆ 7ರೊಳಗೆ WhatsApp ನಲ್ಲಿ ಬರುತ್ತದೆ.",
+          "note_en": "Shared limousine, booked with the cruise. Keep passports with you.",
+          "note_kn": "ಹಡಗಿನ ಜೊತೆ ಬುಕ್ ಮಾಡಿದ ಹಂಚಿಕೆಯ ವಾಹನ. ಪಾಸ್‌ಪೋರ್ಟ್ ಜೊತೆಗಿರಲಿ.",
+          "go": "Chic Boutique Hotel Hanoi, 51 P. Bát Sứ, Hoàn Kiếm, Hà Nội"
+        },
+        {
+          "id": "d2-port",
+          "type": "cruise",
+          "en": "Ambassador Cruise — check in",
+          "vi": "Cảng tàu khách quốc tế Hạ Long",
+          "kn": "ಅಂಬಾಸಿಡರ್ ಹಡಗು — ಚೆಕ್-ಇನ್",
+          "time": "11:00",
+          "mins": 60,
+          "anchor": true,
+          "lat": 20.950183,
+          "lng": 107.052633,
+          "addr_vi": "Cảng tàu khách quốc tế Hạ Long, Bãi Cháy, Hạ Long, Quảng Ninh",
+          "addr_en": "Halong International Cruise Port, Bai Chay, Ha Long",
+          "note_en": "Check-in 11:00–11:45 at Ambassador's Lounge, 1st floor. Boarding at 12:00.",
+          "note_kn": "ಚೆಕ್-ಇನ್ 11:00–11:45, ಮೊದಲ ಮಹಡಿಯ ಅಂಬಾಸಿಡರ್ ಲೌಂಜ್. 12 ಗಂಟೆಗೆ ಹಡಗು ಹತ್ತುವುದು.",
+          "go": "Cảng tàu khách Quốc tế Hạ Long, Bãi Cháy, Hạ Long, Quảng Ninh"
+        },
+        {
+          "id": "d2-lunch",
+          "type": "meal",
+          "en": "Lunch on board",
+          "vi": "",
+          "kn": "ಹಡಗಿನಲ್ಲಿ ಮಧ್ಯಾಹ್ನದ ಊಟ",
+          "time": "12:45",
+          "mins": 75,
+          "note_en": "Pure vegetarian Indian meals are booked for all meals.",
+          "note_kn": "ಎಲ್ಲಾ ಊಟಕ್ಕೂ ಶುದ್ಧ ಸಸ್ಯಾಹಾರಿ ಭಾರತೀಯ ಊಟ ಬುಕ್ ಆಗಿದೆ."
+        },
+        {
+          "id": "d2-bay",
+          "type": "boat",
+          "en": "Luon Cave bamboo boat & Sung Sot Cave",
+          "vi": "Hang Luồn & Hang Sửng Sốt",
+          "kn": "ಲುವಾನ್ ಗುಹೆ ಬಿದಿರು ದೋಣಿ ಮತ್ತು ಸುಂಗ್ ಸೋಟ್ ಗುಹೆ",
+          "time": "14:15",
+          "mins": 180,
+          "place": "halong",
+          "note_en": "Bamboo boat is free for you. Sung Sot Cave has many steps — you may stay on board and have tea instead.",
+          "note_kn": "ಬಿದಿರು ದೋಣಿ ನಿಮಗೆ ಉಚಿತ. ಸುಂಗ್ ಸೋಟ್ ಗುಹೆಯಲ್ಲಿ ಹಲವು ಮೆಟ್ಟಿಲು — ಬೇಕಾದರೆ ಹಡಗಿನಲ್ಲೇ ಚಹಾ ಕುಡಿಯಬಹುದು."
+        },
+        {
+          "id": "d2-dinner",
+          "type": "meal",
+          "en": "Sunset, then dinner on deck",
+          "vi": "",
+          "kn": "ಸೂರ್ಯಾಸ್ತ, ನಂತರ ಡೆಕ್ ಮೇಲೆ ಊಟ",
+          "time": "17:30",
+          "mins": 180,
+          "note_en": "Carry a shawl. Dinner at 7 pm.",
+          "note_kn": "ಶಾಲು ಜೊತೆಗಿರಲಿ. ರಾತ್ರಿ 7ಕ್ಕೆ ಊಟ."
+        }
+      ],
+      "longDrive": true,
+      "brief": {
+        "who_en": "The cruise takes care of everything today — bus, boat, meals and guide. Just relax.",
+        "who_kn": "ಇಂದು ಎಲ್ಲವನ್ನೂ ಹಡಗಿನವರೇ ನೋಡಿಕೊಳ್ಳುತ್ತಾರೆ — ಬಸ್, ದೋಣಿ, ಊಟ, ಗೈಡ್. ಆರಾಮವಾಗಿರಿ.",
+        "rows": [
+          {
+            "when": "Morning*",
+            "icon": "🚌",
+            "en": "Cruise bus picks you up at the hotel",
+            "kn": "ಹೋಟೆಲ್‌ನಿಂದ ಹಡಗಿನ ಬಸ್ ಕರೆದುಕೊಂಡು ಹೋಗುತ್ತದೆ",
+            "note_en": "Pickup time comes on WhatsApp by 7 pm on 24 Nov. Keep passports with you.",
+            "note_kn": "ಪಿಕಪ್ ಸಮಯ 24 ನವೆಂಬರ್ ಸಂಜೆ 7ರೊಳಗೆ WhatsApp ನಲ್ಲಿ ಬರುತ್ತದೆ. ಪಾಸ್‌ಪೋರ್ಟ್ ಜೊತೆಗಿರಲಿ."
+          },
+          {
+            "when": "11:00 am",
+            "icon": "🚢",
+            "en": "Check in at Ambassador's Lounge, board at 12:00",
+            "kn": "ಅಂಬಾಸಿಡರ್ ಲೌಂಜ್‌ನಲ್ಲಿ ಚೆಕ್-ಇನ್, 12ಕ್ಕೆ ಹಡಗು ಹತ್ತುವುದು",
+            "note_en": "1st floor, Halong International Cruise Port. The bus drops you there.",
+            "note_kn": "ಹಾ ಲಾಂಗ್ ಬಂದರಿನ 1ನೇ ಮಹಡಿ. ಬಸ್ ಅಲ್ಲಿಗೇ ಬಿಡುತ್ತದೆ."
+          },
+          {
+            "when": "Afternoon",
+            "icon": "⛵",
+            "en": "Ha Long Bay: Luon Cave bamboo boat & Sung Sot Cave",
+            "kn": "ಹಾ ಲಾಂಗ್ ಕೊಲ್ಲಿ: ಲುವಾನ್ ಗುಹೆ ಬಿದಿರು ದೋಣಿ ಮತ್ತು ಸುಂಗ್ ಸೋಟ್ ಗುಹೆ",
+            "note_en": "Sung Sot Cave has many steps — you may stay on board with tea.",
+            "note_kn": "ಸುಂಗ್ ಸೋಟ್ ಗುಹೆಯಲ್ಲಿ ಹಲವು ಮೆಟ್ಟಿಲು — ಬೇಕಿದ್ದರೆ ಹಡಗಿನಲ್ಲೇ ಚಹಾ ಕುಡಿಯುತ್ತಾ ಇರಿ.",
+            "story": "d2-bay"
+          },
+          {
+            "when": "Evening",
+            "icon": "🌅",
+            "en": "Sunset on deck, dinner at 7 pm, night on the ship",
+            "kn": "ಡೆಕ್ ಮೇಲೆ ಸೂರ್ಯಾಸ್ತ, ರಾತ್ರಿ 7ಕ್ಕೆ ಊಟ, ಹಡಗಿನಲ್ಲೇ ನಿದ್ರೆ",
+            "note_en": "Carry a shawl — it is cool on the water.",
+            "note_kn": "ಶಾಲು ಜೊತೆಗಿರಲಿ — ನೀರಿನ ಮೇಲೆ ಚಳಿ."
+          }
+        ],
+        "food_en": "Pure-veg Indian meals are booked for every meal on the ship. Remind the staff once at the first meal: \"vegetarian, no fish sauce\".",
+        "food_kn": "ಹಡಗಿನಲ್ಲಿ ಎಲ್ಲಾ ಊಟಕ್ಕೂ ಶುದ್ಧ ಸಸ್ಯಾಹಾರಿ ಭಾರತೀಯ ಊಟ ಬುಕ್ ಆಗಿದೆ. ಮೊದಲ ಊಟದಲ್ಲಿ ಒಮ್ಮೆ \"ವೆಜಿಟೇರಿಯನ್, ಫಿಶ್ ಸಾಸ್ ಬೇಡ\" ಎಂದು ನೆನಪಿಸಿ."
+      }
+    },
+    {
+      "day": 3,
+      "date": "2026-11-26",
+      "tz": "ICT",
+      "title_en": "Cruise morning, Hanoi afternoon",
+      "title_kn": "ಹಡಗಿನಲ್ಲಿ ಬೆಳಗು, ಹನೋಯ್‌ನಲ್ಲಿ ಮಧ್ಯಾಹ್ನ",
+      "stops": [
+        {
+          "id": "d3-sunrise",
+          "type": "boat",
+          "en": "Tai chi & sunrise on deck",
+          "vi": "Vịnh Hạ Long",
+          "kn": "ಡೆಕ್ ಮೇಲೆ ತಾಯ್ ಚಿ ಮತ್ತು ಸೂರ್ಯೋದಯ",
+          "time": "06:10",
+          "mins": 60,
+          "place": "halong",
+          "note_en": "Optional. Light breakfast with tea at 6:30.",
+          "note_kn": "ಐಚ್ಛಿಕ. 6:30ಕ್ಕೆ ಚಹಾ ಜೊತೆ ಲಘು ಉಪಾಹಾರ."
+        },
+        {
+          "id": "d3-titov",
+          "type": "viewpoint",
+          "en": "Titov Island",
+          "vi": "Đảo Ti Tốp",
+          "kn": "ಟಿಟೋವ್ ದ್ವೀಪ",
+          "time": "07:15",
+          "mins": 75,
+          "place": "halong",
+          "note_en": "Beach is flat. The viewpoint has many steep steps — climb only if knees feel good.",
+          "note_kn": "ಕಡಲತೀರ ಸಮತಟ್ಟು. ಮೇಲಿನ ದೃಶ್ಯಕ್ಕೆ ಕಡಿದಾದ ಹಲವು ಮೆಟ್ಟಿಲು — ಮಂಡಿ ಚೆನ್ನಾಗಿದ್ದರೆ ಮಾತ್ರ ಹತ್ತಿ."
+        },
+        {
+          "id": "d3-port",
+          "type": "cruise",
+          "en": "Breakfast, check out, leave the ship",
+          "vi": "Cảng tàu khách quốc tế Hạ Long",
+          "kn": "ಉಪಾಹಾರ, ಚೆಕ್-ಔಟ್, ಹಡಗಿನಿಂದ ಇಳಿಯುವುದು",
+          "time": "08:30",
+          "mins": 120,
+          "anchor": true,
+          "lat": 20.950183,
+          "lng": 107.052633,
+          "addr_vi": "Cảng tàu khách quốc tế Hạ Long, Bãi Cháy, Hạ Long, Quảng Ninh",
+          "addr_en": "Halong International Cruise Port, Bai Chay, Ha Long",
+          "note_en": "Leave the ship at 10:30. The same cruise bus takes you back to the hotel.",
+          "note_kn": "10:30ಕ್ಕೆ ಹಡಗಿನಿಂದ ಇಳಿಯುವುದು. ಅದೇ ಬಸ್ ಹೋಟೆಲ್‌ಗೆ ವಾಪಸ್ ಕರೆದೊಯ್ಯುತ್ತದೆ.",
+          "go": "Cảng tàu khách Quốc tế Hạ Long, Bãi Cháy, Hạ Long, Quảng Ninh"
+        },
+        {
+          "id": "d3-hotel",
+          "type": "hotel",
+          "en": "Back at hotel (about)",
+          "vi": "Khách sạn",
+          "kn": "ಹೋಟೆಲ್‌ಗೆ ವಾಪಸ್ (ಸುಮಾರು)",
+          "time": "13:30",
+          "mins": 0,
+          "lat": 21.034608,
+          "lng": 105.847953,
+          "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
+          "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi",
+          "go": "Chic Boutique Hotel Hanoi, 51 P. Bát Sứ, Hoàn Kiếm, Hà Nội"
+        },
+        {
+          "id": "d3-lunch",
+          "type": "meal",
+          "en": "Quick lunch at AMY Indian Restaurant",
+          "vi": "Nhà hàng AMY Indian",
+          "kn": "AMY ರೆಸ್ಟೋರೆಂಟ್‌ನಲ್ಲಿ ಬೇಗ ಊಟ",
+          "time": "13:35",
+          "mins": 30,
+          "lat": 21.03358,
+          "lng": 105.848834,
+          "go": "AMY Indian Restaurant, 10 P. Hàng Thiếc, Hoàn Kiếm, Hà Nội",
+          "addr_en": "AMY Indian Restaurant, 10 P. Hàng Thiếc, Hoàn Kiếm, Hà Nội",
+          "addr_vi": "Nhà hàng AMY Indian, 10 phố Hàng Thiếc, Hoàn Kiếm, Hà Nội",
+          "walk": true,
+          "card": true,
+          "how": {
+            "mode": "walk",
+            "en": "150 m from the hotel",
+            "kn": "ಹೋಟೆಲ್‌ನಿಂದ 150 ಮೀ"
+          },
+          "note_en": "Leave the hotel by 2:10 pm at the latest — book a Grab or ask the hotel for a taxi.",
+          "note_kn": "ಮಧ್ಯಾಹ್ನ 2:10ರೊಳಗೆ ಹೋಟೆಲ್‌ನಿಂದ ಹೊರಡಿ — Grab ಅಥವಾ ಹೋಟೆಲ್ ಟ್ಯಾಕ್ಸಿ.",
+          "den": "AMY Indian Restaurant"
+        },
+        {
+          "id": "d3-tranquoc",
+          "type": "temple",
+          "en": "Tran Quoc Pagoda (West Lake)",
+          "vi": "Chùa Trấn Quốc",
+          "kn": "ಟ್ರಾನ್ ಕುವೊಕ್ ಪಗೋಡಾ (ವೆಸ್ಟ್ ಲೇಕ್)",
+          "time": "14:30",
+          "mins": 40,
+          "lat": 21.047805,
+          "lng": 105.836881,
+          "go": "Tran Quoc Pagoda, 46 Thanh Niên, Tây Hồ, Hà Nội",
+          "addr_en": "Tran Quoc Pagoda, 46 Thanh Niên, Tây Hồ, Hà Nội",
+          "addr_vi": "Chùa Trấn Quốc, 46 đường Thanh Niên, Tây Hồ, Hà Nội",
+          "card": true,
+          "how": {
+            "mode": "cab",
+            "en": "5.6 km from the hotel",
+            "kn": "ಹೋಟೆಲ್‌ನಿಂದ 5.6 ಕಿಮೀ"
+          },
+          "about": {
+            "why_en": "Hanoi's oldest Buddhist pagoda (about 1,500 years), on a tiny island in West Lake. Its Bodhi tree was grown from a cutting of the tree in Bodh Gaya, India — a gift from Indian President Rajendra Prasad in 1959.",
+            "why_kn": "ಹನೋಯ್‌ನ ಅತಿ ಹಳೆಯ ಬೌದ್ಧ ಪಗೋಡಾ (ಸುಮಾರು 1,500 ವರ್ಷ), ವೆಸ್ಟ್ ಲೇಕ್‌ನ ಪುಟ್ಟ ದ್ವೀಪದಲ್ಲಿ. ಇಲ್ಲಿನ ಬೋಧಿ ವೃಕ್ಷ ಬೋಧ್ ಗಯಾದ ಮರದಿಂದ — 1959ರಲ್ಲಿ ರಾಷ್ಟ್ರಪತಿ ರಾಜೇಂದ್ರ ಪ್ರಸಾದ್ ಕೊಟ್ಟ ಉಡುಗೊರೆ.",
+            "best_en": "Afternoon after 1:30 pm (closed 11:30–1:30 for lunch). About 30–40 min.",
+            "best_kn": "ಮಧ್ಯಾಹ್ನ 1:30ರ ನಂತರ. 30–40 ನಿಮಿಷ.",
+            "entry": "Free",
+            "tip_en": "Cover shoulders and knees. Find the Bodhi tree — the India link.",
+            "tip_kn": "ಭುಜ, ಮಂಡಿ ಮುಚ್ಚಿ. ಬೋಧಿ ವೃಕ್ಷ ನೋಡಿ — ಭಾರತದ ನಂಟು."
+          },
+          "note_en": "Reach by 2:30 pm. Then take a cab straight to the Museum of Ethnology.",
+          "note_kn": "2:30ರೊಳಗೆ ತಲುಪಿ. ನಂತರ ಕ್ಯಾಬ್‌ನಲ್ಲಿ ನೇರವಾಗಿ ಎಥ್ನಾಲಜಿ ವಸ್ತುಸಂಗ್ರಹಾಲಯಕ್ಕೆ."
+        },
+        {
+          "id": "d3-ethno",
+          "type": "museum",
+          "en": "Vietnam Museum of Ethnology",
+          "vi": "Bảo tàng Dân tộc học",
+          "kn": "ವಿಯೆಟ್ನಾಂ ಜನಾಂಗ ವಸ್ತುಸಂಗ್ರಹಾಲಯ",
+          "time": "15:25",
+          "mins": 75,
+          "lat": 21.040283,
+          "lng": 105.798606,
+          "go": "Vietnam Museum of Ethnology, Nguyễn Văn Huyên, Cầu Giấy, Hà Nội",
+          "addr_en": "Vietnam Museum of Ethnology, Nguyễn Văn Huyên, Cầu Giấy, Hà Nội",
+          "addr_vi": "Bảo tàng Dân tộc học Việt Nam, đường Nguyễn Văn Huyên, Cầu Giấy, Hà Nội",
+          "card": true,
+          "closes": "5:30 pm",
+          "how": {
+            "mode": "cab",
+            "en": "about 5 km from Tran Quoc",
+            "kn": "ಟ್ರಾನ್ ಕುವೊಕ್‌ನಿಂದ ಸುಮಾರು 5 ಕಿಮೀ"
+          },
+          "about": {
+            "why_en": "The best museum in Hanoi. It shows how Vietnam's 54 peoples live — clothes, crafts, weddings. In the garden behind are real full-size village houses you can walk into, including a very tall stilt house.",
+            "why_kn": "ಹನೋಯ್‌ನ ಅತ್ಯುತ್ತಮ ವಸ್ತುಸಂಗ್ರಹಾಲಯ. ವಿಯೆಟ್ನಾಂನ 54 ಜನಾಂಗಗಳ ಉಡುಪು, ಕಲೆ, ಮದುವೆ. ಹಿಂದಿನ ತೋಟದಲ್ಲಿ ನಿಜವಾದ ಹಳ್ಳಿ ಮನೆಗಳು — ಒಳಗೆ ಹೋಗಬಹುದು.",
+            "best_en": "Afternoon. Open 8:30 am–5:30 pm, closed Monday. About 1 hr 15 min.",
+            "best_kn": "ಮಧ್ಯಾಹ್ನ. ಬೆಳಿಗ್ಗೆ 8:30–ಸಂಜೆ 5:30, ಸೋಮವಾರ ರಜೆ.",
+            "entry": "About 40,000 ₫",
+            "tip_en": "Do the garden houses first while it's light. Benches inside to rest.",
+            "tip_kn": "ಬೆಳಕಿರುವಾಗಲೇ ತೋಟದ ಮನೆಗಳನ್ನು ಮೊದಲು ನೋಡಿ."
+          },
+          "note_en": "Leave by 4:45 pm for the Lotte deck to catch the sunset.",
+          "note_kn": "ಸೂರ್ಯಾಸ್ತ ನೋಡಲು 4:45ಕ್ಕೆ ಲೊಟ್ಟೆಗೆ ಹೊರಡಿ."
+        },
+        {
+          "id": "d3-lotte",
+          "type": "viewpoint",
+          "en": "Sky Lotte Observation Deck (65th floor)",
+          "vi": "Đài quan sát Lotte",
+          "kn": "ಸ್ಕೈ ಲೊಟ್ಟೆ ವೀಕ್ಷಣಾ ಸ್ಥಳ (65ನೇ ಮಹಡಿ)",
+          "time": "17:00",
+          "mins": 75,
+          "lat": 21.031575,
+          "lng": 105.813083,
+          "go": "Sky Lotte Observation Deck, 54 P. Liễu Giai, Ba Đình, Hà Nội",
+          "addr_en": "Sky Lotte Observation Deck, 54 P. Liễu Giai, Ba Đình, Hà Nội",
+          "addr_vi": "Đài quan sát Lotte (tầng 65), Lotte Center, 54 Liễu Giai, Ba Đình, Hà Nội",
+          "card": true,
+          "closes": "9:00 pm",
+          "how": {
+            "mode": "cab",
+            "en": "about 3 km from the museum",
+            "kn": "ವಸ್ತುಸಂಗ್ರಹಾಲಯದಿಂದ ಸುಮಾರು 3 ಕಿಮೀ"
+          },
+          "about": {
+            "why_en": "A glass deck on the 65th floor — all of Hanoi below you. Watch the sunset, then the city lights come on.",
+            "why_kn": "65ನೇ ಮಹಡಿಯ ಗಾಜಿನ ವೀಕ್ಷಣಾ ಸ್ಥಳ — ಇಡೀ ಹನೋಯ್ ಕೆಳಗೆ. ಸೂರ್ಯಾಸ್ತ, ನಂತರ ನಗರದ ದೀಪಗಳು.",
+            "best_en": "Reach about 5:00 pm — sunset is about 5:15 pm. Open until about 9 pm.",
+            "best_kn": "ಸಂಜೆ 5ಕ್ಕೆ ತಲುಪಿ — ಸೂರ್ಯಾಸ್ತ ಸುಮಾರು 5:15.",
+            "entry": "From about 230,000 ₫",
+            "tip_en": "Fast lift, no stairs. The glass-floor 'skywalk' is optional.",
+            "tip_kn": "ವೇಗದ ಲಿಫ್ಟ್, ಮೆಟ್ಟಿಲು ಇಲ್ಲ."
+          },
+          "note_en": "Sunset about 5:15 pm, then the city lights. Take a cab back for dinner.",
+          "note_kn": "ಸುಮಾರು 5:15ಕ್ಕೆ ಸೂರ್ಯಾಸ್ತ, ನಂತರ ನಗರದ ದೀಪಗಳು. ಕ್ಯಾಬ್‌ನಲ್ಲಿ ಊಟಕ್ಕೆ ವಾಪಸ್."
+        },
+        {
+          "id": "d3-dinner",
+          "type": "meal",
+          "en": "Dinner at AMY Indian Restaurant",
+          "vi": "Nhà hàng AMY Indian",
+          "kn": "AMY ರೆಸ್ಟೋರೆಂಟ್‌ನಲ್ಲಿ ರಾತ್ರಿ ಊಟ",
+          "time": "18:45",
+          "mins": 60,
+          "lat": 21.03358,
+          "lng": 105.848834,
+          "go": "AMY Indian Restaurant, 10 P. Hàng Thiếc, Hoàn Kiếm, Hà Nội",
+          "addr_en": "AMY Indian Restaurant, 10 P. Hàng Thiếc, Hoàn Kiếm, Hà Nội",
+          "addr_vi": "Nhà hàng AMY Indian, 10 phố Hàng Thiếc, Hoàn Kiếm, Hà Nội",
+          "card": true,
+          "how": {
+            "mode": "cab",
+            "en": "about 4.5 km from Lotte",
+            "kn": "ಲೊಟ್ಟೆಯಿಂದ ಸುಮಾರು 4.5 ಕಿಮೀ"
+          },
+          "note_en": "Then sleep early — tomorrow (Friday) is a heavy day and starts at 7:30 am.",
+          "note_kn": "ನಂತರ ಬೇಗ ಮಲಗಿ — ನಾಳೆ (ಶುಕ್ರವಾರ) ತುಂಬಾ ಓಡಾಟದ ದಿನ, ಬೆಳಿಗ್ಗೆ 7:30ಕ್ಕೆ ಶುರು.",
+          "den": "AMY Indian Restaurant"
+        }
+      ],
+      "longDrive": true,
+      "brief": {
+        "who_en": "Morning: still with the cruise — they bring you back to the hotel. Afternoon: your own plan, below.",
+        "who_kn": "ಬೆಳಿಗ್ಗೆ: ಹಡಗಿನವರ ಜೊತೆ — ಅವರೇ ಹೋಟೆಲ್‌ಗೆ ಬಿಡುತ್ತಾರೆ. ಮಧ್ಯಾಹ್ನ: ಕೆಳಗಿನ ನಿಮ್ಮ ಯೋಜನೆ.",
+        "rows": [
+          {
+            "when": "6:10 am",
+            "icon": "🧘",
+            "en": "Tai chi and sunrise on deck (optional)",
+            "kn": "ಡೆಕ್ ಮೇಲೆ ತಾಯ್ ಚಿ ಮತ್ತು ಸೂರ್ಯೋದಯ (ಐಚ್ಛಿಕ)",
+            "note_en": "Tea and a light breakfast at 6:30.",
+            "note_kn": "6:30ಕ್ಕೆ ಚಹಾ, ಲಘು ಉಪಾಹಾರ."
+          },
+          {
+            "when": "7:15 am",
+            "icon": "🏝",
+            "en": "Titov Island",
+            "kn": "ಟಿಟೋವ್ ದ್ವೀಪ",
+            "note_en": "Flat beach. The viewpoint has many steep steps — climb only if knees feel good.",
+            "note_kn": "ಕಡಲತೀರ ಸಮತಟ್ಟು. ಮೇಲಿನ ದೃಶ್ಯಕ್ಕೆ ಕಡಿದಾದ ಮೆಟ್ಟಿಲು — ಮಂಡಿ ಚೆನ್ನಾಗಿದ್ದರೆ ಮಾತ್ರ.",
+            "story": "d3-titov"
+          },
+          {
+            "when": "8:30 am",
+            "icon": "🍳",
+            "en": "Breakfast, pack, leave the ship at 10:30",
+            "kn": "ಉಪಾಹಾರ, ಬ್ಯಾಗ್ ಕಟ್ಟಿ, 10:30ಕ್ಕೆ ಹಡಗಿನಿಂದ ಇಳಿಯುವುದು",
+            "note_en": "The same cruise bus takes you back.",
+            "note_kn": "ಅದೇ ಹಡಗಿನ ಬಸ್ ವಾಪಸ್ ಕರೆದುಕೊಂಡು ಹೋಗುತ್ತದೆ."
+          },
+          {
+            "when": "~1:30 pm",
+            "icon": "🏨",
+            "en": "Back at the hotel — quick lunch, out again by 2:10 pm",
+            "kn": "ಹೋಟೆಲ್‌ಗೆ ವಾಪಸ್ — ಬೇಗ ಊಟ, 2:10ಕ್ಕೆ ಮತ್ತೆ ಹೊರಡಿ",
+            "note_en": "Afternoon plan below ↓",
+            "note_kn": "ಮಧ್ಯಾಹ್ನದ ಯೋಜನೆ ಕೆಳಗೆ ↓"
+          }
+        ],
+        "food_en": "Veg breakfast on the ship. Lunch and dinner at AMY Indian Restaurant (150 m from the hotel).",
+        "food_kn": "ಹಡಗಿನಲ್ಲಿ ಸಸ್ಯಾಹಾರಿ ಉಪಾಹಾರ. ಮಧ್ಯಾಹ್ನ ಮತ್ತು ರಾತ್ರಿ ಊಟ AMY ರೆಸ್ಟೋರೆಂಟ್‌ನಲ್ಲಿ (ಹೋಟೆಲ್‌ನಿಂದ 150 ಮೀ).",
+        "foodLink": "hotel"
+      },
+      "heavyNext": true
+    },
+    {
+      "day": 4,
+      "date": "2026-11-27",
+      "tz": "ICT",
+      "title_en": "Hanoi full day — heavy day",
+      "title_kn": "ಹನೋಯ್ ಪೂರ್ಣ ದಿನ — ತುಂಬಾ ಓಡಾಟದ ದಿನ",
+      "stops": [
+        {
+          "id": "d4-citadel",
+          "type": "museum",
+          "en": "Imperial Citadel of Thang Long",
+          "vi": "Hoàng thành Thăng Long",
+          "kn": "ಥಾಂಗ್ ಲಾಂಗ್ ರಾಜಕೋಟೆ",
+          "time": "08:00",
+          "mins": 90,
+          "lat": 21.034502,
+          "lng": 105.839951,
+          "go": "Imperial Citadel of Thang Long, 19c Hoàng Diệu, Ba Đình, Hà Nội",
+          "addr_en": "Imperial Citadel of Thang Long, 19c Hoàng Diệu, Ba Đình, Hà Nội",
+          "addr_vi": "Hoàng thành Thăng Long, 19C Hoàng Diệu, Ba Đình, Hà Nội",
+          "closes": "5:00 pm",
+          "how": {
+            "mode": "cab",
+            "en": "1.5 km from the hotel",
+            "kn": "ಹೋಟೆಲ್‌ನಿಂದ 1.5 ಕಿಮೀ"
+          },
+          "about": {
+            "why_en": "The royal palace of Vietnam's kings for 1,000 years — a UNESCO World Heritage Site. See the big Doan Mon gate, old palace foundations dug up from the ground, and the underground war rooms.",
+            "why_kn": "1,000 ವರ್ಷ ವಿಯೆಟ್ನಾಂ ರಾಜರ ಅರಮನೆ — ಯುನೆಸ್ಕೋ ವಿಶ್ವ ಪರಂಪರೆ ತಾಣ. ದೊಡ್ಡ ಡೊವಾನ್ ಮೊನ್ ಹೆಬ್ಬಾಗಿಲು, ಹಳೆಯ ಅರಮನೆಯ ಅಡಿಪಾಯ, ನೆಲದಡಿಯ ಯುದ್ಧ ಕೋಣೆಗಳು.",
+            "best_en": "8:00 am, when it opens — cool and quiet. Open 8:00–5:00.",
+            "best_kn": "ಬೆಳಿಗ್ಗೆ 8ಕ್ಕೆ — ತಂಪು, ಜನ ಕಡಿಮೆ.",
+            "entry": "100,000 ₫",
+            "tip_en": "Big open grounds with little shade — cap and water.",
+            "tip_kn": "ನೆರಳು ಕಡಿಮೆ — ಟೋಪಿ, ನೀರು."
+          },
+          "note_en": "Have breakfast first. Take a cab and reach by 8:00 am, when it opens.",
+          "note_kn": "ಮೊದಲು ಉಪಾಹಾರ. ಕ್ಯಾಬ್‌ನಲ್ಲಿ ಬೆಳಿಗ್ಗೆ 8ಕ್ಕೆ (ತೆರೆಯುವಾಗ) ತಲುಪಿ."
+        },
+        {
+          "id": "d4-temple",
+          "type": "temple",
+          "en": "Temple of Literature",
+          "vi": "Văn Miếu – Quốc Tử Giám",
+          "kn": "ವಾನ್ ಮಿಯೂ — ಸಾಹಿತ್ಯ ದೇವಾಲಯ",
+          "time": "09:45",
+          "mins": 75,
+          "lat": 21.029341,
+          "lng": 105.836021,
+          "addr_vi": "Văn Miếu – Quốc Tử Giám, 58 phố Quốc Tử Giám, Đống Đa, Hà Nội",
+          "addr_en": "Temple Of Literature, 58 Quốc Tử Giám, Đống Đa, Hà Nội",
+          "note_en": "Cover shoulders and knees. Mostly flat paths. Then a cab to lunch.",
+          "note_kn": "ಭುಜ, ಮಂಡಿ ಮುಚ್ಚಿ. ದಾರಿ ಸಮತಟ್ಟು. ನಂತರ ಕ್ಯಾಬ್‌ನಲ್ಲಿ ಊಟಕ್ಕೆ.",
+          "place": "vanmieu",
+          "closes": "5:00 pm",
+          "go": "Temple Of Literature, 58 Quốc Tử Giám, Đống Đa, Hà Nội",
+          "how": {
+            "mode": "cab",
+            "en": "2 km from the Citadel",
+            "kn": "ರಾಜಕೋಟೆಯಿಂದ 2 ಕಿಮೀ"
+          },
+          "about": {
+            "why_en": "Vietnam's first university (1076), built for Confucius. Stone turtles carry the names of scholars who passed the royal exams — students still come to pray before exams.",
+            "why_kn": "ವಿಯೆಟ್ನಾಂನ ಮೊದಲ ವಿಶ್ವವಿದ್ಯಾಲಯ (1076). ಕಲ್ಲಿನ ಆಮೆಗಳ ಮೇಲೆ ಪಂಡಿತರ ಹೆಸರು — ಇಂದಿಗೂ ವಿದ್ಯಾರ್ಥಿಗಳು ಪರೀಕ್ಷೆಗೆ ಮುಂಚೆ ಪ್ರಾರ್ಥಿಸುತ್ತಾರೆ.",
+            "best_en": "Morning, before the tour groups. Open 8:00–5:00.",
+            "best_kn": "ಬೆಳಿಗ್ಗೆ, ಪ್ರವಾಸಿ ಗುಂಪುಗಳಿಗೆ ಮುಂಚೆ.",
+            "entry": "70,000 ₫",
+            "tip_en": "Cover shoulders and knees. Mostly flat paths.",
+            "tip_kn": "ಭುಜ, ಮಂಡಿ ಮುಚ್ಚಿ. ದಾರಿ ಸಮತಟ್ಟು."
+          }
+        },
+        {
+          "id": "d4-lunch",
+          "type": "meal",
+          "en": "Lunch at Southern Delights",
+          "vi": "Nhà hàng Southern Delights",
+          "kn": "ಸದರ್ನ್ ಡಿಲೈಟ್ಸ್‌ನಲ್ಲಿ ಮಧ್ಯಾಹ್ನದ ಊಟ",
+          "time": "11:30",
+          "mins": 90,
+          "lat": 21.034731,
+          "lng": 105.846663,
+          "go": "Southern Delights - Pure Vegetarian South Indian, 12 P. Hàng Gà, Hoàn Kiếm, Hà Nội",
+          "addr_en": "Southern Delights - Pure Vegetarian South Indian, 12 P. Hàng Gà, Hoàn Kiếm, Hà Nội",
+          "addr_vi": "Nhà hàng Southern Delights, 12 phố Hàng Gà, Hoàn Kiếm, Hà Nội",
+          "how": {
+            "mode": "cab",
+            "en": "about 2 km from the Temple of Literature",
+            "kn": "ಸಾಹಿತ್ಯ ದೇವಾಲಯದಿಂದ ಸುಮಾರು 2 ಕಿಮೀ"
+          },
+          "note_en": "Pure vegetarian South Indian — dosa, idli, meals. Take your time and rest your legs. Then walk to the Cathedral.",
+          "note_kn": "ಶುದ್ಧ ಸಸ್ಯಾಹಾರಿ ದಕ್ಷಿಣ ಭಾರತೀಯ — ದೋಸೆ, ಇಡ್ಲಿ, ಊಟ. ನಿಧಾನವಾಗಿ ಊಟ ಮಾಡಿ, ಕಾಲಿಗೆ ವಿಶ್ರಾಂತಿ. ನಂತರ ಚರ್ಚ್‌ಗೆ ನಡೆಯಿರಿ.",
+          "den": "Southern Delights (South Indian)"
+        },
+        {
+          "id": "d4-cathedral",
+          "type": "temple",
+          "en": "St. Joseph's Cathedral",
+          "vi": "Nhà thờ Lớn Hà Nội",
+          "kn": "ಸೇಂಟ್ ಜೋಸೆಫ್ ಕ್ಯಾಥೆಡ್ರಲ್",
+          "time": "13:15",
+          "mins": 30,
+          "lat": 21.028773,
+          "lng": 105.848981,
+          "go": "St. Joseph Cathedral, 1 P. Nhà Thờ, Hoàn Kiếm, Hà Nội",
+          "addr_en": "St. Joseph Cathedral, 1 P. Nhà Thờ, Hoàn Kiếm, Hà Nội",
+          "addr_vi": "Nhà thờ Lớn Hà Nội, 1 phố Nhà Thờ, Hoàn Kiếm, Hà Nội",
+          "walk": true,
+          "how": {
+            "mode": "walk",
+            "en": "800 m from Southern Delights",
+            "kn": "ಸದರ್ನ್ ಡಿಲೈಟ್ಸ್‌ನಿಂದ 800 ಮೀ"
+          },
+          "about": {
+            "why_en": "A 130-year-old French church that looks like Notre-Dame in Paris — the most photographed building in the Old Quarter.",
+            "why_kn": "130 ವರ್ಷ ಹಳೆಯ ಫ್ರೆಂಚ್ ಚರ್ಚ್ — ಪ್ಯಾರಿಸ್‌ನ ನೋತ್ರ ದಾಮ್‌ನಂತೆ. ಹಳೆಯ ಪೇಟೆಯ ಅತಿ ಹೆಚ್ಚು ಫೋಟೋ ತೆಗೆಯುವ ಕಟ್ಟಡ.",
+            "best_en": "Any time; seeing it from outside is enough. 15–20 min.",
+            "best_kn": "ಯಾವಾಗ ಬೇಕಾದರೂ; ಹೊರಗಿನಿಂದ ನೋಡಿದರೆ ಸಾಕು.",
+            "entry": "Free",
+            "tip_en": "Many cafés around — good for a tea break.",
+            "tip_kn": "ಸುತ್ತ ಕೆಫೆಗಳಿವೆ — ಚಹಾ ವಿರಾಮಕ್ಕೆ."
+          },
+          "note_en": "Walk after a good lunch. Liked it? It is only 700 m from the hotel — come back for a quiet early-morning look.",
+          "note_kn": "ಊಟದ ನಂತರ ನಡೆಯಿರಿ. ಹೋಟೆಲ್‌ನಿಂದ ಕೇವಲ 700 ಮೀ."
+        },
+        {
+          "id": "d4-lake",
+          "type": "lake",
+          "en": "Hoan Kiem Lake",
+          "vi": "Hồ Hoàn Kiếm",
+          "kn": "ಹೊವಾನ್ ಕಿಯೆಮ್ ಸರೋವರ",
+          "time": "14:00",
+          "mins": 45,
+          "lat": 21.0292,
+          "lng": 105.8524,
+          "go": "Hoàn Kiếm Lake, Hoàn Kiếm, Hà Nội",
+          "addr_en": "Hoàn Kiếm Lake, Hoàn Kiếm, Hà Nội",
+          "addr_vi": "Hồ Hoàn Kiếm, Hà Nội",
+          "walk": true,
+          "how": {
+            "mode": "walk",
+            "en": "600 m from the Cathedral",
+            "kn": "ಚರ್ಚ್‌ನಿಂದ 600 ಮೀ"
+          },
+          "about": {
+            "why_en": "The heart of Hanoi. Legend says a king returned a magic sword to a giant golden turtle here — 'Hoan Kiem' means 'returned sword'.",
+            "why_kn": "ಹನೋಯ್‌ನ ಹೃದಯ. ರಾಜನೊಬ್ಬ ಮಾಯಾ ಖಡ್ಗವನ್ನು ದೈತ್ಯ ಚಿನ್ನದ ಆಮೆಗೆ ಹಿಂದಿರುಗಿಸಿದನೆಂಬ ಕಥೆ — 'ಹೊವಾನ್ ಕಿಯೆಮ್' ಎಂದರೆ 'ಹಿಂದಿರುಗಿಸಿದ ಖಡ್ಗ'.",
+            "best_en": "Afternoon or evening. Flat path all around (about 1.7 km).",
+            "best_kn": "ಮಧ್ಯಾಹ್ನ ಅಥವಾ ಸಂಜೆ. ಸುತ್ತಲೂ ಸಮತಟ್ಟಾದ ದಾರಿ.",
+            "entry": "Free",
+            "tip_en": "Benches all round — sit whenever tired.",
+            "tip_kn": "ಸುತ್ತ ಬೆಂಚುಗಳಿವೆ — ಆಯಾಸವಾದರೆ ಕುಳಿತುಕೊಳ್ಳಿ."
+          },
+          "place": "hoankiem",
+          "note_en": "Walk slowly along the lake to the red bridge at the north end. Sit on the benches whenever tired.",
+          "note_kn": "ಸರೋವರದ ಬದಿಯಲ್ಲಿ ನಿಧಾನವಾಗಿ ಉತ್ತರದ ಕೆಂಪು ಸೇತುವೆಯವರೆಗೆ ನಡೆಯಿರಿ."
+        },
+        {
+          "id": "d4-ngocson",
+          "type": "temple",
+          "en": "Ngoc Son Temple",
+          "vi": "Đền Ngọc Sơn",
+          "kn": "ಎನ್ಗೊಕ್ ಸೊನ್ ದೇವಾಲಯ",
+          "time": "14:50",
+          "mins": 45,
+          "lat": 21.030752,
+          "lng": 105.852399,
+          "go": "Ngoc Son Temple, Đinh Tiên Hoàng, Hoàn Kiếm, Hà Nội",
+          "addr_en": "Ngoc Son Temple, Đinh Tiên Hoàng, Hoàn Kiếm, Hà Nội",
+          "addr_vi": "Đền Ngọc Sơn, phố Đinh Tiên Hoàng, Hoàn Kiếm, Hà Nội",
+          "walk": true,
+          "how": {
+            "mode": "walk",
+            "en": "On the lake — over the red bridge",
+            "kn": "ಸರೋವರದಲ್ಲೇ — ಕೆಂಪು ಸೇತುವೆ ದಾಟಿ"
+          },
+          "about": {
+            "why_en": "The temple on a small island in the lake, reached by the red The Huc bridge. Inside is a real giant turtle from the lake, preserved.",
+            "why_kn": "ಸರೋವರದ ಪುಟ್ಟ ದ್ವೀಪದ ದೇವಾಲಯ — ಕೆಂಪು 'ಥೆ ಹುಕ್' ಸೇತುವೆಯ ಮೂಲಕ. ಒಳಗೆ ಸರೋವರದ ನಿಜವಾದ ದೈತ್ಯ ಆಮೆ ಇದೆ.",
+            "best_en": "Afternoon. Open about 8:00 am–6:00 pm. About 30–45 min.",
+            "best_kn": "ಮಧ್ಯಾಹ್ನ. ಸಂಜೆ 6ರವರೆಗೆ.",
+            "entry": "50,000 ₫",
+            "tip_en": "A few steps up the bridge; hold the rail.",
+            "tip_kn": "ಸೇತುವೆಗೆ ಕೆಲವು ಮೆಟ್ಟಿಲು — ಕಂಬಿ ಹಿಡಿಯಿರಿ."
+          },
+          "note_en": "After this you have about an hour: rest at the hotel (700 m) or sit by the lake. Reach the puppet theatre by 4:45 pm.",
+          "note_kn": "ನಂತರ ಸುಮಾರು ಒಂದು ಗಂಟೆ ಬಿಡುವು: ಹೋಟೆಲ್‌ನಲ್ಲಿ (700 ಮೀ) ವಿಶ್ರಾಂತಿ ಅಥವಾ ಸರೋವರದ ಬಳಿ ಕುಳಿತುಕೊಳ್ಳಿ. 4:45ಕ್ಕೆ ಬೊಂಬೆಯಾಟಕ್ಕೆ ತಲುಪಿ."
+        },
+        {
+          "id": "d4-puppet",
+          "type": "theatre",
+          "en": "Thang Long Water Puppet Show",
+          "vi": "Nhà hát Múa rối nước Thăng Long",
+          "kn": "ಥಾಂಗ್ ಲಾಂಗ್ ನೀರಿನ ಬೊಂಬೆಯಾಟ",
+          "time": "17:00",
+          "mins": 55,
+          "anchor": true,
+          "lat": 21.031575,
+          "lng": 105.853245,
+          "walk": true,
+          "note_en": "The ~5 pm show — the exact time (5:00 or 5:20) is on the tickets the hotel bought for you. Reach 15 minutes early.",
+          "note_kn": "ಸಂಜೆ ~5ರ ಪ್ರದರ್ಶನ — ನಿಖರ ಸಮಯ (5:00 ಅಥವಾ 5:20) ಹೋಟೆಲ್ ಕೊಟ್ಟ ಟಿಕೆಟ್‌ನಲ್ಲಿದೆ. 15 ನಿಮಿಷ ಮೊದಲೇ ತಲುಪಿ.",
+          "addr_vi": "Nhà hát Múa rối nước Thăng Long, 57B Đinh Tiên Hoàng, Hoàn Kiếm, Hà Nội",
+          "addr_en": "Thang Long Water Puppet Theatre, 57B Đinh Tiên Hoàng, Hoàn Kiếm, Hà Nội",
+          "place": "puppet",
+          "go": "Thang Long Water Puppet Theatre, 57B Đinh Tiên Hoàng, Hoàn Kiếm, Hà Nội",
+          "how": {
+            "mode": "walk",
+            "en": "300 m from Ngoc Son Temple",
+            "kn": "ಎನ್ಗೊಕ್ ಸೊನ್‌ನಿಂದ 300 ಮೀ"
+          },
+          "about": {
+            "why_en": "A 1,000-year-old art found only in Vietnam: puppets dance on water to live music — rice farming, dragons, festivals. No words needed; easy to enjoy.",
+            "why_kn": "ವಿಯೆಟ್ನಾಂನಲ್ಲಿ ಮಾತ್ರ ಇರುವ 1,000 ವರ್ಷ ಹಳೆಯ ಕಲೆ: ನೀರಿನ ಮೇಲೆ ಬೊಂಬೆಗಳ ನೃತ್ಯ, ನೇರ ಸಂಗೀತ. ಭಾಷೆ ಬೇಕಿಲ್ಲ.",
+            "best_en": "The ~5 pm show (5:00 or 5:20). About 50 min.",
+            "best_kn": "ಸಂಜೆ ~5ರ ಪ್ರದರ್ಶನ. ಸುಮಾರು 50 ನಿಮಿಷ.",
+            "entry": "100,000–200,000 ₫",
+            "tip_en": "Front-middle seats are best. Toilet before the show.",
+            "tip_kn": "ಮುಂದಿನ ಮಧ್ಯದ ಆಸನ ಉತ್ತಮ. ಮೊದಲೇ ಶೌಚಾಲಯಕ್ಕೆ ಹೋಗಿ."
+          }
+        },
+        {
+          "id": "d4-dinner",
+          "type": "meal",
+          "en": "Dinner at Southern Delights",
+          "vi": "Nhà hàng Southern Delights",
+          "kn": "ಸದರ್ನ್ ಡಿಲೈಟ್ಸ್‌ನಲ್ಲಿ ರಾತ್ರಿ ಊಟ",
+          "time": "18:15",
+          "mins": 60,
+          "lat": 21.034731,
+          "lng": 105.846663,
+          "go": "Southern Delights - Pure Vegetarian South Indian, 12 P. Hàng Gà, Hoàn Kiếm, Hà Nội",
+          "addr_en": "Southern Delights - Pure Vegetarian South Indian, 12 P. Hàng Gà, Hoàn Kiếm, Hà Nội",
+          "addr_vi": "Nhà hàng Southern Delights, 12 phố Hàng Gà, Hoàn Kiếm, Hà Nội",
+          "walk": true,
+          "how": {
+            "mode": "walk",
+            "en": "About 1 km walk from the theatre",
+            "kn": "ರಂಗಮಂದಿರದಿಂದ ಸುಮಾರು 1 ಕಿಮೀ ನಡಿಗೆ"
+          },
+          "note_en": "Easy walk. Then head to the walking street — it starts at 7 pm.",
+          "note_kn": "ಸುಲಭ ನಡಿಗೆ. ನಂತರ ವಾಕಿಂಗ್ ಸ್ಟ್ರೀಟ್‌ಗೆ — ಸಂಜೆ 7ಕ್ಕೆ ಶುರು.",
+          "den": "Southern Delights (South Indian)"
+        },
+        {
+          "id": "d4-walkst",
+          "type": "street",
+          "en": "Hoan Kiem Walking Street",
+          "vi": "Phố đi bộ Hồ Hoàn Kiếm",
+          "kn": "ಹೊವಾನ್ ಕಿಯೆಮ್ ವಾಕಿಂಗ್ ಸ್ಟ್ರೀಟ್",
+          "time": "19:30",
+          "mins": 75,
+          "lat": 21.030647,
+          "lng": 105.851722,
+          "go": "Weekend Walking Street, 5 Đinh Tiên Hoàng, Hoàn Kiếm, Hà Nội",
+          "addr_en": "Weekend Walking Street, 5 Đinh Tiên Hoàng, Hoàn Kiếm, Hà Nội",
+          "addr_vi": "Phố đi bộ Hồ Hoàn Kiếm, 5 Đinh Tiên Hoàng, Hoàn Kiếm, Hà Nội",
+          "walk": true,
+          "how": {
+            "mode": "walk",
+            "en": "Around the lake — 300 m from the lake shore",
+            "kn": "ಸರೋವರದ ಸುತ್ತ — ದಡದಿಂದ 300 ಮೀ"
+          },
+          "about": {
+            "why_en": "Every Friday to Sunday evening the roads around the lake close to traffic. Families, music, street shows, games — Hanoi at its happiest.",
+            "why_kn": "ಪ್ರತಿ ಶುಕ್ರವಾರದಿಂದ ಭಾನುವಾರ ಸಂಜೆ ಸರೋವರದ ಸುತ್ತಲಿನ ರಸ್ತೆಗಳಲ್ಲಿ ವಾಹನ ಇಲ್ಲ. ಕುಟುಂಬಗಳು, ಸಂಗೀತ, ಬೀದಿ ಪ್ರದರ್ಶನ — ಸಂತೋಷದ ಹನೋಯ್.",
+            "best_en": "From 7:00 pm (Friday). Must-see on Friday evening.",
+            "best_kn": "ಶುಕ್ರವಾರ ಸಂಜೆ 7ರಿಂದ. ತಪ್ಪದೇ ನೋಡಿ.",
+            "entry": "Free",
+            "tip_en": "Crowded — keep bag and phone in front. Walk back to the hotel (about 700 m) when tired.",
+            "tip_kn": "ಜನಸಂದಣಿ — ಬ್ಯಾಗ್, ಫೋನ್ ಮುಂದೆ. ಆಯಾಸವಾದರೆ ಹೋಟೆಲ್‌ಗೆ ನಡೆದು ವಾಪಸ್ (700 ಮೀ)."
+          },
+          "note_en": "Must visit on Friday evening. Walk back to the hotel (about 700 m) when tired.",
+          "note_kn": "ಶುಕ್ರವಾರ ಸಂಜೆ ತಪ್ಪದೇ ನೋಡಿ. ಆಯಾಸವಾದಾಗ ಹೋಟೆಲ್‌ಗೆ ನಡೆದು ವಾಪಸ್ (ಸುಮಾರು 700 ಮೀ)."
+        }
+      ],
+      "heavy": true
+    },
+    {
+      "day": 5,
+      "date": "2026-11-28",
+      "tz": "ICT",
+      "title_en": "Ninh Binh day trip",
+      "title_kn": "ನಿನ್ ಬಿನ್ ಒಂದು ದಿನದ ಪ್ರವಾಸ",
+      "stops": [
+        {
+          "id": "d5-pickup",
+          "type": "hotel",
+          "en": "Car pickup at hotel",
+          "vi": "Khách sạn",
+          "kn": "ಹೋಟೆಲ್‌ನಿಂದ ಕಾರು",
+          "time": "07:30",
+          "mins": 0,
+          "anchor": true,
+          "lat": 21.034608,
+          "lng": 105.847953,
+          "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
+          "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi",
+          "pending": true,
+          "pending_en": "Ask the hotel for pickup time and driver details.",
+          "pending_kn": "ಪಿಕಪ್ ಸಮಯ ಮತ್ತು ಚಾಲಕನ ವಿವರ ಹೋಟೆಲ್‌ನಲ್ಲಿ ಕೇಳಿ.",
+          "note_en": "Save the driver's number in Settings.",
+          "note_kn": "ಚಾಲಕನ ನಂಬರ್ ಅನ್ನು ಸೆಟ್ಟಿಂಗ್ಸ್‌ನಲ್ಲಿ ಉಳಿಸಿ.",
+          "go": "Chic Boutique Hotel Hanoi, 51 P. Bát Sứ, Hoàn Kiếm, Hà Nội"
+        },
+        {
+          "id": "d5-baidinh",
+          "type": "temple",
+          "en": "Bai Dinh Pagoda",
+          "vi": "Chùa Bái Đính",
+          "kn": "ಬಾಯ್ ಡಿನ್ ಬೌದ್ಧ ವಿಹಾರ",
+          "time": "09:30",
+          "mins": 90,
+          "lat": 20.2741,
+          "lng": 105.8646,
+          "addr_vi": "Chùa Bái Đính, Gia Sinh, Ninh Bình",
+          "addr_en": "Bai Dinh Pagoda, Gia Sinh, Ninh Binh",
+          "note_en": "Very big. Take the electric buggy, not the long walk.",
+          "note_kn": "ತುಂಬಾ ದೊಡ್ಡ ಜಾಗ. ಉದ್ದದ ನಡಿಗೆ ಬೇಡ, ಎಲೆಕ್ಟ್ರಿಕ್ ವಾಹನ ಬಳಸಿ.",
+          "place": "baidinh",
+          "go": "Bai Dinh Pagoda, Gia Sinh, Gia Viễn, Ninh Bình"
+        },
+        {
+          "id": "d5-trangan",
+          "type": "boat",
+          "en": "Trang An boat ride",
+          "vi": "Khu du lịch Tràng An",
+          "kn": "ತ್ರಾಂಗ್ ಆನ್ ದೋಣಿ ಸವಾರಿ",
+          "time": "11:15",
+          "mins": 120,
+          "lat": 20.2556,
+          "lng": 105.9126,
+          "addr_vi": "Bến thuyền Khu du lịch Tràng An, Trường Yên, Ninh Bình",
+          "addr_en": "Trang An boat wharf, Truong Yen, Ninh Binh",
+          "note_en": "2 hours sitting in a small boat. Wear the life jacket. Low caves — bend your head.",
+          "note_kn": "ಸಣ್ಣ ದೋಣಿಯಲ್ಲಿ 2 ಗಂಟೆ ಕುಳಿತುಕೊಳ್ಳಬೇಕು. ಲೈಫ್ ಜಾಕೆಟ್ ಧರಿಸಿ. ಗುಹೆಗಳಲ್ಲಿ ತಲೆ ಬಗ್ಗಿಸಿ.",
+          "place": "trangan",
+          "go": "Bến thuyền Tràng An, Trường Yên, Hoa Lư, Ninh Bình"
+        },
+        {
+          "id": "d5-lunch",
+          "type": "meal",
+          "en": "Lunch at Tam Coc",
+          "vi": "Tam Cốc",
+          "kn": "ತಾಮ್ ಕೋಕ್‌ನಲ್ಲಿ ಮಧ್ಯಾಹ್ನದ ಊಟ",
+          "time": "13:30",
+          "mins": 60,
+          "food": "ninhbinh",
+          "note_en": "Indian veg places on Tam Coc road. Carry snacks too.",
+          "note_kn": "ತಾಮ್ ಕೋಕ್ ರಸ್ತೆಯಲ್ಲಿ ಭಾರತೀಯ ಸಸ್ಯಾಹಾರಿ ಹೋಟೆಲ್. ತಿಂಡಿಯೂ ಜೊತೆಗಿರಲಿ."
+        },
+        {
+          "id": "d5-mua",
+          "type": "viewpoint",
+          "en": "Mua Cave viewpoint",
+          "vi": "Hang Múa",
+          "kn": "ಹ್ಯಾಂಗ್ ಮುವಾ ಬೆಟ್ಟ",
+          "time": "15:00",
+          "mins": 75,
+          "lat": 20.2361,
+          "lng": 105.9283,
+          "note_en": "About 500 steps. Climb only if knees feel good.",
+          "note_kn": "ಸುಮಾರು 500 ಮೆಟ್ಟಿಲು. ಮಂಡಿ ಚೆನ್ನಾಗಿದ್ದರೆ ಮಾತ್ರ ಹತ್ತಿ.",
+          "addr_vi": "Hang Múa, Ninh Xuân, Ninh Bình",
+          "addr_en": "Mua Cave, Ninh Xuan, Ninh Binh",
+          "place": "mua",
+          "go": "Mua Cave, Ninh Xuân, Hoa Lư, Ninh Bình"
+        },
+        {
+          "id": "d5-hotel",
+          "type": "hotel",
+          "en": "Back to hotel",
+          "vi": "Khách sạn",
+          "kn": "ಹೋಟೆಲ್‌ಗೆ ವಾಪಸ್",
+          "time": "19:00",
+          "mins": 0,
+          "lat": 21.034608,
+          "lng": 105.847953,
+          "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
+          "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi",
+          "go": "Chic Boutique Hotel Hanoi, 51 P. Bát Sứ, Hoàn Kiếm, Hà Nội"
+        }
+      ],
+      "longDrive": true,
+      "brief": {
+        "who_en": "The hotel's driver plans the whole day: he picks you up, shows you around, stops for tea, toilet and lunch, and brings you back. The order below may change — follow the driver.",
+        "who_kn": "ಹೋಟೆಲ್‌ನ ಚಾಲಕರೇ ಇಡೀ ದಿನ ನೋಡಿಕೊಳ್ಳುತ್ತಾರೆ: ಕರೆದುಕೊಂಡು ಹೋಗಿ, ಸ್ಥಳಗಳನ್ನು ತೋರಿಸಿ, ಚಹಾ-ಶೌಚಾಲಯ-ಊಟಕ್ಕೆ ನಿಲ್ಲಿಸಿ, ವಾಪಸ್ ಬಿಡುತ್ತಾರೆ. ಕ್ರಮ ಬದಲಾಗಬಹುದು — ಚಾಲಕರನ್ನು ಅನುಸರಿಸಿ.",
+        "rows": [
+          {
+            "when": "Before leaving",
+            "icon": "🧳",
+            "en": "Pack your bags — tonight you move to a standard room",
+            "kn": "ಬ್ಯಾಗ್ ಕಟ್ಟಿ — ಇಂದು ರಾತ್ರಿ ಸ್ಟ್ಯಾಂಡರ್ಡ್ ಕೋಣೆಗೆ ಬದಲಾವಣೆ",
+            "note_en": "Leave the packed bags with reception; the hotel moves them to the new room for 28–29 Nov.",
+            "note_kn": "ಕಟ್ಟಿದ ಬ್ಯಾಗ್ ರಿಸೆಪ್ಶನ್‌ನಲ್ಲಿ ಕೊಡಿ; ಹೊಸ ಕೋಣೆಗೆ ಹೋಟೆಲ್‌ನವರು ಸಾಗಿಸುತ್ತಾರೆ."
+          },
+          {
+            "when": "~7:30 am*",
+            "icon": "🚗",
+            "en": "Driver picks you up at the hotel",
+            "kn": "ಹೋಟೆಲ್‌ನಿಂದ ಚಾಲಕರು ಕರೆದುಕೊಂಡು ಹೋಗುತ್ತಾರೆ",
+            "note_en": "About 2 hours' drive. Ask the hotel for the exact time and save the driver's number in Settings.",
+            "note_kn": "ಸುಮಾರು 2 ಗಂಟೆ ಪ್ರಯಾಣ. ನಿಖರ ಸಮಯ ಹೋಟೆಲ್‌ನಲ್ಲಿ ಕೇಳಿ; ಚಾಲಕರ ನಂಬರ್ Settings ನಲ್ಲಿ ಉಳಿಸಿ."
+          },
+          {
+            "when": "",
+            "icon": "🛕",
+            "en": "Bai Dinh Pagoda",
+            "kn": "ಬಾಯ್ ಡಿನ್ ಬೌದ್ಧ ವಿಹಾರ",
+            "note_en": "Very big — take the electric buggy.",
+            "note_kn": "ತುಂಬಾ ದೊಡ್ಡ ಜಾಗ — ಎಲೆಕ್ಟ್ರಿಕ್ ವಾಹನ ಬಳಸಿ.",
+            "story": "d5-baidinh"
+          },
+          {
+            "when": "",
+            "icon": "🚣",
+            "en": "Trang An boat ride",
+            "kn": "ತ್ರಾಂಗ್ ಆನ್ ದೋಣಿ ಸವಾರಿ",
+            "note_en": "About 2 hours sitting in a small boat. Wear the life jacket; bend your head in low caves.",
+            "note_kn": "ಸುಮಾರು 2 ಗಂಟೆ ಸಣ್ಣ ದೋಣಿಯಲ್ಲಿ. ಲೈಫ್ ಜಾಕೆಟ್ ಧರಿಸಿ; ತಗ್ಗಿನ ಗುಹೆಯಲ್ಲಿ ತಲೆ ಬಗ್ಗಿಸಿ.",
+            "story": "d5-trangan"
+          },
+          {
+            "when": "",
+            "icon": "🍽",
+            "en": "Lunch at Tam Coc",
+            "kn": "ತಾಮ್ ಕೋಕ್‌ನಲ್ಲಿ ಮಧ್ಯಾಹ್ನದ ಊಟ",
+            "note_en": "Ask the driver for an Indian veg restaurant on Tam Coc road.",
+            "note_kn": "ತಾಮ್ ಕೋಕ್ ರಸ್ತೆಯ ಭಾರತೀಯ ಸಸ್ಯಾಹಾರಿ ಹೋಟೆಲ್‌ಗೆ ಕರೆದುಕೊಂಡು ಹೋಗಲು ಚಾಲಕರಿಗೆ ಹೇಳಿ."
+          },
+          {
+            "when": "",
+            "icon": "⛰",
+            "en": "Mua Cave viewpoint",
+            "kn": "ಹ್ಯಾಂಗ್ ಮುವಾ ಬೆಟ್ಟ",
+            "note_en": "About 500 steps — optional. You can wait at the bottom.",
+            "note_kn": "ಸುಮಾರು 500 ಮೆಟ್ಟಿಲು — ಐಚ್ಛಿಕ. ಕೆಳಗೇ ಕಾಯಬಹುದು.",
+            "story": "d5-mua"
+          },
+          {
+            "when": "~7:00 pm",
+            "icon": "🏨",
+            "en": "Back at the hotel",
+            "kn": "ಹೋಟೆಲ್‌ಗೆ ವಾಪಸ್",
+            "note_en": "",
+            "note_kn": ""
+          }
+        ],
+        "food_en": "Carry biscuits, fruit and water in the car. At any local restaurant, show the Waiter card and order: Cơm chiên chay (veg fried rice), Đậu phụ sốt cà chua (tofu in tomato), Rau củ xào (mixed vegetables) — say \"không nước mắm\" (no fish sauce). Entry tickets: ask the driver if they are included. If not: Trang An boat 250,000–350,000 ₫, Bai Dinh buggy 100,000 ₫, Mua Cave 100,000 ₫ — each person.",
+        "food_kn": "ಕಾರಿನಲ್ಲಿ ಬಿಸ್ಕತ್, ಹಣ್ಣು, ನೀರು ಇರಲಿ. ಯಾವುದೇ ಸ್ಥಳೀಯ ಹೋಟೆಲ್‌ನಲ್ಲಿ ವೇಟರ್ ಕಾರ್ಡ್ ತೋರಿಸಿ, ಇವನ್ನು ಕೇಳಿ: ಸಸ್ಯಾಹಾರಿ ಫ್ರೈಡ್ ರೈಸ್, ಟೊಮೆಟೊ ಗ್ರೇವಿಯಲ್ಲಿ ತೋಫು, ಮಿಶ್ರ ತರಕಾರಿ — \"ಫಿಶ್ ಸಾಸ್ ಬೇಡ\" ಎನ್ನಿ.",
+        "foodLink": "ninhbinh"
+      }
+    },
+    {
+      "day": 6,
+      "date": "2026-11-29",
+      "tz": "ICT",
+      "title_en": "Last morning sights, fly home",
+      "title_kn": "ಕೊನೆಯ ಬೆಳಗಿನ ದರ್ಶನ, ಮನೆಗೆ ಪ್ರಯಾಣ",
+      "stops": [
+        {
+          "id": "d6-checkout",
+          "type": "hotel",
+          "en": "Early breakfast, then check out",
+          "vi": "",
+          "kn": "ಬೇಗ ಉಪಾಹಾರ, ನಂತರ ಚೆಕ್-ಔಟ್",
+          "time": "06:30",
+          "mins": 45,
+          "lat": 21.034608,
+          "lng": 105.847953,
+          "go": "Chic Boutique Hotel Hanoi, 51 P. Bát Sứ, Hoàn Kiếm, Hà Nội",
+          "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi",
+          "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
+          "note_en": "Breakfast at 6:30 (asked for yesterday). Check out at about 7:00 only after breakfast: pay the balance (standard room, about ₹4,000) in đồng, leave the packed bags at reception. Keep passports, phones and tickets with you.",
+          "note_kn": "6:30ಕ್ಕೆ ಉಪಾಹಾರ. ಉಪಾಹಾರದ ನಂತರವೇ ಸುಮಾರು 7ಕ್ಕೆ ಚೆಕ್-ಔಟ್: ಬಾಕಿ (ಸುಮಾರು ₹4,000) ಡಾಂಗ್‌ನಲ್ಲಿ ಕೊಡಿ, ಬ್ಯಾಗ್ ರಿಸೆಪ್ಷನ್‌ನಲ್ಲಿ ಇಡಿ. ಪಾಸ್‌ಪೋರ್ಟ್, ಫೋನ್ ನಿಮ್ಮ ಬಳಿ."
+        },
+        {
+          "id": "d6-hcm",
+          "type": "monument",
+          "en": "Ho Chi Minh Mausoleum",
+          "vi": "Lăng Chủ tịch Hồ Chí Minh",
+          "kn": "ಹೋ ಚಿ ಮಿನ್ ಸಮಾಧಿ",
+          "time": "07:45",
+          "mins": 75,
+          "lat": 21.036814,
+          "lng": 105.834661,
+          "go": "Ho Chi Minh's Mausoleum, 1 Hùng Vương, Ba Đình, Hà Nội",
+          "addr_en": "Ho Chi Minh's Mausoleum, 1 Hùng Vương, Ba Đình, Hà Nội",
+          "addr_vi": "Lăng Chủ tịch Hồ Chí Minh, 1 Hùng Vương, Ba Đình, Hà Nội",
+          "closes": "11:00 am",
+          "how": {
+            "mode": "cab",
+            "en": "2 km from the hotel",
+            "kn": "ಹೋಟೆಲ್‌ನಿಂದ 2 ಕಿಮೀ"
+          },
+          "about": {
+            "why_en": "Vietnam's most important national monument. Ho Chi Minh — 'Uncle Ho', who led Vietnam to freedom — lies here in a glass case. Very solemn; a guard walks you past in silence.",
+            "why_kn": "ವಿಯೆಟ್ನಾಂನ ಅತಿ ಮುಖ್ಯ ರಾಷ್ಟ್ರೀಯ ಸ್ಮಾರಕ. ದೇಶಕ್ಕೆ ಸ್ವಾತಂತ್ರ್ಯ ತಂದ 'ಹೋ ಚಿಕ್ಕಪ್ಪ'ನ ದೇಹ ಗಾಜಿನ ಪೆಟ್ಟಿಗೆಯಲ್ಲಿ. ಮೌನವಾಗಿ ಸಾಲಿನಲ್ಲಿ ನಡೆಯಬೇಕು.",
+            "best_en": "Mornings only: 8:00–11:00 am in November. Go at opening — the queue grows fast. Closed Monday and Friday.",
+            "best_kn": "ಬೆಳಿಗ್ಗೆ ಮಾತ್ರ: ನವೆಂಬರ್‌ನಲ್ಲಿ 8–11. ತೆರೆಯುವಾಗಲೇ ಹೋಗಿ.",
+            "entry": "Free",
+            "tip_en": "Dress code: shoulders and knees covered, no hat inside. Hands out of pockets, no talking, no photos inside. Bags and cameras are handed in at the gate (free, take the token).",
+            "tip_kn": "ಉಡುಪು: ಭುಜ, ಮಂಡಿ ಮುಚ್ಚಿ, ಒಳಗೆ ಟೋಪಿ ಇಲ್ಲ. ಮಾತು, ಫೋಟೋ ಇಲ್ಲ. ಬ್ಯಾಗ್ ಗೇಟ್‌ನಲ್ಲಿ ಕೊಟ್ಟು ಟೋಕನ್ ಪಡೆಯಿರಿ."
+          },
+          "note_en": "Opens 8:00 am — be in the queue early. Free. If it is closed, skip it and take a cab straight to Hoa Lo Prison.",
+          "note_kn": "ಬೆಳಿಗ್ಗೆ 8ಕ್ಕೆ ತೆರೆಯುತ್ತದೆ — ಬೇಗ ಸಾಲಿನಲ್ಲಿ ನಿಲ್ಲಿ. ಉಚಿತ. ಮುಚ್ಚಿದ್ದರೆ ನೇರವಾಗಿ ಕ್ಯಾಬ್‌ನಲ್ಲಿ ಹೋವಾ ಲೋ ಜೈಲಿಗೆ."
+        },
+        {
+          "id": "d6-onepillar",
+          "type": "temple",
+          "en": "One Pillar Pagoda",
+          "vi": "Chùa Một Cột",
+          "kn": "ಒಂಟಿ ಕಂಬದ ಪಗೋಡಾ",
+          "time": "09:00",
+          "mins": 30,
+          "lat": 21.035893,
+          "lng": 105.83358,
+          "go": "One Pillar Pagoda, P. Chùa Một Cột, Ba Đình, Hà Nội",
+          "addr_en": "One Pillar Pagoda, P. Chùa Một Cột, Ba Đình, Hà Nội",
+          "addr_vi": "Chùa Một Cột, phố Chùa Một Cột, Ba Đình, Hà Nội",
+          "walk": true,
+          "how": {
+            "mode": "walk",
+            "en": "Short walk from the Mausoleum (about 400 m)",
+            "kn": "ಸಮಾಧಿಯಿಂದ ಸ್ವಲ್ಪ ನಡಿಗೆ (ಸುಮಾರು 400 ಮೀ)"
+          },
+          "about": {
+            "why_en": "A tiny wooden pagoda standing on a single stone pillar in a lotus pond — built in 1049 by a king who dreamt of the Goddess of Mercy on a lotus.",
+            "why_kn": "ಕಮಲದ ಕೊಳದಲ್ಲಿ ಒಂದೇ ಕಲ್ಲಿನ ಕಂಬದ ಮೇಲೆ ನಿಂತ ಪುಟ್ಟ ಮರದ ಪಗೋಡಾ — 1049ರಲ್ಲಿ, ಕಮಲದ ಮೇಲೆ ದೇವಿಯನ್ನು ಕನಸಿನಲ್ಲಿ ಕಂಡ ರಾಜ ಕಟ್ಟಿಸಿದ್ದು.",
+            "best_en": "Right after the Mausoleum (same area). 15–20 min.",
+            "best_kn": "ಸಮಾಧಿಯ ನಂತರ ತಕ್ಷಣ (ಅದೇ ಪ್ರದೇಶ).",
+            "entry": "Free",
+            "tip_en": "A few steps up to the shrine; hold the rail.",
+            "tip_kn": "ಕೆಲವು ಮೆಟ್ಟಿಲು — ಕಂಬಿ ಹಿಡಿಯಿರಿ."
+          },
+          "note_en": "Then take a cab to Hoa Lo Prison.",
+          "note_kn": "ನಂತರ ಕ್ಯಾಬ್‌ನಲ್ಲಿ ಹೋವಾ ಲೋ ಜೈಲಿಗೆ."
+        },
+        {
+          "id": "d6-hoalo",
+          "type": "museum",
+          "en": "Hoa Lo Prison Museum",
+          "vi": "Nhà tù Hỏa Lò",
+          "kn": "ಹೋವಾ ಲೋ ಜೈಲು ವಸ್ತುಸಂಗ್ರಹಾಲಯ",
+          "time": "09:45",
+          "mins": 75,
+          "lat": 21.025345,
+          "lng": 105.846435,
+          "go": "Hoa Lo Prison Relic, 1 P. Hoả Lò, Hoàn Kiếm, Hà Nội",
+          "addr_en": "Hoa Lo Prison Relic, 1 P. Hoả Lò, Hoàn Kiếm, Hà Nội",
+          "addr_vi": "Di tích Nhà tù Hỏa Lò, 1 phố Hỏa Lò, Hoàn Kiếm, Hà Nội",
+          "closes": "5:00 pm",
+          "how": {
+            "mode": "cab",
+            "en": "2 km from One Pillar Pagoda",
+            "kn": "ಒಂಟಿ ಕಂಬದ ಪಗೋಡಾದಿಂದ 2 ಕಿಮೀ"
+          },
+          "about": {
+            "why_en": "A prison built by the French in 1896 for Vietnamese freedom fighters — like our Cellular Jail in the Andamans. Later it held American pilots, who called it the 'Hanoi Hilton'.",
+            "why_kn": "1896ರಲ್ಲಿ ಫ್ರೆಂಚರು ವಿಯೆಟ್ನಾಂ ಸ್ವಾತಂತ್ರ್ಯ ಹೋರಾಟಗಾರರಿಗಾಗಿ ಕಟ್ಟಿದ ಜೈಲು — ನಮ್ಮ ಅಂಡಮಾನ್‌ನ ಸೆಲ್ಯುಲಾರ್ ಜೈಲಿನಂತೆ. ನಂತರ ಅಮೆರಿಕನ್ ಪೈಲಟ್‌ಗಳನ್ನು ಇಟ್ಟಿದ್ದರು.",
+            "best_en": "Morning, at opening. Open 8:00–5:00 daily. About 1 hr.",
+            "best_kn": "ಬೆಳಿಗ್ಗೆ. ಪ್ರತಿದಿನ 8–5. ಸುಮಾರು 1 ಗಂಟೆ.",
+            "entry": "50,000 ₫",
+            "tip_en": "Some rooms are sad and dark (prison cells, a guillotine). Skip any room you don't like.",
+            "tip_kn": "ಕೆಲವು ಕೋಣೆಗಳು ದುಃಖದವು. ಇಷ್ಟವಿಲ್ಲದ್ದನ್ನು ಬಿಡಿ."
+          },
+          "note_en": "Then walk to the Women's Museum.",
+          "note_kn": "ನಂತರ ಮಹಿಳಾ ವಸ್ತುಸಂಗ್ರಹಾಲಯಕ್ಕೆ ನಡೆಯಿರಿ."
+        },
+        {
+          "id": "d6-women",
+          "type": "museum",
+          "en": "Vietnamese Women's Museum",
+          "vi": "Bảo tàng Phụ nữ Việt Nam",
+          "kn": "ವಿಯೆಟ್ನಾಂ ಮಹಿಳಾ ವಸ್ತುಸಂಗ್ರಹಾಲಯ",
+          "time": "11:15",
+          "mins": 75,
+          "lat": 21.023576,
+          "lng": 105.850239,
+          "go": "Vietnamese Women's Museum, 36 Lý Thường Kiệt, Hoàn Kiếm, Hà Nội",
+          "addr_en": "Vietnamese Women's Museum, 36 Lý Thường Kiệt, Hoàn Kiếm, Hà Nội",
+          "addr_vi": "Bảo tàng Phụ nữ Việt Nam, 36 Lý Thường Kiệt, Hoàn Kiếm, Hà Nội",
+          "walk": true,
+          "closes": "5:00 pm",
+          "how": {
+            "mode": "walk",
+            "en": "500 m from Hoa Lo Prison",
+            "kn": "ಹೋವಾ ಲೋ ಜೈಲಿನಿಂದ 500 ಮೀ"
+          },
+          "about": {
+            "why_en": "A bright, gentle museum about Vietnamese women — weddings, motherhood, market life, and beautiful traditional dresses. Many visitors' favourite in Hanoi.",
+            "why_kn": "ವಿಯೆಟ್ನಾಂ ಮಹಿಳೆಯರ ಬಗ್ಗೆ ಸುಂದರ ವಸ್ತುಸಂಗ್ರಹಾಲಯ — ಮದುವೆ, ತಾಯ್ತನ, ಮಾರುಕಟ್ಟೆ ಜೀವನ, ಸಾಂಪ್ರದಾಯಿಕ ಉಡುಪುಗಳು.",
+            "best_en": "Late morning. Open 8:00–5:00 daily. About 1 hr.",
+            "best_kn": "ಬೆಳಿಗ್ಗೆ. ಪ್ರತಿದಿನ 8–5.",
+            "entry": "40,000 ₫",
+            "tip_en": "Lift inside, clean toilets, a small café.",
+            "tip_kn": "ಒಳಗೆ ಲಿಫ್ಟ್, ಸ್ವಚ್ಛ ಶೌಚಾಲಯ."
+          },
+          "note_en": "Then a cab to lunch.",
+          "note_kn": "ನಂತರ ಕ್ಯಾಬ್‌ನಲ್ಲಿ ಊಟಕ್ಕೆ."
+        },
+        {
+          "id": "d6-lunch",
+          "type": "meal",
+          "en": "Lunch — your choice",
+          "vi": "",
+          "kn": "ಮಧ್ಯಾಹ್ನದ ಊಟ — ನಿಮ್ಮ ಆಯ್ಕೆ",
+          "time": "12:45",
+          "mins": 90,
+          "how": {
+            "mode": "cab",
+            "en": "about 1.5 km from the museum",
+            "kn": "ವಸ್ತುಸಂಗ್ರಹಾಲಯದಿಂದ ಸುಮಾರು 1.5 ಕಿಮೀ"
+          },
+          "choices": [
+            {
+              "en": "AMY Indian Restaurant",
+              "go": "AMY Indian Restaurant, 10 P. Hàng Thiếc, Hoàn Kiếm, Hà Nội",
+              "vi": "Nhà hàng AMY Indian",
+              "addr_vi": "Nhà hàng AMY Indian, 10 phố Hàng Thiếc, Hoàn Kiếm, Hà Nội",
+              "addr_en": "AMY Indian Restaurant, 10 P. Hàng Thiếc, Hoàn Kiếm, Hà Nội"
+            },
+            {
+              "en": "Southern Delights (South Indian)",
+              "go": "Southern Delights - Pure Vegetarian South Indian, 12 P. Hàng Gà, Hoàn Kiếm, Hà Nội",
+              "vi": "Nhà hàng Southern Delights",
+              "addr_vi": "Nhà hàng Southern Delights, 12 phố Hàng Gà, Hoàn Kiếm, Hà Nội",
+              "addr_en": "Southern Delights - Pure Vegetarian South Indian, 12 P. Hàng Gà, Hoàn Kiếm, Hà Nội"
+            }
+          ],
+          "note_en": "Pick either — both are close to the hotel. Be back at the hotel by 3:20 pm.",
+          "note_kn": "ಯಾವುದಾದರೂ ಒಂದು — ಎರಡೂ ಹೋಟೆಲ್ ಹತ್ತಿರ. 3:20ರೊಳಗೆ ಹೋಟೆಲ್‌ಗೆ ಬನ್ನಿ."
+        },
+        {
+          "id": "d6-leave",
+          "type": "hotel",
+          "en": "Leave hotel for airport",
+          "vi": "Khách sạn",
+          "kn": "ವಿಮಾನ ನಿಲ್ದಾಣಕ್ಕೆ ಹೊರಡಿ",
+          "time": "15:30",
+          "mins": 0,
+          "anchor": true,
+          "lat": 21.034608,
+          "lng": 105.847953,
+          "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
+          "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi",
+          "driverTo": "d6-han",
+          "note_en": "Be back at the hotel by 3:20 pm. Collect your bags from reception. Hotel car to the airport at 3:30 pm (about ₹1,700) — pay in đồng.",
+          "note_kn": "ಮಧ್ಯಾಹ್ನ 3:20ರೊಳಗೆ ಹೋಟೆಲ್‌ಗೆ ಬನ್ನಿ. ರಿಸೆಪ್ಷನ್‌ನಿಂದ ಬ್ಯಾಗ್ ಪಡೆಯಿರಿ. 3:30ಕ್ಕೆ ಹೋಟೆಲ್ ಕಾರು (ಸುಮಾರು ₹1,700) — ಡಾಂಗ್‌ನಲ್ಲಿ.",
+          "go": "Chic Boutique Hotel Hanoi, 51 P. Bát Sứ, Hoàn Kiếm, Hà Nội"
+        },
+        {
+          "id": "d6-han",
+          "type": "airport",
+          "en": "Noi Bai Airport — check in",
+          "vi": "Sân bay Nội Bài – Nhà ga T2",
+          "kn": "ನೋಯ್ ಬಾಯ್ — ಚೆಕ್-ಇನ್",
+          "time": "16:30",
+          "mins": 155,
+          "anchor": true,
+          "lat": 21.218564,
+          "lng": 105.804368,
+          "note_en": "Flight 6E-1638 at 7:05 pm, Terminal 2",
+          "note_kn": "ಸಂಜೆ 7:05ಕ್ಕೆ ವಿಮಾನ 6E-1638, ಟರ್ಮಿನಲ್ 2",
+          "addr_vi": "Sân bay Quốc tế Nội Bài – Nhà ga T2 (Quốc tế)",
+          "addr_en": "Noi Bai International Airport – Terminal 2 (International)",
+          "airport": "han2",
+          "go": "Noi Bai International Airport Terminal 2, Sóc Sơn, Hà Nội"
+        },
+        {
+          "id": "d6-cashback",
+          "type": "airport",
+          "en": "Noi Bai — change leftover đồng to dollars",
+          "kn": "ನೋಯ್ ಬಾಯ್ — ಉಳಿದ ಡಾಂಗ್ ಅನ್ನು ಡಾಲರ್‌ಗೆ ಬದಲಿಸಿ",
+          "time": "17:00",
+          "mins": 15,
+          "note_en": "Before security, at a bank counter. Keep the receipt. See Money → Cash plan.",
+          "note_kn": "ಭದ್ರತಾ ತಪಾಸಣೆಗೆ ಮೊದಲು ಬ್ಯಾಂಕ್ ಕೌಂಟರ್‌ನಲ್ಲಿ. ರಸೀದಿ ಇಟ್ಟುಕೊಳ್ಳಿ.",
+          "link": "cash:back"
+        },
+        {
+          "id": "d6-bom",
+          "type": "airport",
+          "en": "Mumbai — enter India, wait in lounge",
+          "vi": "",
+          "kn": "ಮುಂಬೈ — ಭಾರತ ಪ್ರವೇಶ, ಲೌಂಜ್‌ನಲ್ಲಿ ಕಾಯುವುದು",
+          "time": "23:05",
+          "mins": 505,
+          "anchor": true,
+          "note_en": "Land 11:05 pm at T2. Flight 6E-5193 at 7:30 am — check the terminal on your boarding pass.",
+          "note_kn": "ರಾತ್ರಿ 11:05ಕ್ಕೆ T2ನಲ್ಲಿ ಇಳಿಯುವುದು. ಬೆಳಿಗ್ಗೆ 7:30ಕ್ಕೆ 6E-5193 — ಬೋರ್ಡಿಂಗ್ ಪಾಸ್‌ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ನೋಡಿ.",
+          "tz": "IST",
+          "airport": "bom2"
+        },
+        {
+          "id": "d6-blr",
+          "type": "home",
+          "en": "Bengaluru — welcome home!",
+          "vi": "",
+          "kn": "ಬೆಂಗಳೂರು — ಮನೆಗೆ ಸ್ವಾಗತ!",
+          "time": "09:15",
+          "mins": 0,
+          "anchor": true,
+          "note_en": "Land 9:15 am India time",
+          "note_kn": "ಭಾರತದ ಸಮಯ ಬೆಳಿಗ್ಗೆ 9:15ಕ್ಕೆ ಇಳಿಯುವುದು",
+          "tz": "IST",
+          "date": "2026-11-30",
+          "airport": "blr2"
+        },
+        {
+          "id": "t-usdinr",
+          "type": "money",
+          "en": "Change leftover dollars to rupees",
+          "kn": "ಉಳಿದ ಡಾಲರ್ ಅನ್ನು ರೂಪಾಯಿಗೆ ಬದಲಿಸಿ",
+          "date": "2026-11-30",
+          "tz": "IST",
+          "time": "11:00",
+          "mins": 0,
+          "link": "cash:home",
+          "note_en": "Any day after you are home — BookMyForex or Thomas Cook / Unimoni. Carry passport, PAN and the forex receipt. Not the airport counter (poor rate).",
+          "note_kn": "ಮನೆಗೆ ಬಂದ ಮೇಲೆ ಯಾವಾಗ ಬೇಕಾದರೂ. ಪಾಸ್‌ಪೋರ್ಟ್, ಪ್ಯಾನ್, ಫಾರೆಕ್ಸ್ ರಸೀದಿ ತೆಗೆದುಕೊಂಡು ಹೋಗಿ. ವಿಮಾನ ನಿಲ್ದಾಣದ ಕೌಂಟರ್ ಬೇಡ."
+        }
+      ]
+    }
   ]
- },
- "days": [
-  {
-   "day": 0,
-   "date": "2026-11-23",
-   "tz": "IST",
-   "title_en": "Leave for Vietnam",
-   "title_kn": "ವಿಯೆಟ್ನಾಂ ಪ್ರಯಾಣ ಆರಂಭ",
-   "stops": [
-    {
-     "id": "d0-home",
-     "type": "home",
-     "en": "Leave home",
-     "vi": "",
-     "kn": "ಮನೆಯಿಂದ ಹೊರಡಿ",
-     "time": "18:30",
-     "mins": 0,
-     "anchor": true
-    },
-    {
-     "id": "d0-blr",
-     "type": "airport",
-     "en": "Bengaluru Airport (BLR)",
-     "vi": "",
-     "kn": "ಬೆಂಗಳೂರು ವಿಮಾನ ನಿಲ್ದಾಣ",
-     "time": "19:30",
-     "mins": 150,
-     "anchor": true,
-     "lat": 13.1986,
-     "lng": 77.7066,
-     "note_en": "Flight 6E-5094 at 10:00 pm to Mumbai",
-     "note_kn": "ರಾತ್ರಿ 10 ಗಂಟೆಗೆ ಮುಂಬೈಗೆ ವಿಮಾನ 6E-5094",
-     "airport": "blr1"
-    }
-   ]
-  },
-  {
-   "day": 1,
-   "date": "2026-11-24",
-   "tz": "ICT",
-   "title_en": "Arrive in Hanoi",
-   "title_kn": "ಹನೋಯ್ ತಲುಪುವುದು",
-   "stops": [
-    {
-     "id": "d1-bom",
-     "type": "airport",
-     "en": "Mumbai — change flight",
-     "vi": "",
-     "kn": "ಮುಂಬೈ — ವಿಮಾನ ಬದಲಾವಣೆ",
-     "time": "00:10",
-     "mins": 240,
-     "anchor": true,
-     "note_en": "Flight 6E-1637 at 4:10 am from Terminal 2.",
-     "note_kn": "ಟರ್ಮಿನಲ್ 2ರಿಂದ ಬೆಳಿಗ್ಗೆ 4:10ಕ್ಕೆ ವಿಮಾನ 6E-1637.",
-     "tz": "IST",
-     "airport": "bom1"
-    },
-    {
-     "id": "d1-han",
-     "type": "airport",
-     "en": "Noi Bai Airport (HAN)",
-     "vi": "Sân bay Nội Bài",
-     "kn": "ನೋಯ್ ಬಾಯ್ ವಿಮಾನ ನಿಲ್ದಾಣ",
-     "time": "10:00",
-     "mins": 50,
-     "anchor": true,
-     "lat": 21.2187,
-     "lng": 105.8042,
-     "note_en": "Express immigration: staff meet you at the aircraft door / bridge with your name sign → priority lane (about 30 min). Then collect your own bags (not included).",
-     "note_kn": "ಎಕ್ಸ್‌ಪ್ರೆಸ್ ಇಮಿಗ್ರೇಶನ್: ವಿಮಾನದ ಬಾಗಿಲಲ್ಲೇ ನಿಮ್ಮ ಹೆಸರಿನ ಫಲಕದೊಂದಿಗೆ ಸಿಬ್ಬಂದಿ ಸಿಗುತ್ತಾರೆ → ಆದ್ಯತೆಯ ಸಾಲು (ಸುಮಾರು 30 ನಿಮಿಷ). ನಂತರ ನಿಮ್ಮ ಬ್ಯಾಗ್ ನೀವೇ ತೆಗೆದುಕೊಳ್ಳಿ.",
-     "addr_vi": "Sân bay Quốc tế Nội Bài – Nhà ga T2 (Quốc tế)",
-     "addr_en": "Noi Bai International Airport – Terminal 2 (International)",
-     "airport": "han1",
-     "driverTo": "d1-hotel"
-    },
-    {
-     "id": "d1-cash",
-     "type": "airport",
-     "en": "Noi Bai — change dollars to đồng",
-     "kn": "ನೋಯ್ ಬಾಯ್ — ಡಾಲರ್ ಅನ್ನು ಡಾಂಗ್‌ಗೆ ಬದಲಿಸಿ",
-     "time": "10:45",
-     "mins": 10,
-     "note_en": "BIDV counter, arrivals hall (open daily). Change US$400–500 (four or five $100 notes). Ask for small notes. Pay everything in Vietnam in đồng.",
-     "note_kn": "ಆಗಮನ ಹಾಲ್‌ನ BIDV ಕೌಂಟರ್. 400–500 ಡಾಲರ್ ಬದಲಿಸಿ. ಸಣ್ಣ ನೋಟು ಕೇಳಿ. ವಿಯೆಟ್ನಾಂನಲ್ಲಿ ಎಲ್ಲಾ ಪಾವತಿ ಡಾಂಗ್‌ನಲ್ಲಿ.",
-     "link": "cash:vnd"
-    },
-    {
-     "id": "d1-sim",
-     "type": "airport",
-     "en": "Buy one local SIM (for one phone)",
-     "kn": "ಒಂದು ಫೋನ್‌ಗೆ ಸ್ಥಳೀಯ ಸಿಮ್ ಕೊಳ್ಳಿ",
-     "time": "10:55",
-     "mins": 10,
-     "link": "sim:local",
-     "note_en": "SIM kiosk, arrivals hall: Vinaphone 1.5 GB/day, 7 days (~70,000 ₫). Show passport; they set it up. The other phone uses Airtel roaming.",
-     "note_kn": "ಆಗಮನ ಹಾಲ್‌ನ ಸಿಮ್ ಕೌಂಟರ್: ವಿನಾಫೋನ್ ದಿನಕ್ಕೆ 1.5 GB, 7 ದಿನ (~70,000 ಡಾಂಗ್). ಪಾಸ್‌ಪೋರ್ಟ್ ತೋರಿಸಿ. ಇನ್ನೊಂದು ಫೋನ್‌ನಲ್ಲಿ ಏರ್‌ಟೆಲ್ ರೋಮಿಂಗ್."
-    },
-    {
-     "id": "d1-car",
-     "type": "airport",
-     "en": "Hotel car at the arrivals exit",
-     "kn": "ಆಗಮನ ದ್ವಾರದಲ್ಲಿ ಹೋಟೆಲ್ ಕಾರು",
-     "time": "11:05",
-     "mins": 0,
-     "note_en": "Hotel driver waits at the arrivals exit from 10:45 with your name sign. Car cost about ₹1,700 — pay in đồng as the hotel says. Can't find him? WhatsApp or call the hotel.",
-     "note_kn": "ಹೋಟೆಲ್ ಚಾಲಕರು 10:45–11:00ಕ್ಕೆ ನಿಮ್ಮ ಹೆಸರಿನ ಫಲಕದೊಂದಿಗೆ ಕಾಯುತ್ತಾರೆ. ಸಿಗದಿದ್ದರೆ ಹೋಟೆಲ್‌ಗೆ ಕರೆ ಮಾಡಿ."
-    },
-    {
-     "id": "d1-hotel",
-     "type": "hotel",
-     "en": "Hotel — check in and rest",
-     "vi": "Khách sạn",
-     "kn": "ಹೋಟೆಲ್ — ಚೆಕ್-ಇನ್, ವಿಶ್ರಾಂತಿ",
-     "time": "12:00",
-     "mins": 240,
-     "lat": 21.03424,
-     "lng": 105.84735,
-     "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
-     "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi",
-     "note_en": "Early check-in requested (normal check-in is 2 pm) — if the room isn't ready, rest in the lobby. Sleep 2–3 hours. Pay the room balance (about ₹14,100) in đồng when asked — keep the receipt.",
-     "note_kn": "ಬೇಗ ಚೆಕ್-ಇನ್ ಕೇಳಿದ್ದೇವೆ — ಕೋಣೆ ಸಿದ್ಧವಿಲ್ಲದಿದ್ದರೆ ಲಾಬಿಯಲ್ಲಿ ವಿಶ್ರಾಂತಿ. ಕೋಣೆಯ ಬಾಕಿ (ಸುಮಾರು ₹14,100) ಡಾಂಗ್‌ನಲ್ಲಿ ಕೊಡಿ — ರಸೀದಿ ಪಡೆಯಿರಿ."
-    },
-    {
-     "id": "d1-lake",
-     "type": "lake",
-     "en": "Hoan Kiem Lake & Ngoc Son Temple",
-     "vi": "Hồ Hoàn Kiếm & Đền Ngọc Sơn",
-     "kn": "ಹೊವಾನ್ ಕಿಯೆಮ್ ಸರೋವರ ಮತ್ತು ಎನ್ಗೊಕ್ ಸೊನ್ ದೇವಾಲಯ",
-     "time": "16:30",
-     "mins": 120,
-     "lat": 21.0307,
-     "lng": 105.8524,
-     "walk": true,
-     "addr_vi": "Đền Ngọc Sơn, Hồ Hoàn Kiếm, phố Đinh Tiên Hoàng, Hà Nội",
-     "addr_en": "Ngoc Son Temple, Hoan Kiem Lake, Dinh Tien Hoang St, Hanoi",
-     "note_en": "Flat, easy walk. Red bridge lights up in the evening. Ngoc Son Temple ticket: 50,000 ₫ each.",
-     "note_kn": "ಸಮತಟ್ಟಾದ ಸುಲಭ ನಡಿಗೆ. ಸಂಜೆ ಕೆಂಪು ಸೇತುವೆಗೆ ದೀಪ ಹಚ್ಚುತ್ತಾರೆ.",
-     "place": "hoankiem"
-    }
-   ]
-  },
-  {
-   "day": 2,
-   "date": "2026-11-25",
-   "tz": "ICT",
-   "title_en": "Ha Long Bay cruise",
-   "title_kn": "ಹಾ ಲಾಂಗ್ ಕೊಲ್ಲಿ ಹಡಗು ಪ್ರಯಾಣ",
-   "stops": [
-    {
-     "id": "d2-pickup",
-     "type": "hotel",
-     "en": "Cruise bus pickup at hotel",
-     "vi": "Khách sạn",
-     "kn": "ಹೋಟೆಲ್‌ನಲ್ಲಿ ಹಡಗಿನ ಬಸ್",
-     "time": "08:00",
-     "mins": 0,
-     "lat": 21.03424,
-     "lng": 105.84735,
-     "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
-     "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi",
-     "anchor": true,
-     "pending": true,
-     "pending_en": "Pickup time comes on WhatsApp by 7 pm on 24 Nov.",
-     "pending_kn": "ಪಿಕಪ್ ಸಮಯ 24 ನವೆಂಬರ್ ಸಂಜೆ 7ರೊಳಗೆ WhatsApp ನಲ್ಲಿ ಬರುತ್ತದೆ.",
-     "note_en": "Shared limousine, booked with the cruise. Keep passports with you.",
-     "note_kn": "ಹಡಗಿನ ಜೊತೆ ಬುಕ್ ಮಾಡಿದ ಹಂಚಿಕೆಯ ವಾಹನ. ಪಾಸ್‌ಪೋರ್ಟ್ ಜೊತೆಗಿರಲಿ."
-    },
-    {
-     "id": "d2-port",
-     "type": "cruise",
-     "en": "Ambassador Cruise — check in",
-     "vi": "Cảng tàu khách quốc tế Hạ Long",
-     "kn": "ಅಂಬಾಸಿಡರ್ ಹಡಗು — ಚೆಕ್-ಇನ್",
-     "time": "11:00",
-     "mins": 60,
-     "anchor": true,
-     "lat": 20.954,
-     "lng": 107.045,
-     "addr_vi": "Cảng tàu khách quốc tế Hạ Long, Bãi Cháy, Hạ Long, Quảng Ninh",
-     "addr_en": "Halong International Cruise Port, Bai Chay, Ha Long",
-     "note_en": "Check-in 11:00–11:45 at Ambassador's Lounge, 1st floor. Boarding at 12:00.",
-     "note_kn": "ಚೆಕ್-ಇನ್ 11:00–11:45, ಮೊದಲ ಮಹಡಿಯ ಅಂಬಾಸಿಡರ್ ಲೌಂಜ್. 12 ಗಂಟೆಗೆ ಹಡಗು ಹತ್ತುವುದು."
-    },
-    {
-     "id": "d2-lunch",
-     "type": "meal",
-     "en": "Lunch on board",
-     "vi": "",
-     "kn": "ಹಡಗಿನಲ್ಲಿ ಮಧ್ಯಾಹ್ನದ ಊಟ",
-     "time": "12:45",
-     "mins": 75,
-     "note_en": "Pure vegetarian Indian meals are booked for all meals.",
-     "note_kn": "ಎಲ್ಲಾ ಊಟಕ್ಕೂ ಶುದ್ಧ ಸಸ್ಯಾಹಾರಿ ಭಾರತೀಯ ಊಟ ಬುಕ್ ಆಗಿದೆ."
-    },
-    {
-     "id": "d2-bay",
-     "type": "boat",
-     "en": "Luon Cave bamboo boat & Sung Sot Cave",
-     "vi": "Hang Luồn & Hang Sửng Sốt",
-     "kn": "ಲುವಾನ್ ಗುಹೆ ಬಿದಿರು ದೋಣಿ ಮತ್ತು ಸುಂಗ್ ಸೋಟ್ ಗುಹೆ",
-     "time": "14:15",
-     "mins": 180,
-     "place": "halong",
-     "note_en": "Bamboo boat is free for you. Sung Sot Cave has many steps — you may stay on board and have tea instead.",
-     "note_kn": "ಬಿದಿರು ದೋಣಿ ನಿಮಗೆ ಉಚಿತ. ಸುಂಗ್ ಸೋಟ್ ಗುಹೆಯಲ್ಲಿ ಹಲವು ಮೆಟ್ಟಿಲು — ಬೇಕಾದರೆ ಹಡಗಿನಲ್ಲೇ ಚಹಾ ಕುಡಿಯಬಹುದು."
-    },
-    {
-     "id": "d2-dinner",
-     "type": "meal",
-     "en": "Sunset, then dinner on deck",
-     "vi": "",
-     "kn": "ಸೂರ್ಯಾಸ್ತ, ನಂತರ ಡೆಕ್ ಮೇಲೆ ಊಟ",
-     "time": "17:30",
-     "mins": 180,
-     "note_en": "Carry a shawl. Dinner at 7 pm.",
-     "note_kn": "ಶಾಲು ಜೊತೆಗಿರಲಿ. ರಾತ್ರಿ 7ಕ್ಕೆ ಊಟ."
-    }
-   ],
-   "longDrive": true,
-   "brief": {
-    "who_en": "The cruise takes care of everything today — bus, boat, meals and guide. Just relax.",
-    "who_kn": "ಇಂದು ಎಲ್ಲವನ್ನೂ ಹಡಗಿನವರೇ ನೋಡಿಕೊಳ್ಳುತ್ತಾರೆ — ಬಸ್, ದೋಣಿ, ಊಟ, ಗೈಡ್. ಆರಾಮವಾಗಿರಿ.",
-    "rows": [
-     {
-      "when": "Morning*",
-      "icon": "🚌",
-      "en": "Cruise bus picks you up at the hotel",
-      "kn": "ಹೋಟೆಲ್‌ನಿಂದ ಹಡಗಿನ ಬಸ್ ಕರೆದುಕೊಂಡು ಹೋಗುತ್ತದೆ",
-      "note_en": "Pickup time comes on WhatsApp by 7 pm on 24 Nov. Keep passports with you.",
-      "note_kn": "ಪಿಕಪ್ ಸಮಯ 24 ನವೆಂಬರ್ ಸಂಜೆ 7ರೊಳಗೆ WhatsApp ನಲ್ಲಿ ಬರುತ್ತದೆ. ಪಾಸ್‌ಪೋರ್ಟ್ ಜೊತೆಗಿರಲಿ."
-     },
-     {
-      "when": "11:00 am",
-      "icon": "🚢",
-      "en": "Check in at Ambassador's Lounge, board at 12:00",
-      "kn": "ಅಂಬಾಸಿಡರ್ ಲೌಂಜ್‌ನಲ್ಲಿ ಚೆಕ್-ಇನ್, 12ಕ್ಕೆ ಹಡಗು ಹತ್ತುವುದು",
-      "note_en": "1st floor, Halong International Cruise Port. The bus drops you there.",
-      "note_kn": "ಹಾ ಲಾಂಗ್ ಬಂದರಿನ 1ನೇ ಮಹಡಿ. ಬಸ್ ಅಲ್ಲಿಗೇ ಬಿಡುತ್ತದೆ."
-     },
-     {
-      "when": "Afternoon",
-      "icon": "⛵",
-      "en": "Ha Long Bay: Luon Cave bamboo boat & Sung Sot Cave",
-      "kn": "ಹಾ ಲಾಂಗ್ ಕೊಲ್ಲಿ: ಲುವಾನ್ ಗುಹೆ ಬಿದಿರು ದೋಣಿ ಮತ್ತು ಸುಂಗ್ ಸೋಟ್ ಗುಹೆ",
-      "note_en": "Sung Sot Cave has many steps — you may stay on board with tea.",
-      "note_kn": "ಸುಂಗ್ ಸೋಟ್ ಗುಹೆಯಲ್ಲಿ ಹಲವು ಮೆಟ್ಟಿಲು — ಬೇಕಿದ್ದರೆ ಹಡಗಿನಲ್ಲೇ ಚಹಾ ಕುಡಿಯುತ್ತಾ ಇರಿ.",
-      "story": "d2-bay"
-     },
-     {
-      "when": "Evening",
-      "icon": "🌅",
-      "en": "Sunset on deck, dinner at 7 pm, night on the ship",
-      "kn": "ಡೆಕ್ ಮೇಲೆ ಸೂರ್ಯಾಸ್ತ, ರಾತ್ರಿ 7ಕ್ಕೆ ಊಟ, ಹಡಗಿನಲ್ಲೇ ನಿದ್ರೆ",
-      "note_en": "Carry a shawl — it is cool on the water.",
-      "note_kn": "ಶಾಲು ಜೊತೆಗಿರಲಿ — ನೀರಿನ ಮೇಲೆ ಚಳಿ."
-     }
-    ],
-    "food_en": "Pure-veg Indian meals are booked for every meal on the ship. Remind the staff once at the first meal: \"vegetarian, no fish sauce\".",
-    "food_kn": "ಹಡಗಿನಲ್ಲಿ ಎಲ್ಲಾ ಊಟಕ್ಕೂ ಶುದ್ಧ ಸಸ್ಯಾಹಾರಿ ಭಾರತೀಯ ಊಟ ಬುಕ್ ಆಗಿದೆ. ಮೊದಲ ಊಟದಲ್ಲಿ ಒಮ್ಮೆ \"ವೆಜಿಟೇರಿಯನ್, ಫಿಶ್ ಸಾಸ್ ಬೇಡ\" ಎಂದು ನೆನಪಿಸಿ."
-   }
-  },
-  {
-   "day": 3,
-   "date": "2026-11-26",
-   "tz": "ICT",
-   "title_en": "Cruise morning, back to Hanoi",
-   "title_kn": "ಹಡಗಿನಲ್ಲಿ ಬೆಳಗು, ಹನೋಯ್‌ಗೆ ವಾಪಸ್",
-   "stops": [
-    {
-     "id": "d3-sunrise",
-     "type": "boat",
-     "en": "Tai chi & sunrise on deck",
-     "vi": "Vịnh Hạ Long",
-     "kn": "ಡೆಕ್ ಮೇಲೆ ತಾಯ್ ಚಿ ಮತ್ತು ಸೂರ್ಯೋದಯ",
-     "time": "06:10",
-     "mins": 60,
-     "place": "halong",
-     "note_en": "Optional. Light breakfast with tea at 6:30.",
-     "note_kn": "ಐಚ್ಛಿಕ. 6:30ಕ್ಕೆ ಚಹಾ ಜೊತೆ ಲಘು ಉಪಾಹಾರ."
-    },
-    {
-     "id": "d3-titov",
-     "type": "viewpoint",
-     "en": "Titov Island",
-     "vi": "Đảo Ti Tốp",
-     "kn": "ಟಿಟೋವ್ ದ್ವೀಪ",
-     "time": "07:15",
-     "mins": 75,
-     "place": "halong",
-     "note_en": "Beach is flat. The viewpoint has many steep steps — climb only if knees feel good.",
-     "note_kn": "ಕಡಲತೀರ ಸಮತಟ್ಟು. ಮೇಲಿನ ದೃಶ್ಯಕ್ಕೆ ಕಡಿದಾದ ಹಲವು ಮೆಟ್ಟಿಲು — ಮಂಡಿ ಚೆನ್ನಾಗಿದ್ದರೆ ಮಾತ್ರ ಹತ್ತಿ."
-    },
-    {
-     "id": "d3-port",
-     "type": "cruise",
-     "en": "Breakfast, check out, leave the ship",
-     "vi": "Cảng tàu khách quốc tế Hạ Long",
-     "kn": "ಉಪಾಹಾರ, ಚೆಕ್-ಔಟ್, ಹಡಗಿನಿಂದ ಇಳಿಯುವುದು",
-     "time": "08:30",
-     "mins": 120,
-     "anchor": true,
-     "lat": 20.954,
-     "lng": 107.045,
-     "addr_vi": "Cảng tàu khách quốc tế Hạ Long, Bãi Cháy, Hạ Long, Quảng Ninh",
-     "addr_en": "Halong International Cruise Port, Bai Chay, Ha Long",
-     "note_en": "Leave the ship at 10:30. The same cruise bus takes you back to the hotel.",
-     "note_kn": "10:30ಕ್ಕೆ ಹಡಗಿನಿಂದ ಇಳಿಯುವುದು. ಅದೇ ಬಸ್ ಹೋಟೆಲ್‌ಗೆ ವಾಪಸ್ ಕರೆದೊಯ್ಯುತ್ತದೆ."
-    },
-    {
-     "id": "d3-hotel",
-     "type": "hotel",
-     "en": "Back at hotel (about)",
-     "vi": "Khách sạn",
-     "kn": "ಹೋಟೆಲ್‌ಗೆ ವಾಪಸ್ (ಸುಮಾರು)",
-     "time": "13:30",
-     "mins": 0,
-     "lat": 21.03424,
-     "lng": 105.84735,
-     "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
-     "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi"
-    }
-   ],
-   "longDrive": true,
-   "brief": {
-    "who_en": "Still with the cruise. They bring you back to the hotel. The afternoon is free.",
-    "who_kn": "ಇನ್ನೂ ಹಡಗಿನವರ ಜೊತೆ. ಅವರೇ ಹೋಟೆಲ್‌ಗೆ ವಾಪಸ್ ಬಿಡುತ್ತಾರೆ. ಮಧ್ಯಾಹ್ನ ಬಿಡುವು.",
-    "rows": [
-     {
-      "when": "6:10 am",
-      "icon": "🧘",
-      "en": "Tai chi and sunrise on deck (optional)",
-      "kn": "ಡೆಕ್ ಮೇಲೆ ತಾಯ್ ಚಿ ಮತ್ತು ಸೂರ್ಯೋದಯ (ಐಚ್ಛಿಕ)",
-      "note_en": "Tea and a light breakfast at 6:30.",
-      "note_kn": "6:30ಕ್ಕೆ ಚಹಾ, ಲಘು ಉಪಾಹಾರ."
-     },
-     {
-      "when": "7:15 am",
-      "icon": "🏝",
-      "en": "Titov Island",
-      "kn": "ಟಿಟೋವ್ ದ್ವೀಪ",
-      "note_en": "Flat beach. The viewpoint has many steep steps — climb only if knees feel good.",
-      "note_kn": "ಕಡಲತೀರ ಸಮತಟ್ಟು. ಮೇಲಿನ ದೃಶ್ಯಕ್ಕೆ ಕಡಿದಾದ ಮೆಟ್ಟಿಲು — ಮಂಡಿ ಚೆನ್ನಾಗಿದ್ದರೆ ಮಾತ್ರ.",
-      "story": "d3-titov"
-     },
-     {
-      "when": "8:30 am",
-      "icon": "🍳",
-      "en": "Breakfast, pack, leave the ship at 10:30",
-      "kn": "ಉಪಾಹಾರ, ಬ್ಯಾಗ್ ಕಟ್ಟಿ, 10:30ಕ್ಕೆ ಹಡಗಿನಿಂದ ಇಳಿಯುವುದು",
-      "note_en": "The same cruise bus takes you back.",
-      "note_kn": "ಅದೇ ಹಡಗಿನ ಬಸ್ ವಾಪಸ್ ಕರೆದುಕೊಂಡು ಹೋಗುತ್ತದೆ."
-     },
-     {
-      "when": "~1:30 pm",
-      "icon": "🏨",
-      "en": "Back at the hotel — rest, then free time",
-      "kn": "ಹೋಟೆಲ್‌ಗೆ ವಾಪಸ್ — ವಿಶ್ರಾಂತಿ, ನಂತರ ಬಿಡುವು",
-      "note_en": "Feel fresh? See More places below.",
-      "note_kn": "ಆಯಾಸವಿಲ್ಲದಿದ್ದರೆ ಕೆಳಗಿನ 'More places' ನೋಡಿ."
-     }
-    ],
-    "food_en": "Veg breakfast on the ship. Lunch: many pure-veg Indian places near the hotel.",
-    "food_kn": "ಹಡಗಿನಲ್ಲಿ ಸಸ್ಯಾಹಾರಿ ಉಪಾಹಾರ. ಮಧ್ಯಾಹ್ನದ ಊಟಕ್ಕೆ ಹೋಟೆಲ್ ಹತ್ತಿರ ಹಲವು ಶುದ್ಧ ಸಸ್ಯಾಹಾರಿ ಭಾರತೀಯ ಹೋಟೆಲ್‌ಗಳಿವೆ.",
-    "foodLink": "hotel"
-   }
-  },
-  {
-   "day": 4,
-   "date": "2026-11-27",
-   "tz": "ICT",
-   "title_en": "Hanoi city day",
-   "title_kn": "ಹನೋಯ್ ನಗರ ದರ್ಶನ",
-   "stops": [
-    {
-     "id": "d4-temple",
-     "type": "temple",
-     "en": "Temple of Literature",
-     "vi": "Văn Miếu – Quốc Tử Giám",
-     "kn": "ವಾನ್ ಮಿಯೂ — ಸಾಹಿತ್ಯ ದೇವಾಲಯ",
-     "time": "09:00",
-     "mins": 90,
-     "lat": 21.02861,
-     "lng": 105.83556,
-     "addr_vi": "Văn Miếu – Quốc Tử Giám, 58 phố Quốc Tử Giám, Hà Nội",
-     "addr_en": "Temple of Literature, 58 Quoc Tu Giam St, Hanoi",
-     "note_en": "Cover shoulders and knees. Mostly flat paths. Ticket: 70,000 ₫ each.",
-     "note_kn": "ಭುಜ ಮತ್ತು ಮಂಡಿ ಮುಚ್ಚುವ ಬಟ್ಟೆ ಧರಿಸಿ. ದಾರಿ ಸಮತಟ್ಟು.",
-     "place": "vanmieu"
-    },
-    {
-     "id": "d4-market",
-     "type": "market",
-     "en": "Old Quarter & Dong Xuan Market",
-     "vi": "Phố cổ & Chợ Đồng Xuân",
-     "kn": "ಹಳೆಯ ಪೇಟೆ ಮತ್ತು ಡಾಂಗ್ ಶುವಾನ್ ಮಾರುಕಟ್ಟೆ",
-     "time": "11:00",
-     "mins": 90,
-     "lat": 21.038164,
-     "lng": 105.850031,
-     "addr_vi": "Chợ Đồng Xuân, phố Đồng Xuân, Hoàn Kiếm, Hà Nội",
-     "addr_en": "Dong Xuan Market, Dong Xuan St, Hoan Kiem, Hanoi",
-     "note_en": "Busy and noisy. Keep bag in front. Bargain politely.",
-     "note_kn": "ಜನಸಂದಣಿ ಹೆಚ್ಚು. ಬ್ಯಾಗ್ ಮುಂದೆ ಹಿಡಿಯಿರಿ. ನಯವಾಗಿ ಚೌಕಾಸಿ ಮಾಡಿ.",
-     "place": "oldquarter"
-    },
-    {
-     "id": "d4-lunch",
-     "type": "meal",
-     "en": "Lunch near the hotel, then rest",
-     "vi": "",
-     "kn": "ಹೋಟೆಲ್ ಹತ್ತಿರ ಮಧ್ಯಾಹ್ನದ ಊಟ, ನಂತರ ವಿಶ್ರಾಂತಿ",
-     "time": "12:30",
-     "mins": 240,
-     "food": "hotel",
-     "note_en": "Many pure-veg Indian places are near the hotel. Then rest at the hotel until about 4:30 pm.",
-     "note_kn": "ಹೋಟೆಲ್ ಹತ್ತಿರ ಹಲವು ಶುದ್ಧ ಸಸ್ಯಾಹಾರಿ ಭಾರತೀಯ ಹೋಟೆಲ್‌ಗಳಿವೆ. ನಂತರ ಸಂಜೆ 4:30ರವರೆಗೆ ಹೋಟೆಲ್‌ನಲ್ಲಿ ವಿಶ್ರಾಂತಿ.",
-     "driverTo": "hotel"
-    },
-    {
-     "id": "d4-puppet",
-     "type": "theatre",
-     "en": "Thang Long Water Puppet Show",
-     "vi": "Nhà hát Múa rối nước Thăng Long",
-     "kn": "ಥಾಂಗ್ ಲಾಂಗ್ ನೀರಿನ ಬೊಂಬೆಯಾಟ",
-     "time": "17:20",
-     "mins": 50,
-     "anchor": true,
-     "lat": 21.0318,
-     "lng": 105.8535,
-     "walk": true,
-     "note_en": "Show starts 5:20 pm (about 50 min). Reach by 5:00. Tickets 100,000–200,000 ₫ each — buy at the counter early in the day, or ask the hotel.",
-     "note_kn": "ಸಂಜೆ 5:20ಕ್ಕೆ ಪ್ರದರ್ಶನ. 5 ಗಂಟೆಗೆ ತಲುಪಿ.",
-     "addr_vi": "Nhà hát Múa rối nước Thăng Long, 57B Đinh Tiên Hoàng, Hoàn Kiếm, Hà Nội",
-     "addr_en": "Thang Long Water Puppet Theatre, 57B Dinh Tien Hoang, Hanoi",
-     "place": "puppet"
-    }
-   ]
-  },
-  {
-   "day": 5,
-   "date": "2026-11-28",
-   "tz": "ICT",
-   "title_en": "Ninh Binh day trip",
-   "title_kn": "ನಿನ್ ಬಿನ್ ಒಂದು ದಿನದ ಪ್ರವಾಸ",
-   "stops": [
-    {
-     "id": "d5-pickup",
-     "type": "hotel",
-     "en": "Car pickup at hotel",
-     "vi": "Khách sạn",
-     "kn": "ಹೋಟೆಲ್‌ನಿಂದ ಕಾರು",
-     "time": "07:30",
-     "mins": 0,
-     "anchor": true,
-     "lat": 21.03424,
-     "lng": 105.84735,
-     "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
-     "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi",
-     "pending": true,
-     "pending_en": "Ask the hotel for pickup time and driver details.",
-     "pending_kn": "ಪಿಕಪ್ ಸಮಯ ಮತ್ತು ಚಾಲಕನ ವಿವರ ಹೋಟೆಲ್‌ನಲ್ಲಿ ಕೇಳಿ.",
-     "note_en": "Save the driver's number in Settings.",
-     "note_kn": "ಚಾಲಕನ ನಂಬರ್ ಅನ್ನು ಸೆಟ್ಟಿಂಗ್ಸ್‌ನಲ್ಲಿ ಉಳಿಸಿ."
-    },
-    {
-     "id": "d5-baidinh",
-     "type": "temple",
-     "en": "Bai Dinh Pagoda",
-     "vi": "Chùa Bái Đính",
-     "kn": "ಬಾಯ್ ಡಿನ್ ಬೌದ್ಧ ವಿಹಾರ",
-     "time": "09:30",
-     "mins": 90,
-     "lat": 20.2741,
-     "lng": 105.8646,
-     "addr_vi": "Chùa Bái Đính, Gia Sinh, Ninh Bình",
-     "addr_en": "Bai Dinh Pagoda, Gia Sinh, Ninh Binh",
-     "note_en": "Very big. Take the electric buggy, not the long walk.",
-     "note_kn": "ತುಂಬಾ ದೊಡ್ಡ ಜಾಗ. ಉದ್ದದ ನಡಿಗೆ ಬೇಡ, ಎಲೆಕ್ಟ್ರಿಕ್ ವಾಹನ ಬಳಸಿ.",
-     "place": "baidinh"
-    },
-    {
-     "id": "d5-trangan",
-     "type": "boat",
-     "en": "Trang An boat ride",
-     "vi": "Khu du lịch Tràng An",
-     "kn": "ತ್ರಾಂಗ್ ಆನ್ ದೋಣಿ ಸವಾರಿ",
-     "time": "11:15",
-     "mins": 120,
-     "lat": 20.2556,
-     "lng": 105.9126,
-     "addr_vi": "Bến thuyền Khu du lịch Tràng An, Trường Yên, Ninh Bình",
-     "addr_en": "Trang An boat wharf, Truong Yen, Ninh Binh",
-     "note_en": "2 hours sitting in a small boat. Wear the life jacket. Low caves — bend your head.",
-     "note_kn": "ಸಣ್ಣ ದೋಣಿಯಲ್ಲಿ 2 ಗಂಟೆ ಕುಳಿತುಕೊಳ್ಳಬೇಕು. ಲೈಫ್ ಜಾಕೆಟ್ ಧರಿಸಿ. ಗುಹೆಗಳಲ್ಲಿ ತಲೆ ಬಗ್ಗಿಸಿ.",
-     "place": "trangan"
-    },
-    {
-     "id": "d5-lunch",
-     "type": "meal",
-     "en": "Lunch at Tam Coc",
-     "vi": "Tam Cốc",
-     "kn": "ತಾಮ್ ಕೋಕ್‌ನಲ್ಲಿ ಮಧ್ಯಾಹ್ನದ ಊಟ",
-     "time": "13:30",
-     "mins": 60,
-     "food": "ninhbinh",
-     "note_en": "Indian veg places on Tam Coc road. Carry snacks too.",
-     "note_kn": "ತಾಮ್ ಕೋಕ್ ರಸ್ತೆಯಲ್ಲಿ ಭಾರತೀಯ ಸಸ್ಯಾಹಾರಿ ಹೋಟೆಲ್. ತಿಂಡಿಯೂ ಜೊತೆಗಿರಲಿ."
-    },
-    {
-     "id": "d5-mua",
-     "type": "viewpoint",
-     "en": "Mua Cave viewpoint",
-     "vi": "Hang Múa",
-     "kn": "ಹ್ಯಾಂಗ್ ಮುವಾ ಬೆಟ್ಟ",
-     "time": "15:00",
-     "mins": 75,
-     "lat": 20.2361,
-     "lng": 105.9283,
-     "note_en": "About 500 steps. Climb only if knees feel good.",
-     "note_kn": "ಸುಮಾರು 500 ಮೆಟ್ಟಿಲು. ಮಂಡಿ ಚೆನ್ನಾಗಿದ್ದರೆ ಮಾತ್ರ ಹತ್ತಿ.",
-     "addr_vi": "Hang Múa, Ninh Xuân, Ninh Bình",
-     "addr_en": "Mua Cave, Ninh Xuan, Ninh Binh",
-     "place": "mua"
-    },
-    {
-     "id": "d5-hotel",
-     "type": "hotel",
-     "en": "Back to hotel",
-     "vi": "Khách sạn",
-     "kn": "ಹೋಟೆಲ್‌ಗೆ ವಾಪಸ್",
-     "time": "19:00",
-     "mins": 0,
-     "lat": 21.03424,
-     "lng": 105.84735,
-     "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
-     "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi"
-    }
-   ],
-   "longDrive": true,
-   "brief": {
-    "who_en": "The hotel's driver plans the whole day: he picks you up, shows you around, stops for tea, toilet and lunch, and brings you back. The order below may change — follow the driver.",
-    "who_kn": "ಹೋಟೆಲ್‌ನ ಚಾಲಕರೇ ಇಡೀ ದಿನ ನೋಡಿಕೊಳ್ಳುತ್ತಾರೆ: ಕರೆದುಕೊಂಡು ಹೋಗಿ, ಸ್ಥಳಗಳನ್ನು ತೋರಿಸಿ, ಚಹಾ-ಶೌಚಾಲಯ-ಊಟಕ್ಕೆ ನಿಲ್ಲಿಸಿ, ವಾಪಸ್ ಬಿಡುತ್ತಾರೆ. ಕ್ರಮ ಬದಲಾಗಬಹುದು — ಚಾಲಕರನ್ನು ಅನುಸರಿಸಿ.",
-    "rows": [
-     {
-      "when": "Before leaving",
-      "icon": "🧳",
-      "en": "Pack your bags — tonight you move to a standard room",
-      "kn": "ಬ್ಯಾಗ್ ಕಟ್ಟಿ — ಇಂದು ರಾತ್ರಿ ಸ್ಟ್ಯಾಂಡರ್ಡ್ ಕೋಣೆಗೆ ಬದಲಾವಣೆ",
-      "note_en": "Leave the packed bags with reception; the hotel moves them to the new room for 28–29 Nov.",
-      "note_kn": "ಕಟ್ಟಿದ ಬ್ಯಾಗ್ ರಿಸೆಪ್ಶನ್‌ನಲ್ಲಿ ಕೊಡಿ; ಹೊಸ ಕೋಣೆಗೆ ಹೋಟೆಲ್‌ನವರು ಸಾಗಿಸುತ್ತಾರೆ."
-     },
-     {
-      "when": "~7:30 am*",
-      "icon": "🚗",
-      "en": "Driver picks you up at the hotel",
-      "kn": "ಹೋಟೆಲ್‌ನಿಂದ ಚಾಲಕರು ಕರೆದುಕೊಂಡು ಹೋಗುತ್ತಾರೆ",
-      "note_en": "About 2 hours' drive. Ask the hotel for the exact time and save the driver's number in Settings.",
-      "note_kn": "ಸುಮಾರು 2 ಗಂಟೆ ಪ್ರಯಾಣ. ನಿಖರ ಸಮಯ ಹೋಟೆಲ್‌ನಲ್ಲಿ ಕೇಳಿ; ಚಾಲಕರ ನಂಬರ್ Settings ನಲ್ಲಿ ಉಳಿಸಿ."
-     },
-     {
-      "when": "",
-      "icon": "🛕",
-      "en": "Bai Dinh Pagoda",
-      "kn": "ಬಾಯ್ ಡಿನ್ ಬೌದ್ಧ ವಿಹಾರ",
-      "note_en": "Very big — take the electric buggy.",
-      "note_kn": "ತುಂಬಾ ದೊಡ್ಡ ಜಾಗ — ಎಲೆಕ್ಟ್ರಿಕ್ ವಾಹನ ಬಳಸಿ.",
-      "story": "d5-baidinh"
-     },
-     {
-      "when": "",
-      "icon": "🚣",
-      "en": "Trang An boat ride",
-      "kn": "ತ್ರಾಂಗ್ ಆನ್ ದೋಣಿ ಸವಾರಿ",
-      "note_en": "About 2 hours sitting in a small boat. Wear the life jacket; bend your head in low caves.",
-      "note_kn": "ಸುಮಾರು 2 ಗಂಟೆ ಸಣ್ಣ ದೋಣಿಯಲ್ಲಿ. ಲೈಫ್ ಜಾಕೆಟ್ ಧರಿಸಿ; ತಗ್ಗಿನ ಗುಹೆಯಲ್ಲಿ ತಲೆ ಬಗ್ಗಿಸಿ.",
-      "story": "d5-trangan"
-     },
-     {
-      "when": "",
-      "icon": "🍽",
-      "en": "Lunch at Tam Coc",
-      "kn": "ತಾಮ್ ಕೋಕ್‌ನಲ್ಲಿ ಮಧ್ಯಾಹ್ನದ ಊಟ",
-      "note_en": "Ask the driver for an Indian veg restaurant on Tam Coc road.",
-      "note_kn": "ತಾಮ್ ಕೋಕ್ ರಸ್ತೆಯ ಭಾರತೀಯ ಸಸ್ಯಾಹಾರಿ ಹೋಟೆಲ್‌ಗೆ ಕರೆದುಕೊಂಡು ಹೋಗಲು ಚಾಲಕರಿಗೆ ಹೇಳಿ."
-     },
-     {
-      "when": "",
-      "icon": "⛰",
-      "en": "Mua Cave viewpoint",
-      "kn": "ಹ್ಯಾಂಗ್ ಮುವಾ ಬೆಟ್ಟ",
-      "note_en": "About 500 steps — optional. You can wait at the bottom.",
-      "note_kn": "ಸುಮಾರು 500 ಮೆಟ್ಟಿಲು — ಐಚ್ಛಿಕ. ಕೆಳಗೇ ಕಾಯಬಹುದು.",
-      "story": "d5-mua"
-     },
-     {
-      "when": "~7:00 pm",
-      "icon": "🏨",
-      "en": "Back at the hotel",
-      "kn": "ಹೋಟೆಲ್‌ಗೆ ವಾಪಸ್",
-      "note_en": "",
-      "note_kn": ""
-     }
-    ],
-    "food_en": "Carry biscuits, fruit and water in the car. At any local restaurant, show the Waiter card and order: Cơm chiên chay (veg fried rice), Đậu phụ sốt cà chua (tofu in tomato), Rau củ xào (mixed vegetables) — say \"không nước mắm\" (no fish sauce). Entry tickets: ask the driver if they are included. If not: Trang An boat 250,000–350,000 ₫, Bai Dinh buggy 100,000 ₫, Mua Cave 100,000 ₫ — each person.",
-    "food_kn": "ಕಾರಿನಲ್ಲಿ ಬಿಸ್ಕತ್, ಹಣ್ಣು, ನೀರು ಇರಲಿ. ಯಾವುದೇ ಸ್ಥಳೀಯ ಹೋಟೆಲ್‌ನಲ್ಲಿ ವೇಟರ್ ಕಾರ್ಡ್ ತೋರಿಸಿ, ಇವನ್ನು ಕೇಳಿ: ಸಸ್ಯಾಹಾರಿ ಫ್ರೈಡ್ ರೈಸ್, ಟೊಮೆಟೊ ಗ್ರೇವಿಯಲ್ಲಿ ತೋಫು, ಮಿಶ್ರ ತರಕಾರಿ — \"ಫಿಶ್ ಸಾಸ್ ಬೇಡ\" ಎನ್ನಿ.",
-    "foodLink": "ninhbinh"
-   }
-  },
-  {
-   "day": 6,
-   "date": "2026-11-29",
-   "tz": "ICT",
-   "title_en": "Free morning, fly home",
-   "title_kn": "ಬೆಳಿಗ್ಗೆ ಬಿಡುವು, ಮನೆಗೆ ಪ್ರಯಾಣ",
-   "stops": [
-    {
-     "id": "d6-free",
-     "type": "market",
-     "en": "Free time — last shopping & packing",
-     "vi": "Phố cổ",
-     "kn": "ಬಿಡುವು — ಕೊನೆಯ ಶಾಪಿಂಗ್, ಪ್ಯಾಕಿಂಗ್",
-     "time": "09:00",
-     "mins": 240,
-     "note_en": "Pack by 12 noon. Ask hotel to keep bags after checkout.",
-     "note_kn": "ಮಧ್ಯಾಹ್ನ 12ರೊಳಗೆ ಪ್ಯಾಕ್ ಮಾಡಿ. ಚೆಕ್-ಔಟ್ ನಂತರ ಬ್ಯಾಗ್ ಇಡಲು ಹೋಟೆಲ್‌ಗೆ ಕೇಳಿ."
-    },
-    {
-     "id": "d6-leave",
-     "type": "hotel",
-     "en": "Leave hotel for airport",
-     "vi": "Khách sạn",
-     "kn": "ವಿಮಾನ ನಿಲ್ದಾಣಕ್ಕೆ ಹೊರಡಿ",
-     "time": "15:30",
-     "mins": 0,
-     "anchor": true,
-     "lat": 21.03424,
-     "lng": 105.84735,
-     "addr_vi": "Khách sạn Hanoi Chic Boutique, 51-53 Phố Bát Sứ, Hoàn Kiếm, Hà Nội",
-     "addr_en": "Hanoi Chic Boutique Hotel, 51-53 Bat Su Street, Hoan Kiem, Hanoi",
-     "driverTo": "d6-han",
-     "note_en": "Hotel car to the airport (about ₹1,700) — pay in đồng. Check out and pay the standard-room balance (about ₹4,000) before leaving.",
-     "note_kn": "ಹೋಟೆಲ್ ಕಾರು ವಿಮಾನ ನಿಲ್ದಾಣಕ್ಕೆ (ಸುಮಾರು ₹1,700) — ಡಾಂಗ್‌ನಲ್ಲಿ. ಹೊರಡುವ ಮೊದಲು ಸ್ಟ್ಯಾಂಡರ್ಡ್ ಕೋಣೆಯ ಬಾಕಿ (ಸುಮಾರು ₹4,000) ಕೊಡಿ."
-    },
-    {
-     "id": "d6-han",
-     "type": "airport",
-     "en": "Noi Bai Airport — check in",
-     "vi": "Sân bay Nội Bài – Nhà ga T2",
-     "kn": "ನೋಯ್ ಬಾಯ್ — ಚೆಕ್-ಇನ್",
-     "time": "16:30",
-     "mins": 155,
-     "anchor": true,
-     "lat": 21.2187,
-     "lng": 105.8042,
-     "note_en": "Flight 6E-1638 at 7:05 pm, Terminal 2",
-     "note_kn": "ಸಂಜೆ 7:05ಕ್ಕೆ ವಿಮಾನ 6E-1638, ಟರ್ಮಿನಲ್ 2",
-     "addr_vi": "Sân bay Quốc tế Nội Bài – Nhà ga T2 (Quốc tế)",
-     "addr_en": "Noi Bai International Airport – Terminal 2 (International)",
-     "airport": "han2"
-    },
-    {
-     "id": "d6-cashback",
-     "type": "airport",
-     "en": "Noi Bai — change leftover đồng to dollars",
-     "kn": "ನೋಯ್ ಬಾಯ್ — ಉಳಿದ ಡಾಂಗ್ ಅನ್ನು ಡಾಲರ್‌ಗೆ ಬದಲಿಸಿ",
-     "time": "17:00",
-     "mins": 15,
-     "note_en": "Before security, at a bank counter. Keep the receipt. See Money → Cash plan.",
-     "note_kn": "ಭದ್ರತಾ ತಪಾಸಣೆಗೆ ಮೊದಲು ಬ್ಯಾಂಕ್ ಕೌಂಟರ್‌ನಲ್ಲಿ. ರಸೀದಿ ಇಟ್ಟುಕೊಳ್ಳಿ.",
-     "link": "cash:back"
-    },
-    {
-     "id": "d6-bom",
-     "type": "airport",
-     "en": "Mumbai — enter India, wait in lounge",
-     "vi": "",
-     "kn": "ಮುಂಬೈ — ಭಾರತ ಪ್ರವೇಶ, ಲೌಂಜ್‌ನಲ್ಲಿ ಕಾಯುವುದು",
-     "time": "23:05",
-     "mins": 505,
-     "anchor": true,
-     "note_en": "Land 11:05 pm at T2. Flight 6E-5193 at 7:30 am — check the terminal on your boarding pass.",
-     "note_kn": "ರಾತ್ರಿ 11:05ಕ್ಕೆ T2ನಲ್ಲಿ ಇಳಿಯುವುದು. ಬೆಳಿಗ್ಗೆ 7:30ಕ್ಕೆ 6E-5193 — ಬೋರ್ಡಿಂಗ್ ಪಾಸ್‌ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ನೋಡಿ.",
-     "tz": "IST",
-     "airport": "bom2"
-    },
-    {
-     "id": "d6-blr",
-     "type": "home",
-     "en": "Bengaluru — welcome home!",
-     "vi": "",
-     "kn": "ಬೆಂಗಳೂರು — ಮನೆಗೆ ಸ್ವಾಗತ!",
-     "time": "09:15",
-     "mins": 0,
-     "anchor": true,
-     "note_en": "Land 9:15 am India time",
-     "note_kn": "ಭಾರತದ ಸಮಯ ಬೆಳಿಗ್ಗೆ 9:15ಕ್ಕೆ ಇಳಿಯುವುದು",
-     "tz": "IST",
-     "date": "2026-11-30",
-     "airport": "blr2"
-    },
-    {
-     "id": "t-usdinr",
-     "type": "money",
-     "en": "Change leftover dollars to rupees",
-     "kn": "ಉಳಿದ ಡಾಲರ್ ಅನ್ನು ರೂಪಾಯಿಗೆ ಬದಲಿಸಿ",
-     "date": "2026-11-30",
-     "tz": "IST",
-     "time": "11:00",
-     "mins": 0,
-     "link": "cash:home",
-     "note_en": "Any day after you are home — BookMyForex or Thomas Cook / Unimoni. Carry passport, PAN and the forex receipt. Not the airport counter (poor rate).",
-     "note_kn": "ಮನೆಗೆ ಬಂದ ಮೇಲೆ ಯಾವಾಗ ಬೇಕಾದರೂ. ಪಾಸ್‌ಪೋರ್ಟ್, ಪ್ಯಾನ್, ಫಾರೆಕ್ಸ್ ರಸೀದಿ ತೆಗೆದುಕೊಂಡು ಹೋಗಿ. ವಿಮಾನ ನಿಲ್ದಾಣದ ಕೌಂಟರ್ ಬೇಡ."
-    }
-   ]
-  }
- ]
 }

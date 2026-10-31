@@ -28,7 +28,9 @@ function kbStatic() {
       L.push(d.brief.who_en);
       d.brief.rows.forEach(r => L.push(`- ${r.when ? r.when + ': ' : ''}${r.en}${r.note_en ? ' — ' + r.note_en : ''}`));
       L.push('Food: ' + d.brief.food_en);
-    } else d.stops.forEach(s => L.push(`- ${s.pending ? '(time to be confirmed) ' : stopTimeLabel(d, s) + ': '}${s.en}${s.mins ? ` (${s.mins} min)` : ''}${s.note_en ? ' — ' + s.note_en : ''}${s.pending_en ? ' — ' + s.pending_en : ''}`));
+    }
+    d.stops.filter(s => !d.brief || s.card).forEach(s => L.push(`- ${s.pending ? '(time to be confirmed) ' : stopTimeLabel(d, s) + ': '}${s.en}${s.mins ? ` (${s.mins} min)` : ''}${s.how ? ` [${s.how.mode === 'walk' ? 'walk' : 'cab'}: ${s.how.en}]` : ''}${s.closes ? ` closes ${s.closes}` : ''}${s.note_en ? ' — ' + s.note_en : ''}${s.pending_en ? ' — ' + s.pending_en : ''}${s.about ? ` ABOUT: ${s.about.why_en} Best: ${s.about.best_en} Ticket: ${s.about.entry}. ${s.about.tip_en || ''}` : ''}`));
+    if (d.heavy) L.push('Note: Friday is a heavy day (9 stops).');
   });
   if (DATA.prep) {
     L.push('# AIRPORT STEPS');
@@ -65,8 +67,9 @@ function kbStatic() {
     DATA.shopping.items.forEach(i => L.push(`- ${i.en}: ${i.vmin == null ? 'fixed/ask' : i.vmin + (i.vmax ? '–' + i.vmax : '+')} ₫. ${i.why_en} Tip: ${i.tip_en}`));
     L.push("Don't buy: " + DATA.shopping.skip.en.join('; '));
   }
+  L.push('Most sights open at 8 am and close at 5 pm — start early, rest in the evenings.');
   if (DATA.explore) {
-    L.push('# OPTIONAL "MORE PLACES" (not in the plan; distance from hotel)');
+    L.push('# OPTIONAL "MORE PLACES" (extra list in the More tab; some are also in the plan above; distance from hotel)');
     DATA.explore.places.forEach(x => L.push(`- #${x.rank} ${x.en}: ~${x.km} km, ~${x.mins} min. ${x.why_en} Best: ${x.best_en} Fits: ${x.fits_en}. Walking: ${x.walk_en}. Entry: ${x.entry}. ${x.tip_en}`));
   }
   if (DATA.emergency) {
@@ -99,6 +102,7 @@ async function kbLive() {
   [[s.c1Name || 'Family 1', s.c1Phone], [s.c2Name || 'Family 2', s.c2Phone], ['Hotel', s.hotelPhone], ['Cruise', s.cruisePhone],
    ['Ninh Binh driver', s.driverPhone], ['Insurance helpline', s.insurancePhone], ['Express immigration (Klook) operator', s.fasttrackPhone]]
     .forEach(([n, p]) => L.push(`${n}: ${p || 'not saved'}`));
+  if (typeof gotForHelper === 'function' && gotForHelper()) L.push('# NUMBERS / WI-FI RECEIVED DURING THE TRIP', gotForHelper());
   if (s.medical) L.push(`Health notes: ${s.medical}`);
   try {
     const docs = (await DocDB.all()).filter(d => !d.deleted && !CHAT_SKIP_CATS.includes(d.cat));

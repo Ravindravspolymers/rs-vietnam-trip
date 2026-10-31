@@ -59,7 +59,7 @@ function renderFoodList(p) {
 function restaurantCard(r, km) {
   const dist = km < 1 ? `${Math.max(50, Math.round(km * 1000 / 50) * 50)} m` : `${km.toFixed(1)} km`;
   const mode = km < 1.5 ? 'walking' : 'driving';
-  const go = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(r.name + ', ' + r.addr)}&travelmode=${mode}`;
+  const go = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(r.go || r.name + ', ' + r.addr)}&travelmode=${mode}`;
   const vegTag = r.veg === 'pure' ? '<span class="vtag pure">🟢 Pure veg</span>' : '<span class="vtag friendly">🟡 Veg-friendly</span>';
   return `<article class="card rest">
     <div class="tags">${vegTag}<span class="vtag">${esc(r.cuisine)}</span><span class="vtag dist">${dist}</span></div>

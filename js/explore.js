@@ -6,7 +6,7 @@ const xList = () => (DATA.explore?.places || []).slice().sort((a, b) => a.rank -
 const X_KEY = 'xIdx';                                   // last card seen (this session)
 
 function xCard(x, i, n) {
-  const go = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(x.addr_en)}&travelmode=${x.mode === 'walk' ? 'walking' : 'driving'}&dir_action=navigate`;   // v1.3.1: starts navigation at once
+  const go = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(x.go || x.addr_en)}&travelmode=${x.mode === 'walk' ? 'walking' : 'driving'}&dir_action=navigate`;   // v1.3.1: starts navigation at once
   return `<article class="xcard" id="${esc(x.id)}" style="--xc:${esc(x.color)}" aria-label="${i + 1} of ${n}: ${esc(x.en)}">
     <a class="xhead" href="${go}" target="_blank" rel="noopener" aria-label="Navigate to ${esc(x.en)}">
       <span class="xrank">#${x.rank}</span><span class="xtag">${esc(x.tag)}</span>

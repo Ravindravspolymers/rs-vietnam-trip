@@ -3,7 +3,7 @@
    TO RELEASE AN UPDATE: change CACHE_VERSION (and APP_VERSION in js/app.js), then push. */
 'use strict';
 
-const CACHE_VERSION = 'rs-v2.8.0';
+const CACHE_VERSION = 'rs-v2.9.0';
 
 // Every file the app needs. Add new files here in later phases.
 const ASSETS = [

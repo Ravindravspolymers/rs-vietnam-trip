@@ -40,16 +40,20 @@ const BUDGET = [   // [label, ₹, must-pay]
 const PAID_INR = 162000;
 const TICKETS = [   // per person, ₫ (researched Oct 2026; confirm locally)
   ['🎭 Water puppet show (Day 4)', '100,000–200,000', 'Economy / Standard / VIP seats'],
-  ['🏛 Temple of Literature (Day 4)', '70,000', ''], ['🌊 Ngoc Son Temple, Hoan Kiem Lake (Day 1)', '50,000', ''],
+  ['🏯 Imperial Citadel (Day 4)', '100,000', ''], ['🏛 Temple of Literature (Day 4)', '70,000', ''],
+  ['🌊 Ngoc Son Temple, Hoan Kiem Lake (Day 4)', '50,000', ''],
+  ['🏛 Museum of Ethnology (Day 3)', '40,000', ''], ['🌆 Sky Lotte deck, 65th floor (Day 3)', 'from about 230,000', ''],
+  ['⛓ Hoa Lo Prison (Day 6)', '50,000', ''], ["👩 Women's Museum (Day 6)", '40,000', ''],
+  ['🕊 Mausoleum, Tran Quoc, Bach Ma, One Pillar, Cathedral', 'Free', ''],
   ['🚣 Trang An boat (Day 5)', '250,000–350,000', 'Ask the driver if included'], ['🛕 Bai Dinh buggy + stupa (Day 5)', '100,000 + 60,000', 'Ask the driver if included'],
   ['⛰ Mua Cave (Day 5)', '100,000', 'Ask the driver if included']
 ];
 const VN_FX = [
-  { name: 'BIDV bank counter — Noi Bai airport (arrivals)', link: mapQ('BIDV currency exchange Noi Bai International Airport Terminal 2'),
+  { name: 'BIDV bank counter — Noi Bai airport (arrivals)', link: mapQ('BIDV, Sảnh A2 Tầng 1 Nhà Ga T2 Sân bay Nội Bài, Sóc Sơn, Hà Nội'),
     hours: 'Every day, 6:30 am – midnight', margin: [0.8, 1.5], docs: 'Passport', receipt: 'Yes', note: 'Easiest — change right after landing. Count the notes at the counter.' },
-  { name: 'Vietcombank — bank branch, Hoan Kiem', link: mapQ('Vietcombank Hoan Kiem Hanoi'),
+  { name: 'Vietcombank — bank branch, Hoan Kiem', link: mapQ('Vietcombank Tower Hanoi, 198 Trần Quang Khải, Hoàn Kiếm, Hà Nội'),
     hours: 'Mon–Fri 8:00–16:30 (lunch break ~11:30–13:30), Sat morning', margin: [1, 2], docs: 'Passport + a short form', receipt: 'Yes', note: 'Safest place in the city. May ask for a minimum of about $100.' },
-  { name: 'Quang Huy (gold & gem shop), 130 Hang Bac — Old Quarter', link: mapQ('Quang Huy 130 Hang Bac Hanoi'),
+  { name: 'Quang Huy (gold & gem shop), 130 Hang Bac — Old Quarter', link: mapQ('Quang Huy, 130 P. Hàng Bạc, Hoàn Kiếm, Hà Nội'),
     hours: 'Every day 8:00–21:30 (also Sunday)', margin: [0.5, 1], docs: 'Usually none for small amounts', receipt: 'No', note: 'Best rate, open late. Look for the sign "Đại lý thu đổi ngoại tệ" (licensed exchange). Never change money with people on the street.' }
 ];
 
@@ -154,7 +158,7 @@ function renderCashPage() {
         <span class="kn">ಮೊದಲು ಡಾಂಗ್ ಖರ್ಚು ಮಾಡಿ. 2 ಲಕ್ಷ ಡಾಂಗ್ ಇಟ್ಟುಕೊಳ್ಳಿ. ವಾಪಸ್ ಬದಲಿಸಿದರೆ 2–3% ನಷ್ಟ.</span></p>
       ${vnTable([
         { name: 'Quang Huy, 130 Hang Bac — Old Quarter (Sunday morning, before leaving)', link: VN_FX[2].link, hours: 'Every day 8:00–21:30', margin: [1, 2], docs: 'Usually none', receipt: 'No', note: 'Open on Sunday — banks in the city are closed. Change before 3:30 pm hotel departure.' },
-        { name: 'Bank counter — Noi Bai airport, before security', link: mapQ('BIDV currency exchange Noi Bai International Airport Terminal 2'), hours: 'Daily (BIDV until midnight)', margin: [2, 3], docs: 'Passport (may ask for your exchange receipt)', receipt: 'Yes', note: 'Easy, but a slightly worse rate.' }
+        { name: 'Bank counter — Noi Bai airport, before security', link: mapQ('Currency exchange, Departures, Noi Bai International Airport Terminal 2'), hours: 'Daily (BIDV until midnight)', margin: [2, 3], docs: 'Passport (may ask for your exchange receipt)', receipt: 'Yes', note: 'Easy, but a slightly worse rate.' }
       ], true)}
       ${doneBtn(step.id)}`;
   }

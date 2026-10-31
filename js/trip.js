@@ -6,8 +6,13 @@ const TZ_NAME   = { IST: 'Asia/Kolkata', ICT: 'Asia/Ho_Chi_Minh' };
 
 const STOP_ICON = {
   home: '🏠', airport: '✈️', hotel: '🏨', lake: '🌊', cruise: '🚢', boat: '⛵',
-  temple: '🛕', market: '🛍', theatre: '🎭', viewpoint: '⛰', meal: '🍽', money: '💵'
+  temple: '🛕', market: '🛍', theatre: '🎭', viewpoint: '⛰', meal: '🍽', money: '💵',
+  museum: '🏛', monument: '🕊', street: '🎶'
 };
+
+// v2.9: shown on Today and on Friday in Plan
+const HOURS_STRIP = `<p class="hoursstrip">⏰ <strong>Most sights open at 8 am and close at 5 pm.</strong> Start early; rest in the evenings.<br>
+  <span class="kn">ಹೆಚ್ಚಿನ ಸ್ಥಳಗಳು ಬೆಳಿಗ್ಗೆ 8ಕ್ಕೆ ತೆರೆದು ಸಂಜೆ 5ಕ್ಕೆ ಮುಚ್ಚುತ್ತವೆ. ಬೇಗ ಹೊರಡಿ; ಸಂಜೆ ವಿಶ್ರಾಂತಿ.</span></p>`;
 
 // Transit stops (home, airport, hotel) and meals don't count as "places visited"
 const isPlace = s => !['home', 'airport', 'hotel', 'meal', 'money'].includes(s.type);

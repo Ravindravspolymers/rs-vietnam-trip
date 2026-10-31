@@ -5,7 +5,8 @@
 
 const TYPE_LABEL = {
   home: 'Home', airport: 'Airport', hotel: 'Hotel', lake: 'Lake', cruise: 'Cruise',
-  boat: 'Boat', temple: 'Temple', market: 'Market', theatre: 'Show', viewpoint: 'Viewpoint', meal: 'Meal', money: 'Money'
+  boat: 'Boat', temple: 'Temple', market: 'Market', theatre: 'Show', viewpoint: 'Viewpoint', meal: 'Meal', money: 'Money',
+  museum: 'Museum', monument: 'Monument', street: 'Walking street'
 };
 const LONG_DRIVE_MINS = 150;   // F35: also flagged per day in trip.json (longDrive)
 
@@ -88,8 +89,13 @@ function renderPlan() {
       <p class="wxline" data-wxline="${day.day}">${wxLine(day)}</p>
       ${longDrive ? `<p class="drivewarn">Long drive today. Ask the driver to stop for tea and toilet break.<br>
         <span class="kn">ಇಂದು ದೀರ್ಘ ಪ್ರಯಾಣ. ಚಹಾ ಮತ್ತು ಶೌಚಾಲಯಕ್ಕೆ ನಿಲ್ಲಿಸಲು ಚಾಲಕನಿಗೆ ಹೇಳಿ.</span></p>` : ''}
+      ${day.heavyNext ? `<p class="heavynote">⚠️ <strong>Tomorrow (Friday) is a heavy day</strong> — 9 stops, 8 am to 9 pm. Sleep early tonight.<br>
+        <span class="kn">ನಾಳೆ (ಶುಕ್ರವಾರ) ತುಂಬಾ ಓಡಾಟದ ದಿನ — ಇಂದು ಬೇಗ ಮಲಗಿ.</span></p>` : ''}
+      ${day.heavy ? `<p class="heavynote">💪 <strong>Today is a heavy day</strong> — 9 stops. Comfortable shoes, water, sit whenever you can.<br>
+        <span class="kn">ಇಂದು ತುಂಬಾ ಓಡಾಟದ ದಿನ — ಆರಾಮದ ಚಪ್ಪಲಿ, ನೀರು, ಆಗಾಗ ಕುಳಿತುಕೊಳ್ಳಿ.</span></p>${HOURS_STRIP}` : ''}
       ${day.day >= 1 ? `<a class="btn secondary" href="#driver:hotel-${day.day}">🏨 Hotel address for driver</a>` : ''}
-    </section>`;
+    </section>
+    ${typeof dayMsgCard === 'function' ? dayMsgCard(day) : ''}`;
 
   const nextS = dayNextStop(day);          // v1.2: glow the next activity
   // v1.5: group consecutive journey stops (home / airports) into one card
@@ -101,15 +107,18 @@ function renderPlan() {
   const cards = groups.map(({ items }) => {
     const s = items[0], leg = legs[s.id];
     const fade = visited[s.id] ? ' faded' : '';
-    const legHtml = !leg ? '' : leg.mode === 'flight'
+    const legHtml = s.how ? `<div class="leg${fade}">${s.how.mode === 'walk' ? '🚶 Walk' : '🚕 Cab'} · ${esc(s.how.en)} <span class="kn">${esc(s.how.kn)}</span></div>`
+      : !leg ? '' : leg.mode === 'flight'
       ? `<div class="leg${fade}">✈️ Flight</div>`
       : `<div class="leg${fade}">${leg.mode === 'walk' ? '🚶 Walk' : '🚗 Drive'} about ${fmtDurApprox(leg.mins)}</div>`;
     return legHtml + (items.length > 1 ? journeyCard(day, items, visited, nextS) : stopCard(day, s, !!visited[s.id], nextS === s));
-  }).join('');
+  });
 
   // v1.4: cruise and Ninh Binh days are run by others — show a short plan, not timed cards
-  const body = day.brief ? renderBrief(day) : cards;
-  return `<nav class="daybar" aria-label="Days">${chips}</nav>${head}${body}${moreLink(day)}`;
+  // v2.9: a brief day can still have its own timed cards (Day 3 afternoon)
+  const cardsOf = list => groups.filter(g => list.includes(g.items[0])).map(g => cards[groups.indexOf(g)]).join('');
+  const body = day.brief ? renderBrief(day) + cardsOf(day.stops.filter(x => x.card)) : cards.join('');
+  return `<nav class="daybar" aria-label="Days">${chips}</nav>${head}${body}`;
 }
 
 /* v1.4: short plan for days run by the cruise / hotel driver. Guide stories stay visible. */
@@ -137,13 +146,6 @@ function renderBrief(day) {
     </section>`;
 }
 
-// v1.4: "More places" at the end of the Hanoi days that have free time
-const MORE_DAYS = [1, 3, 4, 6];
-const moreLink = day => MORE_DAYS.includes(day.day) ? `<a class="card morelink" href="#explore">
-    <span class="sicon" aria-hidden="true">🧭</span>
-    <span><strong>Free time? More places to see</strong><br><span class="kn">ಬಿಡುವಿದೆಯೇ? ಇನ್ನಷ್ಟು ಸ್ಥಳಗಳು</span></span>
-    <span class="chev" aria-hidden="true">›</span></a>` : '';
-
 const stopById = id => DATA.trip.days.flatMap(d => d.stops).find(x => x.id === id);
 
 // Go + Show driver buttons. v1.4: some stops send you somewhere else next
@@ -151,19 +153,30 @@ const stopById = id => DATA.trip.days.flatMap(d => d.stops).find(x => x.id === i
 function goDriver(day, s) {
   const H = DATA.trip.hotel;
   const t = s.driverTo === 'hotel'
-    ? { id: 'hotel-' + day.day, type: 'hotel', lat: H.lat, lng: H.lng, addr_vi: H.address_vi, addr_en: `${H.en}, ${H.address_en}` }
+    ? { id: 'hotel-' + day.day, type: 'hotel', lat: H.lat, lng: H.lng, go: H.go, addr_vi: H.address_vi, addr_en: `${H.en}, ${H.address_en}` }
     : (s.driverTo && stopById(s.driverTo)) || s;
   const toLabel = t === s ? '' : t.type === 'hotel' ? ' → hotel' : ' → airport';
   const hasMap = t.lat != null;
   const mode = s.walk ? 'walking' : 'driving';
   // Navigate by full name + address (robust); fall back to coordinates
-  const dest = t.addr_en ? encodeURIComponent(t.addr_en) : `${t.lat},${t.lng}`;
+  const dest = t.go || t.addr_en ? encodeURIComponent(t.go || t.addr_en) : `${t.lat},${t.lng}`;
   const goUrl = `https://www.google.com/maps/dir/?api=1&destination=${dest}&travelmode=${mode}`;
   if (!hasMap && !t.addr_vi) return '';
   return `<div class="actions">
       ${hasMap ? `<a class="btn green" href="${goUrl}" target="_blank" rel="noopener">▶ Go${toLabel}</a>` : ''}
       ${t.addr_vi ? `<a class="btn secondary" href="#driver:${esc(t.id)}">🚕 Show driver${toLabel}</a>` : ''}
     </div>`;
+}
+
+// v2.9: why it matters · best time · ticket · tip (one line + fold)
+function aboutBlock(a) {
+  return `<p class="aboutline">⭐ ${esc(a.why_en)}</p>
+    <details class="about"><summary>Best time · ticket · tip ›</summary>
+      <p class="kn">${esc(a.why_kn)}</p>
+      <p><strong>🕒 Best time:</strong> ${esc(a.best_en)}<br><span class="kn">${esc(a.best_kn)}</span></p>
+      <p><strong>🎟 Ticket:</strong> ${esc(a.entry)}</p>
+      ${a.tip_en ? `<p><strong>💡 Tip:</strong> ${esc(a.tip_en)}<br><span class="kn">${esc(a.tip_kn)}</span></p>` : ''}
+    </details>`;
 }
 
 function stopCard(day, s, done, isNext) {
@@ -182,14 +195,17 @@ function stopCard(day, s, done, isNext) {
       <div><span>${['home', 'hotel'].includes(s.type) && s.mins === 0 ? 'Leave' : isPlace(s) || s.type === 'meal' ? 'Arrive' : 'At'}</span>
         <strong>${s.pending ? '⏳ To be confirmed' : esc(stopTimeLabel(day, s))}</strong></div>
       ${s.mins ? `<div><span>Spend</span><strong>${fmtDur(s.mins)}</strong></div>` : ''}
+      ${s.closes ? `<div><span>Closes</span><strong>${esc(s.closes)}</strong></div>` : ''}
     </div>
+    ${s.about ? aboutBlock(s.about) : ''}
     ${s.note_en ? `<div class="tip"><strong>💡 Good to know</strong><p>${esc(s.note_en)}</p><p class="kn">${esc(s.note_kn || '')}</p></div>` : ''}
     ${s.pending ? `<p class="pending">${pendingLine(s)}</p>` : ''}
     ${s.place && DATA.places?.[s.place] ? `<a class="btn story-btn" href="#story:${esc(s.id)}">🎧 Guide story</a>` : ''}
     ${s.airport ? `<a class="btn secondary" href="#airport:${esc(s.airport)}">✈️ Airport steps</a>` : ''}
     ${s.food ? `<a class="btn secondary" href="#food:${esc(s.food)}">🍽 Veg restaurants nearby</a>` : ''}
     ${s.link ? `<a class="btn secondary" href="#${esc(s.link)}">💵 Where and how ›</a>` : ''}
-    ${goDriver(day, s)}
+    ${s.choices ? `<div class="actions">${s.choices.map((c, i) => `<a class="btn green" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(c.go)}&travelmode=driving" target="_blank" rel="noopener">▶ ${esc(c.en.split(' (')[0])}</a>
+      <a class="btn secondary" href="#driver:${esc(s.id)}.${i}">🚕 Driver: ${esc(c.en.split(' (')[0])}</a>`).join('')}</div>` : goDriver(day, s)}
     <button type="button" class="tick" data-tick="${esc(s.id)}" aria-pressed="${done}">${tickLabel(done)}</button>
   </article>`;
 }
@@ -292,10 +308,13 @@ function driverTarget() {
   if (h) return { vi: h.vi, addr_vi: h.addr_vi, en: h.en, addr_en: h.addr_en, back: 'em:hosp' };
   const xp = DATA.explore?.places.find(x => x.id === p);       // v1.3: optional places
   if (xp) return { vi: xp.vi, addr_vi: xp.addr_vi, en: xp.en, addr_en: xp.addr_en, back: 'explore:' + xp.id };
+  const [cid, ci] = p.split('.');                                 // v2.9: lunch "your choice" → #driver:d6-lunch.0
+  const cs = ci != null && trip.days.flatMap(d => d.stops).find(x => x.id === cid);
+  if (cs?.choices?.[ci]) { const c = cs.choices[ci]; return { vi: c.vi, addr_vi: c.addr_vi, en: c.en, addr_en: c.addr_en, back: 'plan:' + cid }; }
   for (const d of trip.days) {
     const s = d.stops.find(x => x.id === p);
     if (s) return { vi: s.type === 'hotel' ? 'Khách sạn Hanoi Chic Boutique' : s.vi,
-                    addr_vi: s.addr_vi, en: s.en, addr_en: s.addr_en, back: 'plan:' + s.id, hotel: s.type === 'hotel' };
+                    addr_vi: s.addr_vi, en: s.den || s.en, addr_en: s.addr_en, back: 'plan:' + s.id, hotel: s.type === 'hotel' };
   }
   return null;
 }
