@@ -43,35 +43,45 @@ Please confirm where your staff will meet us. Thank you very much!`,
 Chúng tôi đến sân bay Nội Bài, nhà ga T2, ngày 24 tháng 11, chuyến bay IndiGo 6E-1637 từ Mumbai, hạ cánh lúc 10:00 sáng.
 Xin vui lòng xác nhận nhân viên sẽ đón chúng tôi ở đâu. Cảm ơn rất nhiều!` },
 
-    { id: 'm-d1-hotel', day: 1, to: 'hotel', icon: '🏨', title: 'Hotel — after check-in', when_en: 'Send after you check in', when_kn: 'ಚೆಕ್-ಇನ್ ನಂತರ ಕಳುಹಿಸಿ',
+    { id: 'm-d1-hotel', at: '2026-11-24T12:30:00+07:00', day: 1, to: 'hotel', icon: '🏨', title: 'Hotel — after check-in', when_en: 'Send after you check in', when_kn: 'ಚೆಕ್-ಇನ್ ನಂತರ ಕಳುಹಿಸಿ',
       en: `Hello, this is ${n}. We have checked in — thank you!
 1. Please send us the Wi-Fi name and password.
-2. Tomorrow (25 Nov) the Ambassador Cruise bus picks us up here. Please confirm the pickup time.
-3. Please keep our big bags at the hotel while we are on the cruise (25–26 Nov). We come back on 26 Nov afternoon.
-4. Did you get our 2 puppet show tickets for Friday 27 Nov (about 5 pm)?
+2. Please keep our big bags at the hotel while we are on the Ha Long cruise (25–26 Nov). We come back on 26 Nov afternoon.
+3. Did you get our 2 puppet show tickets for Friday 27 Nov (about 5 pm)?
 Thank you very much!`,
       vi: `Xin chào, tôi là ${n}. Chúng tôi đã nhận phòng — cảm ơn!
 1. Xin gửi giúp tên Wi-Fi và mật khẩu.
-2. Ngày mai (25/11) xe của du thuyền Ambassador đón chúng tôi ở đây. Xin xác nhận giờ đón.
-3. Xin giữ giúp hành lý lớn của chúng tôi tại khách sạn trong thời gian đi du thuyền (25–26/11). Chúng tôi về chiều ngày 26/11.
-4. Khách sạn đã mua được 2 vé múa rối nước cho thứ Sáu 27/11 (khoảng 5 giờ chiều) chưa ạ?
+2. Xin giữ giúp hành lý lớn của chúng tôi tại khách sạn trong thời gian đi du thuyền Hạ Long (25–26/11). Chúng tôi về chiều ngày 26/11.
+3. Khách sạn đã mua được 2 vé múa rối nước cho thứ Sáu 27/11 (khoảng 5 giờ chiều) chưa ạ?
 Cảm ơn rất nhiều!` },
 
-    { id: 'm-d2-cruise', day: 2, to: 'cruise', icon: '🚢', title: 'Cruise — after boarding', when_en: 'Send after you board (or tell the guide)', when_kn: 'ಹಡಗು ಹತ್ತಿದ ನಂತರ (ಅಥವಾ ಗೈಡ್‌ಗೆ ಹೇಳಿ)',
+    { id: 'm-d1-cruise', at: '2026-11-24T13:00:00+07:00', day: 1, to: 'cruise', icon: '🚢', title: 'Ha Long cruise — tomorrow\'s pickup', when_en: 'Send in the afternoon, after you check in', when_kn: 'ಮಧ್ಯಾಹ್ನ, ಚೆಕ್-ಇನ್ ನಂತರ',
+      en: `Hello Ambassador Cruise, this is ${n}${refEn(getMsgInfo().cruiseRef)}. We have reached Hanoi and are staying at Hanoi Chic Boutique Hotel, 51-53 Bat Su, Hoan Kiem.
+1. Please confirm tomorrow's (25 Nov) pickup time at our hotel.
+2. Please send the driver's or guide's name, phone number and the bus/car number plate.
+3. Reminder: pure vegetarian meals for both of us — no meat, no fish, no fish sauce. Eggs are OK.
+Thank you very much!`,
+      vi: `Xin chào Ambassador Cruise, tôi là ${n}${refVi(getMsgInfo().cruiseRef)}. Chúng tôi đã đến Hà Nội và đang ở khách sạn Hanoi Chic Boutique, 51-53 Bát Sứ, Hoàn Kiếm.
+1. Xin xác nhận giờ đón ngày mai (25/11) tại khách sạn của chúng tôi.
+2. Xin gửi tên, số điện thoại của tài xế hoặc hướng dẫn viên, và biển số xe.
+3. Xin nhắc lại: bữa ăn chay cho cả hai người — không thịt, không cá, không nước mắm. Trứng thì được.
+Cảm ơn rất nhiều!` },
+
+    { id: 'm-d2-cruise', at: '2026-11-25T13:00:00+07:00', day: 2, to: 'cruise', icon: '🚢', title: 'Cruise — after boarding', when_en: 'Send after you board (or tell the guide)', when_kn: 'ಹಡಗು ಹತ್ತಿದ ನಂತರ (ಅಥವಾ ಗೈಡ್‌ಗೆ ಹೇಳಿ)',
       en: `Hello, this is ${n}, on board today. Thank you!
-1. Reminder: pure vegetarian meals for both of us — no meat, no fish, no fish sauce. Eggs are OK.
-2. Tomorrow (26 Nov), what time will the bus drop us at Hanoi Chic Boutique Hotel, 51-53 Bat Su?
+1. Please make sure our meals on board are pure vegetarian.
+2. Tomorrow (26 Nov), what time will the bus drop us back at Hanoi Chic Boutique Hotel, 51-53 Bat Su?
 Thank you very much!`,
       vi: `Xin chào, tôi là ${n}, đang ở trên tàu hôm nay. Cảm ơn!
-1. Xin nhắc lại: bữa ăn chay cho cả hai người — không thịt, không cá, không nước mắm. Trứng thì được.
+1. Xin đảm bảo các bữa ăn trên tàu của chúng tôi là đồ chay.
 2. Ngày mai (26/11), mấy giờ xe đưa chúng tôi về khách sạn Hanoi Chic Boutique, 51-53 Bát Sứ?
 Cảm ơn rất nhiều!` },
 
-    { id: 'm-d3-hotel', day: 3, to: 'hotel', icon: '🏨', title: 'Hotel — coming back today', when_en: 'Send in the morning, from the ship', when_kn: 'ಬೆಳಿಗ್ಗೆ ಹಡಗಿನಿಂದ ಕಳುಹಿಸಿ',
+    { id: 'm-d3-hotel', at: '2026-11-26T08:00:00+07:00', day: 3, to: 'hotel', icon: '🏨', title: 'Hotel — coming back today', when_en: 'Send in the morning, from the ship', when_kn: 'ಬೆಳಿಗ್ಗೆ ಹಡಗಿನಿಂದ ಕಳುಹಿಸಿ',
       en: `Hello, this is ${n}. We come back from the cruise today and reach the hotel around 1:30 pm. Please have our room and our bags ready. Thank you very much!`,
       vi: `Xin chào, tôi là ${n}. Hôm nay chúng tôi đi du thuyền về, đến khách sạn khoảng 1:30 chiều. Xin chuẩn bị sẵn phòng và hành lý của chúng tôi. Cảm ơn rất nhiều!` },
 
-    { id: 'm-d4-hotel', day: 4, to: 'hotel', icon: '🏨', title: 'Hotel — tomorrow Ninh Binh', when_en: 'Send in the morning, before you go out', when_kn: 'ಬೆಳಿಗ್ಗೆ ಹೊರಡುವ ಮೊದಲು',
+    { id: 'm-d4-hotel', at: '2026-11-27T07:30:00+07:00', day: 4, to: 'hotel', icon: '🏨', title: 'Hotel — tomorrow Ninh Binh', when_en: 'Send in the morning, before you go out', when_kn: 'ಬೆಳಿಗ್ಗೆ ಹೊರಡುವ ಮೊದಲು',
       en: `Good morning, this is ${n}.
 1. Please give us today's puppet show tickets and tell us the exact show time.
 2. Tomorrow (Sat 28 Nov) is our Ninh Binh tour. Please confirm the pickup time, and send the driver's name and phone number.
@@ -83,7 +93,7 @@ Thank you very much!`,
 3. Ngày mai chúng tôi chuyển sang phòng tiêu chuẩn cho đêm cuối. Tối nay chúng tôi sẽ đóng gói — xin chuyển giúp hành lý khi chúng tôi đi Ninh Bình.
 Cảm ơn rất nhiều!` },
 
-    { id: 'm-d5-hotel', day: 5, to: 'hotel', icon: '🏨', title: 'Hotel — tomorrow: early checkout', when_en: 'Send this evening, after Ninh Binh', when_kn: 'ಇಂದು ಸಂಜೆ, ನಿನ್ ಬಿನ್ ನಂತರ',
+    { id: 'm-d5-hotel', at: '2026-11-28T19:00:00+07:00', day: 5, to: 'hotel', icon: '🏨', title: 'Hotel — tomorrow: early checkout', when_en: 'Send this evening, after Ninh Binh', when_kn: 'ಇಂದು ಸಂಜೆ, ನಿನ್ ಬಿನ್ ನಂತರ',
       why_en: 'Why: tomorrow you leave the hotel at about 7 am for the Mausoleum, Hoa Lo and the Women\'s Museum, and come back only at 3:20 pm for the airport car. So you check out early — only after breakfast — and the hotel keeps your bags.',
       why_kn: 'ಏಕೆ: ನಾಳೆ ಬೆಳಿಗ್ಗೆ 7ಕ್ಕೆ ಹೊರಟು ಮಧ್ಯಾಹ್ನ 3:20ಕ್ಕೆ ಮಾತ್ರ ವಾಪಸ್. ಆದ್ದರಿಂದ ಉಪಾಹಾರದ ನಂತರ ಬೇಗ ಚೆಕ್-ಔಟ್; ಬ್ಯಾಗ್ ಹೋಟೆಲ್‌ನಲ್ಲಿ.',
       en: `Hello, this is ${n}. Tomorrow (Sun 29 Nov) is our last day. We go sightseeing early and fly home in the evening.
@@ -99,7 +109,7 @@ Thank you very much!`,
 4. Xin xác nhận xe ra sân bay Nội Bài lúc 3:30 chiều, và gửi tên, số điện thoại và biển số xe của tài xế.
 Cảm ơn rất nhiều!` },
 
-    { id: 'm-d6-hotel', day: 6, to: 'hotel', icon: '🏨', title: 'Hotel — on the way back', when_en: 'Send at lunch, around 2:30 pm', when_kn: 'ಊಟದ ಸಮಯದಲ್ಲಿ, ಸುಮಾರು 2:30ಕ್ಕೆ',
+    { id: 'm-d6-hotel', at: '2026-11-29T14:30:00+07:00', day: 6, to: 'hotel', icon: '🏨', title: 'Hotel — on the way back', when_en: 'Send at lunch, around 2:30 pm', when_kn: 'ಊಟದ ಸಮಯದಲ್ಲಿ, ಸುಮಾರು 2:30ಕ್ಕೆ',
       en: `Hello, this is ${n}. We will be back at the hotel by 3:20 pm. Please keep our bags ready, and please confirm the airport car at 3:30 pm. Thank you very much!`,
       vi: `Xin chào, tôi là ${n}. Chúng tôi sẽ về khách sạn trước 3:20 chiều. Xin chuẩn bị sẵn hành lý, và xác nhận xe ra sân bay lúc 3:30 chiều. Cảm ơn rất nhiều!` }
   ];
@@ -137,6 +147,16 @@ function dayMsgCard(day, today) {
   return `<details class="card msgday"${left ? ' open' : ''}><summary>📲 ${today ? 'Messages to send today' : 'Messages for this day'} <span class="badge">${left ? left + ' to send' : '✓ sent'}</span>
       <span class="kn">${today ? 'ಇಂದು ಕಳುಹಿಸಬೇಕಾದ ಸಂದೇಶ' : 'ಈ ದಿನದ ಸಂದೇಶ'}</span></summary>
     ${list.map(msgCard).join('')}</details>`;
+}
+
+/* ---------- ⏰ In-app reminder: bright "Send now" card on Today once a message is due (until marked done) ---------- */
+// Only today's messages — an unsent one from an earlier day is no longer useful as a reminder
+function msgAlerts(cur, now = new Date()) {
+  const today = cur && !cur.before && !cur.after ? cur.day.day : -1;
+  return allMessages().filter(m => m.at && m.day === today && new Date(m.at) <= now && !isDone(m.id)).map(m => `<section class="alertcard">
+      <a href="#plan:day${m.day}"><strong>📲 Send now: ${esc(m.title)}</strong><span class="kn">ಈಗ ಸಂದೇಶ ಕಳುಹಿಸಿ</span><span class="asub">${esc(m.when_en)} ›</span></a>
+      <button type="button" class="adone" data-task="${m.id}" aria-label="Mark done">✓ Done</button>
+    </section>`).join('');
 }
 
 /* ---------- 📒 Numbers you receive ---------- */
@@ -241,3 +261,11 @@ document.addEventListener('click', e => {
 });
 
 ROUTES.confirm = { title: 'Messages', tab: '', back: () => (/^#prep|^#check/.test(prevHash) ? 'prep' : 'today'), render: renderConfirm, after: startConfirm };
+
+// If Today stays open, show a newly due "Send now" card within a minute
+let msgDueCount = -1;
+setInterval(() => {
+  const n = (msgAlerts(currentTripDay()).match(/alertcard/g) || []).length;
+  if (msgDueCount >= 0 && n > msgDueCount && /^#?(today)?$/.test(location.hash.replace('#', '')) && !document.querySelector('input:focus')) render();
+  msgDueCount = n;
+}, 60000);
