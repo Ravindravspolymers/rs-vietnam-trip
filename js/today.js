@@ -27,8 +27,8 @@ function renderToday() {
     ${cur.after ? '' : (() => { const wd = cur.before || cur.day.day === 0 ? DATA.trip.days[1] : cur.day;
       return `<a class="card wxtoday" href="#plan:day${wd.day}">${cur.before || cur.day.day === 0 ? `<span class="muted small">${esc(dayLabel(wd))} — Hanoi</span>` : ''}<span class="wxline" data-wxline="${wd.day}">${wxLine(wd)}</span></a>`; })()}
     ${cur.after ? '' : HOURS_STRIP}
-    ${during && day.heavyNext ? `<p class="heavynote">⚠️ <strong>Tomorrow (Friday) is a heavy day</strong> — 9 stops, 8 am to 9 pm. Sleep early tonight.<br><span class="kn">ನಾಳೆ ತುಂಬಾ ಓಡಾಟದ ದಿನ — ಇಂದು ಬೇಗ ಮಲಗಿ.</span></p>` : ''}
-    ${during && day.heavy ? `<p class="heavynote">💪 <strong>Today is a heavy day</strong> — 9 stops. Comfortable shoes, water, sit whenever you can.<br><span class="kn">ಇಂದು ತುಂಬಾ ಓಡಾಟದ ದಿನ — ಆಗಾಗ ಕುಳಿತುಕೊಳ್ಳಿ.</span></p>` : ''}
+    ${during && day.heavyNext ? `<p class="heavynote">⚠️ <strong>Tomorrow (Friday) is a heavy day</strong> — 7 places, 8 am to 9 pm. Sleep early tonight.<br><span class="kn">ನಾಳೆ ತುಂಬಾ ಓಡಾಟದ ದಿನ — ಇಂದು ಬೇಗ ಮಲಗಿ.</span></p>` : ''}
+    ${during && day.heavy ? `<p class="heavynote">💪 <strong>Today is a heavy day</strong> — 7 places. Comfortable shoes, water, sit whenever you can.<br><span class="kn">ಇಂದು ತುಂಬಾ ಓಡಾಟದ ದಿನ — ಆಗಾಗ ಕುಳಿತುಕೊಳ್ಳಿ.</span></p>` : ''}
     ${during && day.day >= 1 ? dayMsgCard(day, true) + renderGotNums(false) : ''}
     ${renderHotelCard(cur)}
     ${renderReadyCard()}

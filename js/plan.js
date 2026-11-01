@@ -89,14 +89,15 @@ function renderPlan() {
       <p class="wxline" data-wxline="${day.day}">${wxLine(day)}</p>
       ${longDrive ? `<p class="drivewarn">Long drive today. Ask the driver to stop for tea and toilet break.<br>
         <span class="kn">ಇಂದು ದೀರ್ಘ ಪ್ರಯಾಣ. ಚಹಾ ಮತ್ತು ಶೌಚಾಲಯಕ್ಕೆ ನಿಲ್ಲಿಸಲು ಚಾಲಕನಿಗೆ ಹೇಳಿ.</span></p>` : ''}
-      ${day.heavyNext ? `<p class="heavynote">⚠️ <strong>Tomorrow (Friday) is a heavy day</strong> — 9 stops, 8 am to 9 pm. Sleep early tonight.<br>
+      ${day.heavyNext ? `<p class="heavynote">⚠️ <strong>Tomorrow (Friday) is a heavy day</strong> — 7 places, 8 am to 9 pm. Sleep early tonight.<br>
         <span class="kn">ನಾಳೆ (ಶುಕ್ರವಾರ) ತುಂಬಾ ಓಡಾಟದ ದಿನ — ಇಂದು ಬೇಗ ಮಲಗಿ.</span></p>` : ''}
-      ${day.heavy ? `<p class="heavynote">💪 <strong>Today is a heavy day</strong> — 9 stops. Comfortable shoes, water, sit whenever you can.<br>
+      ${day.heavy ? `<p class="heavynote">💪 <strong>Today is a heavy day</strong> — 7 places. Comfortable shoes, water, sit whenever you can.<br>
         <span class="kn">ಇಂದು ತುಂಬಾ ಓಡಾಟದ ದಿನ — ಆರಾಮದ ಚಪ್ಪಲಿ, ನೀರು, ಆಗಾಗ ಕುಳಿತುಕೊಳ್ಳಿ.</span></p>${HOURS_STRIP}` : ''}
       ${day.day >= 1 ? `<a class="btn secondary" href="#driver:hotel-${day.day}">🏨 Hotel address for driver</a>` : ''}
     </section>
     ${typeof dayMsgCard === 'function' ? dayMsgCard(day) : ''}`;
 
+  const pnos = {}; day.stops.filter(x => (!day.brief || x.card) && isPlace(x)).forEach((x, i) => { pnos[x.id] = i + 1; });
   const nextS = dayNextStop(day);          // v1.2: glow the next activity
   // v1.5: group consecutive journey stops (home / airports) into one card
   const groups = [];
@@ -111,20 +112,21 @@ function renderPlan() {
       : !leg ? '' : leg.mode === 'flight'
       ? `<div class="leg${fade}">✈️ Flight</div>`
       : `<div class="leg${fade}">${leg.mode === 'walk' ? '🚶 Walk' : '🚗 Drive'} about ${fmtDurApprox(leg.mins)}</div>`;
-    return legHtml + (items.length > 1 ? journeyCard(day, items, visited, nextS) : stopCard(day, s, !!visited[s.id], nextS === s));
+    return legHtml + (items.length > 1 ? journeyCard(day, items, visited, nextS) : stopCard(day, s, !!visited[s.id], nextS === s, pnos[s.id]));
   });
 
   // v1.4: cruise and Ninh Binh days are run by others — show a short plan, not timed cards
   // v2.9: a brief day can still have its own timed cards (Day 3 afternoon)
   const cardsOf = list => groups.filter(g => list.includes(g.items[0])).map(g => cards[groups.indexOf(g)]).join('');
   const body = day.brief ? renderBrief(day) + cardsOf(day.stops.filter(x => x.card)) : cards.join('');
-  return `<nav class="daybar" aria-label="Days">${chips}</nav>${head}${body}`;
+  return `<nav class="daybar" aria-label="Days">${chips}</nav>
+    <p class="legend"><span class="lgi"><span class="lg lg-msg"></span>Messages</span><span class="lgi"><span class="lg lg-auto"></span>Done for you</span><span class="lgi"><span class="lg lg-place"></span>Your places</span><span class="lgi"><span class="lg lg-meal"></span>Meals</span></p>${head}${body}`;
 }
 
 /* v1.4: short plan for days run by the cruise / hotel driver. Guide stories stay visible. */
 function renderBrief(day) {
   const b = day.brief;
-  return `<section class="card brief">
+  return `<section class="card brief cat-auto">
       <p class="brief-who">🤝 ${esc(b.who_en)}<br><span class="kn">${esc(b.who_kn)}</span></p>
       <ol class="brief-list">${b.rows.map(r => `<li>
         <span class="bicon" aria-hidden="true">${r.icon}</span>
@@ -150,7 +152,7 @@ const stopById = id => DATA.trip.days.flatMap(d => d.stops).find(x => x.id === i
 
 // Go + Show driver buttons. v1.4: some stops send you somewhere else next
 // (airport arrival → hotel; leave hotel → airport; lunch → back to hotel)
-function goDriver(day, s) {
+function goDriver(day, s, noDriver) {
   const H = DATA.trip.hotel;
   const t = s.driverTo === 'hotel'
     ? { id: 'hotel-' + day.day, type: 'hotel', lat: H.lat, lng: H.lng, go: H.go, addr_vi: H.address_vi, addr_en: `${H.en}, ${H.address_en}` }
@@ -164,31 +166,42 @@ function goDriver(day, s) {
   if (!hasMap && !t.addr_vi) return '';
   return `<div class="actions">
       ${hasMap ? `<a class="btn green" href="${goUrl}" target="_blank" rel="noopener">▶ Go${toLabel}</a>` : ''}
-      ${t.addr_vi ? `<a class="btn secondary" href="#driver:${esc(t.id)}">🚕 Show driver${toLabel}</a>` : ''}
+      ${t.addr_vi && !noDriver ? `<a class="btn secondary" href="#driver:${esc(t.id)}">🚕 Show driver${toLabel}</a>` : ''}
     </div>`;
 }
 
-// v2.9: why it matters · best time · ticket · tip (one line + fold)
+// v3.0 (Don't Make Me Think): a card shows only what is needed to act — title, time, Go, Done.
+// Everything else (why it matters, best time, ticket, tips, story, driver) sits in one "More ›" fold.
 function aboutBlock(a) {
-  return `<p class="aboutline">⭐ ${esc(a.why_en)}</p>
-    <details class="about"><summary>Best time · ticket · tip ›</summary>
-      <p class="kn">${esc(a.why_kn)}</p>
+  return `<p class="aboutline">⭐ ${esc(a.why_en)}<br><span class="kn">${esc(a.why_kn)}</span></p>
       <p><strong>🕒 Best time:</strong> ${esc(a.best_en)}<br><span class="kn">${esc(a.best_kn)}</span></p>
       <p><strong>🎟 Ticket:</strong> ${esc(a.entry)}</p>
-      ${a.tip_en ? `<p><strong>💡 Tip:</strong> ${esc(a.tip_en)}<br><span class="kn">${esc(a.tip_kn)}</span></p>` : ''}
-    </details>`;
+      ${a.tip_en ? `<p><strong>💡 Tip:</strong> ${esc(a.tip_en)}<br><span class="kn">${esc(a.tip_kn)}</span></p>` : ''}`;
 }
+const stopCat = s => s.type === 'meal' ? 'cat-meal' : isPlace(s) ? 'cat-place' : 'cat-task';
 
-function stopCard(day, s, done, isNext) {
-  return `<article class="card stop${done ? ' visited' : ''}${isNext ? ' next' : ''}" id="stop-${esc(s.id)}">
+function stopCard(day, s, done, isNext, pno) {
+  const fold = isPlace(s) || s.type === 'meal';          // places & meals: notes go in the fold; tasks keep them visible
+  const note = s.note_en ? `<div class="tip"><strong>💡 Good to know</strong><p>${esc(s.note_en)}</p><p class="kn">${esc(s.note_kn || '')}</p></div>` : '';
+  const cab = s.how?.mode === 'cab' || (!s.how && !s.walk);
+  const more = [
+    s.about ? aboutBlock(s.about) : '', fold ? note : '',
+    s.place && DATA.places?.[s.place] ? `<a class="btn story-btn" href="#story:${esc(s.id)}">🎧 Guide story</a>` : '',
+    s.food ? `<a class="btn secondary" href="#food:${esc(s.food)}">🍽 Veg restaurants nearby</a>` : '',
+    !cab && !s.choices && s.addr_vi ? `<a class="btn secondary" href="#driver:${esc(s.id)}">🚕 Show driver</a>` : ''
+  ].join('');
+  const go = s.choices ? `<div class="actions">${s.choices.map((c, i) => `<a class="btn green" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(c.go)}&travelmode=driving" target="_blank" rel="noopener">▶ ${esc(c.en.split(' (')[0])}</a>
+      <a class="btn secondary" href="#driver:${esc(s.id)}.${i}">🚕 Driver: ${esc(c.en.split(' (')[0])}</a>`).join('')}</div>`
+    : goDriver(day, s, !cab);
+  return `<article class="card stop ${stopCat(s)}${done ? ' visited' : ''}${isNext ? ' next' : ''}" id="stop-${esc(s.id)}">
     ${isNext ? '<p class="nextflag">▶ NEXT <span class="kn">ಮುಂದಿನದು</span></p>' : ''}
     <div class="stop-head">
       <span class="sicon" aria-hidden="true">${STOP_ICON[s.type] || '📍'}</span>
       <div>
-        <span class="stype">${TYPE_LABEL[s.type] || 'Place'}</span>
+        <span class="stype">${pno ? `<span class="pno">Place ${pno}</span> ` : ''}${TYPE_LABEL[s.type] || 'Place'}</span>
         <h3>${esc(s.en)}</h3>
-        ${s.vi ? `<p class="vi">${esc(s.vi)}</p>` : ''}
-        <p class="kn muted">${esc(s.kn)}</p>
+        ${s.vi && s.type !== 'meal' ? `<p class="vi">${esc(s.vi)}</p>` : ''}
+        <p class="kn muted">${pno ? `ಸ್ಥಳ ${pno} · ` : ''}${esc(s.kn)}</p>
       </div>
     </div>
     <div class="facts">
@@ -196,16 +209,14 @@ function stopCard(day, s, done, isNext) {
         <strong>${s.pending ? '⏳ To be confirmed' : esc(stopTimeLabel(day, s))}</strong></div>
       ${s.mins ? `<div><span>Spend</span><strong>${fmtDur(s.mins)}</strong></div>` : ''}
       ${s.closes ? `<div><span>Closes</span><strong>${esc(s.closes)}</strong></div>` : ''}
+      ${s.dl ? `<div class="dl"><span>${esc(s.dl[0])}</span><strong>${esc(s.dl[1])}</strong></div>` : ''}
     </div>
-    ${s.about ? aboutBlock(s.about) : ''}
-    ${s.note_en ? `<div class="tip"><strong>💡 Good to know</strong><p>${esc(s.note_en)}</p><p class="kn">${esc(s.note_kn || '')}</p></div>` : ''}
+    ${fold ? '' : note}
     ${s.pending ? `<p class="pending">${pendingLine(s)}</p>` : ''}
-    ${s.place && DATA.places?.[s.place] ? `<a class="btn story-btn" href="#story:${esc(s.id)}">🎧 Guide story</a>` : ''}
     ${s.airport ? `<a class="btn secondary" href="#airport:${esc(s.airport)}">✈️ Airport steps</a>` : ''}
-    ${s.food ? `<a class="btn secondary" href="#food:${esc(s.food)}">🍽 Veg restaurants nearby</a>` : ''}
     ${s.link ? `<a class="btn secondary" href="#${esc(s.link)}">💵 Where and how ›</a>` : ''}
-    ${s.choices ? `<div class="actions">${s.choices.map((c, i) => `<a class="btn green" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(c.go)}&travelmode=driving" target="_blank" rel="noopener">▶ ${esc(c.en.split(' (')[0])}</a>
-      <a class="btn secondary" href="#driver:${esc(s.id)}.${i}">🚕 Driver: ${esc(c.en.split(' (')[0])}</a>`).join('')}</div>` : goDriver(day, s)}
+    ${go}
+    ${more ? `<details class="about"><summary>More — why go, ticket, tips ›</summary>${more}</details>` : ''}
     <button type="button" class="tick" data-tick="${esc(s.id)}" aria-pressed="${done}">${tickLabel(done)}</button>
   </article>`;
 }
@@ -217,7 +228,7 @@ function journeyCard(day, items, visited, nextS) {
   const ids = items.map(x => x.id).join(' ');
   const main = items.find(x => x.driverTo) || items.find(x => x.lat != null && x.type !== 'home');
   const legs = items.filter(x => x.airport);
-  return `<article class="card stop journey${done ? ' visited' : ''}${isNext ? ' next' : ''}" id="stop-${esc(items[0].id)}" data-stops="${esc(ids)}">
+  return `<article class="card stop journey cat-auto${done ? ' visited' : ''}${isNext ? ' next' : ''}" id="stop-${esc(items[0].id)}" data-stops="${esc(ids)}">
     ${isNext ? '<p class="nextflag">▶ NEXT <span class="kn">ಮುಂದಿನದು</span></p>' : ''}
     <div class="stop-head">
       <span class="sicon" aria-hidden="true">✈️</span>

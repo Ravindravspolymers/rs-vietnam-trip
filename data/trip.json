@@ -230,7 +230,11 @@
             "tip_kn": "ಬೇರೆಯವರು ಚಪ್ಪಲಿ ಬಿಟ್ಟರೆ ಮಾತ್ರ ಬಿಡಿ."
           },
           "note_en": "Leave the hotel by 3:30 pm (it closes at 5). After the temple, stroll the old streets around it. Leave by 4:45 pm for the market.",
-          "note_kn": "ಹೋಟೆಲ್‌ನಿಂದ 3:30ರೊಳಗೆ ಹೊರಡಿ (5ಕ್ಕೆ ಮುಚ್ಚುತ್ತದೆ). ನಂತರ ಸುತ್ತಲಿನ ಹಳೆಯ ಬೀದಿಗಳಲ್ಲಿ ನಡೆಯಿರಿ. 4:45ರೊಳಗೆ ಮಾರುಕಟ್ಟೆಗೆ ಹೊರಡಿ."
+          "note_kn": "ಹೋಟೆಲ್‌ನಿಂದ 3:30ರೊಳಗೆ ಹೊರಡಿ (5ಕ್ಕೆ ಮುಚ್ಚುತ್ತದೆ). ನಂತರ ಸುತ್ತಲಿನ ಹಳೆಯ ಬೀದಿಗಳಲ್ಲಿ ನಡೆಯಿರಿ. 4:45ರೊಳಗೆ ಮಾರುಕಟ್ಟೆಗೆ ಹೊರಡಿ.",
+          "dl": [
+            "Leave hotel by",
+            "3:30 pm"
+          ]
         },
         {
           "id": "d1-market",
@@ -263,7 +267,11 @@
           },
           "place": "oldquarter",
           "note_en": "Leave Bach Ma by 4:45 pm — the market closes at 6. Busy and noisy: keep your bag in front and bargain politely.",
-          "note_kn": "4:45ರೊಳಗೆ ಬಾಚ್ ಮಾದಿಂದ ಹೊರಡಿ — ಮಾರುಕಟ್ಟೆ 6ಕ್ಕೆ ಮುಚ್ಚುತ್ತದೆ. ಬ್ಯಾಗ್ ಮುಂದೆ ಹಿಡಿಯಿರಿ, ನಯವಾಗಿ ಚೌಕಾಸಿ ಮಾಡಿ."
+          "note_kn": "4:45ರೊಳಗೆ ಬಾಚ್ ಮಾದಿಂದ ಹೊರಡಿ — ಮಾರುಕಟ್ಟೆ 6ಕ್ಕೆ ಮುಚ್ಚುತ್ತದೆ. ಬ್ಯಾಗ್ ಮುಂದೆ ಹಿಡಿಯಿರಿ, ನಯವಾಗಿ ಚೌಕಾಸಿ ಮಾಡಿ.",
+          "dl": [
+            "Leave temple by",
+            "4:45 pm"
+          ]
         },
         {
           "id": "d1-dinner",
@@ -527,7 +535,11 @@
             "tip_kn": "ಭುಜ, ಮಂಡಿ ಮುಚ್ಚಿ. ಬೋಧಿ ವೃಕ್ಷ ನೋಡಿ — ಭಾರತದ ನಂಟು."
           },
           "note_en": "Reach by 2:30 pm. Then take a cab straight to the Museum of Ethnology.",
-          "note_kn": "2:30ರೊಳಗೆ ತಲುಪಿ. ನಂತರ ಕ್ಯಾಬ್‌ನಲ್ಲಿ ನೇರವಾಗಿ ಎಥ್ನಾಲಜಿ ವಸ್ತುಸಂಗ್ರಹಾಲಯಕ್ಕೆ."
+          "note_kn": "2:30ರೊಳಗೆ ತಲುಪಿ. ನಂತರ ಕ್ಯಾಬ್‌ನಲ್ಲಿ ನೇರವಾಗಿ ಎಥ್ನಾಲಜಿ ವಸ್ತುಸಂಗ್ರಹಾಲಯಕ್ಕೆ.",
+          "dl": [
+            "Leave hotel by",
+            "2:10 pm"
+          ]
         },
         {
           "id": "d3-ethno",
@@ -591,7 +603,11 @@
             "tip_kn": "ವೇಗದ ಲಿಫ್ಟ್, ಮೆಟ್ಟಿಲು ಇಲ್ಲ."
           },
           "note_en": "Sunset about 5:15 pm, then the city lights. Take a cab back for dinner.",
-          "note_kn": "ಸುಮಾರು 5:15ಕ್ಕೆ ಸೂರ್ಯಾಸ್ತ, ನಂತರ ನಗರದ ದೀಪಗಳು. ಕ್ಯಾಬ್‌ನಲ್ಲಿ ಊಟಕ್ಕೆ ವಾಪಸ್."
+          "note_kn": "ಸುಮಾರು 5:15ಕ್ಕೆ ಸೂರ್ಯಾಸ್ತ, ನಂತರ ನಗರದ ದೀಪಗಳು. ಕ್ಯಾಬ್‌ನಲ್ಲಿ ಊಟಕ್ಕೆ ವಾಪಸ್.",
+          "dl": [
+            "Leave museum by",
+            "4:45 pm"
+          ]
         },
         {
           "id": "d3-dinner",
@@ -879,7 +895,11 @@
             "entry": "100,000–200,000 ₫",
             "tip_en": "Front-middle seats are best. Toilet before the show.",
             "tip_kn": "ಮುಂದಿನ ಮಧ್ಯದ ಆಸನ ಉತ್ತಮ. ಮೊದಲೇ ಶೌಚಾಲಯಕ್ಕೆ ಹೋಗಿ."
-          }
+          },
+          "dl": [
+            "Reach by",
+            "4:45 pm"
+          ]
         },
         {
           "id": "d4-dinner",
@@ -1291,7 +1311,11 @@
             }
           ],
           "note_en": "Pick either — both are close to the hotel. Be back at the hotel by 3:20 pm.",
-          "note_kn": "ಯಾವುದಾದರೂ ಒಂದು — ಎರಡೂ ಹೋಟೆಲ್ ಹತ್ತಿರ. 3:20ರೊಳಗೆ ಹೋಟೆಲ್‌ಗೆ ಬನ್ನಿ."
+          "note_kn": "ಯಾವುದಾದರೂ ಒಂದು — ಎರಡೂ ಹೋಟೆಲ್ ಹತ್ತಿರ. 3:20ರೊಳಗೆ ಹೋಟೆಲ್‌ಗೆ ಬನ್ನಿ.",
+          "dl": [
+            "Back at hotel",
+            "3:20 pm"
+          ]
         },
         {
           "id": "d6-leave",

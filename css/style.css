@@ -816,3 +816,44 @@ details.msgday .msgcard { box-shadow: none; border: 1px solid var(--line); margi
 .tr-show.long p[lang="vi"] { font-size: clamp(20px, 5.6vw, 28px); font-weight: 700; white-space: pre-wrap; }
 :root[data-theme="dark"] .hoursstrip { background: #3A2410; color: #FFE0B2; }
 :root[data-theme="dark"] .heavynote { background: #3A1412; color: #FFD6D3; }
+
+/* ======================================================================
+   v3.0: colour by who acts · place numbers · compact cards (Don't Make Me Think)
+   ====================================================================== */
+.legend { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; margin: -4px 4px 12px; color: var(--muted); font-size: max(15px, .8em); }
+.lgi { white-space: nowrap; }
+.lg { display: inline-block; width: 14px; height: 14px; border-radius: 4px; margin-right: 6px; vertical-align: -2px; }
+.lg-msg { background: #111; box-shadow: 0 0 0 2px #25D366; }
+.lg-auto { background: #DCE6F0; border: 1px solid #8DA4BD; }
+.lg-place { background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--red); }
+.lg-meal { background: #E3F2E1; border: 1px solid #8DBF88; }
+/* 📲 messages: black, glowing green until sent */
+details.msgday { background: #141414; color: #F5F5F5; border: 2px solid #3A3A3A; }
+details.msgday.due { border-color: #25D366; animation: msgglow 2.2s ease-in-out infinite; }
+@keyframes msgglow { 0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,.35); } 50% { box-shadow: 0 0 14px 4px rgba(37,211,102,.55); } }
+details.msgday > summary .kn, details.msgday .muted { color: #C8C8C8; }
+details.msgday .msgcard { background: #222; color: #F5F5F5; border-color: #3A3A3A; }
+details.msgday .msgtext { background: #111; color: #F5F5F5; }
+details.msgday .msgwhy { background: #2E2A1E; color: #FFF3D0; }
+details.msgday .btn.secondary { background: #2E2E2E; color: #fff; border-color: #555; }
+details.msgday .tick { color: #F5F5F5; border-color: #777; background: transparent; }
+details.msgday .fold > summary { color: #F5F5F5; }
+.alertcard.msgalert { background: #141414; border: 3px solid #25D366; box-shadow: 0 0 14px 3px rgba(37,211,102,.45); }
+@media (prefers-reduced-motion: reduce) { details.msgday.due { animation: none; box-shadow: 0 0 10px 3px rgba(37,211,102,.5); } }
+/* 🤝 done for you (airport journey, cruise, Ninh Binh) */
+.cat-auto { background: #E8EEF5; border: 1px solid #B8C7D8; }
+.cat-auto .tip, .cat-auto .jlist li { background: transparent; }
+/* 📍 your places · 🍽 meals */
+.cat-place { border-left: 6px solid var(--red); }
+.cat-meal { background: #EEF7EC; border-left: 6px solid #4C9A44; }
+.cat-task { border-left: 6px solid var(--gold); }
+.pno { display: inline-block; padding: 1px 10px; border-radius: 999px; background: var(--red); color: #fff; letter-spacing: 0; margin-right: 4px; }
+.facts .dl strong { color: var(--red); }
+.facts { flex-wrap: wrap; }
+.facts > div { flex: 1 1 28%; min-width: 0; }
+.facts > .dl { flex-basis: 100%; display: flex; gap: 8px; align-items: baseline; }
+.stop details.about { margin: 4px 0 8px; }
+:root[data-theme="dark"] .cat-auto { background: #1E2833; border-color: #34465A; }
+:root[data-theme="dark"] .cat-meal { background: #1D2A1C; }
+:root[data-theme="dark"] .lg-auto { background: #1E2833; }
+:root[data-theme="dark"] .lg-meal { background: #1D2A1C; }

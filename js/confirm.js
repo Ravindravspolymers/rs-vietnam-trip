@@ -144,7 +144,7 @@ function dayMsgCard(day, today) {
   const list = msgsForDay(day.day);
   if (!list.length) return '';
   const left = list.filter(m => !isDone(m.id)).length;
-  return `<details class="card msgday"${left ? ' open' : ''}><summary>📲 ${today ? 'Messages to send today' : 'Messages for this day'} <span class="badge">${left ? left + ' to send' : '✓ sent'}</span>
+  return `<details class="card msgday${left ? ' due' : ''}"${left ? ' open' : ''}><summary>📲 ${today ? 'Messages to send today' : 'Messages for this day'} <span class="badge">${left ? left + ' to send' : '✓ sent'}</span>
       <span class="kn">${today ? 'ಇಂದು ಕಳುಹಿಸಬೇಕಾದ ಸಂದೇಶ' : 'ಈ ದಿನದ ಸಂದೇಶ'}</span></summary>
     ${list.map(msgCard).join('')}</details>`;
 }
@@ -153,7 +153,7 @@ function dayMsgCard(day, today) {
 // Only today's messages — an unsent one from an earlier day is no longer useful as a reminder
 function msgAlerts(cur, now = new Date()) {
   const today = cur && !cur.before && !cur.after ? cur.day.day : -1;
-  return allMessages().filter(m => m.at && m.day === today && new Date(m.at) <= now && !isDone(m.id)).map(m => `<section class="alertcard">
+  return allMessages().filter(m => m.at && m.day === today && new Date(m.at) <= now && !isDone(m.id)).map(m => `<section class="alertcard msgalert">
       <a href="#plan:day${m.day}"><strong>📲 Send now: ${esc(m.title)}</strong><span class="kn">ಈಗ ಸಂದೇಶ ಕಳುಹಿಸಿ</span><span class="asub">${esc(m.when_en)} ›</span></a>
       <button type="button" class="adone" data-task="${m.id}" aria-label="Mark done">✓ Done</button>
     </section>`).join('');

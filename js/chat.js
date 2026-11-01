@@ -30,7 +30,7 @@ function kbStatic() {
       L.push('Food: ' + d.brief.food_en);
     }
     d.stops.filter(s => !d.brief || s.card).forEach(s => L.push(`- ${s.pending ? '(time to be confirmed) ' : stopTimeLabel(d, s) + ': '}${s.en}${s.mins ? ` (${s.mins} min)` : ''}${s.how ? ` [${s.how.mode === 'walk' ? 'walk' : 'cab'}: ${s.how.en}]` : ''}${s.closes ? ` closes ${s.closes}` : ''}${s.note_en ? ' — ' + s.note_en : ''}${s.pending_en ? ' — ' + s.pending_en : ''}${s.about ? ` ABOUT: ${s.about.why_en} Best: ${s.about.best_en} Ticket: ${s.about.entry}. ${s.about.tip_en || ''}` : ''}`));
-    if (d.heavy) L.push('Note: Friday is a heavy day (9 stops).');
+    if (d.heavy) L.push('Note: Friday is a heavy day (7 places).');
   });
   if (DATA.prep) {
     L.push('# AIRPORT STEPS');
