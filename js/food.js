@@ -124,8 +124,8 @@ function renderWaiter() {
 
 ROUTES.food.render = renderFood;
 ROUTES.food.after = startFood;
-ROUTES.food.back = () => routeParam() ? 'food' : null;
-ROUTES.dishes = { title: 'Safe veg dishes', tab: 'food', back: 'food', render: renderDishes, after: () => startSayButtons() };
-ROUTES.waiter = { title: 'Waiter card', tab: 'food', back: 'food', render: renderWaiter,
+ROUTES.food.back = () => routeParam() ? 'food' : 'more';
+ROUTES.dishes = { title: 'Safe veg dishes', tab: 'more', back: 'food', render: renderDishes, after: () => startSayButtons() };
+ROUTES.waiter = { title: 'Waiter card', tab: 'more', back: 'food', render: renderWaiter,
                   after: () => { document.body.classList.add('fullscreen'); const off = startSayButtons();
                                  return () => { document.body.classList.remove('fullscreen'); off(); }; } };

@@ -93,6 +93,7 @@ function renderPlan() {
         <span class="kn">ನಾಳೆ (ಶುಕ್ರವಾರ) ತುಂಬಾ ಓಡಾಟದ ದಿನ — ಇಂದು ಬೇಗ ಮಲಗಿ.</span></p>` : ''}
       ${day.heavy ? `<p class="heavynote">💪 <strong>Today is a heavy day</strong> — 7 places. Comfortable shoes, water, sit whenever you can.<br>
         <span class="kn">ಇಂದು ತುಂಬಾ ಓಡಾಟದ ದಿನ — ಆರಾಮದ ಚಪ್ಪಲಿ, ನೀರು, ಆಗಾಗ ಕುಳಿತುಕೊಳ್ಳಿ.</span></p>${HOURS_STRIP}` : ''}
+      ${[1, 3, 4, 6].includes(day.day) ? `<a class="btn secondary" href="#map:day${day.day}">🗺 Day map</a>` : ''}
       ${day.day >= 1 ? `<a class="btn secondary" href="#driver:hotel-${day.day}">🏨 Hotel address for driver</a>` : ''}
     </section>
     ${typeof dayMsgCard === 'function' ? dayMsgCard(day) : ''}`;
@@ -311,7 +312,7 @@ function driverTarget() {
   if (p.startsWith('hotel-')) {
     const h = trip.hotel;
     return { vi: 'Khách sạn Hanoi Chic Boutique', addr_vi: h.address_vi, en: h.en, addr_en: h.address_en,
-             back: /^#(em:|sos|helpcard)/.test(prevHash) ? prevHash.slice(1) : 'plan:day' + p.split('-')[1], hotel: true };   // v1.2: back to where it was opened
+             back: /^#(em:|sos|helpcard|map)/.test(prevHash) ? prevHash.slice(1) : 'plan:day' + p.split('-')[1], hotel: true };   // v1.2: back to where it was opened
   }
   const E = DATA.emergency;
   if (E && p === 'embassy') return { vi: E.embassy.vi, addr_vi: E.embassy.addr_vi, en: E.embassy.en, addr_en: E.embassy.addr_en, back: 'em:embassy' };
@@ -325,7 +326,7 @@ function driverTarget() {
   for (const d of trip.days) {
     const s = d.stops.find(x => x.id === p);
     if (s) return { vi: s.type === 'hotel' ? 'Khách sạn Hanoi Chic Boutique' : s.vi,
-                    addr_vi: s.addr_vi, en: s.den || s.en, addr_en: s.addr_en, back: 'plan:' + s.id, hotel: s.type === 'hotel' };
+                    addr_vi: s.addr_vi, en: s.den || s.en, addr_en: s.addr_en, back: /^#map/.test(prevHash) ? 'map:' + s.id : 'plan:' + s.id, hotel: s.type === 'hotel' };
   }
   return null;
 }

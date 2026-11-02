@@ -2,7 +2,7 @@
    Router, tab bar, More grid, SOS, Settings, update banner, storage helpers. */
 'use strict';
 
-const APP_VERSION = '3.0.0'; // keep in sync with CACHE_VERSION in service-worker.js
+const APP_VERSION = '3.1.0'; // keep in sync with CACHE_VERSION in service-worker.js
 
 /* ---------- Storage helpers (localStorage, never crash) ---------- */
 const Store = {
@@ -83,7 +83,7 @@ const ROUTES = {
   today:     { title: 'Today',     tab: 'today', render: () => soon('☀', 'Clocks, Now / Next and progress', 2) },
   plan:      { title: 'Plan',      tab: 'plan',  render: () => soon('🗺', 'Day-wise place cards', 3) },
   money:     { title: 'Money',     tab: 'money', render: () => soon('₫', 'Currency converter and notes', 2) },
-  food:      { title: 'Food',      tab: 'food',  render: () => soon('🍽', 'Veg restaurants and safe dishes', 5) },
+  food:      { title: 'Food',      tab: 'more',  render: () => soon('🍽', 'Veg restaurants and safe dishes', 5) },
   more:      { title: 'More',      tab: 'more',  render: renderMore },
   phrases:   { title: 'Phrases',   tab: 'more', back: 'more', render: () => soon('💬', 'Vietnamese phrases with sound', 5) },
   shopping:  { title: 'Shopping',  tab: 'more', back: 'more', render: () => soon('🛍', 'What to buy and where', 6) },
@@ -105,7 +105,7 @@ function soon(icon, what, phase) {
 
 function renderMore() {
   const tiles = [
-    ['phrases', '💬', 'Phrases'], ['shopping', '🛍', 'Shopping'],
+    ['food', '🍽', 'Food'], ['phrases', '💬', 'Phrases'], ['shopping', '🛍', 'Shopping'],
     ['explore', '🧭', 'More places'], ['sim', '📶', 'SIM & internet'],
     ['transport', '🚕', 'Taxi & Grab'],
     ['docs', '📄', 'Docs'],       ['prep', '✅', 'Prep'],

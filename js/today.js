@@ -78,7 +78,9 @@ function renderNowNext(cur) {
     const soon = r.next.day === cur.day || r.next.start - now < 6 * 3600000;
     html += stopRow(r.next.day, r.next.s, cur.before ? 'FIRST' : soon ? 'NEXT' : 'TOMORROW');
   }
-  return html + '</section>';
+  html += '</section>';
+  const m = [r.now?.s, r.next?.s].find(x => x && typeof MAP_ICON !== 'undefined' && MAP_ICON[x.id]);   // v3.1
+  return html + (m && !cur.before ? `<a class="btn secondary nnmap" href="#map:${esc(m.id)}">🗺 See on map — ${esc(m.en.replace(/ \(.*\)$/, ''))}</a>` : '');
 }
 
 /* U1: compact hotel card on trip days (Days 1–6) */

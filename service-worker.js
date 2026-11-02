@@ -3,7 +3,7 @@
    TO RELEASE AN UPDATE: change CACHE_VERSION (and APP_VERSION in js/app.js), then push. */
 'use strict';
 
-const CACHE_VERSION = 'rs-v3.0.0';
+const CACHE_VERSION = 'rs-v3.1.0';
 
 // Every file the app needs. Add new files here in later phases.
 const ASSETS = [
@@ -31,6 +31,7 @@ const ASSETS = [
   './js/transport.js',
   './js/weather.js',
   './js/confirm.js',
+  './js/map.js',
   './data/prep.json',
   './data/emergency.json',
   './data/shopping.json',
