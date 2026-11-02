@@ -253,8 +253,8 @@
           "closes": "6:00 pm",
           "how": {
             "mode": "walk",
-            "en": "300 m from Bach Ma Temple",
-            "kn": "ಬಾಚ್ ಮಾ ದೇವಾಲಯದಿಂದ 300 ಮೀ"
+            "en": "400 m from Bach Ma Temple",
+            "kn": "ಬಾಚ್ ಮಾ ದೇವಾಲಯದಿಂದ 400 ಮೀ"
           },
           "about": {
             "why_en": "Hanoi's biggest and oldest covered market (since 1889). Three floors of cloth, bags, dried fruit, coffee and souvenirs — real local life.",
@@ -289,8 +289,8 @@
           "walk": true,
           "how": {
             "mode": "walk",
-            "en": "Walk back — 150 m from the hotel",
-            "kn": "ವಾಪಸ್ ನಡೆದು — ಹೋಟೆಲ್‌ನಿಂದ 150 ಮೀ"
+            "en": "650 m from Dong Xuan Market",
+            "kn": "ಡಾಂಗ್ ಶುವಾನ್ ಮಾರುಕಟ್ಟೆಯಿಂದ 650 ಮೀ"
           },
           "note_en": "Then rest for the day — the cruise bus comes tomorrow morning.",
           "note_kn": "ನಂತರ ವಿಶ್ರಾಂತಿ — ನಾಳೆ ಬೆಳಿಗ್ಗೆ ಹಡಗಿನ ಬಸ್ ಬರುತ್ತದೆ.",
@@ -522,8 +522,8 @@
           "card": true,
           "how": {
             "mode": "cab",
-            "en": "5.6 km from the hotel",
-            "kn": "ಹೋಟೆಲ್‌ನಿಂದ 5.6 ಕಿಮೀ"
+            "en": "3.5 km from the hotel",
+            "kn": "ಹೋಟೆಲ್‌ನಿಂದ 3.5 ಕಿಮೀ"
           },
           "about": {
             "why_en": "Hanoi's oldest Buddhist pagoda (about 1,500 years), on a tiny island in West Lake. Its Bodhi tree was grown from a cutting of the tree in Bodh Gaya, India — a gift from Indian President Rajendra Prasad in 1959.",
@@ -558,8 +558,8 @@
           "closes": "5:30 pm",
           "how": {
             "mode": "cab",
-            "en": "about 5 km from Tran Quoc",
-            "kn": "ಟ್ರಾನ್ ಕುವೊಕ್‌ನಿಂದ ಸುಮಾರು 5 ಕಿಮೀ"
+            "en": "5.7 km from Tran Quoc",
+            "kn": "ಟ್ರಾನ್ ಕುವೊಕ್‌ನಿಂದ 5.7 ಕಿಮೀ"
           },
           "about": {
             "why_en": "The best museum in Hanoi. It shows how Vietnam's 54 peoples live — clothes, crafts, weddings. In the garden behind are real full-size village houses you can walk into, including a very tall stilt house.",
@@ -625,8 +625,8 @@
           "card": true,
           "how": {
             "mode": "cab",
-            "en": "about 4.5 km from Lotte",
-            "kn": "ಲೊಟ್ಟೆಯಿಂದ ಸುಮಾರು 4.5 ಕಿಮೀ"
+            "en": "~5 km from Lotte",
+            "kn": "ಲೊಟ್ಟೆಯಿಂದ ~5 ಕಿಮೀ"
           },
           "note_en": "Then sleep early — tomorrow (Friday) is a heavy day and starts at 7:30 am.",
           "note_kn": "ನಂತರ ಬೇಗ ಮಲಗಿ — ನಾಳೆ (ಶುಕ್ರವಾರ) ತುಂಬಾ ಓಡಾಟದ ದಿನ, ಬೆಳಿಗ್ಗೆ 7:30ಕ್ಕೆ ಶುರು.",
@@ -701,8 +701,8 @@
           "closes": "5:00 pm",
           "how": {
             "mode": "cab",
-            "en": "1.5 km from the hotel",
-            "kn": "ಹೋಟೆಲ್‌ನಿಂದ 1.5 ಕಿಮೀ"
+            "en": "2 km from the hotel",
+            "kn": "ಹೋಟೆಲ್‌ನಿಂದ 2 ಕಿಮೀ"
           },
           "about": {
             "why_en": "The royal palace of Vietnam's kings for 1,000 years — a UNESCO World Heritage Site. See the big Doan Mon gate, old palace foundations dug up from the ground, and the underground war rooms.",
@@ -756,15 +756,15 @@
           "kn": "ಸದರ್ನ್ ಡಿಲೈಟ್ಸ್‌ನಲ್ಲಿ ಮಧ್ಯಾಹ್ನದ ಊಟ",
           "time": "11:30",
           "mins": 90,
-          "lat": 21.034731,
-          "lng": 105.846663,
+          "lat": 21.036107,
+          "lng": 105.846984,
           "go": "Southern Delights - Pure Vegetarian South Indian, 12 P. Hàng Gà, Hoàn Kiếm, Hà Nội",
           "addr_en": "Southern Delights - Pure Vegetarian South Indian, 12 P. Hàng Gà, Hoàn Kiếm, Hà Nội",
           "addr_vi": "Nhà hàng Southern Delights, 12 phố Hàng Gà, Hoàn Kiếm, Hà Nội",
           "how": {
             "mode": "cab",
-            "en": "about 2 km from the Temple of Literature",
-            "kn": "ಸಾಹಿತ್ಯ ದೇವಾಲಯದಿಂದ ಸುಮಾರು 2 ಕಿಮೀ"
+            "en": "3 km from the Temple of Literature",
+            "kn": "ಸಾಹಿತ್ಯ ದೇವಾಲಯದಿಂದ 3 ಕಿಮೀ"
           },
           "note_en": "Pure vegetarian South Indian — dosa, idli, meals. Take your time and rest your legs. Then walk to the Cathedral.",
           "note_kn": "ಶುದ್ಧ ಸಸ್ಯಾಹಾರಿ ದಕ್ಷಿಣ ಭಾರತೀಯ — ದೋಸೆ, ಇಡ್ಲಿ, ಊಟ. ನಿಧಾನವಾಗಿ ಊಟ ಮಾಡಿ, ಕಾಲಿಗೆ ವಿಶ್ರಾಂತಿ. ನಂತರ ಚರ್ಚ್‌ಗೆ ನಡೆಯಿರಿ.",
@@ -809,16 +809,16 @@
           "kn": "ಹೊವಾನ್ ಕಿಯೆಮ್ ಸರೋವರ",
           "time": "14:00",
           "mins": 45,
-          "lat": 21.0292,
-          "lng": 105.8524,
+          "lat": 21.0278,
+          "lng": 105.8509,
           "go": "Hoàn Kiếm Lake, Hoàn Kiếm, Hà Nội",
           "addr_en": "Hoàn Kiếm Lake, Hoàn Kiếm, Hà Nội",
           "addr_vi": "Hồ Hoàn Kiếm, Hà Nội",
           "walk": true,
           "how": {
             "mode": "walk",
-            "en": "600 m from the Cathedral",
-            "kn": "ಚರ್ಚ್‌ನಿಂದ 600 ಮೀ"
+            "en": "400 m from the Cathedral",
+            "kn": "ಚರ್ಚ್‌ನಿಂದ 400 ಮೀ"
           },
           "about": {
             "why_en": "The heart of Hanoi. Legend says a king returned a magic sword to a giant golden turtle here — 'Hoan Kiem' means 'returned sword'.",
@@ -849,8 +849,8 @@
           "walk": true,
           "how": {
             "mode": "walk",
-            "en": "On the lake — over the red bridge",
-            "kn": "ಸರೋವರದಲ್ಲೇ — ಕೆಂಪು ಸೇತುವೆ ದಾಟಿ"
+            "en": "500 m along the lake, over the red bridge",
+            "kn": "ಸರೋವರದ ಬದಿಯಲ್ಲಿ 500 ಮೀ, ಕೆಂಪು ಸೇತುವೆ ದಾಟಿ"
           },
           "about": {
             "why_en": "The temple on a small island in the lake, reached by the red The Huc bridge. Inside is a real giant turtle from the lake, preserved.",
@@ -884,8 +884,8 @@
           "go": "Thang Long Water Puppet Theatre, 57B Đinh Tiên Hoàng, Hoàn Kiếm, Hà Nội",
           "how": {
             "mode": "walk",
-            "en": "300 m from Ngoc Son Temple",
-            "kn": "ಎನ್ಗೊಕ್ ಸೊನ್‌ನಿಂದ 300 ಮೀ"
+            "en": "100 m from Ngoc Son Temple",
+            "kn": "ಎನ್ಗೊಕ್ ಸೊನ್‌ನಿಂದ 100 ಮೀ"
           },
           "about": {
             "why_en": "A 1,000-year-old art found only in Vietnam: puppets dance on water to live music — rice farming, dragons, festivals. No words needed; easy to enjoy.",
@@ -909,8 +909,8 @@
           "kn": "ಸದರ್ನ್ ಡಿಲೈಟ್ಸ್‌ನಲ್ಲಿ ರಾತ್ರಿ ಊಟ",
           "time": "18:15",
           "mins": 60,
-          "lat": 21.034731,
-          "lng": 105.846663,
+          "lat": 21.036107,
+          "lng": 105.846984,
           "go": "Southern Delights - Pure Vegetarian South Indian, 12 P. Hàng Gà, Hoàn Kiếm, Hà Nội",
           "addr_en": "Southern Delights - Pure Vegetarian South Indian, 12 P. Hàng Gà, Hoàn Kiếm, Hà Nội",
           "addr_vi": "Nhà hàng Southern Delights, 12 phố Hàng Gà, Hoàn Kiếm, Hà Nội",
@@ -940,8 +940,8 @@
           "walk": true,
           "how": {
             "mode": "walk",
-            "en": "Around the lake — 300 m from the lake shore",
-            "kn": "ಸರೋವರದ ಸುತ್ತ — ದಡದಿಂದ 300 ಮೀ"
+            "en": "1 km from Southern Delights",
+            "kn": "ಸದರ್ನ್ ಡಿಲೈಟ್ಸ್‌ನಿಂದ 1 ಕಿಮೀ"
           },
           "about": {
             "why_en": "Every Friday to Sunday evening the roads around the lake close to traffic. Families, music, street shows, games — Hanoi at its happiest.",
@@ -1307,7 +1307,9 @@
               "go": "Southern Delights - Pure Vegetarian South Indian, 12 P. Hàng Gà, Hoàn Kiếm, Hà Nội",
               "vi": "Nhà hàng Southern Delights",
               "addr_vi": "Nhà hàng Southern Delights, 12 phố Hàng Gà, Hoàn Kiếm, Hà Nội",
-              "addr_en": "Southern Delights - Pure Vegetarian South Indian, 12 P. Hàng Gà, Hoàn Kiếm, Hà Nội"
+              "addr_en": "Southern Delights - Pure Vegetarian South Indian, 12 P. Hàng Gà, Hoàn Kiếm, Hà Nội",
+              "lat": 21.036107,
+              "lng": 105.846984
             }
           ],
           "note_en": "Pick either — both are close to the hotel. Be back at the hotel by 3:20 pm.",

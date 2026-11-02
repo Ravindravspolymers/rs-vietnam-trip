@@ -921,3 +921,19 @@ body.onmap #mic-btn, body.onmap #chat-btn { display: none !important; }
 #mapsvg.alldays .dtag { display: none; }
 #mapsvg .seg.dim .seglab, #mapsvg .seg.dim .arrow, #mapsvg .dim .plabel, #mapsvg .dim .nbg, #mapsvg .dim .nno { display: none; }
 #mapsvg .seg.dim { opacity: .18; }
+/* v3.1.1: calmer map — other days hidden, Friday morning / afternoon, smaller chips, fanned pins */
+#mapsvg .dim, #mapsvg .off { display: none; }
+#mapsvg .leader { stroke: #555; stroke-width: 1.5; stroke-dasharray: 3 3; }
+#mapsvg .seglab text { font-size: 11px; }
+.mapbar { gap: 6px; padding: 0 2px 4px; }
+.mchip { min-height: 34px; padding: 0 10px; font-size: 15px; border-width: 1.5px; }
+.maplegend { position: absolute; right: 8px; top: 8px; margin: 0; padding: 4px 10px; border-radius: 10px; background: rgba(255,255,255,.9);
+  color: #2A1F1A; font-size: 15px; line-height: 1.35; box-shadow: 0 1px 4px rgba(0,0,0,.12); pointer-events: none; }
+.mpart { position: absolute; left: 8px; right: 8px; top: 64px; display: flex; gap: 0; justify-content: center; }
+.mpart button { min-height: 40px; padding: 0 10px; border: 1.5px solid #E8710A; background: #fff; color: #2A1F1A; font: inherit; font-size: 15px; font-weight: 700; }
+.mpart button:first-child { border-radius: 10px 0 0 10px; } .mpart button:last-child { border-radius: 0 10px 10px 0; }
+.mpart button + button { border-left: 0; }
+.mpart button[aria-pressed="true"] { background: #E8710A; color: #fff; }
+.mapnote { top: 64px; bottom: auto; right: 8px; border: 0; text-align: left; font: inherit; font-size: 15px; }
+.maphotel { min-height: 44px; }
+.mpart[hidden] { display: none; }

@@ -12,6 +12,7 @@ const MAP_ICON = {
   'd4-temple': '🎓', 'd4-cathedral': '⛪', 'd4-lake': '🐢', 'd4-ngocson': '🌉', 'd4-puppet': '🎭', 'd4-walkst': '🎶',
   'd6-hcm': '🕊', 'd6-onepillar': '🌸', 'd6-hoalo': '⛓', 'd6-women': '👩'
 };
+const MAP_SPLIT = { 4: 'd4-lunch' };                        // Friday: morning ends with lunch
 const MB = { latMin: 21.015, latMax: 21.065, lngMin: 105.790, lngMax: 105.885 };
 const MX = lng => (lng - MB.lngMin) * 103920, MY = lat => (MB.latMax - lat) * 110700;
 const MW = MX(MB.lngMax), MH = MY(MB.latMin);
@@ -35,13 +36,14 @@ function mapData() {
   MAP_DAYS.forEach(n => {
     const day = DATA.trip.days.find(d => d.day === n); if (!day) return;
     const list = day.stops.filter(s => (!day.brief || s.card) && (isPlace(s) || s.type === 'meal'));
-    let prev = hotel, k = 0; const segs = [];
+    let prev = hotel, k = 0, part = 'am'; const segs = [];
     list.forEach(s => {
       const pt = s.lat != null ? s : amy;                       // Sunday lunch "your choice" → near the hotel
       const dist = ((s.how?.en || '').match(/(~|about )?\d+(\.\d+)? ?k?m\b/i) || [''])[0].replace(/about /i, '~');
-      segs.push({ a: prev, b: pt, mode: s.how?.mode || 'cab', dist, day: n });
-      if (isPlace(s)) places.push({ s, day, n, no: ++k });
+      segs.push({ a: prev, b: pt, mode: s.how?.mode || 'cab', dist, day: n, part });
+      if (isPlace(s)) places.push({ s, day, n, no: ++k, part });
       else { const key = pt.lat.toFixed(4); (meals[key] = meals[key] || { s, pt, days: new Set() }).days.add(n); }
+      if (MAP_SPLIT[n] === s.id) part = 'pm';
       prev = pt;
     });
     days.push({ n, day, segs, first: list.find(isPlace) });
@@ -63,7 +65,6 @@ function renderMap() {
   const dayChips = MAP_DAYS.map(n => { const d = DATA.trip.days.find(x => x.day === n);
     return chip(String(n), new Date(d.date + 'T12:00:00Z').toLocaleDateString('en-GB', { timeZone: 'UTC', weekday: 'short', day: 'numeric' }).replace(',', ''), MAP_COL[n]); }).join('');
   return `<div class="mapbar">${chip('all', 'All')}${dayChips}</div>
-    <p class="maplegend">★ Hotel · 🍽 Meals · 👫 Walk · 🚗 Cab</p>
     <div class="mapwrap" id="mapwrap">
       <svg id="mapsvg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of your Hanoi places">${mapSvg(D)}</svg>
       <div class="mapctl">
@@ -74,7 +75,11 @@ function renderMap() {
         <button type="button" class="mbtn" data-mz="me" aria-label="Where am I" hidden>◎</button>
       </div>
       <a class="maphotel" href="#driver:hotel-${Math.max(1, currentTripDay().day?.day || 1)}">🏨 Hotel</a>
-      <p class="mapnote" id="mapnote" hidden></p>
+      <p class="maplegend">★ Hotel · 🍽 Meal<br>👫 Walk · 🚗 Cab</p>
+      <div class="mpart" id="mpart" hidden>
+        <button type="button" data-mpart="am">☀ Morning</button><button type="button" data-mpart="pm">🌙 Afternoon</button><button type="button" data-mpart="all">Whole day</button>
+      </div>
+      <button type="button" class="mapnote" id="mapnote" hidden></button>
       <div class="mapcard" id="mapcard" hidden></div>
     </div>`;
 }
@@ -88,16 +93,16 @@ function mapSvg(D) {
     const x1 = MX(g.a.lng), y1 = MY(g.a.lat), x2 = MX(g.b.lng), y2 = MY(g.b.lat);
     const len = Math.hypot(x2 - x1, y2 - y1); if (len < 5) return '';
     const ang = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
-    return `<g class="seg" data-day="${g.day}" style="--dc:${MAP_COL[g.day]}">
+    return `<g class="seg" data-day="${g.day}" data-part="${g.part}" style="--dc:${MAP_COL[g.day]}">
       <line class="${g.mode}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" vector-effect="non-scaling-stroke"/>
       <g class="sc arrow" data-x="${x1 + (x2 - x1) * .7}" data-y="${y1 + (y2 - y1) * .7}" data-r="${ang}"><path d="M-6,-5 L5,0 L-6,5 Z"/></g>
-      <g class="sc seglab" data-x="${(x1 + x2) / 2}" data-y="${(y1 + y2) / 2}" data-len="${len}"><rect x="-30" y="-11" width="60" height="22" rx="11"/>
+      <g class="sc seglab" data-x="${(x1 + x2) / 2}" data-y="${(y1 + y2) / 2}" data-len="${len}"><rect x="-27" y="-10" width="54" height="20" rx="10"/>
         <text x="0" y="1">${g.mode === 'walk' ? '👫' : '🚗'} ${esc(g.dist)}</text></g></g>`;
   })).join('');
   const meals = D.meals.map(m => `<g class="sc pin meal" data-days="${[...m.days].join(' ')}" data-pin="${m.s.id}" data-x="${MX(m.pt.lng)}" data-y="${MY(m.pt.lat)}">
       <circle class="hit" r="24"/><circle class="mbg" r="11"/><text class="emo" y="1">🍽</text>
       <text class="plabel" y="25">${esc(m.s.den || m.s.en)}</text></g>`).join('');
-  const places = D.places.map(({ s, n, no }) => `<g class="sc pin place${visited[s.id] ? ' done' : ''}" data-days="${n}" data-pin="${s.id}" data-x="${MX(s.lng)}" data-y="${MY(s.lat)}" style="--dc:${MAP_COL[n]}">
+  const places = D.places.map(({ s, n, no, part }) => `<g class="sc pin place${visited[s.id] ? ' done' : ''}" data-days="${n}" data-part="${part}" data-pin="${s.id}" data-x="${MX(s.lng)}" data-y="${MY(s.lat)}" style="--dc:${MAP_COL[n]}">
       <circle class="hit" r="26"/><circle class="pulse" r="18"/><circle class="pbg" r="16"/><text class="emo" y="1">${MAP_ICON[s.id] || '📍'}</text>
       <circle class="nbg" cx="13" cy="-13" r="9"/><text class="nno" x="13" y="-12.5">${no}</text>
       ${visited[s.id] ? '<circle class="dk" cx="-13" cy="-13" r="8"/><text class="dkt" x="-13" y="-12.5">✓</text>' : ''}
@@ -107,7 +112,8 @@ function mapSvg(D) {
   const H = D.hotel;
   const hotel = `<g class="sc pin hotel" data-pin="hotel" data-x="${MX(H.lng)}" data-y="${MY(H.lat)}"><circle class="hit" r="26"/>
       <circle class="hbg" r="17"/><text class="hstar" y="1">★</text><text class="plabel hl" y="32">Hotel</text></g>`;
-  return `<rect class="land" x="-5000" y="-5000" width="${MW + 10000}" height="${MH + 10000}"/>${water}<g id="segs">${segs}</g>${meals}${places}${tags}${hotel}
+  const leaders = D.places.map(({ s }) => `<line class="leader" id="ld-${s.id}" x1="0" y1="0" x2="0" y2="0" vector-effect="non-scaling-stroke"/>`).join('');
+  return `<rect class="land" x="-5000" y="-5000" width="${MW + 10000}" height="${MH + 10000}"/>${water}<g id="segs">${segs}</g><g id="leaders">${leaders}</g>${meals}${places}${tags}${hotel}
     <g class="sc me" id="medot" data-x="-99999" data-y="-99999"><circle class="mehalo" r="16"/><circle class="medot" r="7"/></g>`;
 }
 
@@ -119,25 +125,54 @@ function mapApply() {
   v.svg.setAttribute('viewBox', `${v.vb.x} ${v.vb.y} ${v.vb.w} ${v.vb.h}`);
   const mpp = v.vb.w / W;                                     // metres per screen pixel
   const small = mpp > 6 ? 0.72 : 1;                           // far out: smaller pins so the city doesn't clog
+  const shown = el => !el.classList.contains('dim') && !el.classList.contains('off');
+  // 1) Pins closer than ~36 px fan out a little (the hotel stays put); a thin line points to the true spot
+  const pins = [...v.svg.querySelectorAll('.pin')].filter(shown).map(g => ({ g, x: +g.dataset.x, y: +g.dataset.y, fixed: g.classList.contains('hotel') }));
+  const minD = 36 * mpp * small;
+  for (let it = 0; it < 8; it++) for (let i = 0; i < pins.length; i++) for (let j = i + 1; j < pins.length; j++) {
+    const a = pins[i], b = pins[j]; let dx = b.x - a.x, dy = b.y - a.y, d = Math.hypot(dx, dy);
+    if (d >= minD) continue; if (d < 1e-6) { dx = 1; dy = 0; d = 1; }
+    const push = (minD - d) / (a.fixed || b.fixed ? 1 : 2), ux = dx / d, uy = dy / d;
+    if (!a.fixed) { a.x -= ux * push; a.y -= uy * push; } if (!b.fixed) { b.x += ux * push; b.y += uy * push; }
+  }
+  pins.forEach(p => { p.g.dataset.px = p.x; p.g.dataset.py = p.y; });
+  v.svg.querySelectorAll('.leader').forEach(l => {
+    const g = v.svg.querySelector(`[data-pin="${l.id.slice(3)}"]`), on = g && shown(g) && Math.hypot(g.dataset.px - g.dataset.x, g.dataset.py - g.dataset.y) > 3 * mpp;
+    l.style.display = on ? '' : 'none';
+    if (on) { l.setAttribute('x1', g.dataset.x); l.setAttribute('y1', g.dataset.y); l.setAttribute('x2', g.dataset.px); l.setAttribute('y2', g.dataset.py); }
+  });
   v.svg.querySelectorAll('.sc').forEach(g => {
     const r = g.dataset.r ? ` rotate(${g.dataset.r})` : '';
-    g.setAttribute('transform', `translate(${g.dataset.x},${g.dataset.y})${r} scale(${mpp * (g.classList.contains('pin') || g.classList.contains('dtag') ? small : 1)})`);
-    if (g.dataset.len) g.classList.toggle('hide', g.dataset.len / mpp < 90);
+    const x = g.dataset.px ?? g.dataset.x, y = g.dataset.py ?? g.dataset.y;
+    g.setAttribute('transform', `translate(${x},${y})${r} scale(${mpp * (g.classList.contains('pin') || g.classList.contains('dtag') ? small : 1)})`);
+  });
+  // 2) Distance badges: hide any that would sit on a pin or on another badge (they come back when zoomed in)
+  const boxes = pins.map(p => [p.x - 20 * mpp, p.y - 20 * mpp, p.x + 20 * mpp, p.y + 20 * mpp]);
+  const hit = (a, b) => a[0] < b[2] && a[2] > b[0] && a[1] < b[3] && a[3] > b[1];
+  v.svg.querySelectorAll('.seg').forEach(seg => {
+    const lab = seg.querySelector('.seglab'); if (!lab) return;
+    if (!shown(seg) || lab.dataset.len / mpp < 70) { lab.classList.add('hide'); return; }
+    const x = +lab.dataset.x, y = +lab.dataset.y, bx = [x - 28 * mpp, y - 11 * mpp, x + 28 * mpp, y + 11 * mpp];
+    const clash = boxes.some(b => hit(bx, b));
+    lab.classList.toggle('hide', clash);
+    if (!clash) boxes.push(bx);
   });
   v.svg.classList.toggle('zin', mpp < 1.7);                   // names only when there is room
 }
-function mapFit(ids) {
-  const v = MAPV, D = v.D;
-  let pts = ids === 'oq' ? [[21.0255, 105.8455], [21.0390, 105.8545]]
-    : D.places.concat(D.meals.map(m => ({ s: m.pt, n: [...m.days] })))
-      .filter(x => v.sel === 'all' || (Array.isArray(x.n) ? x.n.map(String).includes(v.sel) : String(x.n) === v.sel))
-      .map(x => [x.s.lat, x.s.lng]).concat([[D.hotel.lat, D.hotel.lng]]);
-  if (ids && ids !== 'oq') pts = ids;
-  const xs = pts.map(p => MX(p[1])), ys = pts.map(p => MY(p[0]));
+function mapFit(box) {                                         // box: [[lat,lng],[lat,lng]] or 'oq' or nothing (= what is shown)
+  const v = MAPV;
+  let xs, ys;
+  if (box) {
+    const b = box === 'oq' ? [[21.0255, 105.8455], [21.0390, 105.8545]] : box;
+    xs = b.map(p => MX(p[1])); ys = b.map(p => MY(p[0]));
+  } else {
+    const ps = [...v.svg.querySelectorAll('.pin')].filter(g => !g.classList.contains('dim') && !g.classList.contains('off'));
+    xs = ps.map(g => +g.dataset.x); ys = ps.map(g => +g.dataset.y);
+  }
   const x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = Math.min(...ys), y1 = Math.max(...ys);
-  // keep pins clear of the Hotel button (top) and the zoom buttons (bottom): padding in screen pixels
-  const W = v.wrap.clientWidth, Hh = v.wrap.clientHeight, P = { l: 34, r: 34, t: 78, b: 82 };
-  const bw = Math.max(400, x1 - x0), bh = Math.max(400, y1 - y0);
+  // keep pins clear of the Hotel button / legend (top) and the zoom buttons (bottom): padding in screen pixels
+  const W = v.wrap.clientWidth, Hh = v.wrap.clientHeight, P = { l: 34, r: 34, t: v.part && v.sel === '4' ? 120 : 82, b: 82 };
+  const bw = Math.max(350, x1 - x0), bh = Math.max(350, y1 - y0);
   const mpp = Math.max(bw / (W - P.l - P.r), bh / (Hh - P.t - P.b));
   const w = W * mpp, cx = (x0 + x1) / 2 - (P.l - P.r) / 2 * mpp, cy = (y0 + y1) / 2 - (P.t - P.b) / 2 * mpp;
   v.vb = { x: cx - w / 2, y: cy - Hh * mpp / 2, w, h: Hh * mpp };
@@ -151,12 +186,24 @@ function mapZoom(f, cx, cy) {                                  // cx, cy in scre
   v.vb = { x: mx - (mx - v.vb.x) * k, y: my - (my - v.vb.y) * k, w: nw, h: v.vb.h * k };
   mapApply();
 }
-function mapFilter(sel) {
+function mapDefaultPart() {
+  const cur = currentTripDay();
+  if (!cur.before && !cur.after && cur.day.day === 4) {
+    const [h, m] = new Date().toLocaleTimeString('en-GB', { timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', minute: '2-digit' }).split(':').map(Number);
+    return h * 60 + m >= 12 * 60 + 30 ? 'pm' : 'am';
+  }
+  return 'am';
+}
+function mapFilter(sel, part) {
   const v = MAPV; v.sel = sel;
+  v.part = MAP_SPLIT[sel] ? (part || v.part || mapDefaultPart()) : '';
   document.querySelectorAll('.mchip').forEach(b => b.setAttribute('aria-pressed', b.dataset.mday === sel));
+  const mp = document.getElementById('mpart'); mp.hidden = !v.part;
+  mp.querySelectorAll('[data-mpart]').forEach(b => b.setAttribute('aria-pressed', b.dataset.mpart === v.part));
   v.svg.querySelectorAll('[data-day],[data-days]').forEach(el => {
     const ds = (el.dataset.days || el.dataset.day).split(' ');
-    el.classList.toggle('dim', sel !== 'all' && !ds.includes(sel));
+    el.classList.toggle('dim', sel !== 'all' && !ds.includes(sel));            // other days: hidden
+    el.classList.toggle('off', !!v.part && v.part !== 'all' && !!el.dataset.part && el.dataset.part !== v.part);
   });
   v.svg.classList.toggle('alldays', sel === 'all');
   mapFit();
@@ -210,11 +257,12 @@ function startMap() {
   document.body.classList.add('onmap');
   const wrap = document.getElementById('mapwrap'), svg = document.getElementById('mapsvg');
   const D = mapData(), p = routeParam();
-  MAPV = { wrap, svg, D, vb: { x: 0, y: 0, w: MW, h: MH }, sel: 'all', me: null };
+  MAPV = { wrap, svg, D, vb: { x: 0, y: 0, w: MW, h: MH }, sel: 'all', part: '', me: null };
   const size = () => { wrap.style.height = Math.max(320, innerHeight - wrap.getBoundingClientRect().top - (document.querySelector('.tabbar')?.offsetHeight || 64) - 6) + 'px'; };
   size();
   const sel = document.querySelector('.mchip[aria-pressed="true"]')?.dataset.mday || 'all';
-  mapFilter(sel);
+  const hitP = p && D.places.find(x => x.s.id === p);
+  mapFilter(sel, hitP && MAP_SPLIT[hitP.n] ? hitP.part : undefined);
   // NEXT pulses (same NEXT as Plan)
   const cur = currentTripDay();
   if (!cur.before && !cur.after) { const n = dayNextStop(cur.day); n && svg.querySelector(`[data-pin="${n.id}"]`)?.classList.add('next'); }
@@ -226,7 +274,7 @@ function startMap() {
   // Gestures: drag to move, pinch / wheel to zoom, tap a pin for its card
   const ptrs = new Map(); let moved = 0, last = null;
   const local = e => { const r = wrap.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
-  const down = e => { if (e.target.closest('.mapctl,.mapcard,.maphotel')) return; svg.setPointerCapture?.(e.pointerId); ptrs.set(e.pointerId, local(e)); moved = 0; last = null; };
+  const down = e => { if (e.target.closest('.mapctl,.mapcard,.maphotel,.mpart,.mapnote')) return; svg.setPointerCapture?.(e.pointerId); ptrs.set(e.pointerId, local(e)); moved = 0; last = null; };
   const move = e => {
     if (!ptrs.has(e.pointerId)) return;
     const prev = ptrs.get(e.pointerId), now = local(e); ptrs.set(e.pointerId, now);
@@ -251,6 +299,8 @@ function startMap() {
   const wheel = e => { e.preventDefault(); const [x, y] = local(e); mapZoom(e.deltaY > 0 ? 1.2 : 1 / 1.2, x, y); };
   const click = async e => {
     const c = e.target.closest('[data-mday]'); if (c) { mapCard(null); return mapFilter(c.dataset.mday); }
+    const pt = e.target.closest('[data-mpart]'); if (pt) { mapCard(null); return mapFilter(MAPV.sel, pt.dataset.mpart); }
+    if (e.target.closest('#mapnote')) { e.target.closest('#mapnote').hidden = true; MAPV.noteOff = true; return; }
     const z = e.target.closest('[data-mz]');
     if (z) {
       const k = z.dataset.mz;
@@ -279,7 +329,7 @@ function startMap() {
       const dot = document.getElementById('medot'), inside = me.lat > MB.latMin && me.lat < MB.latMax && me.lng > MB.lngMin && me.lng < MB.lngMax;
       dot.dataset.x = MX(me.lng); dot.dataset.y = MY(me.lat); mapApply();
       const note = document.getElementById('mapnote');
-      note.hidden = inside; note.textContent = 'You are outside this city map (the blue dot shows when you are in Hanoi).';
+      note.hidden = inside || !!MAPV.noteOff; note.textContent = 'You are outside this city map — the blue dot appears in Hanoi. ✕';
       document.querySelector('[data-mz="me"]').hidden = !inside;
     }, () => {}, { enableHighAccuracy: true, maximumAge: 15000, timeout: 20000 });
   }
